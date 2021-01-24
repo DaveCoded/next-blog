@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import matter from 'gray-matter'
+import mdxPrism from 'mdx-prism'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 import AllComponents from '../../components/mdx/AllComponents'
@@ -48,6 +49,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { data, content } = matter(postContent)
     const mdxSource = await renderToString(content, {
         components,
+        mdxOptions: {
+            remarkPlugins: [require('remark-code-titles')],
+            rehypePlugins: [mdxPrism]
+        },
         scope: data
     })
     return {
