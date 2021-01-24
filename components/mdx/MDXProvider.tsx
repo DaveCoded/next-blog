@@ -7,12 +7,13 @@ export default function MDXCompProvider(
     const state = {
         h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
             <h1
+                {...props}
                 style={{
                     color: 'plum',
                     fontWeight: 700,
-                    textDecoration: 'underline'
+                    textDecoration: 'underline',
+                    ...props.style
                 }}
-                {...props}
             />
         )
     }
