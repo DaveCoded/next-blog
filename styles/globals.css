@@ -1,3 +1,41 @@
+@font-face {
+    font-family: 'Dank Mono';
+    src: url('/fonts/DankMono/DankMono-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Dank Mono';
+    src: url('/fonts/DankMono/DankMono-Italic.ttf');
+    font-style: italic;
+    font-weight: 400;
+}
+
+:root {
+    /* Code block styles */
+    --prism-theme-white: #fff;
+    --prism-theme-background: #282c34;
+    --prism-theme-char: #d8dee9;
+    --prism-theme-comment: #b2b2b2;
+    --prism-theme-keyword: #c5a5c5;
+    --prism-theme-primitive: #5a9bcf;
+    --prism-theme-string: #8dc891;
+    --prism-theme-variable: #d7deea;
+    --prism-theme-boolean: #ff8b50;
+    --prism-theme-punctuation: #88c6be;
+    --prism-theme-tag: #fc929e;
+    --prism-theme-function: #79b6f2;
+    --prism-theme-className: #fac863;
+    --prism-theme-method: #6699cc;
+    --prism-theme-operator: #fc929e;
+    --prism-theme-highlight: #353b45;
+    --code-font-family: 'Dank Mono';
+
+    /* Measurements */
+    --highlight-before-width: 0.43em;
+}
+
 html,
 body {
     padding: 0;
@@ -21,22 +59,17 @@ a {
 
 code[class*='language-'],
 pre[class*='language-'] {
-    color: #f8f8f2;
+    color: var(--prism-theme-white);
     background: none;
-    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-        monospace;
+    font-family: var(--code-font-family), Consolas, Monaco, 'Andale Mono',
+        'Ubuntu Mono', monospace;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
     tab-size: 4;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
     hyphens: none;
 }
 
@@ -45,18 +78,18 @@ pre[class*='language-'] {
     padding: 1em;
     margin: 0px 0px 0.5em;
     overflow: auto;
-    border-radius: 0 0 0.3em 0.3em;
+    border-radius: 0 0 10px 10px;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-    background: #2e3440;
+    background: var(--prism-theme-background);
 }
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
     padding: 0.1em;
-    border-radius: 0.3em;
+    border-radius: 10px;
     white-space: normal;
 }
 
@@ -64,11 +97,11 @@ pre[class*='language-'] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #636f88;
+    color: var(--prism-theme-comment);
 }
 
 .token.punctuation {
-    color: #81a1c1;
+    color: var(--prism-theme-punctuation);
 }
 
 .namespace {
@@ -76,58 +109,69 @@ pre[class*='language-'] {
 }
 
 .token.property,
-.token.tag,
+.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-    color: #81a1c1;
+    color: var(--prism-theme-primitive);
 }
 
-.token.number {
-    color: #b48ead;
+.token.function {
+    color: var(--prism-theme-function);
 }
 
 .token.boolean {
-    color: #81a1c1;
+    color: var(--prism-theme-boolean);
+}
+
+.token.tag {
+    color: var(--prism-theme-tag);
+}
+
+.token.attr-name {
+    color: var(--prism-theme-keyword);
+}
+
+.token.string {
+    color: var(--prism-theme-string);
 }
 
 .token.selector,
-.token.attr-name,
-.token.string,
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: #a3be8c;
+    color: var(--prism-theme-char);
 }
 
 .token.operator,
 .token.entity,
 .token.url,
-.language-css .token.string,
-.style .token.string,
+/* .language-css .token.string,
+.style .token.string, */
 .token.variable {
-    color: #81a1c1;
+    color: var(--prism-theme-variable);
 }
 
 .token.atrule,
-.token.attr-value,
-.token.function,
 .token.class-name {
-    color: #88c0d0;
+    color: var(--prism-theme-className);
+}
+
+.token.attr-value {
+    color: var(--prism-theme-string);
 }
 
 .token.keyword {
-    color: #81a1c1;
+    color: var(--prism-theme-keyword);
 }
 
-.token.regex,
+/* .token.regex, */
 .token.important {
-    color: #ebcb8b;
+    font-weight: 400;
 }
 
-.token.important,
 .token.bold {
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .token.italic {
@@ -140,17 +184,18 @@ pre[class*='language-'] {
 
 /* Highlight line! */
 .mdx-marker {
-    background: #3d4b64;
+    background: var(--prism-theme-highlight);
     position: relative;
     left: -0.57em;
     padding-left: 0.57em;
-    width: calc(100% + 0.57em);
+    /* Add width of padding left and right, and width of highlight */
+    width: calc(100% + 1.14em + 0.43em);
 }
 
 .mdx-marker::before {
     content: '';
-    width: 0.43em;
     height: 100%;
+    width: 0.43em;
     left: -0.43em;
     background: #8b9fc6;
     position: absolute;
@@ -161,7 +206,7 @@ pre[class*='language-'] {
     background-color: rgb(78 84 95);
     color: #e9e9e9;
     padding: 0.7em 1em;
-    border-radius: 0.3em 0.3em 0 0;
+    border-radius: 10px 10px 0 0;
 }
 
 /* ======================================================= */

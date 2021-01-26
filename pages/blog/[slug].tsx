@@ -22,7 +22,7 @@ export default function Posts({ source, frontMatter }: Props) {
             <Head>
                 <title>{frontMatter.title}</title>
             </Head>
-            <div>
+            <div style={{ maxWidth: '840px', margin: '0 auto' }}>
                 <div>
                     <h1>{frontMatter.title}</h1>
                     <div>
