@@ -26,7 +26,6 @@ export default function Posts({ source, frontMatter }: Props) {
                 <div>
                     <h1>{frontMatter.title}</h1>
                     <div>
-                        {' / '}
                         <span>{frontMatter.date}</span>
                     </div>
                 </div>
