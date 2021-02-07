@@ -52,6 +52,9 @@
     --site-background: #fff6f4;
     --text-color: #1a191e;
     --text-secondary-color: #091d50;
+    --accent-orange: #f68e6e;
+    --accent-blue: #5dc2d6;
+    --accent-green: #58be7b;
 
     /* Code block styles */
     --prism-theme-white: #fff;
@@ -88,7 +91,7 @@ body {
 }
 
 p {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     line-height: 1.8;
     margin-block-start: 1.5em;
     margin-block-end: 1.5em;

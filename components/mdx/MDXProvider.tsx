@@ -13,6 +13,7 @@ export default function MDXCompProvider(
                     textDecoration: 'underline',
                     fontSize: '3.998rem',
                     lineHeight: 1.13,
+                    textShadow: '2px 3px var(--accent-orange)',
                     ...props.style
                 }}
             />
@@ -22,7 +23,8 @@ export default function MDXCompProvider(
                 {...props}
                 style={{
                     fontFamily: 'Permanent Marker',
-                    fontSize: '2.827rem'
+                    fontSize: '2.827rem',
+                    textShadow: '2px 3px var(--accent-blue)'
                 }}
             />
         ),
@@ -31,7 +33,8 @@ export default function MDXCompProvider(
                 {...props}
                 style={{
                     fontFamily: 'Permanent Marker',
-                    fontSize: '1.999rem'
+                    fontSize: '1.999rem',
+                    textShadow: '1px 2px var(--accent-green)'
                 }}
             />
         )
