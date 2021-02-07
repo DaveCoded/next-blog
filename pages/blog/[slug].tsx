@@ -24,9 +24,25 @@ export default function Posts({ source, frontMatter }: Props) {
             </Head>
             <div style={{ maxWidth: '840px', margin: '0 auto' }}>
                 <div>
-                    <h1>{frontMatter.title}</h1>
-                    <div>
-                        <span>{frontMatter.date}</span>
+                    <h1
+                        style={{
+                            fontFamily: 'Permanent Marker',
+                            fontSize: '3.4rem'
+                        }}
+                    >
+                        {frontMatter.title}
+                    </h1>
+                    <div style={{ marginTop: '-2rem' }}>
+                        <span
+                            style={{
+                                color: 'var(--text-secondary-color)',
+                                fontFamily: 'Permanent Marker',
+                                letterSpacing: '8px',
+                                fontSize: '1.2rem'
+                            }}
+                        >
+                            {frontMatter.date}
+                        </span>
                     </div>
                 </div>
                 <div>

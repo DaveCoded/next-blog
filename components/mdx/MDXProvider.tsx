@@ -9,10 +9,29 @@ export default function MDXCompProvider(
             <h1
                 {...props}
                 style={{
-                    color: 'plum',
                     fontWeight: 700,
                     textDecoration: 'underline',
+                    fontSize: '3.998rem',
+                    lineHeight: 1.13,
                     ...props.style
+                }}
+            />
+        ),
+        h2: (props: HTMLAttributes<HTMLHeadingElement>) => (
+            <h2
+                {...props}
+                style={{
+                    fontFamily: 'Permanent Marker',
+                    fontSize: '2.827rem'
+                }}
+            />
+        ),
+        h3: (props: HTMLAttributes<HTMLHeadingElement>) => (
+            <h3
+                {...props}
+                style={{
+                    fontFamily: 'Permanent Marker',
+                    fontSize: '1.999rem'
                 }}
             />
         )

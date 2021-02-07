@@ -1,0 +1,19 @@
+.Nav {
+    background: #fff;
+    height: 4.7rem;
+    display: flex;
+    align-items: center;
+}
+
+.UnorderedList {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    min-width: 840px;
+}
+
+.UnorderedList li {
+    list-style: none;
+    margin-right: 2rem;
+    font-size: 1.2rem;
+}

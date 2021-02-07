@@ -12,7 +12,47 @@
     font-weight: 400;
 }
 
+@font-face {
+    font-family: 'Permanent Marker';
+    src: url('/fonts/PermanentMarker-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans/OpenSans-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans/OpenSans-Italic.ttf');
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans/OpenSans-Bold.ttf');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans/OpenSans-BoldItalic.ttf');
+    font-style: italic;
+    font-weight: 700;
+}
+
 :root {
+    /* Colors */
+    --site-background: #fff6f4;
+    --text-color: #1a191e;
+    --text-secondary-color: #091d50;
+
     /* Code block styles */
     --prism-theme-white: #fff;
     --prism-theme-background: #282c34;
@@ -40,8 +80,32 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: var(--site-background);
+    color: var(--text-color);
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
+        Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
+}
+
+p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-block-start: 1.5em;
+    margin-block-end: 1.5em;
+}
+
+strong {
+    color: var(--text-secondary-color);
+}
+
+code {
+    background: #f8d2e2;
+    color: var(--text-secondary-color);
+    font-family: var(--code-font-family);
+    font-size: 1.07rem;
+    padding: 0.2rem;
+    border-radius: 4px;
+    white-space: pre-wrap;
 }
 
 a {
@@ -71,6 +135,7 @@ pre[class*='language-'] {
     line-height: 1.5;
     tab-size: 4;
     hyphens: none;
+    scrollbar-width: none; /* needed for Firefox */
 }
 
 /* Code blocks */
@@ -84,6 +149,10 @@ pre[class*='language-'] {
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
     background: var(--prism-theme-background);
+}
+
+pre[class*='language-']::-webkit-scrollbar {
+    display: none; /* Hides scrollbar but allows scrolling */
 }
 
 /* Inline code */
