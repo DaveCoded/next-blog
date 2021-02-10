@@ -101,7 +101,6 @@ code {
     background: #f8d2e2;
     color: var(--text-secondary-color);
     font-family: var(--code-font-family);
-    font-size: 1.07rem;
     padding: 0.2rem;
     border-radius: 4px;
     white-space: pre-wrap;
