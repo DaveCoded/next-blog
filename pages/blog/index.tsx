@@ -14,7 +14,13 @@ interface Props {
 
 const BlogIndex = ({ allPostsData }: Props) => {
     return (
-        <div>
+        <div
+            style={{
+                height: '100vh',
+                maxWidth: '760px',
+                margin: '0 auto'
+            }}
+        >
             <h1>My Blog</h1>
             <div>
                 {allPostsData.map(({ slug, date, title, excerpt }) => (
