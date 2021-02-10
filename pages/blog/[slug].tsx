@@ -22,12 +22,14 @@ export default function Posts({ source, frontMatter }: Props) {
             <Head>
                 <title>{frontMatter.title}</title>
             </Head>
-            <div style={{ maxWidth: '840px', margin: '0 auto' }}>
+            <div style={{ maxWidth: '760px', margin: '0 auto' }}>
                 <div>
                     <h1
                         style={{
                             fontFamily: 'Permanent Marker',
-                            fontSize: '3.4rem'
+                            fontSize: '4.209rem',
+                            lineHeight: 1.32,
+                            textShadow: '2px 3px var(--accent-orange)'
                         }}
                     >
                         {frontMatter.title}

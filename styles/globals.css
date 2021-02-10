@@ -91,14 +91,10 @@ body {
 }
 
 p {
-    font-size: 1.12rem;
-    line-height: 1.8;
+    font-size: 19px;
+    line-height: 1.9;
     margin-block-start: 1.5em;
     margin-block-end: 1.5em;
-}
-
-strong {
-    color: var(--text-secondary-color);
 }
 
 code {
