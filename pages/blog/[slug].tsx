@@ -17,33 +17,48 @@ const components = AllComponents
 
 export default function Posts({ source, frontMatter }: Props) {
     const content = hydrate(source, { components })
+    const options = { month: 'long', day: 'numeric', year: 'numeric' }
+    const formattedDate = new Date(frontMatter.date).toLocaleDateString('en-US', options)
     return (
         <>
             <Head>
                 <title>{frontMatter.title}</title>
             </Head>
             <div style={{ maxWidth: '760px', margin: '0 auto' }}>
-                <div>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h1
                         style={{
-                            fontFamily: 'Permanent Marker',
-                            fontSize: '4.209rem',
-                            lineHeight: 1.32,
-                            textShadow: '2px 3px var(--accent-orange)'
+                            fontFamily: 'Freight Sans',
+                            fontSize: '4.5rem',
+                            fontWeight: 300,
+                            lineHeight: '75px',
+                            marginBottom: '2.4rem'
                         }}
                     >
                         {frontMatter.title}
                     </h1>
-                    <div style={{ marginTop: '-2rem' }}>
+                    {frontMatter.subtitle ? (
+                        <h2
+                            style={{
+                                fontFamily: 'Freight Display',
+                                fontSize: '1.6rem',
+                                fontWeight: 400,
+                                marginBottom: '.7rem'
+                            }}
+                        >
+                            {frontMatter.subtitle}
+                        </h2>
+                    ) : null}
+                    <div>
                         <span
                             style={{
                                 color: 'var(--text-secondary-color)',
-                                fontFamily: 'Permanent Marker',
-                                letterSpacing: '8px',
-                                fontSize: '1.2rem'
+                                fontFamily: 'Freight Sans',
+                                fontSize: '1.1rem',
+                                fontWeight: 700
                             }}
                         >
-                            {frontMatter.date}
+                            {formattedDate}
                         </span>
                     </div>
                 </div>

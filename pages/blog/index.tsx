@@ -5,6 +5,7 @@ export interface PostData {
     slug: string
     date: string
     title: string
+    subtitle: string
     excerpt: string
 }
 
@@ -27,11 +28,7 @@ const BlogIndex = ({ allPostsData }: Props) => {
                     <ul key={slug}>
                         <li>
                             <div>
-                                <Link
-                                    key={slug}
-                                    href="/blog/[slug]"
-                                    as={`/blog/${slug}`}
-                                >
+                                <Link key={slug} href="/blog/[slug]" as={`/blog/${slug}`}>
                                     <a>
                                         <h2>{title}</h2>
                                     </a>

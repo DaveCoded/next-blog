@@ -2,17 +2,26 @@ import { BlockquoteHTMLAttributes, HTMLAttributes } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import Image, { ImageProps } from 'next/image'
 
-export default function MDXCompProvider(
-    providerProps: HTMLAttributes<HTMLDivElement>
-) {
+export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
+        p: (props: HTMLAttributes<HTMLParagraphElement>) => (
+            <p
+                {...props}
+                style={{
+                    fontSize: '1.34rem',
+                    lineHeight: 1.7,
+                    ...props.style
+                }}
+            />
+        ),
         h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
             <h1
                 {...props}
                 style={{
-                    fontSize: '4.209rem',
-                    lineHeight: 1.32,
-                    textShadow: '2px 3px var(--accent-orange)',
+                    fontFamily: 'Freight Sans',
+                    fontSize: '72px',
+                    fontWeight: 300,
+                    lineHeight: '75px',
                     ...props.style
                 }}
             />
@@ -21,10 +30,10 @@ export default function MDXCompProvider(
             <h2
                 {...props}
                 style={{
-                    fontFamily: 'Permanent Marker',
-                    fontSize: '3.157rem',
-                    lineHeight: 1.32,
-                    textShadow: '2px 3px var(--accent-blue)'
+                    fontFamily: 'Freight Display',
+                    fontSize: '2.7rem',
+                    fontWeight: 500,
+                    lineHeight: 1.32
                 }}
             />
         ),
@@ -32,10 +41,10 @@ export default function MDXCompProvider(
             <h3
                 {...props}
                 style={{
-                    fontFamily: 'Permanent Marker',
-                    fontSize: '2.369rem',
-                    lineHeight: 1.32,
-                    textShadow: '1px 2px var(--accent-green)'
+                    fontFamily: 'Freight Display',
+                    fontSize: '2rem',
+                    fontWeight: 500,
+                    lineHeight: 1.32
                 }}
             />
         ),
@@ -43,24 +52,16 @@ export default function MDXCompProvider(
             <h4
                 {...props}
                 style={{
-                    fontFamily: 'Permanent Marker',
+                    fontFamily: 'Freight Sans',
                     lineHeight: 1.32,
-                    fontSize: '1.777rem'
+                    fontWeight: 600,
+                    fontSize: '1.5rem',
+                    color: '#181875'
                 }}
             />
         ),
         blockquote: (props: BlockquoteHTMLAttributes<HTMLElement>) => (
-            <blockquote
-                {...props}
-                style={{
-                    background: 'rgb(211 231 238)',
-                    margin: 0,
-                    padding: '1rem 40px',
-                    borderRadius: '10px',
-                    boxShadow:
-                        '2px 2px 4px 2px rgb(112 123 126 / 20%), 3px 3px 6px 6px rgb(112 123 126 / 6%)'
-                }}
-            />
+            <blockquote className="blockquote" {...props} />
         ),
         hr: (props: HTMLAttributes<HTMLElement>) => (
             <hr
