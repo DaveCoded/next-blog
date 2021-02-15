@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getSortedPosts } from '../../lib/posts'
 
+import styles from './BlogIndex.module.css'
+
 export interface PostData {
     slug: string
     date: string
@@ -14,6 +16,9 @@ interface Props {
 }
 
 const BlogIndex = ({ allPostsData }: Props) => {
+    const latestPost = allPostsData[0]
+    const allOtherPsts = allPostsData.slice(1)
+
     return (
         <div
             style={{
@@ -22,11 +27,19 @@ const BlogIndex = ({ allPostsData }: Props) => {
                 margin: '0 auto'
             }}
         >
-            <h1>My Blog</h1>
             <div>
-                {allPostsData.map(({ slug, date, title, excerpt }) => (
-                    <ul key={slug}>
-                        <li>
+                <article>
+                    <Link href="/blog/[slug]" as={`/blog/${latestPost.slug}`}>
+                        <a>
+                            <h2>{latestPost.title}</h2>
+                        </a>
+                    </Link>
+                    <div>{latestPost.excerpt}</div>
+                    <span>{latestPost.date}</span>
+                </article>
+                <ul className={styles.PostsList}>
+                    {allOtherPsts.map(({ slug, date, title, excerpt }) => (
+                        <li key={slug} className={styles.ListItem}>
                             <div>
                                 <Link key={slug} href="/blog/[slug]" as={`/blog/${slug}`}>
                                     <a>
@@ -37,8 +50,8 @@ const BlogIndex = ({ allPostsData }: Props) => {
                                 <span>{date}</span>
                             </div>
                         </li>
-                    </ul>
-                ))}
+                    ))}
+                </ul>
             </div>
         </div>
     )

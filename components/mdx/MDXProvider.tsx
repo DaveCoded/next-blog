@@ -8,7 +8,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <p
                 {...props}
                 style={{
-                    fontSize: '1.34rem',
+                    fontSize: '1.32rem',
                     lineHeight: 1.7,
                     ...props.style
                 }}
@@ -18,7 +18,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h1
                 {...props}
                 style={{
-                    fontFamily: 'Freight Sans',
+                    fontFamily: 'Reforma',
                     fontSize: '72px',
                     fontWeight: 300,
                     lineHeight: '75px',
@@ -30,7 +30,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h2
                 {...props}
                 style={{
-                    fontFamily: 'Freight Display',
+                    fontFamily: 'Reforma',
                     fontSize: '2.7rem',
                     fontWeight: 500,
                     lineHeight: 1.32
@@ -41,7 +41,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h3
                 {...props}
                 style={{
-                    fontFamily: 'Freight Display',
+                    fontFamily: 'Reforma',
                     fontSize: '2rem',
                     fontWeight: 500,
                     lineHeight: 1.32
@@ -52,28 +52,17 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h4
                 {...props}
                 style={{
-                    fontFamily: 'Freight Sans',
+                    fontFamily: 'Reforma',
                     lineHeight: 1.32,
                     fontWeight: 600,
-                    fontSize: '1.5rem',
-                    color: '#181875'
+                    fontSize: '1.7rem'
                 }}
             />
         ),
         blockquote: (props: BlockquoteHTMLAttributes<HTMLElement>) => (
             <blockquote className="blockquote" {...props} />
         ),
-        hr: (props: HTMLAttributes<HTMLElement>) => (
-            <hr
-                {...props}
-                style={{
-                    width: '30%',
-                    height: '2px',
-                    margin: '4rem auto',
-                    border: '1px solid #F68E6E'
-                }}
-            />
-        ),
+        hr: (props: HTMLAttributes<HTMLElement>) => <hr {...props} />,
         img: (props: ImageProps) => (
             <div
                 style={{

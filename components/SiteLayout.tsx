@@ -9,17 +9,36 @@ function SiteLayout({ children }: Props) {
     return (
         <>
             <nav className={classes.Nav}>
-                <ul className={classes.UnorderedList}>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        maxWidth: '1000px',
+                        margin: '0 auto',
+                        height: '100%'
+                    }}
+                >
                     <Link href="/">
-                        <a>home</a>
+                        <a style={{ fontSize: '3.9rem', lineHeight: 1 }}>DB</a>
                     </Link>
-                    <Link href="/blog">
-                        <a>blog</a>
-                    </Link>
-                    <Link href="/about">
-                        <a>about</a>
-                    </Link>
-                </ul>
+                    <ul className={classes.UnorderedList}>
+                        <li>
+                            <Link href="/">
+                                <a>home</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/blog">
+                                <a>blog</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about">
+                                <a>about</a>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <main>{children}</main>
         </>

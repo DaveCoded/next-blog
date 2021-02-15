@@ -7,9 +7,10 @@ import hydrate from 'next-mdx-remote/hydrate'
 import AllComponents from '../../components/mdx/AllComponents'
 import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { PostData } from '.'
+import { MdxRemote } from 'next-mdx-remote/types'
 
 interface Props {
-    source: any
+    source: MdxRemote.Source
     frontMatter: PostData
 }
 
@@ -28,40 +29,60 @@ export default function Posts({ source, frontMatter }: Props) {
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h1
                         style={{
-                            fontFamily: 'Freight Sans',
-                            fontSize: '4.5rem',
+                            fontFamily: 'Reforma',
+                            fontSize: '4.3rem',
                             fontWeight: 300,
-                            lineHeight: '75px',
-                            marginBottom: '2.4rem'
+                            lineHeight: '5.5rem',
+                            margin: '4rem 0 0.6rem'
                         }}
                     >
                         {frontMatter.title}
                     </h1>
                     {frontMatter.subtitle ? (
                         <h2
+                            className="subtitle"
                             style={{
-                                fontFamily: 'Freight Display',
+                                fontFamily: 'Reforma',
                                 fontSize: '1.6rem',
-                                fontWeight: 400,
+                                fontWeight: 300,
+                                fontStyle: 'italic',
+                                marginTop: 0,
                                 marginBottom: '.7rem'
                             }}
                         >
                             {frontMatter.subtitle}
                         </h2>
                     ) : null}
-                    <div>
+                    <div style={{ marginBottom: '2.6rem' }}>
                         <span
                             style={{
-                                color: 'var(--text-secondary-color)',
+                                color: 'var(--off-black)',
                                 fontFamily: 'Freight Sans',
-                                fontSize: '1.1rem',
-                                fontWeight: 700
+                                fontSize: '1.2rem',
+                                fontWeight: 700,
+                                letterSpacing: '0.4px',
+                                marginBottom: '2rem'
                             }}
                         >
                             {formattedDate}
                         </span>
                     </div>
+                    <div
+                        style={{
+                            borderTop: '1px solid var(--accent-blue)',
+                            borderBottom: '1px solid var(--accent-blue)',
+                            height: '32px',
+                            lineHeight: '30px',
+                            fontSize: '10px',
+                            fontWeight: 700,
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px'
+                        }}
+                    >
+                        Some category tags here maybe?
+                    </div>
                 </div>
+
                 <div>
                     <div>{content}</div>
                 </div>

@@ -12,13 +12,6 @@
     font-weight: 400;
 }
 
-@font-face {
-    font-family: 'Permanent Marker';
-    src: url('/fonts/PermanentMarker-Regular.ttf');
-    font-style: normal;
-    font-weight: 400;
-}
-
 /* Freight Sans Light */
 @font-face {
     font-family: 'Freight Sans';
@@ -139,45 +132,64 @@
     font-weight: 900;
 }
 
-/* Freight Display Book */
+/* Reforma Thin */
 @font-face {
-    font-family: 'Freight Display';
-    src: url('/fonts/FreightDisplayBook/FreightDispBook.woff');
+    font-family: 'Reforma';
+    src: url('/fonts/Reforma1918/Reforma1918-Blanca.ttf');
+    font-style: normal;
+    font-weight: 300;
+}
+
+/* Reforma Thin Italic */
+@font-face {
+    font-family: 'Reforma';
+    src: url('/fonts/Reforma1918/Reforma1918-BlancaItalica.ttf');
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Reforma Regular */
+@font-face {
+    font-family: 'Reforma';
+    src: url('/fonts/Reforma1918/Reforma1918-Gris.ttf');
     font-style: normal;
     font-weight: 400;
 }
 
-/* Freight Display Book Italic */
+/* Reforma Regular Italic */
 @font-face {
-    font-family: 'Freight Display';
-    src: url('/fonts/FreightDisplayBook/FreightDispBookItalic.woff');
+    font-family: 'Reforma';
+    src: url('/fonts/Reforma1918/Reforma1918-GrisItalica.ttf');
     font-style: italic;
     font-weight: 400;
 }
 
-/* Freight Display Semibold */
+/* Reforma Bold */
 @font-face {
-    font-family: 'Freight Display';
-    src: url('/fonts/FreightDisplayPro/FreightDispProSemibold.woff');
+    font-family: 'Reforma';
+    src: url('/fonts/Reforma1918/Reforma1918-Negra.ttf');
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
 }
 
+/* Reforma Bold Italic */
 @font-face {
-    font-family: 'Sofia';
-    src: url('/fonts/SofiaProRegular/SofiaProRegular.woff');
-    font-style: normal;
-    font-weight: 400;
+    font-family: 'Reforma';
+    src: url('/fonts/Reforma1918/Reforma1918-NegraItalica.ttf');
+    font-style: italic;
+    font-weight: 700;
 }
 
 :root {
     /* Colors */
-    --site-background: #fff6f4;
-    --text-color: #1a191e;
-    --text-secondary-color: #091d50;
-    --accent-orange: #f68e6e;
-    --accent-blue: #5dc2d6;
-    --accent-green: #58be7b;
+    --off-white: #f1f1f1;
+    --off-black: #232632;
+    --accent-red: #ca2d20;
+    --accent-orange: #ba423b;
+    --accent-pink: #af2d4c;
+    --accent-yellow: #e9b219;
+    --accent-blue: #5698ae;
+    --accent-green: #3a9c75;
 
     /* Code block styles */
     --prism-theme-white: #fff;
@@ -210,8 +222,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    background: var(--site-background);
-    color: var(--text-color);
+    color: var(--off-black);
     font-family: 'Freight Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
         Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -220,22 +231,36 @@ strong {
     font-weight: 600;
 }
 
+h1,
 h2,
 h3,
+h4,
+h5 {
+    font-family: 'Reforma', serif;
+}
+
+h1 {
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 75px;
+}
+
+h2:not(.subtitle),
+h3,
 h4 {
-    margin: 3rem 0 2rem;
+    margin: 2.5rem 0 1rem;
 }
 
 p {
-    font-size: 19px;
-    line-height: 1.9;
-    margin-block-start: 1.5em;
+    font-size: 1.32rem;
+    line-height: 1.7;
+    margin-block-start: 0;
     margin-block-end: 1.5em;
 }
 
 code {
     background: #e8e8e8;
-    color: var(--text-secondary-color);
+    color: var(--off-black);
     font-family: var(--code-font-family);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
@@ -254,7 +279,43 @@ a {
 blockquote.blockquote {
     margin: 0;
     padding: 0 2rem;
-    border-left: 3px solid var(--text-color);
+    border-left: 3px solid var(--accent-blue);
+}
+
+/* DROPCAP STUFF */
+.dropcap {
+    background: var(--off-black);
+    color: var(--accent-blue);
+    font-family: 'Reforma', serif;
+    float: left;
+    font-size: 7rem;
+    font-weight: 600;
+    line-height: 1.17;
+    margin: 0.1em 0.15em 0 0;
+    padding: 0.16em;
+    padding-top: 14px;
+}
+.dropcap:before,
+.dropcap:after {
+    content: '';
+    display: block;
+}
+.dropcap:before {
+    margin-top: -0.2em;
+}
+.dropcap:after {
+    margin-bottom: -0.15em;
+}
+
+/* https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html */
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 /* ======================================================= */
