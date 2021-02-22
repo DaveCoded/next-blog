@@ -4,24 +4,14 @@ import Image, { ImageProps } from 'next/image'
 
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
-        p: (props: HTMLAttributes<HTMLParagraphElement>) => (
-            <p
-                {...props}
-                style={{
-                    fontSize: '1.32rem',
-                    lineHeight: 1.7,
-                    ...props.style
-                }}
-            />
-        ),
         h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
             <h1
                 {...props}
                 style={{
-                    fontFamily: 'Reforma',
-                    fontSize: '72px',
-                    fontWeight: 300,
-                    lineHeight: '75px',
+                    fontFamily: 'Playfair Display',
+                    fontSize: '3.6rem',
+                    fontWeight: 200,
+                    lineHeight: 1.2,
                     ...props.style
                 }}
             />
@@ -30,10 +20,9 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h2
                 {...props}
                 style={{
-                    fontFamily: 'Reforma',
-                    fontSize: '2.7rem',
-                    fontWeight: 500,
-                    lineHeight: 1.32
+                    fontSize: '2.8rem',
+                    fontWeight: 400,
+                    lineHeight: 1.25
                 }}
             />
         ),
@@ -41,10 +30,9 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h3
                 {...props}
                 style={{
-                    fontFamily: 'Reforma',
-                    fontSize: '2rem',
-                    fontWeight: 500,
-                    lineHeight: 1.32
+                    fontSize: '1.9rem',
+                    fontWeight: 400,
+                    lineHeight: 1.25
                 }}
             />
         ),
@@ -52,10 +40,11 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h4
                 {...props}
                 style={{
-                    fontFamily: 'Reforma',
-                    lineHeight: 1.32,
+                    fontFamily: 'Poppins',
+                    lineHeight: 1.25,
                     fontWeight: 600,
-                    fontSize: '1.7rem'
+                    fontSize: '1.4rem',
+                    color: '#582293'
                 }}
             />
         ),

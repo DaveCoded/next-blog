@@ -1,184 +1,5 @@
-@font-face {
-    font-family: 'Dank Mono';
-    src: url('/fonts/DankMono/DankMono-Regular.ttf');
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Dank Mono';
-    src: url('/fonts/DankMono/DankMono-Italic.ttf');
-    font-style: italic;
-    font-weight: 400;
-}
-
-/* Freight Sans Light */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansLight/FreightSansProLight-Regular.woff2') format('woff2'),
-        url('/fonts/FreightSansLight/FreightSansProLight-Regular.woff') format('woff'),
-        url('/fonts/FreightSansLight/FreightSansProLight-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 300;
-}
-
-/* Freight Sans Light Italic */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansLight/FreightSansProLight-Italic.woff2') format('woff2'),
-        url('/fonts/FreightSansLight/FreightSansProLight-Italic.woff') format('woff'),
-        url('/fonts/FreightSansLight/FreightSansProLight-Italic.ttf') format('truetype');
-    font-style: italic;
-    font-weight: 300;
-}
-
-/* Freight Sans Book */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansBook/FreightSansProBook-Regular.woff2') format('woff2'),
-        url('/fonts/FreightSansBook/FreightSansProBook-Regular.woff') format('woff'),
-        url('/fonts/FreightSansBook/FreightSansProBook-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 400;
-}
-
-/* Freight Sans Book Italic */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansBook/FreightSansProBook-Italic.woff2') format('woff2'),
-        url('/fonts/FreightSansBook/FreightSansProBook-Italic.woff') format('woff'),
-        url('/fonts/FreightSansBook/FreightSansProBook-Italic.ttf') format('truetype');
-    font-style: italic;
-    font-weight: 400;
-}
-
-/* Freight Sans Medium */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansMedium/FreightSansProMedium-Regular.woff2') format('woff2'),
-        url('/fonts/FreightSansMedium/FreightSansProMedium-Regular.woff') format('woff'),
-        url('/fonts/FreightSansMedium/FreightSansProMedium-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 500;
-}
-
-/* Freight Sans Medium Italic */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansMedium/FreightSansProMedium-Italic.woff2') format('woff2'),
-        url('/fonts/FreightSansMedium/FreightSansProMedium-Italic.woff') format('woff'),
-        url('/fonts/FreightSansMedium/FreightSansProMedium-Italic.ttf') format('truetype');
-    font-style: italic;
-    font-weight: 500;
-}
-
-/* Freight Sans Semibold */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansSemibold/FreightSansProSemibold-Regular.woff2') format('woff2'),
-        url('/fonts/FreightSansSemibold/FreightSansProSemibold-Regular.woff') format('woff'),
-        url('/fonts/FreightSansSemibold/FreightSansProSemibold-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 600;
-}
-
-/* Freight Sans Semibold Italic */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansSemibold/FreightSansProSemibold-Italic.woff2') format('woff2'),
-        url('/fonts/FreightSansSemibold/FreightSansProSemibold-Italic.woff') format('woff'),
-        url('/fonts/FreightSansSemibold/FreightSansProSemibold-Italic.ttf') format('truetype');
-    font-style: italic;
-    font-weight: 600;
-}
-
-/* Freight Sans Bold */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansBold/FreightSansProBold-Regular.woff2') format('woff2'),
-        url('/fonts/FreightSansBold/FreightSansProBold-Regular.woff') format('woff'),
-        url('/fonts/FreightSansBold/FreightSansProBold-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 700;
-}
-
-/* Freight Sans Bold Italic */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansBold/FreightSansProBold-Italic.woff2') format('woff2'),
-        url('/fonts/FreightSansBold/FreightSansProBold-Italic.woff') format('woff'),
-        url('/fonts/FreightSansBold/FreightSansProBold-Italic.ttf') format('truetype');
-    font-style: italic;
-    font-weight: 700;
-}
-
-/* Freight Sans Black */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansBlack/FreightSansProBlack-Regular.woff2') format('woff2'),
-        url('/fonts/FreightSansBlack/FreightSansProBlack-Regular.woff') format('woff'),
-        url('/fonts/FreightSansBlack/FreightSansProBlack-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 900;
-}
-
-/* Freight Sans Black Italic */
-@font-face {
-    font-family: 'Freight Sans';
-    src: url('/fonts/FreightSansBlack/FreightSansProBlack-Italic.woff2') format('woff2'),
-        url('/fonts/FreightSansBlack/FreightSansProBlack-Italic.woff') format('woff'),
-        url('/fonts/FreightSansBlack/FreightSansProBlack-Italic.ttf') format('truetype');
-    font-style: italic;
-    font-weight: 900;
-}
-
-/* Reforma Thin */
-@font-face {
-    font-family: 'Reforma';
-    src: url('/fonts/Reforma1918/Reforma1918-Blanca.ttf');
-    font-style: normal;
-    font-weight: 300;
-}
-
-/* Reforma Thin Italic */
-@font-face {
-    font-family: 'Reforma';
-    src: url('/fonts/Reforma1918/Reforma1918-BlancaItalica.ttf');
-    font-style: italic;
-    font-weight: 300;
-}
-
-/* Reforma Regular */
-@font-face {
-    font-family: 'Reforma';
-    src: url('/fonts/Reforma1918/Reforma1918-Gris.ttf');
-    font-style: normal;
-    font-weight: 400;
-}
-
-/* Reforma Regular Italic */
-@font-face {
-    font-family: 'Reforma';
-    src: url('/fonts/Reforma1918/Reforma1918-GrisItalica.ttf');
-    font-style: italic;
-    font-weight: 400;
-}
-
-/* Reforma Bold */
-@font-face {
-    font-family: 'Reforma';
-    src: url('/fonts/Reforma1918/Reforma1918-Negra.ttf');
-    font-style: normal;
-    font-weight: 700;
-}
-
-/* Reforma Bold Italic */
-@font-face {
-    font-family: 'Reforma';
-    src: url('/fonts/Reforma1918/Reforma1918-NegraItalica.ttf');
-    font-style: italic;
-    font-weight: 700;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     /* Colors */
@@ -188,8 +9,10 @@
     --accent-orange: #ba423b;
     --accent-pink: #af2d4c;
     --accent-yellow: #e9b219;
-    --accent-blue: #5698ae;
+    --accent-blue: #2ee0e5;
     --accent-green: #3a9c75;
+
+    --purple: #5500b1;
 
     /* Code block styles */
     --prism-theme-white: #fff;
@@ -208,7 +31,7 @@
     --prism-theme-method: #6699cc;
     --prism-theme-operator: #fc929e;
     --prism-theme-highlight: #353b45;
-    --code-font-family: 'Dank Mono';
+    --code-font-family: 'Ubuntu Mono';
 
     /* Measurements */
     --highlight-before-width: 0.43em;
@@ -223,7 +46,7 @@ body {
     padding: 0;
     margin: 0;
     color: var(--off-black);
-    font-family: 'Freight Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
         Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
@@ -236,24 +59,20 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'Reforma', serif;
-}
-
-h1 {
-    font-size: 72px;
-    font-weight: 300;
-    line-height: 75px;
+    font-family: 'Poppins', sans-serif;
 }
 
 h2:not(.subtitle),
 h3,
 h4 {
-    margin: 2.5rem 0 1rem;
+    margin: 3.5rem 0 1.5rem;
 }
 
 p {
-    font-size: 1.32rem;
+    font-size: 1.18rem;
+    font-weight: 200;
     line-height: 1.7;
+    letter-spacing: 0.6px;
     margin-block-start: 0;
     margin-block-end: 1.5em;
 }
@@ -279,14 +98,15 @@ a {
 blockquote.blockquote {
     margin: 0;
     padding: 0 2rem;
-    border-left: 3px solid var(--accent-blue);
+    border-left: 5px solid var(--purple);
 }
 
 /* DROPCAP STUFF */
 .dropcap {
-    background: var(--off-black);
-    color: var(--accent-blue);
-    font-family: 'Reforma', serif;
+    background: linear-gradient(325deg, var(--purple), var(--purple) 83%, var(--accent-blue));
+    color: white;
+    border-radius: 4px;
+    font-family: 'Playfair Display', serif;
     float: left;
     font-size: 7rem;
     font-weight: 600;
@@ -326,7 +146,8 @@ code[class*='language-'],
 pre[class*='language-'] {
     color: var(--prism-theme-white);
     background: none;
-    font-family: var(--code-font-family), Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: var(--code-font-family), Consolas, Monaco, 'Andale Mono', monospace;
+    font-size: 1.2rem;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
@@ -473,7 +294,8 @@ pre[class*='language-']::-webkit-scrollbar {
 /* Title for a code block! */
 .remark-code-title {
     background-color: rgb(78 84 95);
-    color: #e9e9e9;
+    color: white;
+    font-size: 1.15rem;
     padding: 0.7em 1em;
     border-radius: 10px 10px 0 0;
 }
@@ -481,3 +303,10 @@ pre[class*='language-']::-webkit-scrollbar {
 /* ======================================================= */
 /* ================  PRISM THEME END  ==================== */
 /* ======================================================= */
+
+/* UTILS */
+.center-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

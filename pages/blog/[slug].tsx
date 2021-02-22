@@ -29,11 +29,11 @@ export default function Posts({ source, frontMatter }: Props) {
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h1
                         style={{
-                            fontFamily: 'Reforma',
-                            fontSize: '4.3rem',
-                            fontWeight: 300,
-                            lineHeight: '5.5rem',
-                            margin: '4rem 0 0.6rem'
+                            fontFamily: 'Playfair Display',
+                            fontSize: '4rem',
+                            fontWeight: 400,
+                            lineHeight: 1.2,
+                            margin: '4rem 0 1.2rem'
                         }}
                     >
                         {frontMatter.title}
@@ -42,12 +42,12 @@ export default function Posts({ source, frontMatter }: Props) {
                         <h2
                             className="subtitle"
                             style={{
-                                fontFamily: 'Reforma',
-                                fontSize: '1.6rem',
-                                fontWeight: 300,
+                                fontFamily: 'Poppins',
+                                fontSize: '1.4rem',
+                                fontWeight: 200,
                                 fontStyle: 'italic',
                                 marginTop: 0,
-                                marginBottom: '.7rem'
+                                marginBottom: '0.5rem'
                             }}
                         >
                             {frontMatter.subtitle}
@@ -57,7 +57,7 @@ export default function Posts({ source, frontMatter }: Props) {
                         <span
                             style={{
                                 color: 'var(--off-black)',
-                                fontFamily: 'Freight Sans',
+                                fontFamily: 'Poppins',
                                 fontSize: '1.2rem',
                                 fontWeight: 700,
                                 letterSpacing: '0.4px',
@@ -69,8 +69,8 @@ export default function Posts({ source, frontMatter }: Props) {
                     </div>
                     <div
                         style={{
-                            borderTop: '1px solid var(--accent-blue)',
-                            borderBottom: '1px solid var(--accent-blue)',
+                            borderTop: '1px solid var(--accent-pink)',
+                            borderBottom: '1px solid var(--accent-pink)',
                             height: '32px',
                             lineHeight: '30px',
                             fontSize: '10px',

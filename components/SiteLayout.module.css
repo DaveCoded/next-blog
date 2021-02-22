@@ -1,7 +1,7 @@
 .Nav {
-    background-color: var(--accent-pink);
+    background: radial-gradient(var(--purple), #5500b1b8);
     color: white;
-    font-family: 'Reforma', serif;
+    font-family: 'Poppins', sans-serif;
     height: 4.6rem;
 }
 
@@ -20,7 +20,7 @@
     font-size: 1.4rem;
     letter-spacing: 1px;
     margin-right: 2rem;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 .UnorderedList li:last-child a {

@@ -19,7 +19,15 @@ function SiteLayout({ children }: Props) {
                     }}
                 >
                     <Link href="/">
-                        <a style={{ fontSize: '3.9rem', lineHeight: 1 }}>DB</a>
+                        <a
+                            style={{
+                                fontSize: '3.3rem',
+                                lineHeight: 1.5,
+                                fontFamily: 'Playfair Display'
+                            }}
+                        >
+                            D
+                        </a>
                     </Link>
                     <ul className={classes.UnorderedList}>
                         <li>

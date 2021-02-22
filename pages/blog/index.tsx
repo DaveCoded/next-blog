@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getSortedPosts } from '../../lib/posts'
-
 import styles from './BlogIndex.module.css'
+import Image from 'next/image'
 
 export interface PostData {
     slug: string
@@ -23,36 +23,49 @@ const BlogIndex = ({ allPostsData }: Props) => {
         <div
             style={{
                 height: '100vh',
-                maxWidth: '760px',
+                maxWidth: '840px',
                 margin: '0 auto'
             }}
         >
-            <div>
-                <article>
+            <article className={styles.LatestPost}>
+                <div className={styles.LatestPost__CopyContainer}>
                     <Link href="/blog/[slug]" as={`/blog/${latestPost.slug}`}>
                         <a>
-                            <h2>{latestPost.title}</h2>
+                            <h2 className={styles.LatestPost__Title}>{latestPost.title}</h2>
                         </a>
                     </Link>
-                    <div>{latestPost.excerpt}</div>
-                    <span>{latestPost.date}</span>
-                </article>
-                <ul className={styles.PostsList}>
-                    {allOtherPsts.map(({ slug, date, title, excerpt }) => (
-                        <li key={slug} className={styles.ListItem}>
-                            <div>
-                                <Link key={slug} href="/blog/[slug]" as={`/blog/${slug}`}>
-                                    <a>
-                                        <h2>{title}</h2>
-                                    </a>
-                                </Link>
-                                <div>{excerpt}</div>
-                                <span>{date}</span>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+                    <div className="center-space-between">
+                        <span className={styles.LatestPost__Date}>{latestPost.date}</span>
+                        <div>
+                            <span className={styles.TagPill}>React</span>
+                            <span className={styles.TagPill}>Next.js</span>
+                        </div>
+                    </div>
+                    <div className={styles.LatestPost__Excerpt}>{latestPost.excerpt}</div>
+                </div>
+                <Image
+                    src="/react.png"
+                    alt="React logo"
+                    width="300"
+                    height="200"
+                    className={styles.LatestPost__Image}
+                />
+            </article>
+            <ul className={styles.PostsList}>
+                {allOtherPsts.map(({ slug, date, title, excerpt }) => (
+                    <li key={slug} className={styles.ListItem}>
+                        <div>
+                            <Link key={slug} href="/blog/[slug]" as={`/blog/${slug}`}>
+                                <a>
+                                    <h2>{title}</h2>
+                                </a>
+                            </Link>
+                            <div>{excerpt}</div>
+                            <span>{date}</span>
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
