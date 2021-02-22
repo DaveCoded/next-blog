@@ -5,14 +5,13 @@
     /* Colors */
     --off-white: #f1f1f1;
     --off-black: #232632;
-    --accent-red: #ca2d20;
+    --purple: #5500b1;
+    --accent-red: #e9223b;
     --accent-orange: #ba423b;
     --accent-pink: #af2d4c;
     --accent-yellow: #e9b219;
     --accent-blue: #2ee0e5;
     --accent-green: #3a9c75;
-
-    --purple: #5500b1;
 
     /* Code block styles */
     --prism-theme-white: #fff;
@@ -99,6 +98,29 @@ blockquote.blockquote {
     margin: 0;
     padding: 0 2rem;
     border-left: 5px solid var(--purple);
+}
+
+/* Table of Contents */
+nav.toc {
+    max-width: 18.5rem;
+    position: fixed;
+    right: 8rem;
+    top: 20rem;
+    border: 2px solid #dcdcdc;
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+}
+
+ol {
+    padding-inline-start: 1.5rem;
+}
+
+ol.toc-level {
+    list-style: none;
+}
+
+.toc-level-1 {
+    padding: 0;
 }
 
 /* DROPCAP STUFF */

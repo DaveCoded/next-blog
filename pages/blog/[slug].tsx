@@ -69,8 +69,8 @@ export default function Posts({ source, frontMatter }: Props) {
                     </div>
                     <div
                         style={{
-                            borderTop: '1px solid var(--accent-pink)',
-                            borderBottom: '1px solid var(--accent-pink)',
+                            borderTop: '1px solid var(--purple)',
+                            borderBottom: '1px solid var(--purple)',
                             height: '32px',
                             lineHeight: '30px',
                             fontSize: '10px',
@@ -104,7 +104,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         components,
         mdxOptions: {
             remarkPlugins: [require('remark-code-titles')],
-            rehypePlugins: [mdxPrism]
+            rehypePlugins: [
+                mdxPrism,
+                require('rehype-slug'),
+                require('rehype-autolink-headings'),
+                require('rehype-toc')
+            ]
         },
         scope: data
     })
