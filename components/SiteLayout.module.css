@@ -1,5 +1,5 @@
 .Nav {
-    background: radial-gradient(var(--purple), #5500b1b8);
+    background: var(--purple);
     color: white;
     font-family: 'Poppins', sans-serif;
     height: 4.6rem;

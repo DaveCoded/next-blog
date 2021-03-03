@@ -1,16 +1,21 @@
+/* todo: include the fonts locally with @font-face */
+/* todo: Try with the Cheltenham font? */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     /* Colors */
     --off-white: #f1f1f1;
-    --off-black: #232632;
-    --purple: #5500b1;
+    --off-black: #2d3742;
+    --heading-black: #473f4f;
+    --heading-grey: #49434f;
+    --heading-lavender: #5f4e6e;
+    --purple: #6c4e8c;
     --accent-red: #e9223b;
     --accent-orange: #ba423b;
     --accent-pink: #af2d4c;
     --accent-yellow: #e9b219;
-    --accent-blue: #2ee0e5;
+    --accent-blue: #73b1de;
     --accent-green: #3a9c75;
 
     /* Code block styles */
@@ -59,6 +64,8 @@ h3,
 h4,
 h5 {
     font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--heading-black);
 }
 
 h2:not(.subtitle),
@@ -68,9 +75,9 @@ h4 {
 }
 
 p {
-    font-size: 1.18rem;
-    font-weight: 200;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
     letter-spacing: 0.6px;
     margin-block-start: 0;
     margin-block-end: 1.5em;
@@ -125,7 +132,7 @@ ol.toc-level {
 
 /* DROPCAP STUFF */
 .dropcap {
-    background: linear-gradient(325deg, var(--purple), var(--purple) 83%, var(--accent-blue));
+    background: linear-gradient(325deg, var(--purple), var(--purple) 83%, #b79ee8);
     color: white;
     border-radius: 4px;
     font-family: 'Playfair Display', serif;
@@ -169,7 +176,7 @@ pre[class*='language-'] {
     color: var(--prism-theme-white);
     background: none;
     font-family: var(--code-font-family), Consolas, Monaco, 'Andale Mono', monospace;
-    font-size: 1.2rem;
+    font-size: 1.12rem;
     text-align: left;
     white-space: pre;
     word-spacing: normal;

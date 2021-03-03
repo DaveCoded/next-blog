@@ -23,10 +23,10 @@ function SiteLayout({ children }: Props) {
                             style={{
                                 fontSize: '3.3rem',
                                 lineHeight: 1.5,
-                                fontFamily: 'Playfair Display'
+                                letterSpacing: 3
                             }}
                         >
-                            D
+                            DB
                         </a>
                     </Link>
                     <ul className={classes.UnorderedList}>

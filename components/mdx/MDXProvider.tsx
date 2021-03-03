@@ -20,8 +20,8 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h2
                 {...props}
                 style={{
-                    fontSize: '2.8rem',
-                    fontWeight: 400,
+                    fontSize: '3.1rem',
+                    fontWeight: 600,
                     lineHeight: 1.25
                 }}
             />
@@ -30,9 +30,10 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <h3
                 {...props}
                 style={{
-                    fontSize: '1.9rem',
-                    fontWeight: 400,
-                    lineHeight: 1.25
+                    fontSize: '2.2rem',
+                    fontWeight: 700,
+                    lineHeight: 1.25,
+                    color: 'var(--heading-grey)'
                 }}
             />
         ),
@@ -41,10 +42,10 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
                 {...props}
                 style={{
                     fontFamily: 'Poppins',
+                    fontSize: '1.7rem',
                     lineHeight: 1.25,
                     fontWeight: 600,
-                    fontSize: '1.4rem',
-                    color: '#582293'
+                    color: 'var(--heading-lavender)'
                 }}
             />
         ),
