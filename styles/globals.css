@@ -3,6 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+@font-face {
+    font-family: 'Cheltenham';
+    src: url('/fonts/Cheltenham/cheltenham-cond-normal-500-webfont.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
 :root {
     /* Colors */
     --off-white: #f1f1f1;
@@ -107,27 +112,8 @@ blockquote.blockquote {
     border-left: 5px solid var(--purple);
 }
 
-/* Table of Contents */
-nav.toc {
-    max-width: 18.5rem;
-    position: fixed;
-    right: 8rem;
-    top: 20rem;
-    border: 2px solid #dcdcdc;
-    border-radius: 4px;
-    padding: 2rem 1.5rem;
-}
-
 ol {
     padding-inline-start: 1.5rem;
-}
-
-ol.toc-level {
-    list-style: none;
-}
-
-.toc-level-1 {
-    padding: 0;
 }
 
 /* DROPCAP STUFF */
@@ -338,4 +324,25 @@ pre[class*='language-']::-webkit-scrollbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.BlogIndex__Post {
+    margin-bottom: 4rem;
+}
+
+h2.BlogIndex__Heading {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    line-height: 1.2;
+}
+
+.BlogIndex__Date {
+    font-size: 1.1rem;
+    color: #827c88;
+}
+
+.BlogIndex__Exerpt {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
 }

@@ -8,7 +8,7 @@ import AllComponents from '../../components/mdx/AllComponents'
 import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { PostData } from '.'
 import { MdxRemote } from 'next-mdx-remote/types'
-import TableOfContents from '../../components/TableOfContents'
+// import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
     source: MdxRemote.Source
@@ -20,7 +20,7 @@ const components = AllComponents
 
 export default function Posts({ source, frontMatter, headings }: Props) {
     const content = hydrate(source, { components })
-    const options = { month: 'long', day: 'numeric', year: 'numeric' }
+    const options = { month: 'long', day: 'numeric', year: 'numeric' } as any
     const formattedDate = new Date(frontMatter.date).toLocaleDateString('en-US', options)
     return (
         <>
@@ -86,13 +86,14 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                 </div>
 
                 <div>
-                    <TableOfContents headings={headings} />
+                    {/* <TableOfContents headings={headings} /> */}
                     <div>{content}</div>
                 </div>
             </div>
         </>
     )
 }
+
 export async function getHeadings(source: any) {
     // todo: figure out how this works (console.logs?) then extend to 4th and 5th level headings!
     // Get each line individually, and filter out anything that
@@ -103,12 +104,12 @@ export async function getHeadings(source: any) {
 
     // Transform the string '## Some text' into an object
     // with the shape '{ text: 'Some text', level: 2 }'
-    return headingLines.map((raw: any) => {
+    return headingLines.map((raw: string) => {
         const text = raw.replace(/^###*\s/, '')
         // I only care about h2 and h3.
         // If I wanted more levels, I'd need to count the
         // number of #s.
-        const level = raw.slice(0, 3) === '###' ? 3 : 2
+        const level = raw.match(/#/g)?.length
 
         return { text, level }
     })
@@ -121,6 +122,7 @@ export async function getStaticPaths() {
         fallback: false
     }
 }
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const postContent = await getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
@@ -130,12 +132,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         components,
         mdxOptions: {
             remarkPlugins: [require('remark-code-titles')],
-            rehypePlugins: [
-                mdxPrism,
-                require('rehype-slug'),
-                require('rehype-autolink-headings'),
-                require('rehype-toc')
-            ]
+            rehypePlugins: [mdxPrism, require('rehype-slug'), require('rehype-autolink-headings')]
         },
         scope: data
     })

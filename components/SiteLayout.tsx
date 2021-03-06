@@ -32,11 +32,6 @@ function SiteLayout({ children }: Props) {
                     <ul className={classes.UnorderedList}>
                         <li>
                             <Link href="/">
-                                <a>home</a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/blog">
                                 <a>blog</a>
                             </Link>
                         </li>

@@ -1,0 +1,13 @@
+.PostsList {
+    padding: 5rem 0;
+}
+
+.ListItem {
+    list-style: none;
+}
+
+.HorizontalRule {
+    margin-bottom: 3rem;
+    border: 1px solid #ededed;
+    border-bottom: none;
+}
