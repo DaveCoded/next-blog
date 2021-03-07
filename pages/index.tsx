@@ -9,6 +9,7 @@ export interface PostData {
     title: string
     subtitle: string
     excerpt: string
+    description: string
 }
 
 interface Props {
@@ -17,41 +18,39 @@ interface Props {
 
 export default function Home({ allPostsData }: Props) {
     return (
-        <>
+        <main
+            style={{
+                height: '100vh',
+                maxWidth: '640px',
+                margin: '0 auto'
+            }}
+        >
             <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
+                <title>Dave Bernhard's blog</title>
+                <meta
+                    name="description"
+                    content="Dave Bernhard's web development blog. Dave is a frontend developer in London; come check out his writing and projects."
+                ></meta>
             </Head>
-
-            <main
-                style={{
-                    height: '100vh',
-                    maxWidth: '640px',
-                    margin: '0 auto'
-                }}
-            >
-                <ul className={styles.PostsList}>
-                    {allPostsData.map(({ slug, date, title, excerpt }, i) => (
-                        <div key={slug}>
-                            <li className={styles.ListItem}>
-                                <div className="BlogIndex__Post">
-                                    <Link href="/blog/[slug]" as={`/blog/${slug}`}>
-                                        <a>
-                                            <h2 className="BlogIndex__Heading">{title}</h2>
-                                        </a>
-                                    </Link>
-                                    <div className="BlogIndex__Exerpt">{excerpt}</div>
-                                    <span className="BlogIndex__Date">{date}</span>
-                                </div>
-                            </li>
-                            {i !== allPostsData.length - 1 ? (
-                                <hr className={styles.HorizontalRule} />
-                            ) : null}
+            <ul className={styles.PostsList}>
+                {allPostsData.map(({ slug, date, title, excerpt }, i: number) => (
+                    <li key={slug} className={styles.ListItem}>
+                        <div className="BlogIndex__Post">
+                            <Link href="/blog/[slug]" as={`/blog/${slug}`}>
+                                <a>
+                                    <h2 className="BlogIndex__Heading">{title}</h2>
+                                </a>
+                            </Link>
+                            <div className="BlogIndex__Exerpt">{excerpt}</div>
+                            <span className="BlogIndex__Date">{date}</span>
                         </div>
-                    ))}
-                </ul>
-            </main>
-        </>
+                        {i !== allPostsData.length - 1 ? (
+                            <hr className={styles.HorizontalRule} />
+                        ) : null}
+                    </li>
+                ))}
+            </ul>
+        </main>
     )
 }
 

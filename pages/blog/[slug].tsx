@@ -25,7 +25,8 @@ export default function Posts({ source, frontMatter, headings }: Props) {
     return (
         <>
             <Head>
-                <title>{frontMatter.title}</title>
+                <title>Dave Bernhard's blog | {frontMatter.title}</title>
+                <meta name="description" content={frontMatter.description}></meta>
             </Head>
             <div style={{ maxWidth: '760px', margin: '0 auto' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>

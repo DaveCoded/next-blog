@@ -4,8 +4,11 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
+                <title>Dave Bernhard's blog</title>
+                <meta
+                    name="description"
+                    content="About Dave. Some more information about the website author and his proclivities."
+                ></meta>
             </Head>
 
             <main
