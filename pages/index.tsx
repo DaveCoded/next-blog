@@ -32,10 +32,10 @@ export default function Home({ allPostsData }: Props) {
             >
                 <ul className={styles.PostsList}>
                     {allPostsData.map(({ slug, date, title, excerpt }, i) => (
-                        <>
-                            <li key={slug} className={styles.ListItem}>
+                        <div key={slug}>
+                            <li className={styles.ListItem}>
                                 <div className="BlogIndex__Post">
-                                    <Link key={slug} href="/blog/[slug]" as={`/blog/${slug}`}>
+                                    <Link href="/blog/[slug]" as={`/blog/${slug}`}>
                                         <a>
                                             <h2 className="BlogIndex__Heading">{title}</h2>
                                         </a>
@@ -47,7 +47,7 @@ export default function Home({ allPostsData }: Props) {
                             {i !== allPostsData.length - 1 ? (
                                 <hr className={styles.HorizontalRule} />
                             ) : null}
-                        </>
+                        </div>
                     ))}
                 </ul>
             </main>

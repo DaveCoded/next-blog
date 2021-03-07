@@ -106,6 +106,17 @@ a {
     text-decoration: none;
 }
 
+.external-link {
+    color: #1f8ddd;
+    text-decoration: underline;
+}
+
+.external-link:hover,
+.external-link:visited,
+.external-link:active {
+    color: var(--purple);
+}
+
 blockquote.blockquote {
     margin: 0;
     padding: 0 2rem;

@@ -6,7 +6,7 @@ import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 import AllComponents from '../../components/mdx/AllComponents'
 import { getAllPostSlugs, getPostdata } from '../../lib/posts'
-import { PostData } from '.'
+import { PostData } from '../'
 import { MdxRemote } from 'next-mdx-remote/types'
 // import TableOfContents from '../../components/TableOfContents'
 
