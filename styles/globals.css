@@ -101,7 +101,7 @@ p > code {
     font-size: 1.1rem;
 }
 
-a {
+nav a {
     color: inherit;
     text-decoration: none;
 }
@@ -118,9 +118,15 @@ a {
 }
 
 blockquote.blockquote {
-    margin: 0;
+    margin: 4rem auto;
+    max-width: 600px;
     padding: 0 2rem;
     border-left: 5px solid var(--purple);
+}
+
+.blockquote > p {
+    font-size: 1.5rem;
+    font-weight: 300;
 }
 
 ol {
@@ -188,7 +194,7 @@ pre[class*='language-'] {
 /* Code blocks */
 pre[class*='language-'] {
     padding: 1em;
-    margin: 0px 0px 0.5em;
+    margin: 0px 0px 2.5em;
     overflow: auto;
     border-radius: 0 0 10px 10px;
 }
@@ -320,8 +326,8 @@ pre[class*='language-']::-webkit-scrollbar {
 /* Title for a code block! */
 .remark-code-title {
     background-color: rgb(78 84 95);
-    color: white;
-    font-size: 1.15rem;
+    color: rgb(245, 245, 245);
+    font-size: 0.9rem;
     padding: 0.7em 1em;
     border-radius: 10px 10px 0 0;
 }
@@ -339,6 +345,10 @@ pre[class*='language-']::-webkit-scrollbar {
 
 .BlogIndex__Post {
     margin-bottom: 4rem;
+}
+
+.BlogIndex__Post a {
+    text-decoration: none;
 }
 
 h2.BlogIndex__Heading {
