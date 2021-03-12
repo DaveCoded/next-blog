@@ -5,29 +5,27 @@ date: '03/10/21'
 ---
 
 <Dropcap>
-    Often in code, you will be expecting an array of items. Sometimes you will know their types but
-    not their number. Sometimes you will even know the complete list of possible values, but not
-    their number. What if that is the case and you want to sort them in a particular order? Not
-    alphabetically, or from most to least recent, or from long to short, or anything programmatic.
-    You want to sort them according to something that seems, at least to a dumb computer, entirely
-    arbitrary (laughable, even). Alphabetically according to which letter corresponds to your
-    favourite numbers between 1 and 26. Or according to a list of label names for the form inputs in
-    a UI? Yeah, that one. That's what happened to me.
+    Often in code, you handle arrays of items. Sometimes you know their types but not their number.
+    Sometimes you even know the complete list of possible values, but not their number. What if that
+    is the case and you want to sort them in a particular order? Not alphabetically, or by date, or
+    from longest to shortest, or anything a computer can calculate. You want to sort them by
+    something that seems, at least to a dumb computer, entirely arbitrary (laughable, even).
+    Alphabetically by which letter maps to your favourite numbers between 1 and 26. Or according to
+    a list of label names for the form inputs in a UI? Yeah, that one. That's what happened to me.
 </Dropcap>
 
 ## My specific use case
 
 I was building a form at work, but I didn't know exactly what all the inputs were going to be. I knew what they _could_ be - it's
 my job to, after all - but the specific subset of all possibilities depended on a user's previous input into the application. Pesky user 🙄
-Dynamically building a form is all very well, but what about the order of the inputs? There are reasonably established patterns to follow here.
-You wouldn't, for instance, stand for being asked to enter your grandmother's vet's email address before you were even cordially asked
-for your own name.
+Dynamically building a form is fine, but what about the order of the inputs? There are established patterns to follow here.
+It is confusing to ask for a user's grandmother's vet's email address before cordially asking for their name, for instance.
 
 ### Vegetables as an example
 
-Let's take vegetables as an example. We are going to get an array of vegetables as strings. We know all the possible vegetables, but we
+Let's take vegetables as an example. We are expecting an array of vegetables. We know all the possible vegetables, but we
 don't know the subset, or what order they'll come in. _But_, being unnecessarily opinionated programmers, we know the order we absolutely
-must display them in. First let's make an array describing our preference, given all possible vegetables that exist in the app:
+must display them in. First, let's make an array describing our preferred order, given all possible vegetables that exist in the app:
 
 ```JavaScript:veggies.js
 const idealVegOrder = [
@@ -42,7 +40,7 @@ const idealVegOrder = [
 
 ### The chaos of actual data
 
-What if our user didn't put little ticks in all the checkboxes earlier in the app confirming that they're a fan of all these vegetables?
+What if the user didn't put little ticks in _all_ the checkboxes earlier in the app confirming that they love of _all_ of these vegetables?
 And what if the way we get their inconvenient subset of vegetables doesn't keep them in the neat order we absolutely require? Say this is
 the array of vegetables that our user fancies:
 
@@ -76,5 +74,5 @@ const userVeggies = getUserVeggies(user); // ['Broccoli', 'Carrots', 'Daikon', '
 const orderedUserVeggies = sortVeggies(userVeggies); // ['Daikon', 'Broccoli', 'Carrots', 'Onions']
 ```
 
-Hooray! I know this isn't going to set the internet on fire, but hopefully it will help one or two people on their coding journeys. Peace 🌽🥦🥕
+Hooray! I know this isn't going to set the internet on fire, but hopefully it will help one or two of you on your coding journeys. Peace 🌽🥦🥕
 (Who wants to [put in a proposal](https://unicode.org/emoji/proposals.html) for a Daikon emoji?)
