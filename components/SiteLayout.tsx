@@ -21,9 +21,8 @@ function SiteLayout({ children }: Props) {
                     <Link href="/">
                         <a
                             style={{
-                                fontSize: '3.3rem',
-                                lineHeight: 1.5,
-                                letterSpacing: 3
+                                fontSize: '3.9rem',
+                                marginTop: '3px'
                             }}
                         >
                             DB

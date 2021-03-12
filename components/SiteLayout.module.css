@@ -1,7 +1,7 @@
 .Nav {
     background: var(--purple);
     color: white;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Baloo 2', sans-serif;
     height: 4.6rem;
 }
 
@@ -17,10 +17,8 @@
 
 .UnorderedList a {
     list-style: none;
-    font-size: 1.4rem;
-    letter-spacing: 1px;
+    font-size: 1.8rem;
     margin-right: 2rem;
-    font-weight: 500;
 }
 
 .UnorderedList li:last-child a {

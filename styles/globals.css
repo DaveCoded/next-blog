@@ -1,12 +1,4 @@
-/* todo: include the fonts locally with @font-face */
-/* todo: Try with the Cheltenham font? */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-@font-face {
-    font-family: 'Cheltenham';
-    src: url('/fonts/Cheltenham/cheltenham-cond-normal-500-webfont.woff') format('woff'); /* Pretty Modern Browsers */
-}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     /* Colors */
@@ -68,9 +60,27 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    font-family: 'Baloo 2', sans-serif;
+    color: var(--heading-grey);
+}
+
+h1 {
     color: var(--heading-black);
+    font-size: 4.1rem;
+    line-height: 1.1;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 3.3rem;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+h3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.25;
 }
 
 h2:not(.subtitle),
@@ -82,7 +92,7 @@ h4 {
 p {
     font-size: 1.1rem;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.9;
     letter-spacing: 0.6px;
     margin-block-start: 0;
     margin-block-end: 1.5em;
@@ -127,6 +137,7 @@ blockquote.blockquote {
 .blockquote > p {
     font-size: 1.5rem;
     font-weight: 300;
+    line-height: 1.6;
 }
 
 ol {
@@ -135,17 +146,16 @@ ol {
 
 /* DROPCAP STUFF */
 .dropcap {
+    font-family: 'Baloo 2';
     background: linear-gradient(325deg, var(--purple), var(--purple) 83%, #b79ee8);
     color: white;
     border-radius: 4px;
-    font-family: 'Playfair Display', serif;
     float: left;
-    font-size: 7rem;
+    font-size: 8rem;
     font-weight: 600;
-    line-height: 1.17;
+    line-height: 1;
     margin: 0.1em 0.15em 0 0;
-    padding: 0.16em;
-    padding-top: 14px;
+    padding: 1.4rem 0.9rem 0.5rem 0.9rem;
 }
 .dropcap:before,
 .dropcap:after {
@@ -352,10 +362,7 @@ pre[class*='language-']::-webkit-scrollbar {
 }
 
 h2.BlogIndex__Heading {
-    font-size: 2.8rem;
     margin-bottom: 1rem;
-    margin-top: 0;
-    line-height: 1.2;
 }
 
 .BlogIndex__Date {

@@ -32,11 +32,7 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h1
                         style={{
-                            fontFamily: 'Playfair Display',
-                            fontSize: '4.8rem',
-                            fontWeight: 400,
-                            lineHeight: 1.2,
-                            margin: '4rem 0 1.2rem'
+                            margin: '4rem 0 0.8rem'
                         }}
                     >
                         {frontMatter.title}
@@ -46,11 +42,11 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                             className="subtitle"
                             style={{
                                 fontFamily: 'Poppins',
+                                maxWidth: 600,
                                 fontSize: '1.4rem',
                                 fontWeight: 200,
                                 fontStyle: 'italic',
-                                marginTop: 0,
-                                marginBottom: '0.5rem'
+                                margin: '0 auto 0.8rem'
                             }}
                         >
                             {frontMatter.subtitle}
@@ -60,10 +56,10 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                         <span
                             style={{
                                 color: 'var(--off-black)',
-                                fontFamily: 'Poppins',
-                                fontSize: '1.2rem',
-                                fontWeight: 700,
-                                letterSpacing: '0.4px',
+                                fontFamily: '"Baloo 2"',
+                                fontSize: '1.3rem',
+                                fontWeight: 500,
+                                letterSpacing: '0.3px',
                                 marginBottom: '2rem'
                             }}
                         >
@@ -76,7 +72,8 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                             borderBottom: '1px solid var(--purple)',
                             height: '32px',
                             lineHeight: '30px',
-                            fontSize: '10px',
+                            fontSize: '0.8rem',
+                            fontFamily: '"Baloo 2"',
                             fontWeight: 700,
                             textTransform: 'uppercase',
                             letterSpacing: '1px'
