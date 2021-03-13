@@ -1,0 +1,17 @@
+.PageContainer {
+    width: min(90%, 760px);
+    margin: 0 auto 16rem;
+}
+
+.Title {
+    margin: 4rem 0 1.2rem;
+}
+
+.Subtitle {
+    font-family: 'Poppins', sans-serif;
+    max-width: 600;
+    font-size: 1.4rem;
+    font-weight: 200;
+    font-style: italic;
+    margin: 0 auto 0.8rem;
+}

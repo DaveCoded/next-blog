@@ -19,7 +19,7 @@ interface Props {
 
 export default function Home({ allPostsData }: Props) {
     return (
-        <main className={classes.BlogIndexMain}>
+        <div className={classes.BlogIndexMain}>
             <Head>
                 <title>Dave Bernhard's blog</title>
                 <meta
@@ -45,7 +45,7 @@ export default function Home({ allPostsData }: Props) {
                     </li>
                 ))}
             </ul>
-        </main>
+        </div>
     )
 }
 

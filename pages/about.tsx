@@ -12,7 +12,7 @@ export default function Home() {
                 ></meta>
             </Head>
 
-            <main className={classes.AboutMain}>
+            <div className={classes.AboutMain}>
                 <div className={classes.Container}>
                     <h1 className={classes.Heading}>
                         Hi. I'm Dave Bernhard, a frontend developer working in London.
@@ -32,7 +32,7 @@ export default function Home() {
                         </a>
                     </p>
                 </div>
-            </main>
+            </div>
         </>
     )
 }

@@ -1,6 +1,5 @@
 .BlogIndexMain {
-    height: 100vh;
-    max-width: 640px;
+    width: min(90%, 640px);
     margin: 0 auto;
 }
 

@@ -8,6 +8,7 @@ import AllComponents from '../../components/mdx/AllComponents'
 import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { PostData } from '../'
 import { MdxRemote } from 'next-mdx-remote/types'
+import styles from './slug.module.css'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
@@ -28,29 +29,11 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                 <title>Dave Bernhard's blog | {frontMatter.title}</title>
                 <meta name="description" content={frontMatter.description}></meta>
             </Head>
-            <div style={{ maxWidth: '760px', margin: '0 auto', marginBottom: '16rem' }}>
+            <div className={styles.PageContainer}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h1
-                        style={{
-                            margin: '4rem 0 0.8rem'
-                        }}
-                    >
-                        {frontMatter.title}
-                    </h1>
+                    <h1 className={styles.Title}>{frontMatter.title}</h1>
                     {frontMatter.subtitle ? (
-                        <h2
-                            className="subtitle"
-                            style={{
-                                fontFamily: 'Poppins',
-                                maxWidth: 600,
-                                fontSize: '1.4rem',
-                                fontWeight: 200,
-                                fontStyle: 'italic',
-                                margin: '0 auto 0.8rem'
-                            }}
-                        >
-                            {frontMatter.subtitle}
-                        </h2>
+                        <h2 className={styles.Subtitle}>{frontMatter.subtitle}</h2>
                     ) : null}
                     <div style={{ marginBottom: '2.6rem' }}>
                         <span
@@ -125,7 +108,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const postContent = await getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
     // todo: figure out if getting the headings is a good idea or not!
-    const headings = await getHeadings(content)
+    // const headings = await getHeadings(content)
     const mdxSource = await renderToString(content, {
         components,
         mdxOptions: {
@@ -137,8 +120,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
         props: {
             source: mdxSource,
-            frontMatter: data,
-            headings
+            frontMatter: data
+            // headings
         }
     }
 }
