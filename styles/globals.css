@@ -62,25 +62,23 @@ h4,
 h5 {
     font-family: 'Baloo 2', sans-serif;
     color: var(--heading-grey);
+    line-height: 1;
 }
 
 h1 {
     color: var(--heading-black);
     font-size: 4.1rem;
-    line-height: 1.1;
     font-weight: 600;
 }
 
 h2 {
     font-size: 3.3rem;
     font-weight: 500;
-    line-height: 1.25;
 }
 
 h3 {
     font-size: 2.5rem;
     font-weight: 500;
-    line-height: 1.25;
 }
 
 h2:not(.subtitle),
@@ -147,7 +145,7 @@ ol {
 /* DROPCAP STUFF */
 .dropcap {
     font-family: 'Baloo 2';
-    background: linear-gradient(325deg, var(--purple), var(--purple) 83%, #b79ee8);
+    background: linear-gradient(325deg, var(--purple), #914bd7);
     color: white;
     border-radius: 4px;
     float: left;
@@ -351,26 +349,4 @@ pre[class*='language-']::-webkit-scrollbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.BlogIndex__Post {
-    margin-bottom: 4rem;
-}
-
-.BlogIndex__Post a {
-    text-decoration: none;
-}
-
-h2.BlogIndex__Heading {
-    margin-bottom: 1rem;
-}
-
-.BlogIndex__Date {
-    font-size: 1.1rem;
-    color: #7d7288;
-}
-
-.BlogIndex__Exerpt {
-    font-size: 1.4rem;
-    margin-bottom: 0.4rem;
 }

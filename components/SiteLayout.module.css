@@ -5,6 +5,20 @@
     height: 4.6rem;
 }
 
+.NavContainer {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+@media (max-width: 1080px) {
+    .NavContainer {
+        max-width: 760px;
+    }
+}
+
 .UnorderedList {
     margin-left: auto;
     padding: 0;

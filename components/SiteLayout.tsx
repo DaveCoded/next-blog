@@ -9,15 +9,7 @@ function SiteLayout({ children }: Props) {
     return (
         <>
             <nav className={classes.Nav}>
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        maxWidth: '1000px',
-                        margin: '0 auto',
-                        height: '100%'
-                    }}
-                >
+                <div className={classes.NavContainer}>
                     <Link href="/">
                         <a
                             style={{

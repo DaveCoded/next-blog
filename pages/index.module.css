@@ -1,0 +1,41 @@
+.BlogIndexMain {
+    height: 100vh;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.PostsList {
+    padding: 2rem 0 5rem;
+}
+
+.Post {
+    margin-bottom: 3.5rem;
+}
+
+.Post a {
+    text-decoration: none;
+}
+
+.Heading {
+    margin-bottom: 1rem;
+}
+
+.Date {
+    font-size: 1.1rem;
+    color: #7d7288;
+}
+
+.Excerpt {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.ListItem {
+    list-style: none;
+}
+
+.HorizontalRule {
+    margin-bottom: 3rem;
+    border: 1px solid #ededed;
+    border-bottom: none;
+}
