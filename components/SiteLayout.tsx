@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import classes from './SiteLayout.module.css'
+import styles from './SiteLayout.module.css'
 
 type Props = {
     children: JSX.Element
@@ -8,19 +8,12 @@ type Props = {
 function SiteLayout({ children }: Props) {
     return (
         <>
-            <nav className={classes.Nav}>
-                <div className={classes.NavContainer}>
+            <nav className={styles.Nav}>
+                <div className={styles.NavContainer}>
                     <Link href="/">
-                        <a
-                            style={{
-                                fontSize: '3.9rem',
-                                marginTop: '3px'
-                            }}
-                        >
-                            DB
-                        </a>
+                        <a className={styles.Logo}>DB</a>
                     </Link>
-                    <ul className={classes.UnorderedList}>
+                    <ul className={styles.UnorderedList}>
                         <li>
                             <Link href="/">
                                 <a>blog</a>

@@ -30,40 +30,15 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                 <meta name="description" content={frontMatter.description}></meta>
             </Head>
             <div className={styles.PageContainer}>
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                <div className={styles.TitleContainer}>
                     <h1 className={styles.Title}>{frontMatter.title}</h1>
                     {frontMatter.subtitle ? (
                         <h2 className={styles.Subtitle}>{frontMatter.subtitle}</h2>
                     ) : null}
-                    <div style={{ marginBottom: '2.6rem' }}>
-                        <span
-                            style={{
-                                color: 'var(--off-black)',
-                                fontFamily: '"Baloo 2"',
-                                fontSize: '1.3rem',
-                                fontWeight: 500,
-                                letterSpacing: '0.3px',
-                                marginBottom: '2rem'
-                            }}
-                        >
-                            {formattedDate}
-                        </span>
+                    <div className={styles.DateContainer}>
+                        <span className={styles.Date}>{formattedDate}</span>
                     </div>
-                    <div
-                        style={{
-                            borderTop: '1px solid var(--purple)',
-                            borderBottom: '1px solid var(--purple)',
-                            height: '32px',
-                            lineHeight: '30px',
-                            fontSize: '0.8rem',
-                            fontFamily: '"Baloo 2"',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '1px'
-                        }}
-                    >
-                        Some category tags here maybe?
-                    </div>
+                    <div className={styles.Categories}>Some category tags here maybe?</div>
                 </div>
 
                 <div>
