@@ -7,11 +7,11 @@ const Dropcap = ({ children }: Props) => {
     const remainder = children.slice(1)
 
     return (
-        <p>
+        <p className="BlogPost__Paragraph">
             <span aria-hidden="true">
                 <span className="dropcap">{firstLetter}</span>
-                {remainder}
             </span>
+            {remainder}
             <span className="sr-only">{children}</span>
         </p>
     )

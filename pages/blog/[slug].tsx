@@ -40,11 +40,8 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                     </div>
                     <div className={styles.Categories}>Some category tags here maybe?</div>
                 </div>
-
-                <div>
-                    {/* <TableOfContents headings={headings} /> */}
-                    <div>{content}</div>
-                </div>
+                {/* <TableOfContents headings={headings} /> */}
+                {content}
             </div>
         </>
     )

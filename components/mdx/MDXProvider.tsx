@@ -15,8 +15,13 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
                 }}
             />
         ),
+        p: (props: HTMLAttributes<HTMLParagraphElement>) => (
+            <p {...props} className="BlogPost__Paragraph" />
+        ),
         blockquote: (props: BlockquoteHTMLAttributes<HTMLElement>) => (
-            <blockquote className="blockquote" {...props} />
+            <blockquote className="blockquote" {...props}>
+                {props.children}
+            </blockquote>
         ),
         hr: (props: HTMLAttributes<HTMLElement>) => <hr {...props} />,
         img: (props: ImageProps) => (

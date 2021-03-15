@@ -1,23 +1,28 @@
 .PageContainer {
-    width: min(90%, 760px);
+    width: min(90%, 1230px);
     margin: 0 auto 16rem;
+    display: grid;
+    grid-template-columns: 1fr min(60ch, 100%) 1fr;
 }
 
-.TitleContainer {
+div.TitleContainer {
     text-align: center;
-    margin-bottom: 4rem;
+    grid-column: 1/4;
+    width: min(100%, 840px);
+    margin: 0 auto 4rem;
 }
 
 .Title {
-    margin: 4rem 0 1.2rem;
+    margin: 5rem 0 1.2rem;
 }
 
 .Subtitle {
     font-family: 'Poppins', sans-serif;
-    max-width: 600;
+    max-width: 600px;
     font-size: 1.4rem;
-    font-weight: 200;
+    font-weight: 300;
     font-style: italic;
+    line-height: 1.4;
     margin: 0 auto 0.8rem;
 }
 
@@ -44,4 +49,8 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.PageContainer > * {
+    grid-column: 2 / auto;
 }
