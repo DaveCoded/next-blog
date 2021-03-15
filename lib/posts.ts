@@ -8,7 +8,7 @@ const postDirectory = path.join(process.cwd(), 'posts')
 export const getSortedPosts = () => {
     //Reads all the files in the post directory
     const fileNames = fs.readdirSync(postDirectory)
-    let published: any[] = []
+    const published: any[] = []
     fileNames.forEach((filename) => {
         const slug = filename.replace('.mdx', '')
         const fullPath = path.join(postDirectory, filename)
@@ -43,7 +43,22 @@ export const getSortedPosts = () => {
 //Get Slugs
 export const getAllPostSlugs = () => {
     const fileNames = fs.readdirSync(postDirectory)
-    return fileNames.map((filename) => {
+    const published: string[] = []
+    fileNames.forEach((filename) => {
+        const slug = filename.replace('.mdx', '')
+        const fullPath = path.join(postDirectory, filename)
+
+        //Extracts contents of the MDX file
+        const fileContents = fs.readFileSync(fullPath, 'utf8')
+        const { data } = matter(fileContents)
+        if (data.status !== 'publish') {
+            return
+        }
+
+        published.push(filename)
+    })
+
+    return published.map((filename) => {
         return {
             params: {
                 slug: filename.replace('.mdx', '')
