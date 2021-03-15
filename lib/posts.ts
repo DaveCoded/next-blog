@@ -8,26 +8,30 @@ const postDirectory = path.join(process.cwd(), 'posts')
 export const getSortedPosts = () => {
     //Reads all the files in the post directory
     const fileNames = fs.readdirSync(postDirectory)
-    const allPostsData = fileNames.map((filename) => {
+    let published: any[] = []
+    fileNames.forEach((filename) => {
         const slug = filename.replace('.mdx', '')
         const fullPath = path.join(postDirectory, filename)
 
         //Extracts contents of the MDX file
         const fileContents = fs.readFileSync(fullPath, 'utf8')
         const { data } = matter(fileContents)
+        if (data.status !== 'publish') {
+            return
+        }
         const options = { month: 'long', day: 'numeric', year: 'numeric' }
         const formattedDate = new Date(data.date).toLocaleDateString('en-US', options)
         const frontmatter = {
             ...data,
             date: formattedDate
         }
-        return {
+        published.push({
             slug,
             ...frontmatter
-        }
+        })
     })
 
-    return allPostsData.sort((a, b) => {
+    return published.sort((a, b) => {
         if (new Date(a.date) < new Date(b.date)) {
             return 1
         } else {
