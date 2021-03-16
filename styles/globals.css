@@ -135,6 +135,7 @@ code {
 
 p > code {
     font-size: 1.1rem;
+    white-space: nowrap;
 }
 
 nav a {
@@ -181,7 +182,7 @@ ol {
     font-size: 8rem;
     font-weight: 600;
     line-height: 1;
-    margin: 0.7rem 1.1rem 0 0;
+    margin: 0.55rem 1.1rem 0 0;
     padding: 1.4rem 0.9rem 0.5rem 0.9rem;
 }
 .dropcap:before,
@@ -208,7 +209,7 @@ ol {
 }
 
 .BlogPost__Paragraph {
-    width: min(90%, 600px);
+    min-width: 90%;
 }
 
 /* ======================================================= */
