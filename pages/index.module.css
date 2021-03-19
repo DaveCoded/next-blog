@@ -39,3 +39,16 @@
     border: 1px solid #ededed;
     border-bottom: none;
 }
+
+.Draft {
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1.1rem;
+    font-weight: 800;
+    vertical-align: super;
+    margin-left: 0.6rem;
+    padding-right: 0.3rem;
+    border: 2px solid red;
+    border-radius: 4px;
+    background: red;
+}

@@ -11,6 +11,7 @@ export interface PostData {
     subtitle: string
     excerpt: string
     description: string
+    status: 'published' | 'draft'
 }
 
 interface Props {
@@ -28,12 +29,17 @@ export default function Home({ allPostsData }: Props) {
                 ></meta>
             </Head>
             <ul className={styles.PostsList}>
-                {allPostsData.map(({ slug, date, title, excerpt }, i: number) => (
+                {allPostsData.map(({ slug, date, title, excerpt, status }, i: number) => (
                     <li key={slug} className={styles.ListItem}>
                         <div className={styles.Post}>
                             <Link href="/blog/[slug]" as={`/blog/${slug}`}>
                                 <a>
-                                    <h2 className={styles.Heading}>{title}</h2>
+                                    <h2 className={styles.Heading}>
+                                        {title}
+                                        {status === 'draft' ? (
+                                            <span className={styles.Draft}> Draft</span>
+                                        ) : null}
+                                    </h2>
                                 </a>
                             </Link>
                             <div className={styles.Excerpt}>{excerpt}</div>
