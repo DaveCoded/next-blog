@@ -375,3 +375,16 @@ pre[class*='language-']::-webkit-scrollbar {
     justify-content: space-between;
     align-items: center;
 }
+
+h1::selection,
+h2:not(.slugSubtitle)::selection,
+h3::selection,
+h4::selection,
+h5::selection {
+    background: none;
+    text-shadow: 4px 4px #07c5bc;
+}
+
+.dropcap::selection {
+    text-shadow: 4px 4px #07c5bc;
+}

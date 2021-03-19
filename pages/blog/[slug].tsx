@@ -33,7 +33,9 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                 <div className={styles.TitleContainer}>
                     <h1 className={styles.Title}>{frontMatter.title}</h1>
                     {frontMatter.subtitle ? (
-                        <h2 className={styles.Subtitle}>{frontMatter.subtitle}</h2>
+                        <h2 className={`${styles.Subtitle} slugSubtitle`}>
+                            {frontMatter.subtitle}
+                        </h2>
                     ) : null}
                     <div className={styles.DateContainer}>
                         <span className={styles.Date}>{formattedDate}</span>
