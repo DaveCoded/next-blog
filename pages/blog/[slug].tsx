@@ -84,7 +84,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const mdxSource = await renderToString(content, {
         components,
         mdxOptions: {
-            remarkPlugins: [require('remark-code-titles')],
             rehypePlugins: [mdxPrism, require('rehype-slug'), require('rehype-autolink-headings')]
         },
         scope: data

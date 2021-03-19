@@ -128,7 +128,6 @@ code {
     background: #e8e8e8;
     color: var(--off-black);
     font-family: var(--code-font-family);
-    padding: 0.2rem 0.4rem;
     border-radius: 4px;
     white-space: pre-wrap;
 }
@@ -136,6 +135,7 @@ code {
 p > code {
     font-size: 1.1rem;
     white-space: nowrap;
+    padding: 0.2rem 0.4rem;
 }
 
 nav a {
@@ -235,7 +235,7 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-    padding: 1em;
+    padding: 1.5rem;
     margin: 0px 0px 2.5em;
     overflow: auto;
     border-radius: 0 0 10px 10px;
@@ -363,16 +363,6 @@ pre[class*='language-']::-webkit-scrollbar {
     left: -0.43em;
     background: #8b9fc6;
     position: absolute;
-}
-
-/* Title for a code block! */
-.remark-code-title {
-    background-color: rgb(78 84 95);
-    color: rgb(245, 245, 245);
-    font-size: 0.9rem;
-    padding: 0.7em 1em;
-    border-radius: 10px 10px 0 0;
-    margin-top: 1.2rem;
 }
 
 /* ======================================================= */

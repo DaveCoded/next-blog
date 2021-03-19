@@ -38,20 +38,18 @@ Now pretend your use case is exactly the example I'm about to show and learn fro
 To have complete control over the file input's styling, we're actually going to hide it completely, and use a button instead.
 By giving the file input a `ref`, we'll be able to call its _onChange_ event from the button's _onClick_ event:
 
-```TSX
-import React, { useRef } from 'react'
+```tsx title=UploadButton.tsx
+import React, { useRef, ChangeEvent } from 'react'
 
-const App = () => {
-  const uploadRef = useRef<HTMLInputElement>(null)
-  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("File upload input clicked...")
+const UploadButton = () => {
+  const uploadRef = useRef(null)
+  const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log('File upload input clicked...')
   }
 
   return (
     <>
-      <button onClick={() => uploadRef.current?.click()} >
-        Upload file
-      </button>
+      <button onClick={() => uploadRef.current?.click()}>Upload file</button>
 
       <input
         type="file"
@@ -65,6 +63,7 @@ const App = () => {
 }
 ```
 
+<!--
 ```TSX
 const onUploadCSV = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files === null) {
@@ -102,4 +101,4 @@ const onUploadCSV = (e: ChangeEvent<HTMLInputElement>) => {
     style={{ display: 'none' }}
     ref={uploadRef}
 />
-```
+``` -->
