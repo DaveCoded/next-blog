@@ -1,6 +1,7 @@
 import { BlockquoteHTMLAttributes, HTMLAttributes } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import Image, { ImageProps } from 'next/image'
+import CodeBlock from './CodeBlock'
 
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
@@ -34,7 +35,8 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             >
                 <Image {...props} />
             </div>
-        )
+        ),
+        pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />
     }
     return (
         <MDXProvider components={state}>

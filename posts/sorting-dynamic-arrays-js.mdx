@@ -6,13 +6,13 @@ status: 'publish'
 ---
 
 <Dropcap>
-    Often in code, you handle arrays of items. Sometimes you know their types but not their number.
-    Sometimes you even know the complete list of possible values, but not their number. What if that
-    is the case and you want to sort them in a particular order? Not alphabetically, or by date, or
-    from longest to shortest, or anything a computer can calculate. You want to sort them by
-    something that seems, at least to a dumb computer, entirely arbitrary (laughable, even).
-    Alphabetically by which letter maps to your favourite numbers between 1 and 26. Or according to
-    a list of label names for the form inputs in a UI? Yeah, that one. That's what happened to me.
+  Often in code, you handle arrays of items. Sometimes you know their types but not their number.
+  Sometimes you even know the complete list of possible values, but not their number. What if that
+  is the case and you want to sort them in a particular order? Not alphabetically, or by date, or
+  from longest to shortest, or anything a computer can calculate. You want to sort them by something
+  that seems, at least to a dumb computer, entirely arbitrary (laughable, even). Alphabetically by
+  which letter maps to your favourite numbers between 1 and 26. Or according to a list of label
+  names for the form inputs in a UI? Yeah, that one. That's what happened to me.
 </Dropcap>
 
 ## My specific use case
@@ -28,14 +28,14 @@ Let's take vegetables as an example. We are expecting an array of vegetables. We
 don't know the subset, or what order they'll come in. _But_, being unnecessarily opinionated programmers, we know the order we absolutely
 must display them in. First, let's make an array describing our preferred order, given all possible vegetables that exist in the app:
 
-```JavaScript:veggies.js
+```JavaScript title=veggies.js
 const idealVegOrder = [
-    'Daikon',
-    'Broccoli',
-    'Runner beans',
-    'Sweetcorn',
-    'Carrots',
-    'Onions'
+  'Daikon',
+  'Broccoli',
+  'Runner beans',
+  'Sweetcorn',
+  'Carrots',
+  'Onions'
 ]
 ```
 
@@ -45,7 +45,7 @@ What if the user didn't put little ticks in _all_ the checkboxes earlier in the 
 And what if the way we get their inconvenient subset of vegetables doesn't keep them in the neat order we absolutely require? Say this is
 the array of vegetables that our user fancies:
 
-```JavaScript:veggies.js
+```JavaScript title=veggies.js
 const userVeggies = ['Broccoli', 'Carrots', 'Daikon', 'Onions'];
 ```
 
@@ -54,20 +54,20 @@ const userVeggies = ['Broccoli', 'Carrots', 'Daikon', 'Onions'];
 Don't worry, I'll stop rambling and give you the snippet now. Here's how we can order the chaos of user data according to our nirvana
 of cruciferous order:
 
-```JavaScript:veggies.js
+```JavaScript title=veggies.js
 const sortVeggies = (userVeggiesArray) => {
-    const idealVegOrder = [
-        'Daikon',
-        'Broccoli',
-        'Runner beans',
-        'Sweetcorn',
-        'Carrots',
-        'Onions'
-    ];
+  const idealVegOrder = [
+    'Daikon',
+    'Broccoli',
+    'Runner beans',
+    'Sweetcorn',
+    'Carrots',
+    'Onions'
+  ];
 
-    return userVeggiesArray.sort(
-        (a, b) => idealVegOrder.indexOf(a) - idealVegOrder.indexOf(b)
-    );
+  return userVeggiesArray.sort(
+    (a, b) => idealVegOrder.indexOf(a) - idealVegOrder.indexOf(b)
+  );
 }
 
 const userVeggies = getUserVeggies(user); // ['Broccoli', 'Carrots', 'Daikon', 'Onions']
