@@ -2,6 +2,13 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+type Data = {
+    [key: string]: any
+}
+
+export const shouldNotPublish = (data: Data) =>
+    process.env.NODE_ENV === 'production' && data.status !== 'publish'
+
 //Finding directory named "posts" from the current working directory of Node.
 const postDirectory = path.join(process.cwd(), 'posts')
 
@@ -16,7 +23,7 @@ export const getSortedPosts = () => {
         //Extracts contents of the MDX file
         const fileContents = fs.readFileSync(fullPath, 'utf8')
         const { data } = matter(fileContents)
-        if (data.status !== 'publish') {
+        if (shouldNotPublish(data)) {
             return
         }
         const options = { month: 'long', day: 'numeric', year: 'numeric' }
@@ -51,7 +58,7 @@ export const getAllPostSlugs = () => {
         //Extracts contents of the MDX file
         const fileContents = fs.readFileSync(fullPath, 'utf8')
         const { data } = matter(fileContents)
-        if (data.status !== 'publish') {
+        if (shouldNotPublish(data)) {
             return
         }
 
