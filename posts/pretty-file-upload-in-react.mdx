@@ -1,39 +1,50 @@
 ---
 title: 'Uploading files with React and Typescript'
 subtitle: "using tricky web wizardry so it's not completely ugly"
-excerpt: 'How to style implement and style a file upload button using React and Typescript.'
-date: '03/19/21'
-status: 'draft'
+excerpt: 'How to implement and style a file upload button using React and Typescript.'
+description: 'How to implement and style a file upload button using React and Typescript.'
+date: '03/21/21'
+status: 'published'
 ---
 
 <Dropcap>
-  Working on the frontend can often feel a bit hacky. It can be difficult to identify what the
-  "right" way to do something is. When I have to stray from the affordances of the native web
-  platform, I get a strange feeling, an instinct instilled in me by listening to those who know far
-  more about it, that I'm wading into murky swampland. I know that sounds unpleasant. It certainly
-  can be. But, I also think it's a healthy response. It's when we feel free to do what we like
-  without fear of consequence that we build things for the web that are inaccessible, misleading, or
-  downright foolish.
+  Working on the frontend can often feel a bit hacky. It can
+  be difficult to identify what the "right" way to do
+  something is. When I have to stray from the affordances of
+  the native web platform, I get a strange feeling, an
+  instinct instilled in me by listening to those who know
+  far more about it, that I'm wading into murky swampland. I
+  know that sounds unpleasant. It certainly can be. But, I
+  also think it's a healthy response. It's when we feel free
+  to do what we like without fear of consequence that we
+  build things for the web that are inaccessible,
+  misleading, or downright foolish.
 </Dropcap>
 
 That said, straying is sometimes necessary. Whether to bring a design together or to improve upon existing patterns
 by overcoming the limitations of the web - getting fancy, now, I know. One example I had at work, was needing to
-handle file uploading. HTML's native `<input type="file" />` element is great, but almost impossible to style. It
-looks like this by default. It's a real one, go ahead and click it. If you upload a file, you'll see that the label
-text automatically updates to reflect that:
+handle file uploading. HTML's native `<input type="file" />` element is great, but almost impossible to style
+consistently across browsers. It looks like this by default. It's a real one, go ahead and click it. If you upload
+a file, you'll see that the label text automatically updates to reflect that:
 
-<div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '1.5rem'
+  }}
+>
   <input type="file" />
 </div>
 
 Pretty nifty, actually. Not beautiful though. And, while it's often good enough for a form which might collect the file(s)
-uploaded by a user and then POST them to a backend, sometimes we want to do something with a file on the frontend. Imagine
+uploaded by a user and then POST to a backend, sometimes we want to do something with a file on the frontend. Imagine
 you're building some design software, or image manipulation software, or anything where a user might want to upload an image,
 preview it in place, but not necessarily save it straight away.
 
-Now pretend your use case is exactly the example I'm about to show and learn from it. Thanks.
+Now pretend your use case is exactly the example I'm about to show and learn from it. Thanks 👍
 
-## Doing it in React
+## Doing it in React and Typescript
 
 To have complete control over the file input's styling, we're actually going to hide it completely, and use a button instead.
 By giving the file input a `ref`, we'll be able to call its _onChange_ event from the button's _onClick_ event:
@@ -42,63 +53,167 @@ By giving the file input a `ref`, we'll be able to call its _onChange_ event fro
 import React, { useRef, ChangeEvent } from 'react'
 
 const UploadButton = () => {
-  const uploadRef = useRef(null)
-  const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  const uploadRef = useRef<HTMLInputElement>(null)
+  const handleUpload = () => {
     console.log('File upload input clicked...')
   }
 
   return (
     <>
-      <button onClick={() => uploadRef.current?.click()}>Upload file</button>
+      <button onClick={() => uploadRef.current?.click()}>
+        Upload file
+      </button>
 
       <input
         type="file"
-        accept="text/csv"
+        ref={uploadRef}
         onChange={handleUpload}
         style={{ display: 'none' }}
-        ref={uploadRef}
       />
     </>
   )
 }
 ```
 
-<!--
-```TSX
-const onUploadCSV = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files === null) {
-        return;
-    }
-    const file = e.target.files[0];
-    if (file) {
-        if (file.type !== 'text/csv') {
-            setUploadError('Please upload a .csv file');
-        }
-        const fileReader = new FileReader();
-        fileReader.onload = (event) => {
-            const contents = event?.target?.result;
-            if (!event || !event.target || typeof contents !== 'string') {
-                return;
-            }
-            csvParse(contents, { columns: true }, (err: Error, data: Record<string, string>[]) =>
-                uploadCSV(err, data, textElements, setUploadError, creative, onAddVariation)
-            );
-        };
-        e.target.value = '';
-        fileReader.readAsText(file);
-    } else {
-        setUploadError('File could not be uploaded. Please try again.');
-    }
-};
+<div
+  style={{
+    background: 'hsl(44deg 100% 91%)',
+    border: '1px solid hsl(44deg 71% 80%)',
+    padding: '1rem 2rem',
+    borderRadius: '4px',
+    marginBottom: '1.5rem'
+  }}
+>
+  Note that, if you're using Typescript, the useRef hook
+  takes a generic in which you can tell the compiler what
+  kind of element to expect. That tripped me up when I first
+  tried this.
+</div>
 
-<button onClick={() => uploadRef.current?.click()} >
-    Upload file
-</button>
-<input
-    type="file"
-    accept="text/csv"
-    onChange={onUploadCSV}
-    style={{ display: 'none' }}
-    ref={uploadRef}
+Excellent. Now we have a button to style however we want. But you probably want to do something
+a little more complex than logging something to the console. Let's see how to handle the actual
+file upload on the frontend.
+
+### File attributes and type handling
+
+When triggering the input's change event, the crucial property that comes on the event object
+holds an array: `event.target.files`. It's an array because adding the `multiple` attribute allows
+a user to upload more than one file. Each item (file) in this array has four useful properties, and
+four methods for manipulating the file Blob.
+
+<img
+  src="/images/file-properties.png"
+  width={872}
+  height={414}
 />
-``` -->
+
+You'll usually want to check the file `type` at this point and show an error if a user has uploaded
+a file with an extension you're not supporting. Adding the `accept` attribute to the input looks like
+it disables the file types you don't list, but clicking on options (on Mac), then selecting "All files"
+from the dropdown will allow you to upload any file type. Try it out with this input that recommends
+.png and .jpeg files, but doesn't prevent them `<input type="file" accept="image/png, image/jpeg" />`
+
+<div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '1.5rem'
+  }}
+>
+  <input type="file" accept="image/png, image/jpeg" />
+</div>
+
+### Using the FileReader api
+
+Once that's taken care of, we can read the uploaded file and do whatever we like with it. This example
+assumes we're handling only one file. For multiple, you could loop through `e.target.files`. It also
+expects a .csv file from the user.
+
+```tsx
+const handleUpload = (e: ChangeEvent<HTMLInputElement>) => {
+  if (e.target.files === null) {
+    return
+  }
+  const file = e.target.files[0]
+
+  if (file) {
+    if (file.type !== 'text/csv') {
+      console.error('Please upload a .csv file')
+    }
+
+    const fileReader = new FileReader()
+    fileReader.onload = (event) => {
+      const contents = event?.target?.result
+      // do something with the file contents here
+    }
+
+    e.target.value = ''
+    fileReader.readAsText(file)
+  } else {
+    console.error(
+      'File could not be uploaded. Please try again.'
+    )
+  }
+}
+```
+
+After creating an instance of FileReader, we can handle the file contents found on `event.target.result`
+in that instance's `onload` event. This will later be executed when we call the `readAsText` method and
+pass it our file. You might have noticed that before doing so, I've set `e.target.value` back to an empty
+string. This allows another file to be uploaded afterwards, which will replace the original file on the
+input. Here's the whole thing all together with some better error handling:
+
+```tsx title=UploadButton.tsx
+import React, { useRef, useState, ChangeEvent } from 'react'
+
+const UploadButton = () => {
+  const [uploadError, setUploadError] = useState('')
+  const uploadRef = useRef<HTMLInputElement>(null)
+
+  const handleUpload = (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    if (e.target.files === null) {
+      return
+    }
+    const file = e.target.files[0]
+
+    if (file) {
+      if (file.type !== 'text/csv') {
+        setUploadError('Please upload a .csv file')
+      }
+
+      const fileReader = new FileReader()
+      fileReader.onload = (event) => {
+        const contents = event?.target?.result
+        // do something with the file contents here
+      }
+
+      e.target.value = ''
+      fileReader.readAsText(file)
+    } else {
+      setUploadError(
+        'File could not be uploaded. Please try again.'
+      )
+    }
+  }
+
+  return (
+    <>
+      {/* style this however you like */}
+      <button onClick={() => uploadRef.current?.click()}>
+        Upload file
+      </button>
+
+      <input
+        type="file"
+        ref={uploadRef}
+        onChange={handleUpload}
+        style={{ display: 'none' }}
+      />
+
+      {uploadError ? <p>{uploadError}</p> : null}
+    </>
+  )
+}
+```

@@ -30,7 +30,8 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
                 style={{
                     width: '100%',
                     display: 'flex',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    marginBottom: '1.5rem'
                 }}
             >
                 <Image {...props} />

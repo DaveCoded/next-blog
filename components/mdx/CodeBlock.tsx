@@ -10,7 +10,7 @@ const CodeBlock = (props: any) => {
         <>
             <div className={styles.TitleContainer}>
                 {title ? <span>{title}</span> : null}
-                <span style={{ float: 'right' }}>
+                <span style={{ marginLeft: 'auto' }}>
                     <button
                         className={styles.CopyButton}
                         onClick={() => copyCodeToClipboard(codeRef)}
