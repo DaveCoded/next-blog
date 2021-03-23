@@ -1,0 +1,19 @@
+.Board {
+    width: 405px;
+    height: 405px;
+    position: relative;
+    background: #ddd;
+}
+
+.Overlay {
+    width: 405px;
+    height: 405px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: #0004;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

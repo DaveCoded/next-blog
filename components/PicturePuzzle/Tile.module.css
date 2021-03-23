@@ -1,0 +1,10 @@
+.Tile {
+    width: 95px;
+    height: 95px;
+    position: absolute;
+    background: white;
+    transition: all 0.1s ease-in-out;
+    border-radius: 2px;
+    background-image: url('/images/file-properties.png');
+    background-size: 400px 400px;
+}

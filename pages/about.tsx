@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import PicturePuzzle from '../components/PicturePuzzle/PicturePuzzle'
 import classes from './about.module.css'
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
                         </a>
                     </p>
                 </div>
+                <PicturePuzzle />
             </div>
         </>
     )
