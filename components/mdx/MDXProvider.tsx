@@ -25,7 +25,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             </blockquote>
         ),
         hr: (props: HTMLAttributes<HTMLElement>) => <hr {...props} />,
-        img: (props: ImageProps) => (
+        img: (props: any) => (
             <div
                 style={{
                     width: '100%',
@@ -34,9 +34,21 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
                     marginBottom: '1.5rem'
                 }}
             >
-                <Image {...props} />
+                <img src={props.src} alt={props.alt} width="100%" />
             </div>
         ),
+        // img: (props: ImageProps) => (
+        //     <div
+        //         style={{
+        //             width: '100%',
+        //             display: 'flex',
+        //             justifyContent: 'center',
+        //             marginBottom: '1.5rem'
+        //         }}
+        //     >
+        //         <Image {...props} />
+        //     </div>
+        // ),
         pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />
     }
     return (
