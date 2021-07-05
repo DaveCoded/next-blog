@@ -2,7 +2,7 @@
     width: min(90%, 1230px);
     margin: 0 auto 16rem;
     display: grid;
-    grid-template-columns: 1fr min(60ch, 100%) 1fr;
+    grid-template-columns: 1fr min(65ch, 100%) 1fr;
 }
 
 div.TitleContainer {
@@ -13,17 +13,17 @@ div.TitleContainer {
 }
 
 .Title {
-    margin: 5rem 0 1.2rem;
+    margin: 5rem 0 2rem;
 }
 
 .Subtitle {
-    font-family: 'Poppins', sans-serif;
-    max-width: 600px;
-    font-size: 1.4rem;
-    font-weight: 300;
+    font-family: 'century', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
     font-style: italic;
     line-height: 1.4;
-    margin: 0 auto 0.8rem;
+    margin: 0 auto 0rem;
+    text-transform: none;
 }
 
 .DateContainer {
@@ -31,11 +31,11 @@ div.TitleContainer {
 }
 
 .Date {
-    color: var(--off-black);
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    color: var(--black);
+    font-family: 'Oswald';
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
     margin-bottom: 2rem;
 }
 
@@ -45,7 +45,6 @@ div.TitleContainer {
     height: 32px;
     line-height: 30px;
     font-size: 0.8rem;
-    font-family: 'Baloo 2';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
