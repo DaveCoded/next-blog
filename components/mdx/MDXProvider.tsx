@@ -38,7 +38,12 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
         //         <Image {...props} />
         //     </div>
         // ),
-        pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />
+        pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
+        a: (props: HTMLAttributes<HTMLAnchorElement>) => (
+            <a style={{ color: 'hsl(327deg 100% 60%)' }} {...props}>
+                {props.children}
+            </a>
+        )
     }
     return (
         <MDXProvider components={state}>

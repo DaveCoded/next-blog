@@ -2,18 +2,18 @@
     width: min(90%, 1230px);
     margin: 0 auto 16rem;
     display: grid;
-    grid-template-columns: 1fr min(65ch, 100%) 1fr;
+    grid-template-columns: 1fr min(72ch, 100%) 1fr;
 }
 
 div.TitleContainer {
     text-align: center;
     grid-column: 1/4;
-    width: min(100%, 840px);
+    width: min(100%, 900px);
     margin: 0 auto 4rem;
 }
 
 .Title {
-    margin: 5rem 0 2rem;
+    margin: 5rem 0 1rem;
 }
 
 .Subtitle {
@@ -24,10 +24,6 @@ div.TitleContainer {
     line-height: 1.4;
     margin: 0 auto 0rem;
     text-transform: none;
-}
-
-.DateContainer {
-    margin-bottom: 2.6rem;
 }
 
 .Date {

@@ -40,7 +40,7 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                     <div className={styles.DateContainer}>
                         <span className={styles.Date}>{formattedDate}</span>
                     </div>
-                    <div className={styles.Categories}>Some category tags here maybe?</div>
+                    {/* <div className={styles.Categories}>Some category tags here maybe?</div> */}
                 </div>
                 {/* <TableOfContents headings={headings} /> */}
                 {content}

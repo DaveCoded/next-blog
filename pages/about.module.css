@@ -4,8 +4,8 @@
 }
 
 .Container {
-    height: 100%;
-    margin-top: 2.2rem;
+    height: calc(100vh - var(--nav-height));
+    padding-bottom: var(--nav-height);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,13 +14,13 @@
 
 .Heading {
     text-align: center;
-    font-weight: 500;
+    font-size: 3.8rem;
 }
 
 .AboutDave {
     font-weight: 200;
     width: min(90%, 700px);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 1.7;
 }
 

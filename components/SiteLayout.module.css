@@ -1,5 +1,5 @@
 .Nav {
-    height: 4.6rem;
+    height: var(--nav-height);
 }
 
 .NavContainer {
