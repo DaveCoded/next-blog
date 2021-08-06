@@ -1,41 +1,50 @@
 .PageContainer {
-    width: min(90%, 1230px);
-    margin: 0 auto 16rem;
+    width: min(90%, 1100px);
+    background: #fbf6f6;
+    box-shadow: 0 0 10px 3px rgb(225 163 173);
+    border-radius: 7px;
+    margin: 3rem auto 10rem;
+    padding: 0 2.5rem;
+    padding-bottom: 3rem;
     display: grid;
-    grid-template-columns: 1fr min(60ch, 100%) 1fr;
+    grid-template-columns: 1fr min(72ch, 100%) 1fr;
+}
+
+@media (max-width: 670px) {
+    .PageContainer {
+        width: 100%;
+        border-radius: 0;
+    }
 }
 
 div.TitleContainer {
     text-align: center;
     grid-column: 1/4;
-    width: min(100%, 840px);
+    width: min(100%, 900px);
     margin: 0 auto 4rem;
 }
 
 .Title {
-    margin: 5rem 0 1.2rem;
+    margin: 5rem 0 1rem;
+    padding: 0 2rem;
 }
 
 .Subtitle {
-    font-family: 'Poppins', sans-serif;
-    max-width: 600px;
-    font-size: 1.4rem;
-    font-weight: 300;
+    font-family: 'century', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
     font-style: italic;
     line-height: 1.4;
-    margin: 0 auto 0.8rem;
-}
-
-.DateContainer {
-    margin-bottom: 2.6rem;
+    margin: 0 auto 0rem;
+    text-transform: none;
 }
 
 .Date {
-    color: var(--off-black);
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
+    color: var(--black);
+    font-family: 'Oswald';
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
     margin-bottom: 2rem;
 }
 
@@ -45,7 +54,6 @@ div.TitleContainer {
     height: 32px;
     line-height: 30px;
     font-size: 0.8rem;
-    font-family: 'Baloo 2';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;

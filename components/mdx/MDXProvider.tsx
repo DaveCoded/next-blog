@@ -1,21 +1,10 @@
 import { BlockquoteHTMLAttributes, HTMLAttributes } from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import Image, { ImageProps } from 'next/image'
+// import Image, { ImageProps } from 'next/image'
 import CodeBlock from './CodeBlock'
 
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
-        h4: (props: HTMLAttributes<HTMLHeadingElement>) => (
-            <h4
-                {...props}
-                style={{
-                    fontSize: '1.84rem',
-                    lineHeight: 1.25,
-                    fontWeight: 600,
-                    color: 'var(--heading-lavender)'
-                }}
-            />
-        ),
         p: (props: HTMLAttributes<HTMLParagraphElement>) => (
             <p {...props} className="BlogPost__Paragraph" />
         ),
@@ -49,7 +38,12 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
         //         <Image {...props} />
         //     </div>
         // ),
-        pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />
+        pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
+        a: (props: HTMLAttributes<HTMLAnchorElement>) => (
+            <a style={{ color: 'hsl(327deg 100% 60%)' }} {...props}>
+                {props.children}
+            </a>
+        )
     }
     return (
         <MDXProvider components={state}>

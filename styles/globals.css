@@ -1,23 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@font-face {
+    font-family: 'century';
+    src: url('/fonts/century-schoolbook/century-reg.woff2') format('woff2'),
+        url('/fonts/century-schoolbook/century-reg.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'century';
+    src: url('/fonts/century-schoolbook/century-italic.woff2') format('woff2'),
+        url('/fonts/century-schoolbook/century-italic.woff') format('woff');
+    font-style: italic;
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'century';
+    src: url('/fonts/century-schoolbook/century-bold.woff2') format('woff2'),
+        url('/fonts/century-schoolbook/century-bold.woff') format('woff');
+    font-style: normal;
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'century';
+    src: url('/fonts/century-schoolbook/century-boldItalic.woff2') format('woff2'),
+        url('/fonts/century-schoolbook/century-boldItalic.woff') format('woff');
+    font-style: italic;
+    font-weight: 700;
+}
 
 :root {
     /* Colors */
-    --off-white: #f1f1f1;
-    --off-black: #2d3742;
-    --heading-black: #473f4f;
-    --heading-grey: #49434f;
-    --heading-lavender: #5f4e6e;
-    --purple: #6c4e8c;
-    --accent-red: #e9223b;
-    --accent-orange: #ba423b;
-    --accent-pink: #af2d4c;
-    --accent-yellow: #e9b219;
-    --accent-blue: #73b1de;
-    --accent-green: #3a9c75;
+    --black: hsl(256deg 72% 12%);
 
     /* Code block styles */
     --prism-theme-white: #fff;
-    --prism-theme-background: #282c34;
+    --prism-theme-background: hsl(222deg 51% 13%);
     --prism-theme-char: #d8dee9;
     --prism-theme-comment: #b2b2b2;
     --prism-theme-keyword: #c5a5c5;
@@ -36,6 +53,7 @@
 
     /* Measurements */
     --highlight-before-width: 0.43em;
+    --nav-height: 5.6rem;
 }
 
 * {
@@ -68,9 +86,10 @@ html,
 body {
     padding: 0;
     margin: 0;
-    color: var(--off-black);
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-        Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    color: var(--black);
+    font-family: 'century', serif;
+    background-color: hsl(350, 49%, 81%);
+    background-image: url('/images/cream-dust.png');
 }
 
 strong {
@@ -82,15 +101,17 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'Baloo 2', sans-serif;
-    color: var(--heading-grey);
-    line-height: 1;
+    color: var(--black);
+    line-height: 1.1;
+    font-family: 'Oswald';
+    text-transform: uppercase;
 }
 
 h1 {
-    color: var(--heading-black);
-    font-size: 4.1rem;
-    font-weight: 600;
+    color: var(--black);
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
 }
 
 @media (max-width: 540px) {
@@ -100,33 +121,32 @@ h1 {
 }
 
 h2 {
-    font-size: 3.3rem;
+    font-size: 2.8rem;
     font-weight: 600;
 }
 
 h3 {
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 h2,
 h3,
 h4 {
-    margin: 1.3rem 0 1rem;
+    margin: 1.3rem 0 0.7rem;
 }
 
 p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 400;
-    line-height: 1.9;
-    letter-spacing: 0.1px;
+    line-height: 1.6;
     margin-block-start: 0;
     margin-block-end: 1.5em;
 }
 
 code {
-    background: #e8e8e8;
-    color: var(--off-black);
+    background: hsl(350deg 43% 82% / 0.2);
+    color: var(--black);
     font-family: var(--code-font-family);
     border-radius: 4px;
     white-space: pre-wrap;
@@ -134,7 +154,6 @@ code {
 
 p > code {
     font-size: 1.1rem;
-    white-space: nowrap;
     padding: 0.2rem 0.4rem;
 }
 
@@ -144,7 +163,7 @@ nav a {
 }
 
 .external-link {
-    color: #1f8ddd;
+    color: hsl(327deg 100% 60%);
     text-decoration: underline;
 }
 
@@ -155,16 +174,20 @@ nav a {
 }
 
 blockquote.blockquote {
-    margin: 2.6rem auto;
+    margin: 4rem auto;
     max-width: 600px;
     padding: 0 2rem;
     border-left: 5px solid var(--purple);
 }
 
 .blockquote > p {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-style: italic;
+    padding: 0 2rem;
+    border-left: 10px solid rgb(223 119 136 / 26%);
+    border-radius: 20px;
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.4;
     margin-bottom: 0;
 }
 
@@ -174,16 +197,15 @@ ol {
 
 /* DROPCAP STUFF */
 .dropcap {
-    font-family: 'Baloo 2';
     background: linear-gradient(325deg, var(--purple), #914bd7);
-    color: white;
     border-radius: 4px;
     float: left;
-    font-size: 8rem;
+    font-size: 6.8rem;
     font-weight: 600;
     line-height: 1;
-    margin: 0.55rem 1.1rem 0 0;
-    padding: 1.4rem 0.9rem 0.5rem 0.9rem;
+    margin: 0 0.5rem 0 0;
+    padding: 1.6rem 0.7rem 0 0;
+    text-shadow: 4px 4px #d894a0;
 }
 .dropcap:before,
 .dropcap:after {
@@ -382,9 +404,5 @@ h3::selection,
 h4::selection,
 h5::selection {
     background: none;
-    text-shadow: 4px 4px #07c5bc;
-}
-
-.dropcap::selection {
-    text-shadow: 4px 4px #07c5bc;
+    text-shadow: 4px 4px #d894a0;
 }
