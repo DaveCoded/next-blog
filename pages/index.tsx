@@ -45,9 +45,6 @@ export default function Home({ allPostsData }: Props) {
                             <div className={styles.Excerpt}>{excerpt}</div>
                             <span className={styles.Date}>{date}</span>
                         </div>
-                        {i !== allPostsData.length - 1 ? (
-                            <hr className={styles.HorizontalRule} />
-                        ) : null}
                     </li>
                 ))}
             </ul>

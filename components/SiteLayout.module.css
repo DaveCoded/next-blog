@@ -3,6 +3,7 @@
 }
 
 .NavContainer {
+    font-family: 'Oswald';
     width: min(90%, 1000px);
     display: flex;
     align-items: center;
@@ -12,8 +13,9 @@
 
 .Logo {
     font-size: 3.9rem;
+    font-weight: 700;
     height: 100%;
-    line-height: 1.26;
+    line-height: 1.5;
 }
 
 .UnorderedList {
@@ -29,6 +31,7 @@
 .UnorderedList a {
     list-style: none;
     font-size: 1.8rem;
+    font-weight: 300;
     margin-right: 2rem;
 }
 

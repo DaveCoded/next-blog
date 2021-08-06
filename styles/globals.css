@@ -53,7 +53,7 @@
 
     /* Measurements */
     --highlight-before-width: 0.43em;
-    --nav-height: 4.6rem;
+    --nav-height: 5.6rem;
 }
 
 * {
@@ -145,7 +145,7 @@ p {
 }
 
 code {
-    background: hsl(0deg 0% 100% / 30%);
+    background: hsl(350deg 43% 82% / 0.2);
     color: var(--black);
     font-family: var(--code-font-family);
     border-radius: 4px;
@@ -154,7 +154,6 @@ code {
 
 p > code {
     font-size: 1.1rem;
-    white-space: nowrap;
     padding: 0.2rem 0.4rem;
 }
 
@@ -199,7 +198,6 @@ ol {
 /* DROPCAP STUFF */
 .dropcap {
     background: linear-gradient(325deg, var(--purple), #914bd7);
-    color: white;
     border-radius: 4px;
     float: left;
     font-size: 6.8rem;
