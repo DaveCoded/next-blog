@@ -2,32 +2,37 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-type Data = {
-    [key: string]: any
+export type PostDataType = {
+    title: string
+    subtitle?: string
+    excerpt?: string
+    description: string
+    date: string
+    status: 'publish' | 'draft'
 }
 
-export const shouldNotPublish = (data: Data) =>
+export const shouldNotPublish = (data: PostDataType) =>
     process.env.NODE_ENV === 'production' && data.status !== 'publish'
 
-//Finding directory named "posts" from the current working directory of Node.
+// Finding directory named "posts" from the current working directory of Node.
 const postDirectory = path.join(process.cwd(), 'posts')
 
 export const getSortedPosts = () => {
-    //Reads all the files in the post directory
+    // Reads all the files in the post directory
     const fileNames = fs.readdirSync(postDirectory)
     const published: any[] = []
     fileNames.forEach((filename) => {
         const slug = filename.replace('.mdx', '')
         const fullPath = path.join(postDirectory, filename)
 
-        //Extracts contents of the MDX file
+        // Extracts contents of the MDX file
         const fileContents = fs.readFileSync(fullPath, 'utf8')
-        const { data } = matter(fileContents)
+        const data = matter(fileContents).data as PostDataType
         if (shouldNotPublish(data)) {
             return
         }
         const options = { month: 'long', day: 'numeric', year: 'numeric' }
-        const formattedDate = new Date(data.date).toLocaleDateString('en-US', options)
+        const formattedDate = new Date(data.date).toLocaleDateString('en-US', options as any)
         const frontmatter = {
             ...data,
             date: formattedDate
@@ -47,7 +52,7 @@ export const getSortedPosts = () => {
     })
 }
 
-//Get Slugs
+// Get Slugs
 export const getAllPostSlugs = () => {
     const fileNames = fs.readdirSync(postDirectory)
     const published: string[] = []
@@ -55,9 +60,9 @@ export const getAllPostSlugs = () => {
         const slug = filename.replace('.mdx', '')
         const fullPath = path.join(postDirectory, filename)
 
-        //Extracts contents of the MDX file
+        // Extracts contents of the MDX file
         const fileContents = fs.readFileSync(fullPath, 'utf8')
-        const { data } = matter(fileContents)
+        const data = matter(fileContents).data as PostDataType
         if (shouldNotPublish(data)) {
             return
         }
@@ -74,7 +79,7 @@ export const getAllPostSlugs = () => {
     })
 }
 
-//Get Post based on Slug
+// Get Post based on Slug
 export const getPostdata = async (slug: string) => {
     const fullPath = path.join(postDirectory, `${slug}.mdx`)
     const postContent = fs.readFileSync(fullPath, 'utf8')
