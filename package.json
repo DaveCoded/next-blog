@@ -8,7 +8,7 @@
         "build": "next build",
         "postbuild": "node ./scripts/build-search.js",
         "start": "next start",
-        "export": "npm run build && next export"
+        "export": "npm run build && next export && npm run postbuild"
     },
     "husky": {
         "hooks": {
