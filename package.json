@@ -6,6 +6,7 @@
         "lint": "eslint --ext .ts,.tsx",
         "dev": "next dev",
         "build": "next build",
+        "postbuild": "node ./scripts/build-search.js",
         "start": "next start",
         "export": "npm run build && next export"
     },
