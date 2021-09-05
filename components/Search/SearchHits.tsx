@@ -12,10 +12,12 @@ function Hits({ searchState, searchResults }: any) {
             )}
             {searchResults?.hits.length > 0 && validQuery && (
                 <ol className={styles.HitList}>
-                    {searchResults.hits.map((hit: any, idx: number) => (
+                    {searchResults.hits.map((hit: any) => (
                         <li key={hit.objectID} className={styles.SearchHit}>
                             <Link href={`/blog/${hit.slug}`}>
-                                <h3 className={styles.Title}>{hit.title}</h3>
+                                <a style={{ textDecoration: 'none' }}>
+                                    <h3 className={styles.Title}>{hit.title}</h3>
+                                </a>
                             </Link>
                         </li>
                     ))}
