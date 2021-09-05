@@ -16,3 +16,20 @@
 .Post + .Post {
     margin-top: 24px;
 }
+
+.PostTitle {
+    margin: 0;
+    margin-bottom: 0.7rem;
+    transition: all 0.15s ease-in;
+}
+
+.PostTitle:hover {
+    color: #290168;
+    text-shadow: 2px 2px #ffdbe2;
+}
+
+.Date {
+    font-size: 1.1rem;
+    color: #383245;
+    font-style: italic;
+}

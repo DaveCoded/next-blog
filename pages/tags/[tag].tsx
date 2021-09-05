@@ -26,16 +26,23 @@ export default function Posts({ tag, frontMatterAndSlug }: Props) {
             </Head>
             <div className={styles.PageContainer}>
                 <h1 className={styles.TagHeading}>{tagName} posts</h1>
-                {frontMatterAndSlug.map((post, i) => (
-                    <div key={i} className={styles.Post}>
-                        <Link href={`/blog/${post.slug}`}>
-                            <a>
-                                <h3>{post.title}</h3>
-                            </a>
-                        </Link>
-                        <p>{post.date}</p>
-                    </div>
-                ))}
+                {frontMatterAndSlug.map((post, i) => {
+                    const options = { month: 'long', day: 'numeric', year: 'numeric' }
+                    const formattedDate = new Date(post.date).toLocaleDateString(
+                        'en-US',
+                        options as any
+                    )
+                    return (
+                        <div key={i} className={styles.Post}>
+                            <Link href={`/blog/${post.slug}`}>
+                                <a>
+                                    <h3 className={styles.PostTitle}>{post.title}</h3>
+                                </a>
+                            </Link>
+                            <div className={styles.Date}>{formattedDate}</div>
+                        </div>
+                    )
+                })}
             </div>
         </>
     )

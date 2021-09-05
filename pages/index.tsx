@@ -34,7 +34,7 @@ export default function Home({ allPostsData, tags }: Props) {
             </Head>
             <Search />
             <div className={styles.TagsContainer}>
-                <span>Search by tag:</span>
+                <span style={{ fontSize: '1.2rem', marginRight: 4 }}>Search by tag:</span>
                 <ul className={styles.TagsList}>
                     {tags.map((tag) => (
                         <li key={tag} className={styles.Tag}>
