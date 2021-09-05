@@ -1,0 +1,18 @@
+.PageContainer {
+    width: min(90%, 640px);
+    margin: 0 auto;
+}
+
+.TagHeading {
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.Post {
+    padding: 10px 20px;
+    border: 2px solid var(--black);
+}
+
+.Post + .Post {
+    margin-top: 24px;
+}

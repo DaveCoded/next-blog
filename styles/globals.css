@@ -157,9 +157,13 @@ p > code {
     padding: 0.2rem 0.4rem;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 nav a {
     color: inherit;
-    text-decoration: none;
 }
 
 .external-link {

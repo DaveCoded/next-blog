@@ -62,3 +62,33 @@ div.TitleContainer {
 .PageContainer > * {
     grid-column: 2 / auto;
 }
+
+.TagsSeparator {
+    border: 1px solid var(--black);
+    width: min(100%, 500px);
+    margin: 36px auto;
+}
+
+.TagList {
+    margin-top: 16px;
+    padding: 0;
+}
+
+.Tag {
+    border: 2px solid var(--black);
+    padding: 2px 8px;
+    list-style: none;
+    display: inline;
+}
+
+.Tag:hover {
+    background-color: hsl(350, 49%, 81%);
+}
+
+.TagLink {
+    color: var(--black);
+}
+
+.TagLink + .TagLink {
+    margin-left: 8px;
+}
