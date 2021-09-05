@@ -33,8 +33,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# TODO: create script to fetch fonts from somewhere on build
-public/fonts/
-
 .vscode/
 .env
