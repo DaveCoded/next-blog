@@ -3,6 +3,29 @@
     margin: 0 auto;
 }
 
+.TagsContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.TagsList {
+    padding: 0;
+}
+
+.Tag {
+    border: 2px solid var(--black);
+    margin-left: 8px;
+    list-style: none;
+    display: inline;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.Tag:hover {
+    background-color: hsl(0deg 0% 100% / 55%);
+}
+
 .PostsList {
     margin: 0;
     padding: 4rem 0 5rem;
@@ -12,10 +35,6 @@
     margin-bottom: 3.5rem;
     border: 2px solid var(--black);
     padding: 1rem 2rem;
-}
-
-.Post a {
-    text-decoration: none;
 }
 
 .Heading {

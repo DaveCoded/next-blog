@@ -8,6 +8,7 @@ import AllComponents from '../../components/mdx/AllComponents'
 import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { PostData } from '../'
 import { MdxRemote } from 'next-mdx-remote/types'
+import Link from 'next/link'
 import styles from './slug.module.css'
 // import TableOfContents from '../../components/TableOfContents'
 
@@ -22,24 +23,38 @@ const components = AllComponents
 export default function Posts({ source, frontMatter, headings }: Props) {
     const content = hydrate(source, { components })
     const options = { month: 'long', day: 'numeric', year: 'numeric' } as any
-    const formattedDate = new Date(frontMatter.date).toLocaleDateString('en-US', options)
+    const { title, description, subtitle, date, tags } = frontMatter
+    const formattedDate = new Date(date).toLocaleDateString('en-US', options)
+
     return (
         <>
             <Head>
-                <title>Dave Bernhard's blog | {frontMatter.title}</title>
-                <meta name="description" content={frontMatter.description}></meta>
+                <title>Dave Bernhard's blog | {title}</title>
+                <meta name="description" content={description}></meta>
             </Head>
             <div className={styles.PageContainer}>
                 <div className={styles.TitleContainer}>
-                    <h1 className={styles.Title}>{frontMatter.title}</h1>
-                    {frontMatter.subtitle ? (
-                        <h2 className={`${styles.Subtitle} slugSubtitle`}>
-                            {frontMatter.subtitle}
-                        </h2>
+                    <h1 className={styles.Title}>{title}</h1>
+                    {subtitle ? (
+                        <h2 className={`${styles.Subtitle} slugSubtitle`}>{subtitle}</h2>
                     ) : null}
                     <div className={styles.DateContainer}>
                         <span className={styles.Date}>{formattedDate}</span>
                     </div>
+                    {tags && tags.length > 0 ? (
+                        <>
+                            <hr className={styles.TagsSeparator} />
+                            <ul className={styles.TagList}>
+                                {tags.map((tag, i) => (
+                                    <Link key={i} href={`/tags/${tag}`}>
+                                        <a className={styles.TagLink}>
+                                            <li className={styles.Tag}>{tag}</li>
+                                        </a>
+                                    </Link>
+                                ))}
+                            </ul>
+                        </>
+                    ) : null}
                     {/* <div className={styles.Categories}>Some category tags here maybe?</div> */}
                 </div>
                 {/* <TableOfContents headings={headings} /> */}

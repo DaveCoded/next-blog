@@ -157,9 +157,13 @@ p > code {
     padding: 0.2rem 0.4rem;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 nav a {
     color: inherit;
-    text-decoration: none;
 }
 
 .external-link {
@@ -404,5 +408,5 @@ h3::selection,
 h4::selection,
 h5::selection {
     background: none;
-    text-shadow: 4px 4px #d894a0;
+    text-shadow: 3px 3px #d894a0;
 }
