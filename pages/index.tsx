@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Search from '../components/Search/Search'
 import { getSortedPosts } from '../lib/posts'
 import classes from './index.module.css'
 import styles from './index.module.css'
@@ -28,8 +29,9 @@ export default function Home({ allPostsData }: Props) {
                     content="Dave Bernhard's web development blog. Dave is a frontend developer in London; come check out his writing and projects."
                 ></meta>
             </Head>
+            <Search />
             <ul className={styles.PostsList}>
-                {allPostsData.map(({ slug, date, title, excerpt, status }, i: number) => (
+                {allPostsData.map(({ slug, date, title, excerpt, status }) => (
                     <li key={slug} className={styles.ListItem}>
                         <div className={styles.Post}>
                             <Link href="/blog/[slug]" as={`/blog/${slug}`}>
