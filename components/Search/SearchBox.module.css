@@ -1,0 +1,15 @@
+.SearchBox {
+    border: 2px solid var(--black);
+    font-family: 'Ubuntu Mono';
+    font-size: 1.2rem;
+    background-color: hsl(0deg 0% 100% / 55%);
+    padding: 7px 14px;
+}
+
+.SearchBox:focus {
+    outline: none;
+}
+
+.SearchBox::-webkit-search-cancel-button {
+    display: none;
+}

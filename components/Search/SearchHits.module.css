@@ -1,7 +1,28 @@
+.HitList {
+    border: 2px solid var(--black);
+    background-color: hsl(324deg 100% 50% / 6%);
+    padding: 1rem 0;
+}
+
 .SearchHit {
     list-style: none;
+    padding: 7px 14px;
+    cursor: pointer;
+}
+
+.SearchHit:hover {
+    background-color: hsl(0deg 78% 91%);
 }
 
 .Title {
-    cursor: pointer;
+    margin: 0;
+    font-family: 'century';
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.HorizontalRule {
+    margin: 4px 14px;
+    border: 1px solid hsl(0deg 0% 100% / 22%);
 }
