@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { GlobalStyle } from './GlobalStyle'
 import styles from './SiteLayout.module.css'
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 function SiteLayout({ children }: Props) {
     return (
         <>
+            <GlobalStyle />
             <nav className={styles.Nav}>
                 <div className={styles.NavContainer}>
                     <Link href="/">
