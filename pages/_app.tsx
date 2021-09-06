@@ -1,6 +1,5 @@
 import { AppProps } from 'next/app'
 import { motion } from 'framer-motion'
-import '../styles/globals.css'
 import MDXProvider from '../components/mdx/MDXProvider'
 import SiteLayout from '../components/SiteLayout'
 
