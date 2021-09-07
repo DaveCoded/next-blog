@@ -3,9 +3,9 @@ import { GetStaticProps } from 'next'
 import { getPostSlugsForTag, getAllTags } from '../../lib/tags'
 import { getPostdata } from '../../lib/posts'
 import matter from 'gray-matter'
-import styles from './tag.module.css'
 import { PostData } from '..'
 import Link from 'next/link'
+import styled from 'styled-components'
 
 interface Props {
     tag: string
@@ -24,8 +24,10 @@ export default function Posts({ tag, frontMatterAndSlug }: Props) {
                     content={`A collection of all posts with the ${tag} tag`}
                 ></meta>
             </Head>
-            <div className={styles.PageContainer}>
-                <h1 className={styles.TagHeading}>{tagName} posts</h1>
+
+            <PageContainer>
+                <H1>{tagName} posts</H1>
+
                 {frontMatterAndSlug.map((post, i) => {
                     const options = { month: 'long', day: 'numeric', year: 'numeric' }
                     const formattedDate = new Date(post.date).toLocaleDateString(
@@ -33,20 +35,56 @@ export default function Posts({ tag, frontMatterAndSlug }: Props) {
                         options as any
                     )
                     return (
-                        <div key={i} className={styles.Post}>
+                        <Post key={i}>
                             <Link href={`/blog/${post.slug}`}>
                                 <a>
-                                    <h3 className={styles.PostTitle}>{post.title}</h3>
+                                    <H3>{post.title}</H3>
                                 </a>
                             </Link>
-                            <div className={styles.Date}>{formattedDate}</div>
-                        </div>
+                            <StyledDate>{formattedDate}</StyledDate>
+                        </Post>
                     )
                 })}
-            </div>
+            </PageContainer>
         </>
     )
 }
+
+const PageContainer = styled.div`
+    width: min(90%, 640px);
+    margin: 0 auto;
+`
+
+const H1 = styled.h1`
+    text-transform: none;
+    letter-spacing: normal;
+`
+
+const H3 = styled.h3`
+    margin: 0;
+    margin-bottom: 0.7rem;
+    transition: all 0.15s ease-in;
+
+    &:hover {
+        color: #290168;
+        text-shadow: 2px 2px #ffdbe2;
+    }
+`
+
+const Post = styled.div`
+    padding: 10px 20px;
+    border: 2px solid var(--black);
+
+    & + & {
+        margin-top: 24px;
+    }
+`
+
+const StyledDate = styled.div`
+    font-size: 1.1rem;
+    color: #383245;
+    font-style: italic;
+`
 
 export async function getStaticPaths() {
     const paths = getAllTags()

@@ -38,7 +38,7 @@ export default function Home({ allPostsData, tags }: Props) {
                 <ul className={styles.TagsList}>
                     {tags.map((tag) => (
                         <li key={tag} className={styles.Tag}>
-                            <Link href={`/tags/${tag}`}>
+                            <Link href={`/tag/${tag}`}>
                                 <a>{tag}</a>
                             </Link>
                         </li>

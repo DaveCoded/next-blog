@@ -45,7 +45,7 @@ export default function Posts({ source, frontMatter }: Props) {
                             <HR />
                             <UL>
                                 {tags.map((tag, i) => (
-                                    <Link key={i} href={`/tags/${tag}`}>
+                                    <Link key={i} href={`/tag/${tag}`}>
                                         <A>
                                             <LI>{tag}</LI>
                                         </A>
