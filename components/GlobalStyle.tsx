@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         /* Colors */
         --black: hsl(256deg 72% 12%);
+        --purple: purple;
 
         /* Code block styles */
         --prism-theme-white: #fff;
@@ -133,15 +134,17 @@ export const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         color: inherit;
+        cursor: pointer;
     }
 
-    nav a {
-        color: inherit;
+    ul {
+        padding: 0;
     }
 
     .external-link {
         color: hsl(327deg 100% 60%);
         text-decoration: underline;
+        font-weight: inherit;
     }
 
     .external-link:hover,
@@ -150,65 +153,8 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--purple);
     }
 
-    blockquote.blockquote {
-        margin: 4rem auto;
-        max-width: 600px;
-        padding: 0 2rem;
-        border-left: 5px solid var(--purple);
-    }
-
-    .blockquote > p {
-        font-size: 1.6rem;
-        font-style: italic;
-        padding: 0 2rem;
-        border-left: 10px solid rgb(223 119 136 / 26%);
-        border-radius: 20px;
-        font-weight: 300;
-        line-height: 1.4;
-        margin-bottom: 0;
-    }
-
     ol {
         padding-inline-start: 1.5rem;
-    }
-
-    /* DROPCAP STUFF */
-    .dropcap {
-        background: linear-gradient(325deg, var(--purple), #914bd7);
-        border-radius: 4px;
-        float: left;
-        font-size: 6.8rem;
-        font-weight: 600;
-        line-height: 1;
-        margin: 0 0.5rem 0 0;
-        padding: 1.6rem 0.7rem 0 0;
-        text-shadow: 4px 4px #d894a0;
-    }
-    .dropcap:before,
-    .dropcap:after {
-        content: '';
-        display: block;
-    }
-    .dropcap:before {
-        margin-top: -0.2em;
-    }
-    .dropcap:after {
-        margin-bottom: -0.15em;
-    }
-
-    /* https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html */
-    .sr-only:not(:focus):not(:active) {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
-    }
-
-    .BlogPost__Paragraph {
-        min-width: 90%;
     }
 
     /* ======================================================= */
@@ -376,7 +322,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1::selection,
-    h2:not(.slugSubtitle)::selection,
+    h2::selection,
     h3::selection,
     h4::selection,
     h5::selection {

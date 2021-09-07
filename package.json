@@ -6,7 +6,7 @@
         "lint": "eslint --ext .ts,.tsx",
         "dev": "next dev",
         "build": "next build",
-        "postbuild": "node ./scripts/build-search.js",
+        "postbuild": "ts-node ./scripts/build-search.ts",
         "start": "next start",
         "export": "npm run build && next export && npm run postbuild"
     },
@@ -50,6 +50,7 @@
         "prettier": "^2.2.1",
         "pretty-quick": "^3.1.0",
         "rehype": "^11.0.0",
+        "ts-node": "^10.2.1",
         "typescript": "^4.1.3"
     }
 }

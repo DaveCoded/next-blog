@@ -1,8 +1,6 @@
-import MyBackground from './MyBackground'
-import Dropcap from './Dropcap'
+import Dropcap from './custom/Dropcap'
 
 const AllComponents = {
-    MyBackground,
     Dropcap
 }
 export default AllComponents
