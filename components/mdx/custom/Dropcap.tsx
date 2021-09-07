@@ -21,7 +21,6 @@ const Dropcap = ({ children }: Props) => {
 }
 
 const Illuminated = styled.span`
-    background: linear-gradient(325deg, var(--purple), #914bd7);
     border-radius: 4px;
     float: left;
     font-size: 6.8rem;

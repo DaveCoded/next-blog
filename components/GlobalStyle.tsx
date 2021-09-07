@@ -137,8 +137,8 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
-    nav a {
-        color: inherit;
+    ul {
+        padding: 0;
     }
 
     .external-link {
