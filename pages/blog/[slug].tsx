@@ -9,18 +9,18 @@ import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { PostData } from '../'
 import { MdxRemote } from 'next-mdx-remote/types'
 import Link from 'next/link'
-import styles from './slug.module.css'
+import styled from 'styled-components'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
     source: MdxRemote.Source
     frontMatter: PostData
-    headings: { text: string; level: number }[]
+    headings?: { text: string; level: number }[]
 }
 
 const components = AllComponents
 
-export default function Posts({ source, frontMatter, headings }: Props) {
+export default function Posts({ source, frontMatter }: Props) {
     const content = hydrate(source, { components })
     const options = { month: 'long', day: 'numeric', year: 'numeric' } as any
     const { title, description, subtitle, date, tags } = frontMatter
@@ -32,57 +32,35 @@ export default function Posts({ source, frontMatter, headings }: Props) {
                 <title>Dave Bernhard's blog | {title}</title>
                 <meta name="description" content={description}></meta>
             </Head>
-            <div className={styles.PageContainer}>
-                <div className={styles.TitleContainer}>
-                    <h1 className={styles.Title}>{title}</h1>
-                    {subtitle ? (
-                        <h2 className={`${styles.Subtitle} slugSubtitle`}>{subtitle}</h2>
-                    ) : null}
-                    <div className={styles.DateContainer}>
-                        <span className={styles.Date}>{formattedDate}</span>
+
+            <PageContainer>
+                <TitleContainer>
+                    <H1>{title}</H1>
+                    {subtitle && <H2>{subtitle}</H2>}
+                    <div>
+                        <StyledDate>{formattedDate}</StyledDate>
                     </div>
                     {tags && tags.length > 0 ? (
                         <>
-                            <hr className={styles.TagsSeparator} />
-                            <ul className={styles.TagList}>
+                            <HR />
+                            <UL>
                                 {tags.map((tag, i) => (
                                     <Link key={i} href={`/tags/${tag}`}>
-                                        <a className={styles.TagLink}>
-                                            <li className={styles.Tag}>{tag}</li>
-                                        </a>
+                                        <A>
+                                            <LI>{tag}</LI>
+                                        </A>
                                     </Link>
                                 ))}
-                            </ul>
+                            </UL>
                         </>
                     ) : null}
                     {/* <div className={styles.Categories}>Some category tags here maybe?</div> */}
-                </div>
+                </TitleContainer>
                 {/* <TableOfContents headings={headings} /> */}
                 {content}
-            </div>
+            </PageContainer>
         </>
     )
-}
-
-export async function getHeadings(source: any) {
-    // todo: figure out how this works (console.logs?) then extend to 4th and 5th level headings!
-    // Get each line individually, and filter out anything that
-    // isn't a heading.
-    const headingLines = source.split('\n').filter((line: any) => {
-        return line.match(/^###*\s/)
-    })
-
-    // Transform the string '## Some text' into an object
-    // with the shape '{ text: 'Some text', level: 2 }'
-    return headingLines.map((raw: string) => {
-        const text = raw.replace(/^###*\s/, '')
-        // I only care about h2 and h3.
-        // If I wanted more levels, I'd need to count the
-        // number of #s.
-        const level = raw.match(/#/g)?.length
-
-        return { text, level }
-    })
 }
 
 export async function getStaticPaths() {
@@ -96,7 +74,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const postContent = await getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
-    // todo: figure out if getting the headings is a good idea or not!
+    // todo: figure out if getting the headings is a good idea or not
     // const headings = await getHeadings(content)
     const mdxSource = await renderToString(content, {
         components,
@@ -113,3 +91,85 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
     }
 }
+
+const PageContainer = styled.div`
+    width: min(90%, 1100px);
+    background: #fbf6f6;
+    box-shadow: 0 0 10px 3px rgb(225 163 173);
+    border-radius: 7px;
+    margin: 3rem auto 10rem;
+    padding: 0 2.5rem;
+    padding-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr min(72ch, 100%) 1fr;
+
+    & > * {
+        grid-column: 2 / auto;
+    }
+
+    @media (max-width: 670px) {
+        width: 100%;
+        border-radius: 0;
+    }
+`
+
+const TitleContainer = styled.div`
+    text-align: center;
+    grid-column: 1/4;
+    width: min(100%, 900px);
+    margin: 0 auto 4rem;
+`
+
+const H1 = styled.h1`
+    margin: 5rem 0 1rem;
+    padding: 0 2rem;
+`
+
+const H2 = styled.h2`
+    font-family: 'century', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    margin: 0 auto 0rem;
+    text-transform: none;
+`
+
+const StyledDate = styled.span`
+    color: var(--black);
+    font-family: 'Oswald';
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    margin-bottom: 2rem;
+`
+
+const HR = styled.hr`
+    border: 1px solid var(--black);
+    width: min(100%, 500px);
+    margin: 36px auto;
+`
+
+const UL = styled.ul`
+    margin-top: 16px;
+    padding: 0;
+`
+
+const A = styled.a`
+    color: var(--black);
+
+    & + & {
+        margin-left: 8px;
+    }
+`
+
+const LI = styled.li`
+    border: 2px solid var(--black);
+    padding: 2px 8px;
+    list-style: none;
+    display: inline;
+
+    &:hover {
+        background-color: hsl(350, 49%, 81%);
+    }
+`

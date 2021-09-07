@@ -133,6 +133,7 @@ export const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         color: inherit;
+        cursor: pointer;
     }
 
     nav a {
@@ -337,7 +338,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1::selection,
-    h2:not(.slugSubtitle)::selection,
+    h2::selection,
     h3::selection,
     h4::selection,
     h5::selection {
