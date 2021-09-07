@@ -11,7 +11,7 @@ function Hits({ searchState, searchResults }: any) {
 
     return (
         <>
-            {noHits && <p>Aw snap! No search results were found.</p>}
+            {noHits && <p>I'm sorry. I don't write that kind of thing.</p>}
             {showHits && (
                 <OL>
                     {searchResults.hits.map((hit: any) => (
