@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { motion } from 'framer-motion'
 import MDXProvider from '../components/mdx/MDXProvider'
-import SiteLayout from '../components/SiteLayout'
+import SiteLayout from '../components/Layout/SiteLayout'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     return (
