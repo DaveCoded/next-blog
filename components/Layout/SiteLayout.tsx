@@ -17,7 +17,7 @@ function SiteLayout({ children }: Props) {
                     </Link>
                     <UL>
                         <li>
-                            <Link href="/">
+                            <Link href="/blog">
                                 <a>blog</a>
                             </Link>
                         </li>

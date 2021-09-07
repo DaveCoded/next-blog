@@ -1,11 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Search from '../components/Search/Search'
-import { getSortedPosts } from '../lib/posts'
-import { getAllTags } from '../lib/tags'
-import classes from './index.module.css'
-import styles from './index.module.css'
+import Search from '../../components/Search/Search'
+import { getSortedPosts } from '../../lib/posts'
+import { getAllTags } from '../../lib/tags'
 
 export interface PostData {
     slug: string
@@ -126,8 +124,7 @@ const StyledDate = styled.span`
     font-style: italic;
 `
 
-// todo: change to paragraph?
-const Excerpt = styled.div`
+const Excerpt = styled.p`
     font-size: 1.4rem;
     margin-bottom: 0.4rem;
 `

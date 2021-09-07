@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import { getPostSlugsForTag, getAllTags } from '../../lib/tags'
 import { getPostdata } from '../../lib/posts'
 import matter from 'gray-matter'
-import { PostData } from '..'
+import { PostData } from '../blog'
 import Link from 'next/link'
 import styled from 'styled-components'
 

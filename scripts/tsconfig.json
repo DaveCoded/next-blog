@@ -1,7 +1,0 @@
-{
-    "extends": "../tsconfig-base.json",
-    "compilerOptions": {
-        "module": "CommonJS"
-    },
-    "include": ["scripts/build-search.ts"]
-}

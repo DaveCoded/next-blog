@@ -62,8 +62,6 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         color: var(--black);
         font-family: 'century', serif;
-        background-color: hsl(350, 49%, 81%);
-        background-image: url('/images/cream-dust.png');
     }
 
     strong {
