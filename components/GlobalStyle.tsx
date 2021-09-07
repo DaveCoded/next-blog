@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         /* Colors */
         --black: hsl(256deg 72% 12%);
+        --purple: purple;
 
         /* Code block styles */
         --prism-theme-white: #fff;
@@ -143,6 +144,7 @@ export const GlobalStyle = createGlobalStyle`
     .external-link {
         color: hsl(327deg 100% 60%);
         text-decoration: underline;
+        font-weight: inherit;
     }
 
     .external-link:hover,
