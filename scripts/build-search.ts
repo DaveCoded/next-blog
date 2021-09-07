@@ -1,9 +1,8 @@
 import dotenv from 'dotenv'
 import algoliasearch from 'algoliasearch'
 import { getSortedPosts } from '../lib/posts'
-import { PostData } from '../pages'
 
-function transformPostsToSearchObjects(posts: (PostData & { content: string })[]) {
+function transformPostsToSearchObjects(posts: any[]) {
     const transformed = posts.map((post) => {
         const postId = post.title.toLowerCase().replace(/\s/g, '-')
 
@@ -31,10 +30,16 @@ function transformPostsToSearchObjects(posts: (PostData & { content: string })[]
         const appID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string
         const adminKey = process.env.ALGOLIA_SEARCH_ADMIN_KEY as string
 
+        // Initialize the client with your environment variables
         const client = algoliasearch(appID, adminKey)
+
+        // Initialize the index with your index name
         const index = client.initIndex('dev-blog')
+
+        // Save the objects!
         const algoliaResponse = await index.saveObjects(transformed)
 
+        // Check the output of the response in the console
         console.log(
             `🎉 Sucessfully added ${
                 algoliaResponse.objectIDs.length

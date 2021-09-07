@@ -22,7 +22,7 @@ export const getSortedPosts = () => {
 
         // Extracts contents of the MDX file
         const fileContents = fs.readFileSync(fullPath, 'utf8')
-        const { data } = matter(fileContents)
+        const { data, content } = matter(fileContents)
         if (shouldNotPublish(data)) {
             return
         }
@@ -34,6 +34,7 @@ export const getSortedPosts = () => {
         }
         published.push({
             slug,
+            content,
             ...frontmatter
         })
     })
