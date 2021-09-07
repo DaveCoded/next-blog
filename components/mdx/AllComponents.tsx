@@ -1,4 +1,4 @@
-import Dropcap from './Dropcap'
+import Dropcap from './custom/Dropcap'
 
 const AllComponents = {
     Dropcap

@@ -172,45 +172,6 @@ export const GlobalStyle = createGlobalStyle`
         padding-inline-start: 1.5rem;
     }
 
-    /* DROPCAP STUFF */
-    .dropcap {
-        background: linear-gradient(325deg, var(--purple), #914bd7);
-        border-radius: 4px;
-        float: left;
-        font-size: 6.8rem;
-        font-weight: 600;
-        line-height: 1;
-        margin: 0 0.5rem 0 0;
-        padding: 1.6rem 0.7rem 0 0;
-        text-shadow: 4px 4px #d894a0;
-    }
-    .dropcap:before,
-    .dropcap:after {
-        content: '';
-        display: block;
-    }
-    .dropcap:before {
-        margin-top: -0.2em;
-    }
-    .dropcap:after {
-        margin-bottom: -0.15em;
-    }
-
-    /* https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html */
-    .sr-only:not(:focus):not(:active) {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
-    }
-
-    .BlogPost__Paragraph {
-        min-width: 90%;
-    }
-
     /* ======================================================= */
     /* ==================  PRISM THEME  ====================== */
     /* ======================================================= */
