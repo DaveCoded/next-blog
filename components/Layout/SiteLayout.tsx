@@ -53,6 +53,7 @@ const Logo = styled.a`
     font-weight: 700;
     height: 100%;
     line-height: 1.5;
+    cursor: pointer;
 `
 
 const UL = styled.ul`
