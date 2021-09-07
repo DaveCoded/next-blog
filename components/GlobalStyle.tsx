@@ -61,7 +61,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         color: var(--black);
-        font-family: 'century', serif;
+        font-family: 'Open Sans', sans-serif;
     }
 
     strong {
@@ -75,12 +75,10 @@ export const GlobalStyle = createGlobalStyle`
     h5 {
         color: var(--black);
         line-height: 1.1;
-        font-family: 'Oswald';
-        text-transform: uppercase;
     }
 
     h1 {
-        color: var(--black);
+        font-family: 'Yeseva One', cursive;
         font-size: 4rem;
         font-weight: 700;
         letter-spacing: 1.8px;

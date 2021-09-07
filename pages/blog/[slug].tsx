@@ -126,7 +126,6 @@ const H1 = styled.h1`
 `
 
 const H2 = styled.h2`
-    font-family: 'century', serif;
     font-size: 1.7rem;
     font-weight: 400;
     font-style: italic;
@@ -137,7 +136,6 @@ const H2 = styled.h2`
 
 const StyledDate = styled.span`
     color: var(--black);
-    font-family: 'Oswald';
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 0.8px;

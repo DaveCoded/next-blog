@@ -47,7 +47,6 @@ const LI = styled.li`
 
 const H3 = styled.h3`
     margin: 0;
-    font-family: 'century';
     font-size: 1.3rem;
     font-weight: 500;
     text-transform: none;
