@@ -4,7 +4,6 @@ const Blockquote = styled.blockquote`
     margin: 4rem auto;
     max-width: 600px;
     padding: 0 2rem;
-    border-left: 5px solid var(--purple);
 
     p {
         font-size: 1.6rem;
