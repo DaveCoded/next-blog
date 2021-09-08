@@ -32,23 +32,26 @@ export default function Home({ latestPosts }: Props) {
 
             <Header>
                 <h1>Welcome</h1>
-                <p>
+                <Intro>
                     I'm Dave, a frontend developer at Feed. I work on a global, cross-channel
                     marketing solution for ebay. I also write about what I learn in my{' '}
                     <Link href="/blog">
-                        <a>digital garden</a>
+                        <a>blog</a>
                     </Link>
                     .
-                </p>
+                </Intro>
             </Header>
 
             <Section>
                 <div>
-                    <h2>Latest Writings</h2>
+                    <H2>Latest posts</H2>
                     <LatestPosts posts={latestPosts} />
+                    <Link href="/blog">
+                        <a>See all posts</a>
+                    </Link>
                 </div>
                 <div>
-                    <h2>Projects</h2>
+                    <H2>Projects</H2>
                 </div>
             </Section>
         </>
@@ -60,7 +63,7 @@ const Header = styled.header`
     margin-bottom: 3rem;
 
     h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 
     p {
@@ -68,9 +71,19 @@ const Header = styled.header`
     }
 `
 
+const Intro = styled.p`
+    line-height: 1.6;
+`
+
 const Section = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
+`
+
+const H2 = styled.h2`
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1.9rem;
 `
 
 export async function getStaticProps() {

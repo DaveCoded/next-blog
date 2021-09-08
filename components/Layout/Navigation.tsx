@@ -35,7 +35,7 @@ function Navigation() {
 }
 
 const Nav = styled.nav`
-    margin-top: 100px;
+    padding-top: 100px;
     margin-bottom: 6rem;
 `
 

@@ -64,6 +64,13 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Open Sans', sans-serif;
     }
 
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: linear-gradient(0deg, #efefef, #ffffff);
+    }
+
     strong {
         font-weight: 600;
     }
