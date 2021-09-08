@@ -12,7 +12,11 @@ export const shouldNotPublish = (data: Data) =>
 // Finding directory named "posts" from the current working directory of Node.
 const postDirectory = path.join(process.cwd(), 'posts')
 
-export const getSortedPosts = () => {
+type Options = {
+    getContent: boolean
+}
+
+export const getSortedPosts = (options: Partial<Options> = {}) => {
     // Reads all the files in the post directory
     const fileNames = fs.readdirSync(postDirectory)
     const published: any[] = []
@@ -26,15 +30,15 @@ export const getSortedPosts = () => {
         if (shouldNotPublish(data)) {
             return
         }
-        const options = { month: 'long', day: 'numeric', year: 'numeric' }
-        const formattedDate = new Date(data.date).toLocaleDateString('en-US', options as any)
+        const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' }
+        const formattedDate = new Date(data.date).toLocaleDateString('en-US', dateOptions as any)
         const frontmatter = {
             ...data,
             date: formattedDate
         }
         published.push({
             slug,
-            content,
+            ...(options.getContent && { content }),
             ...frontmatter
         })
     })

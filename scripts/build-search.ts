@@ -25,7 +25,7 @@ function transformPostsToSearchObjects(posts: any[]) {
     dotenv.config()
 
     try {
-        const posts = getSortedPosts()
+        const posts = getSortedPosts({ getContent: true })
         const transformed = transformPostsToSearchObjects(posts)
         const appID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string
         const adminKey = process.env.ALGOLIA_SEARCH_ADMIN_KEY as string

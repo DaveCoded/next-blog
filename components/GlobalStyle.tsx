@@ -79,39 +79,6 @@ export const GlobalStyle = createGlobalStyle`
 
     h1 {
         font-family: 'Yeseva One', cursive;
-        font-size: 4rem;
-        font-weight: 700;
-        letter-spacing: 1.8px;
-    }
-
-    @media (max-width: 540px) {
-        h1 {
-            font-size: 2.8rem;
-        }
-    }
-
-    h2 {
-        font-size: 2.8rem;
-        font-weight: 600;
-    }
-
-    h3 {
-        font-size: 2rem;
-        font-weight: 700;
-    }
-
-    h2,
-    h3,
-    h4 {
-        margin: 1.3rem 0 0.7rem;
-    }
-
-    p {
-        font-size: 1.3rem;
-        font-weight: 400;
-        line-height: 1.6;
-        margin-block-start: 0;
-        margin-block-end: 1.5em;
     }
 
     code {
@@ -323,6 +290,6 @@ export const GlobalStyle = createGlobalStyle`
     h4::selection,
     h5::selection {
         background: none;
-        text-shadow: 3px 3px #d894a0;
+        text-shadow: 2px 2px #15cedb;
     }
 `

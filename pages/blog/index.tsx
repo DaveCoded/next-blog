@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Search from '../../components/Search/Search'
+import Search from '../../components/search/Search'
 import { getSortedPosts } from '../../lib/posts'
 import { getAllTags } from '../../lib/tags'
 

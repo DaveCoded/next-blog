@@ -4,60 +4,62 @@ import styled from 'styled-components'
 function Navigation() {
     return (
         <Nav>
-            <Container>
-                <Link href="/">
-                    <Logo>DB</Logo>
-                </Link>
-                <UL>
-                    <li>
-                        <Link href="/blog">
-                            <a>blog</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/about">
-                            <a>about</a>
-                        </Link>
-                    </li>
-                </UL>
-            </Container>
+            <Link href="/">
+                <Logo>Dave Bernhard</Logo>
+            </Link>
+            <Tagline>Web Developer</Tagline>
+            <UL>
+                <li>
+                    <Link href="/blog">
+                        <a>blog</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/about">
+                        <a>about</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/projects">
+                        <a>projects</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/contact">
+                        <a>contact</a>
+                    </Link>
+                </li>
+            </UL>
         </Nav>
     )
 }
 
 const Nav = styled.nav`
-    height: var(--nav-height);
-    margin-bottom: 24px;
-`
-
-const Container = styled.div`
-    width: min(90%, 1000px);
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    height: 100%;
+    margin-top: 100px;
+    margin-bottom: 6rem;
 `
 
 const Logo = styled.a`
-    font-size: 3.9rem;
-    font-weight: 700;
-    height: 100%;
-    line-height: 1.5;
-    cursor: pointer;
+    font-size: 1.4rem;
+`
+
+const Tagline = styled.p`
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 2.4rem;
 `
 
 const UL = styled.ul`
-    margin-left: auto;
     padding: 0;
     display: flex;
+    font-size: 1.2rem;
 
     li {
         list-style: none;
     }
 
     a {
-        list-style: none;
-        font-size: 1.8rem;
         margin-right: 2rem;
     }
 
