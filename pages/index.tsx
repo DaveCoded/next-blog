@@ -44,8 +44,7 @@ export default function Home({ latestPosts }: Props) {
 
             <Section>
                 <div>
-                    <h2>Writings</h2>
-                    {/* todo: LatestPosts component to display list */}
+                    <h2>Latest Writings</h2>
                     <LatestPosts posts={latestPosts} />
                 </div>
                 <div>
@@ -58,6 +57,7 @@ export default function Home({ latestPosts }: Props) {
 
 const Header = styled.header`
     max-width: 30rem;
+    margin-bottom: 3rem;
 
     h1 {
         font-size: 2.2rem;
