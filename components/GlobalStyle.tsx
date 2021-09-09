@@ -38,24 +38,6 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    @media (max-width: 900px) {
-        html {
-            font-size: 90%;
-        }
-    }
-
-    @media (max-width: 700px) {
-        html {
-            font-size: 84%;
-        }
-    }
-
-    @media (max-width: 540px) {
-        html {
-            font-size: 78%;
-        }
-    }
-
     html,
     body {
         padding: 0;

@@ -35,8 +35,12 @@ function Navigation() {
 }
 
 const Nav = styled.nav`
-    padding-top: 100px;
+    padding-top: 6.25rem;
     margin-bottom: 6rem;
+
+    @media (max-width: 700px) {
+        padding-top: 2.4rem;
+    }
 `
 
 const Logo = styled.a`

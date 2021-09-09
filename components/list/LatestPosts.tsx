@@ -34,16 +34,17 @@ export default function LatestPosts({ posts }: Props) {
     )
 }
 
-const Article = styled.article`
+export const Article = styled.article`
     margin-bottom: 2rem;
 `
 
-const H3 = styled.h3`
-    font-weight: 400;
+export const H3 = styled.h3`
+    font-weight: 600;
+    margin-top: 0;
     margin-bottom: 0.6rem;
 `
 
-const Span = styled.span`
+export const Span = styled.span`
     font-size: 0.95rem;
     color: #525252;
 `

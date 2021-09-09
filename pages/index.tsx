@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { getSortedPosts } from '../lib/posts'
 import LatestPosts from '../components/list/LatestPosts'
+import ProjectsList from '../components/list/ProjectsList'
 
 export interface PostData {
     slug: string
@@ -52,6 +53,7 @@ export default function Home({ latestPosts }: Props) {
                 </div>
                 <div>
                     <H2>Projects</H2>
+                    <ProjectsList />
                 </div>
             </Section>
         </>
@@ -76,8 +78,14 @@ const Intro = styled.p`
 `
 
 const Section = styled.section`
+    max-width: 80rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 3rem 5rem;
+
+    @media (max-width: 930px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 const H2 = styled.h2`

@@ -23,6 +23,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 7rem;
+
+    @media (max-width: 700px) {
+        margin: 0 3rem;
+    }
 `
 
 export default SiteLayout
