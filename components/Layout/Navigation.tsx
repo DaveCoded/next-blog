@@ -5,7 +5,7 @@ function Navigation() {
     return (
         <Nav>
             <Link href="/">
-                <Logo>Dave Bernhard</Logo>
+                <Logo tabIndex={0}>Dave Bernhard</Logo>
             </Link>
             <Tagline>Web Developer</Tagline>
             <UL>

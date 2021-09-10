@@ -1,55 +1,80 @@
 import Link from 'next/link'
 import { connectStateResults } from 'react-instantsearch-dom'
 import styled from 'styled-components'
-import styles from './SearchHits.module.css'
 
 function Hits({ searchState, searchResults }: any) {
     const hitLength = searchResults?.hits.length
     const validQuery = searchState.query?.length >= 3
     const noHits = validQuery && hitLength === 0
     const showHits = validQuery && hitLength > 0
+    if (!validQuery) return null
 
     return (
-        <>
-            {noHits && <p>I'm sorry. I don't write that kind of thing.</p>}
+        <Container>
+            {noHits && <P>I'm sorry. I don't write that kind of thing.</P>}
             {showHits && (
                 <OL>
-                    {searchResults.hits.map((hit: any) => (
+                    {searchResults.hits.map((hit: any, i: number) => (
                         <LI key={hit.objectID}>
                             <Link href={`/blog/${hit.slug}`}>
                                 <a style={{ textDecoration: 'none' }}>
-                                    <H3>{hit.title}</H3>
+                                    <Hit>{hit.title}</Hit>
                                 </a>
                             </Link>
                         </LI>
                     ))}
                 </OL>
             )}
-        </>
+        </Container>
     )
 }
 
+const Container = styled.div`
+    margin-top: 1rem;
+    border: 2px solid var(--dark-grey);
+    border-radius: 4px;
+    background-color: var(--light-black);
+`
+
+const P = styled.p`
+    color: var(--purple);
+    font-weight: 700;
+    margin-left: 14px;
+`
+
 const OL = styled.ol`
-    border: 2px solid var(--black);
-    background-color: hsl(324deg 100% 50% / 6%);
-    padding: 1rem 0;
+    padding: 0;
+    margin: 0;
 `
 
 const LI = styled.li`
     list-style: none;
     padding: 7px 14px;
     cursor: pointer;
+    transition: var(--link-hover-transition);
+
+    &:first-of-type {
+        padding-top: 1rem;
+    }
+
+    &:last-of-type {
+        padding-bottom: 1rem;
+    }
 
     &:hover {
-        background-color: hsl(0deg 78% 91%);
+        background-color: var(--black-background);
     }
 `
 
-const H3 = styled.h3`
+const Hit = styled.p`
     margin: 0;
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.2rem;
     text-transform: none;
+    transition: var(--link-hover-transition);
+
+    &:hover {
+        color: var(--teal);
+    }
 `
 
 export default connectStateResults(Hits)

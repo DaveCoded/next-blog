@@ -73,11 +73,12 @@ export const GlobalStyle = createGlobalStyle`
     h3,
     h4,
     h5 {
-        line-height: 1.5;
+        line-height: 1.3;
     }
 
     h1 {
         font-family: 'Yeseva One', cursive;
+        font-size: 2.2rem;
         color: var(--purple)
     }
 

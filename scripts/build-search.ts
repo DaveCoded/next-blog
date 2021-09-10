@@ -14,6 +14,7 @@ function transformPostsToSearchObjects(posts: any[]) {
             description: post.description,
             excerpt: post.excerpt,
             date: post.date,
+            tags: post.tags,
             content: post.content
         }
     })

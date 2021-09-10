@@ -1,9 +1,15 @@
+import { FormEvent } from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
 import styled from 'styled-components'
 
 function SearchBox({ refine }: any) {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        return
+    }
+
     return (
-        <form action="" role="search">
+        <form action="" role="search" onSubmit={handleSubmit}>
             <label htmlFor="algolia_search" hidden>
                 Search posts
             </label>
@@ -20,12 +26,16 @@ function SearchBox({ refine }: any) {
 const Input = styled.input`
     border: none;
     font-size: 1.1rem;
-    background-color: var(--light-grey);
+    background-color: var(--light-black);
+    border: 2px solid var(--light-black);
+    color: var(--off-white);
+    border-radius: 4px;
     padding: 7px 14px;
     width: 21rem;
 
     &:focus {
         outline: none;
+        border-color: var(--purple);
     }
 
     &::-webkit-search-cancel-button {
@@ -33,7 +43,7 @@ const Input = styled.input`
     }
 
     &::placeholder {
-        color: var(--dark-grey);
+        color: var(--light-grey);
     }
 `
 
