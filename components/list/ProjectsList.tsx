@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Article, H3, Span } from './LatestPosts'
+import { Article, H3 } from './LatestPosts'
 
 export default function ProjectsList() {
     return (
@@ -18,12 +18,12 @@ export default function ProjectsList() {
                     A random prompt generator for practising UI design/development and illustration
                 </P>
                 <div>
-                    <Span>
+                    <Tech>
                         Tech used:
                         <UL>
                             <LI>Svelte</LI>,<LI>TypeScript</LI>
                         </UL>
-                    </Span>
+                    </Tech>
                 </div>
             </div>
         </Project>
@@ -50,4 +50,9 @@ const LI = styled.li`
 const UL = styled.ul`
     display: inline-flex;
     margin-top: 0;
+`
+
+const Tech = styled.p`
+    font-weight: 300;
+    color: var(--cool-grey);
 `

@@ -38,23 +38,34 @@ export const Article = styled.article`
     margin-bottom: 2rem;
 `
 
+const Span = styled.span`
+    color: var(--cool-grey);
+`
+
 export const H3 = styled.h3`
     font-weight: 600;
     margin-top: 0;
-    margin-bottom: 0.6rem;
-`
+    margin-bottom: 0.2rem;
+    transition: var(--link-hover-transition);
 
-export const Span = styled.span`
-    font-size: 0.95rem;
-    color: #525252;
+    &:hover {
+        color: var(--purple);
+    }
 `
 
 const LI = styled.li`
     list-style: none;
     font-size: 0.75rem;
-    border: 1px solid var(--black);
+    font-weight: 600;
+    background-color: var(--light-black);
+    color: var(--cool-grey);
     border-radius: 10rem;
-    padding: 4px 10px;
+    padding: 4px 11px;
+    transition: var(--link-hover-transition);
+
+    &:hover {
+        background-color: #363a3c;
+    }
 `
 
 const UL = styled.ul`

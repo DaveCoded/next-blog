@@ -32,69 +32,71 @@ export default function Home({ allPostsData, tags }: Props) {
                 ></meta>
             </Head>
 
-            <PageContainer>
+            <h1>Things what I wrote</h1>
+
+            <SearchContainer>
                 <Search />
-                <TagsContainer>
-                    <SearchLabel>Search by tag:</SearchLabel>
-                    <ul>
-                        {tags.map((tag, i) => (
-                            <Tag key={i}>
-                                <Link href={`/tag/${tag}`}>
-                                    <a>{tag}</a>
-                                </Link>
-                            </Tag>
-                        ))}
-                    </ul>
-                </TagsContainer>
-                <PostsList>
-                    {allPostsData.map(({ slug, date, title, excerpt, status }, i) => (
-                        <li key={i}>
-                            <Post>
-                                <Link href="/blog/[slug]" as={`/blog/${slug}`}>
-                                    <a>
-                                        <H2>
-                                            {title}
-                                            {status === 'draft' ? <Draft> Draft</Draft> : null}
-                                        </H2>
-                                    </a>
-                                </Link>
-                                <Excerpt>{excerpt}</Excerpt>
-                                <StyledDate>{date}</StyledDate>
-                            </Post>
-                        </li>
+                <UL>
+                    {tags.map((tag, i) => (
+                        <Tag key={i}>
+                            <Link href={`/tag/${tag}`}>
+                                <a>{tag}</a>
+                            </Link>
+                        </Tag>
                     ))}
-                </PostsList>
-            </PageContainer>
+                </UL>
+            </SearchContainer>
+            <PostsList>
+                {allPostsData.map(({ slug, date, title, excerpt, status }, i) => (
+                    <li key={i}>
+                        <Post>
+                            <Link href="/blog/[slug]" as={`/blog/${slug}`}>
+                                <a>
+                                    <H2>
+                                        {title}
+                                        {status === 'draft' ? <Draft> Draft</Draft> : null}
+                                    </H2>
+                                </a>
+                            </Link>
+                            <Excerpt>{excerpt}</Excerpt>
+                            <StyledDate>{date}</StyledDate>
+                        </Post>
+                    </li>
+                ))}
+            </PostsList>
         </>
     )
 }
 
-const PageContainer = styled.div`
-    width: min(90%, 640px);
-    margin: 0 auto;
-`
-
-const TagsContainer = styled.div`
+const SearchContainer = styled.div`
     display: flex;
     align-items: center;
-    margin-top: 8px;
 `
 
-const SearchLabel = styled.span`
-    font-size: 1.2rem;
-    margin-right: 4px;
+const UL = styled.ul`
+    margin-left: 1.6rem;
+    display: flex;
 `
 
 const Tag = styled.li`
-    border: 2px solid var(--black);
-    margin-left: 8px;
     list-style: none;
-    display: inline;
-    padding: 4px 8px;
-    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--light-black);
+    color: var(--cool-grey);
+    border-radius: 10rem;
+    padding: 5px 14px;
+    transition: var(--link-hover-transition);
 
     &:hover {
-        background-color: hsl(0deg 0% 100% / 55%);
+        background-color: #363a3c;
+        a {
+            color: inherit;
+        }
+    }
+
+    & + & {
+        margin-left: 12px;
     }
 `
 
@@ -109,8 +111,6 @@ const PostsList = styled.ul`
 
 const Post = styled.div`
     margin-bottom: 3.5rem;
-    border: 2px solid var(--black);
-    padding: 1rem 2rem;
 `
 
 const H2 = styled.h2`

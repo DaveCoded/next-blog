@@ -48,7 +48,7 @@ export default function Home({ latestPosts }: Props) {
                     <H2>Latest posts</H2>
                     <LatestPosts posts={latestPosts} />
                     <Link href="/blog">
-                        <a>See all posts</a>
+                        <AllPostsLink>See all posts &#8594;</AllPostsLink>
                     </Link>
                 </div>
                 <div>
@@ -65,7 +65,7 @@ const Header = styled.header`
     margin-bottom: 3rem;
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
     }
 
     p {
@@ -82,6 +82,7 @@ const Section = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 3rem 5rem;
+    margin-bottom: 5rem;
 
     @media (max-width: 930px) {
         grid-template-columns: 1fr;
@@ -92,6 +93,10 @@ const H2 = styled.h2`
     font-size: 1.8rem;
     margin-top: 0;
     margin-bottom: 1.9rem;
+`
+
+const AllPostsLink = styled.a`
+    color: var(--cool-grey);
 `
 
 export async function getStaticProps() {

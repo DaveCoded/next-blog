@@ -3,8 +3,15 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
     :root {
         /* Colors */
-        --black: hsl(256deg 72% 12%);
-        --purple: purple;
+        --black-background: #191B1F;
+        --light-black: #2a2b2c;
+        --dark-grey: #444549;
+        --mid-grey: #909CA2;
+        --cool-grey: #9dadbc;
+        --light-grey: #DCD6CD;
+        --off-white: #E8E1D8;
+        --purple: #707BD9;
+        --teal: #85D0D7;
 
         /* Code block styles */
         --prism-theme-white: #fff;
@@ -28,6 +35,9 @@ export const GlobalStyle = createGlobalStyle`
         /* Measurements */
         --highlight-before-width: 0.43em;
         --nav-height: 5.6rem;
+
+        /* Transitions */
+        --link-hover-transition: all .2s cubic-bezier(0.65, 0.05, 0.36, 1);
     }
 
     * {
@@ -50,7 +60,8 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        background: linear-gradient(0deg, #efefef, #ffffff);
+        background: var(--black-background);
+        color: var(--off-white);
     }
 
     strong {
@@ -62,12 +73,20 @@ export const GlobalStyle = createGlobalStyle`
     h3,
     h4,
     h5 {
-        color: var(--black);
-        line-height: 1.1;
+        line-height: 1.5;
     }
 
     h1 {
         font-family: 'Yeseva One', cursive;
+        color: var(--purple)
+    }
+
+    h2 {
+        color: var(--off-white);
+    }
+
+    h3 {
+        color: var(--light-grey);
     }
 
     code {
@@ -76,6 +95,10 @@ export const GlobalStyle = createGlobalStyle`
         font-family: var(--code-font-family);
         border-radius: 4px;
         white-space: pre-wrap;
+    }
+
+    p {
+        color: var(--cool-grey)
     }
 
     p > code {
@@ -87,6 +110,11 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: inherit;
         cursor: pointer;
+        transition: var(--link-hover-transition);
+
+        &:hover {
+            color: var(--purple);
+        }
     }
 
     ul {
