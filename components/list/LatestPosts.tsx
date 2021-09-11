@@ -16,7 +16,7 @@ export default function LatestPosts({ posts }: Props) {
                             <H3>{title}</H3>
                         </a>
                     </Link>
-                    <Span>{date}</Span>
+                    <StyledDate>{date}</StyledDate>
                     {tags && tags?.length > 0 && (
                         <UL>
                             {tags.map((tag) => (
@@ -38,7 +38,7 @@ export const Article = styled.article`
     margin-bottom: 2rem;
 `
 
-const Span = styled.span`
+const StyledDate = styled.div`
     color: var(--cool-grey);
 `
 

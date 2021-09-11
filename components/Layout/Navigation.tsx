@@ -38,8 +38,8 @@ function Navigation({ setIsContactopen }: Props) {
 }
 
 const Nav = styled.nav`
-    padding-top: 6.25rem;
-    margin-bottom: 6rem;
+    background: var(--black-background);
+    padding: 6.25rem 7rem 3rem;
 
     @media (max-width: 700px) {
         padding-top: 2.4rem;

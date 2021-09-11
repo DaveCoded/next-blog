@@ -33,32 +33,28 @@ export default function Posts({ source, frontMatter }: Props) {
                 <meta name="description" content={description}></meta>
             </Head>
 
-            <PageContainer>
-                <TitleContainer>
-                    <H1>{title}</H1>
-                    {subtitle && <H2>{subtitle}</H2>}
-                    <div>
-                        <StyledDate>{formattedDate}</StyledDate>
-                    </div>
-                    {tags && tags.length > 0 ? (
-                        <>
-                            <HR />
-                            <UL>
-                                {tags.map((tag, i) => (
-                                    <Link key={i} href={`/tag/${tag}`}>
-                                        <A>
-                                            <LI>{tag}</LI>
-                                        </A>
-                                    </Link>
-                                ))}
-                            </UL>
-                        </>
-                    ) : null}
-                    {/* <div className={styles.Categories}>Some category tags here maybe?</div> */}
-                </TitleContainer>
+            <PostContainer>
+                <h1>{title}</h1>
+                {subtitle && <h2>{subtitle}</h2>}
+                <div>{formattedDate}</div>
+                {tags && tags.length > 0 ? (
+                    <>
+                        <hr />
+                        <ul>
+                            {tags.map((tag, i) => (
+                                <Link key={i} href={`/tag/${tag}`}>
+                                    <a>
+                                        <li>{tag}</li>
+                                    </a>
+                                </Link>
+                            ))}
+                        </ul>
+                    </>
+                ) : null}
+                {/* <div className={styles.Categories}>Some category tags here maybe?</div> */}
                 {/* <TableOfContents headings={headings} /> */}
                 {content}
-            </PageContainer>
+            </PostContainer>
         </>
     )
 }
@@ -92,82 +88,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 }
 
-const PageContainer = styled.div`
-    width: min(90%, 1100px);
-    background: #fbf6f6;
-    box-shadow: 0 0 10px 3px rgb(225 163 173);
-    border-radius: 7px;
-    margin: 3rem auto 10rem;
-    padding: 0 2.5rem;
-    padding-bottom: 3rem;
-    display: grid;
-    grid-template-columns: 1fr min(72ch, 100%) 1fr;
-
-    & > * {
-        grid-column: 2 / auto;
-    }
-
-    @media (max-width: 670px) {
-        width: 100%;
-        border-radius: 0;
-    }
-`
-
-const TitleContainer = styled.div`
-    text-align: center;
-    grid-column: 1/4;
-    width: min(100%, 900px);
-    margin: 0 auto 4rem;
-`
-
-const H1 = styled.h1`
-    margin: 5rem 0 1rem;
-    padding: 0 2rem;
-`
-
-const H2 = styled.h2`
-    font-size: 1.7rem;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.4;
-    margin: 0 auto 0rem;
-    text-transform: none;
-`
-
-const StyledDate = styled.span`
-    color: var(--black);
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    margin-bottom: 2rem;
-`
-
-const HR = styled.hr`
-    border: 1px solid var(--black);
-    width: min(100%, 500px);
-    margin: 36px auto;
-`
-
-const UL = styled.ul`
-    margin-top: 16px;
-    padding: 0;
-`
-
-const A = styled.a`
-    color: var(--black);
-
-    & + & {
-        margin-left: 8px;
-    }
-`
-
-const LI = styled.li`
-    border: 2px solid var(--black);
-    padding: 2px 8px;
-    list-style: none;
-    display: inline;
-
-    &:hover {
-        background-color: hsl(350, 49%, 81%);
-    }
-`
+const PostContainer = styled.div``

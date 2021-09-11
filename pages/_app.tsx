@@ -6,7 +6,7 @@ import SiteLayout from '../components/Layout/SiteLayout'
 function MyApp({ Component, pageProps, router }: AppProps) {
     return (
         <MDXProvider>
-            <SiteLayout>
+            <SiteLayout route={router.route}>
                 <motion.div
                     key={router.route}
                     initial={{ opacity: 0 }}

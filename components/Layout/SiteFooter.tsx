@@ -24,7 +24,8 @@ function SiteFooter() {
 
 const Footer = styled.footer`
     margin-top: auto;
-    margin-bottom: 1rem;
+    padding: 0 7rem 3.5rem;
+    background-color: var(--black-background);
 `
 
 const LI = styled.li`

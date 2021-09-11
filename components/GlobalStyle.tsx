@@ -61,7 +61,6 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        background: var(--black-background);
         color: var(--off-white);
     }
 

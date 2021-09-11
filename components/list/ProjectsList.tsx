@@ -17,14 +17,12 @@ export default function ProjectsList() {
                 <P>
                     A random prompt generator for practising UI design/development and illustration
                 </P>
-                <div>
-                    <Tech>
-                        Tech used:
-                        <UL>
-                            <LI>Svelte</LI>,<LI>TypeScript</LI>
-                        </UL>
-                    </Tech>
-                </div>
+                <TechContainer>
+                    <Tech>Tech used:</Tech>
+                    <UL>
+                        <LI>Svelte</LI>,<LI>TypeScript</LI>
+                    </UL>
+                </TechContainer>
             </div>
         </Project>
     )
@@ -49,10 +47,16 @@ const LI = styled.li`
 
 const UL = styled.ul`
     display: inline-flex;
-    margin-top: 0;
+    margin: 0;
 `
 
 const Tech = styled.p`
+    margin: 0;
     font-weight: 300;
     color: var(--cool-grey);
+`
+
+const TechContainer = styled.div`
+    display: flex;
+    align-items: center;
 `
