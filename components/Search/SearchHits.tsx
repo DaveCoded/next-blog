@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { connectStateResults } from 'react-instantsearch-dom'
 import styled from 'styled-components'
 import { PostData } from '../../pages'

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Modal from 'react-modal'
 import { GitHub, LinkedIn, Twitter, Mail } from '../icons'
+import { GITHUB_LINK, LINKEDIN_LINK, MAILTO_LINK, TWITTER_LINK } from '../../constants/links'
 
 type Props = {
     isContactOpen: boolean
@@ -21,7 +22,7 @@ export default function ContactModal({ isContactOpen, closeContact }: Props) {
             <Button onClick={closeContact}>&times;</Button>
             <UL>
                 <LI>
-                    <a href="">
+                    <a href={GITHUB_LINK}>
                         <Span>
                             <GitHub width={30} height={33} />
                         </Span>{' '}
@@ -29,7 +30,7 @@ export default function ContactModal({ isContactOpen, closeContact }: Props) {
                     </a>
                 </LI>
                 <LI>
-                    <a href="">
+                    <a href={LINKEDIN_LINK}>
                         <Span>
                             <LinkedIn width={30} height={33} />
                         </Span>{' '}
@@ -37,7 +38,7 @@ export default function ContactModal({ isContactOpen, closeContact }: Props) {
                     </a>
                 </LI>
                 <LI>
-                    <a href="">
+                    <a href={TWITTER_LINK}>
                         <Span>
                             <Twitter width={30} height={33} />
                         </Span>{' '}
@@ -45,7 +46,7 @@ export default function ContactModal({ isContactOpen, closeContact }: Props) {
                     </a>
                 </LI>
                 <LI>
-                    <a href="">
+                    <a href={MAILTO_LINK}>
                         <Span>
                             <Mail width={30} height={33} />
                         </Span>{' '}

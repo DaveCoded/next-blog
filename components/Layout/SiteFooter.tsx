@@ -1,20 +1,21 @@
 import styled from 'styled-components'
+import { GITHUB_LINK, LINKEDIN_LINK, MAILTO_LINK, TWITTER_LINK } from '../../constants/links'
 
 function SiteFooter() {
     return (
         <Footer>
             <UL>
                 <LI>
-                    <a href="">Github</a>
+                    <a href={GITHUB_LINK}>Github</a>
                 </LI>
                 <LI>
-                    <a href="">LinkedIn</a>
+                    <a href={LINKEDIN_LINK}>LinkedIn</a>
                 </LI>
                 <LI>
-                    <a href="">Twitter</a>
+                    <a href={TWITTER_LINK}>Twitter</a>
                 </LI>
                 <LI>
-                    <a href="">Email me</a>
+                    <a href={MAILTO_LINK}>Email me</a>
                 </LI>
             </UL>
             <span>&copy; {new Date().getFullYear()} David Bernhard</span>
