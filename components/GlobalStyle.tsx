@@ -123,7 +123,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .external-link {
-        color: hsl(327deg 100% 60%);
+        color: var(--teal);
         text-decoration: underline;
         font-weight: inherit;
     }

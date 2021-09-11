@@ -4,6 +4,7 @@ import { InstantSearch } from 'react-instantsearch-dom'
 import styled from 'styled-components'
 import SearchBox from './SearchBox'
 import SearchHits from './SearchHits'
+import { PostData } from '../../pages'
 
 const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
@@ -12,24 +13,25 @@ const searchClient = algoliasearch(
 
 type Props = {
     tags: string[]
+    allPostsData: PostData[]
 }
 
-export default function Search({ tags }: Props) {
+export default function SearchAndDisplayPosts({ tags, allPostsData }: Props) {
     return (
         <InstantSearch searchClient={searchClient} refresh={false} indexName="dev-blog">
             <SearchContainer>
                 <SearchBox />
                 <UL>
                     {tags.map((tag, i) => (
-                        <Tag key={i}>
-                            <Link href={`/tag/${tag}`}>
-                                <a>{tag}</a>
-                            </Link>
-                        </Tag>
+                        <Link key={i} href={`/tag/${tag}`}>
+                            <a>
+                                <Tag>{tag}</Tag>
+                            </a>
+                        </Link>
                     ))}
                 </UL>
             </SearchContainer>
-            <SearchHits />
+            <SearchHits allPostsData={allPostsData} />
         </InstantSearch>
     )
 }
@@ -42,6 +44,10 @@ const SearchContainer = styled.div`
 const UL = styled.ul`
     margin-left: 1.6rem;
     display: flex;
+
+    a + a {
+        margin-left: 12px;
+    }
 `
 
 const Tag = styled.li`
@@ -59,9 +65,5 @@ const Tag = styled.li`
         a {
             color: inherit;
         }
-    }
-
-    & + & {
-        margin-left: 12px;
     }
 `

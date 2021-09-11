@@ -6,6 +6,7 @@ import matter from 'gray-matter'
 import { PostData } from '../blog'
 import Link from 'next/link'
 import styled from 'styled-components'
+import DynamicPostsList from '../../components/list/DynamicPostsList'
 
 interface Props {
     tag: string
@@ -25,35 +26,12 @@ export default function Posts({ tag, frontMatterAndSlug }: Props) {
                 ></meta>
             </Head>
 
-            <PageContainer>
-                <H1>{tagName} posts</H1>
+            <H1>{tagName} posts</H1>
 
-                {frontMatterAndSlug.map((post, i) => {
-                    const options = { month: 'long', day: 'numeric', year: 'numeric' }
-                    const formattedDate = new Date(post.date).toLocaleDateString(
-                        'en-US',
-                        options as any
-                    )
-                    return (
-                        <Post key={i}>
-                            <Link href={`/blog/${post.slug}`}>
-                                <a>
-                                    <H3>{post.title}</H3>
-                                </a>
-                            </Link>
-                            <StyledDate>{formattedDate}</StyledDate>
-                        </Post>
-                    )
-                })}
-            </PageContainer>
+            <DynamicPostsList postsToShow={frontMatterAndSlug} />
         </>
     )
 }
-
-const PageContainer = styled.div`
-    width: min(90%, 640px);
-    margin: 0 auto;
-`
 
 const H1 = styled.h1`
     text-transform: none;
