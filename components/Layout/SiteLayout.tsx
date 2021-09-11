@@ -1,17 +1,25 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import { GlobalStyle } from '../GlobalStyle'
 import Navigation from './Navigation'
 import SiteFooter from './SiteFooter'
+import ContactModal from '../modals/ContactModal'
 
 type Props = {
     children: JSX.Element
 }
 
 function SiteLayout({ children }: Props) {
+    const [isContactOpen, setIsContactopen] = useState(false)
+
     return (
         <Container>
             <GlobalStyle />
-            <Navigation />
+            <Navigation setIsContactopen={setIsContactopen} />
+            <ContactModal
+                isContactOpen={isContactOpen}
+                closeContact={() => setIsContactopen(false)}
+            />
             <main>{children}</main>
             <SiteFooter />
         </Container>

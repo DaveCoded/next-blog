@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
         --black-background: #191B1F;
         --light-black: #2a2b2c;
         --dark-grey: #444549;
+        --dark-grey-see-through: #444549f2;
         --mid-grey: #909CA2;
         --cool-grey: #9dadbc;
         --light-grey: #DCD6CD;
@@ -112,6 +113,7 @@ export const GlobalStyle = createGlobalStyle`
         color: inherit;
         cursor: pointer;
         transition: var(--link-hover-transition);
+        display: inline-block;
 
         &:hover {
             color: var(--purple);
@@ -309,5 +311,19 @@ export const GlobalStyle = createGlobalStyle`
     h5::selection {
         background: none;
         text-shadow: 2px 2px #15cedb;
+    }
+
+    /* React Modal transitions */
+    .ReactModal__Overlay {
+        opacity: 0;
+        transition: opacity 500ms ease-in-out;
+    }
+
+    .ReactModal__Overlay--after-open{
+        opacity: 1;
+    }
+
+    .ReactModal__Overlay--before-close{
+        opacity: 0;
     }
 `

@@ -1,7 +1,12 @@
+import { Dispatch, SetStateAction } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-function Navigation() {
+type Props = {
+    setIsContactopen: Dispatch<SetStateAction<boolean>>
+}
+
+function Navigation({ setIsContactopen }: Props) {
     return (
         <Nav>
             <Link href="/">
@@ -25,9 +30,7 @@ function Navigation() {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/contact">
-                        <a>contact</a>
-                    </Link>
+                    <button onClick={() => setIsContactopen(true)}>contact</button>
                 </li>
             </UL>
         </Nav>
@@ -61,14 +64,24 @@ const UL = styled.ul`
 
     li {
         list-style: none;
+
+        button {
+            border: none;
+            background: none;
+            font-size: inherit;
+            font-family: inherit;
+            color: inherit;
+            cursor: pointer;
+            transition: var(--link-hover-transition);
+
+            &:hover {
+                color: var(--purple);
+            }
+        }
     }
 
     a {
         margin-right: 2rem;
-    }
-
-    li:last-child a {
-        margin-right: 0;
     }
 `
 
