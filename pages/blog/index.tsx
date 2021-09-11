@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import SearchAndDisplayPosts from '../../components/search/SearchAndDisplayPosts'
+import SearchAndDisplayPosts from '../../components/Search/SearchAndDisplayPosts'
 import { getSortedPosts } from '../../lib/posts'
 import { getAllTags } from '../../lib/tags'
 
