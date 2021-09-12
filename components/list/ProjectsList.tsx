@@ -57,6 +57,7 @@ const Tech = styled.p`
 `
 
 const TechContainer = styled.div`
+    font-size: var(--sm-text);
     display: flex;
     align-items: center;
 `

@@ -4,7 +4,6 @@ import { GlobalStyle } from '../GlobalStyle'
 import Navigation from './Navigation'
 import SiteFooter from './SiteFooter'
 import ContactModal from '../modals/ContactModal'
-import { isBlogPostRoute } from '../../lib/strings'
 
 type Props = {
     route: string
@@ -12,7 +11,6 @@ type Props = {
 }
 
 function SiteLayout({ route, children }: Props) {
-    console.log('route', route)
     const [isContactOpen, setIsContactopen] = useState(false)
 
     return (

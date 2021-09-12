@@ -26,6 +26,14 @@ export const GlobalStyle = createGlobalStyle<Props>`
         --purple-blue: #4e58b4;
         --teal: #85D0D7;
 
+        /* Font sizes */
+        --xl-text: 2.686rem;
+        --lg-text: 2.15rem;
+        --ml-text: 1.719rem;
+        --md-text: 1.375rem; 
+        --body-text: 1.1rem;
+        --sm-text: 1rem;
+
         /* Code block styles */
         --prism-theme-white: #fff;
         --prism-theme-background: hsl(222deg 51% 13%);
@@ -92,16 +100,18 @@ export const GlobalStyle = createGlobalStyle<Props>`
 
     h1 {
         font-family: 'Yeseva One', cursive;
-        font-size: 2.2rem;
+        font-size: var(--xl-text);
         color: var(--purple)
     }
 
     h2 {
         color: var(--off-white);
+        font-size: var(--ml-text);
     }
 
     h3 {
         color: var(--light-grey);
+        font-size: var(--md-text);
     }
 
     code {
@@ -113,6 +123,8 @@ export const GlobalStyle = createGlobalStyle<Props>`
     }
 
     p {
+        font-size: var(--body-text);
+        line-height: 1.6;
         color: var(--cool-grey)
     }
 

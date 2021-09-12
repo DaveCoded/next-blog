@@ -52,13 +52,12 @@ const H2 = styled.h2`
 `
 
 const StyledDate = styled.span`
-    font-size: 1.1rem;
+    font-size: var(--sm-text);
     font-weight: 300;
     color: var(--cool-grey);
 `
 
 const Excerpt = styled.p`
-    font-size: 1.3rem;
     margin: 0.2rem 0 0.4rem;
     color: var(--light-grey);
 `

@@ -25,7 +25,7 @@ function SearchBox({ refine }: any) {
 
 const Input = styled.input`
     border: none;
-    font-size: 1.1rem;
+    font-size: var(--body-text);
     background-color: var(--light-black);
     border: 2px solid var(--light-black);
     color: var(--off-white);
@@ -44,6 +44,7 @@ const Input = styled.input`
 
     &::placeholder {
         color: var(--light-grey);
+        font-size: var(--sm-text);
     }
 `
 

@@ -33,14 +33,14 @@ export default function Home({ latestPosts }: Props) {
 
             <Header>
                 <h1>Welcome</h1>
-                <Intro>
+                <p>
                     I'm Dave, a frontend developer at Feed. I work on a global, cross-channel
                     marketing solution for ebay. I also write about what I learn in my{' '}
                     <Link href="/blog">
                         <a>blog</a>
                     </Link>
                     .
-                </Intro>
+                </p>
             </Header>
 
             <Section>
@@ -63,18 +63,6 @@ export default function Home({ latestPosts }: Props) {
 const Header = styled.header`
     max-width: 30rem;
     margin-bottom: 3rem;
-
-    h1 {
-        font-size: 2.3rem;
-    }
-
-    p {
-        font-size: 1.1rem;
-    }
-`
-
-const Intro = styled.p`
-    line-height: 1.6;
 `
 
 const Section = styled.section`
