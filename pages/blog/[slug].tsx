@@ -10,6 +10,7 @@ import { PostData } from '.'
 import { MdxRemote } from 'next-mdx-remote/types'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { H2 } from '../../components/mdx/typography'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
@@ -34,26 +35,25 @@ export default function Posts({ source, frontMatter }: Props) {
             </Head>
 
             <PostContainer>
-                <h1>{title}</h1>
-                {subtitle && <h2>{subtitle}</h2>}
-                <div>{formattedDate}</div>
+                <Title>{title}</Title>
+                {subtitle && <Subtitle>{subtitle}</Subtitle>}
+                <StyledDate>{formattedDate}</StyledDate>
                 {tags && tags.length > 0 ? (
-                    <>
-                        <hr />
+                    <TagContainer>
                         <ul>
                             {tags.map((tag, i) => (
                                 <Link key={i} href={`/tag/${tag}`}>
                                     <a>
-                                        <li>{tag}</li>
+                                        <LI>{tag}</LI>
                                     </a>
                                 </Link>
                             ))}
                         </ul>
-                    </>
+                    </TagContainer>
                 ) : null}
                 {/* <div className={styles.Categories}>Some category tags here maybe?</div> */}
                 {/* <TableOfContents headings={headings} /> */}
-                {content}
+                <ContentWrapper>{content}</ContentWrapper>
             </PostContainer>
         </>
     )
@@ -88,4 +88,57 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 }
 
-const PostContainer = styled.div``
+const PostContainer = styled.div`
+    color: var(--black-background);
+`
+
+const Title = styled.h1`
+    font-size: 2.5rem;
+    margin-top: -2rem;
+`
+
+const Subtitle = styled(H2)`
+    font-weight: 400;
+    margin-top: -1.3rem;
+    margin-bottom: 2.4rem;
+    font-size: 1.4rem;
+`
+
+const StyledDate = styled.div`
+    font-size: 1rem;
+    color: var(--dark-grey);
+    margin-bottom: 0.8rem;
+`
+
+const TagContainer = styled.div`
+    width: min-content;
+    /* padding: 0.4rem 1rem; */
+
+    ul {
+        display: flex;
+        margin: 0;
+
+        a + a {
+            margin-left: 1rem;
+        }
+    }
+`
+
+const LI = styled.li`
+    list-style: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: var(--purple);
+    color: var(--white);
+    border-radius: 10rem;
+    padding: 4px 14px;
+    transition: var(--link-hover-transition);
+
+    &:hover {
+        background-color: var(--purple-blue);
+    }
+`
+
+const ContentWrapper = styled.div`
+    margin-top: 5rem;
+`

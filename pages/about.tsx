@@ -12,11 +12,11 @@ export default function Home() {
                 ></meta>
             </Head>
 
-            <h1>
+            <H1>
                 Hi. I'm Dave Bernhard,
                 <br />
                 <Span>a frontend developer working in London.</Span>
-            </h1>
+            </H1>
             <Bio>
                 This is my blog. It's a space for me to write about what I'm learning in tech;
                 hopefully you'll learn something interesting here. If you do, or if you have any
@@ -33,6 +33,10 @@ export default function Home() {
         </>
     )
 }
+
+const H1 = styled.h1`
+    margin-top: 0;
+`
 
 const Span = styled.span`
     font-size: 1.8rem;

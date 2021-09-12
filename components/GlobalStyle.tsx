@@ -1,6 +1,16 @@
 import { createGlobalStyle } from 'styled-components'
+import { isBlogPostRoute } from '../lib/strings'
 
-export const GlobalStyle = createGlobalStyle`
+type Props = {
+    route: string
+}
+
+// todo: write blog post on this
+//  passing props to createGlobalStyle
+//  appeasing the TypeScript compiler
+//  applying styles based on the route
+//  regex options to parse the route
+export const GlobalStyle = createGlobalStyle<Props>`
     :root {
         /* Colors */
         --black-background: #191B1F;
@@ -11,7 +21,9 @@ export const GlobalStyle = createGlobalStyle`
         --cool-grey: #9dadbc;
         --light-grey: #DCD6CD;
         --off-white: #E8E1D8;
+        --white: #fbfbfb;
         --purple: #707BD9;
+        --purple-blue: #4e58b4;
         --teal: #85D0D7;
 
         /* Code block styles */
@@ -58,6 +70,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        background-color: ${(props) =>
+            isBlogPostRoute(props.route) ? 'var(--white)' : 'var(--black-background)'};
         display: flex;
         flex-direction: column;
         min-height: 100vh;

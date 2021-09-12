@@ -17,13 +17,13 @@ function SiteLayout({ route, children }: Props) {
 
     return (
         <Container>
-            <GlobalStyle />
+            <GlobalStyle route={route} />
             <Navigation setIsContactopen={setIsContactopen} />
             <ContactModal
                 isContactOpen={isContactOpen}
                 closeContact={() => setIsContactopen(false)}
             />
-            <Main route={route}>{children}</Main>
+            <Main>{children}</Main>
             <SiteFooter />
         </Container>
     )
@@ -39,14 +39,7 @@ const Container = styled.div`
     }
 `
 
-type MainProps = {
-    route: string
-}
-
-// todo: write a blog post on this
-const Main = styled.main<MainProps>`
-    background-color: ${(props) =>
-        isBlogPostRoute(props.route) ? 'white' : 'var(--black-background)'};
+const Main = styled.main`
     padding: 6rem 7rem 0;
 `
 
