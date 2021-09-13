@@ -35,21 +35,15 @@ export default function Home() {
 }
 
 const H1 = styled.h1`
-    margin-top: 0;
     line-height: 1;
 `
 
 const Span = styled.span`
-    font-size: var(--ml-text);
+    font-size: var(--text-lg);
     color: var(--cool-grey);
 `
 
 const Bio = styled.p`
     color: var(--light-grey);
-    font-weight: 300;
-    width: min(90%, 700px);
-
-    & .external-link {
-        font-weight: 400;
-    }
+    width: min(90%, 60ch);
 `

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Modal from 'react-modal'
 import { GitHub, LinkedIn, Twitter, Mail } from '../icons'
 import { GITHUB_LINK, LINKEDIN_LINK, MAILTO_LINK, TWITTER_LINK } from '../../constants/links'
+import ExternalLink from '../ExternalLink'
 
 type Props = {
     isContactOpen: boolean
@@ -22,36 +23,36 @@ export default function ContactModal({ isContactOpen, closeContact }: Props) {
             <Button onClick={closeContact}>&times;</Button>
             <UL>
                 <LI>
-                    <a href={GITHUB_LINK}>
+                    <ExternalLink href={GITHUB_LINK} newTab>
                         <Span>
                             <GitHub width={30} height={33} />
                         </Span>{' '}
                         <Span>Github</Span>
-                    </a>
+                    </ExternalLink>
                 </LI>
                 <LI>
-                    <a href={LINKEDIN_LINK}>
+                    <ExternalLink href={LINKEDIN_LINK} newTab>
                         <Span>
                             <LinkedIn width={30} height={33} />
                         </Span>{' '}
                         <Span>LinkedIn</Span>
-                    </a>
+                    </ExternalLink>
                 </LI>
                 <LI>
-                    <a href={TWITTER_LINK}>
+                    <ExternalLink href={TWITTER_LINK} newTab>
                         <Span>
                             <Twitter width={30} height={33} />
                         </Span>{' '}
                         <Span>Twitter</Span>
-                    </a>
+                    </ExternalLink>
                 </LI>
                 <LI>
-                    <a href={MAILTO_LINK}>
+                    <ExternalLink href={MAILTO_LINK} newTab>
                         <Span>
                             <Mail width={30} height={33} />
                         </Span>{' '}
                         <Span>Email me</Span>
-                    </a>
+                    </ExternalLink>
                 </LI>
             </UL>
         </Modal>
@@ -62,10 +63,11 @@ const Button = styled.button`
     background: none;
     border: none;
     color: var(--light-grey);
-    font-size: 2.2rem;
+    font-size: var(--text-lg);
+    line-height: 0;
     position: absolute;
-    top: 0.1rem;
-    right: 0.4rem;
+    top: var(--space-md);
+    right: var(--space-xs);
     cursor: pointer;
     transition: var(--link-hover-transition);
 
@@ -81,6 +83,7 @@ const UL = styled.ul`
 
 const LI = styled.li`
     list-style: none;
+    /* Keep this at 1.3rem for focus outline style */
     font-size: 1.3rem;
     line-height: 0;
     margin: 1.4rem 0;
@@ -110,7 +113,7 @@ const modalStyles: ReactModal.Styles = {
         display: 'grid',
         placeItems: 'center',
         padding: '0 3.4rem',
-        border: '2px solid var(--black-background)',
+        border: '2px solid var(--black)',
         background: 'var(--light-black)'
     },
     overlay: {

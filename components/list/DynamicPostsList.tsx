@@ -30,8 +30,7 @@ export default function DynamicPostsList({ postsToShow }: Props) {
 }
 
 const PostsList = styled.ul`
-    margin: 0;
-    padding: 4rem 0 5rem;
+    padding-bottom: var(--space-lg);
 
     li {
         list-style: none;
@@ -39,11 +38,10 @@ const PostsList = styled.ul`
 `
 
 const Post = styled.div`
-    margin-bottom: 3.5rem;
+    margin-bottom: var(--space-lg);
 `
 
 const H2 = styled.h2`
-    margin: 0;
     transition: var(--link-hover-transition);
 
     &:hover {
@@ -52,24 +50,22 @@ const H2 = styled.h2`
 `
 
 const StyledDate = styled.span`
-    font-size: var(--sm-text);
-    font-weight: 300;
+    font-size: var(--text-sm);
     color: var(--cool-grey);
 `
 
 const Excerpt = styled.p`
-    margin: 0.2rem 0 0.4rem;
+    margin: var(--space-xs) 0;
     color: var(--light-grey);
 `
 
 const Draft = styled.span`
     color: white;
-    font-family: 'Poppins';
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: var(--text-xs);
+    font-weight: 700;
     vertical-align: super;
-    margin-left: 0.6rem;
-    padding-right: 0.3rem;
+    margin-left: var(--space-sm);
+    padding-right: var(--space-xxs);
     border: 2px solid red;
     border-radius: 4px;
     background: red;

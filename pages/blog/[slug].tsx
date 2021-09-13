@@ -8,9 +8,9 @@ import AllComponents from '../../components/mdx/AllComponents'
 import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { PostData } from '.'
 import { MdxRemote } from 'next-mdx-remote/types'
-import Link from 'next/link'
 import styled from 'styled-components'
 import { H2 } from '../../components/mdx/typography'
+import TagPill from '../../components/TagPill'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
@@ -41,12 +41,14 @@ export default function Posts({ source, frontMatter }: Props) {
                 {tags && tags.length > 0 ? (
                     <TagContainer>
                         <ul>
-                            {tags.map((tag, i) => (
-                                <Link key={i} href={`/tag/${tag}`}>
-                                    <a>
-                                        <LI>{tag}</LI>
-                                    </a>
-                                </Link>
+                            {tags.map((tag) => (
+                                <TagPill
+                                    tag={tag}
+                                    key={tag}
+                                    color="var(--white)"
+                                    backgroundColor="var(--purple)"
+                                    hoverBackgroundColor="var(--purple-blue)"
+                                />
                             ))}
                         </ul>
                     </TagContainer>
@@ -89,34 +91,34 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const PostContainer = styled.div`
-    color: var(--black-background);
+    color: var(--black);
 `
 
 const Title = styled.h1`
-    font-size: 2.5rem;
-    margin-top: -2rem;
+    margin-bottom: 0;
+    margin-top: -17px;
+    max-width: min(100%, 1000px);
 `
 
 const Subtitle = styled(H2)`
     font-weight: 400;
-    margin-top: -1.3rem;
-    margin-bottom: 2.4rem;
-    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: var(--space-lg);
+    font-size: var(--text-md);
+    max-width: min(100%, 1000px);
 `
 
 const StyledDate = styled.div`
-    font-size: 1rem;
+    font-size: var(--text-sm);
     color: var(--dark-grey);
-    margin-bottom: 0.8rem;
+    margin-bottom: var(--space-xs);
 `
 
 const TagContainer = styled.div`
-    width: min-content;
-    /* padding: 0.4rem 1rem; */
+    margin-bottom: -15px;
 
     ul {
         display: flex;
-        margin: 0;
 
         a + a {
             margin-left: 1rem;
@@ -124,21 +126,7 @@ const TagContainer = styled.div`
     }
 `
 
-const LI = styled.li`
-    list-style: none;
-    font-size: 0.8rem;
-    font-weight: 700;
-    background-color: var(--purple);
-    color: var(--white);
-    border-radius: 10rem;
-    padding: 4px 14px;
-    transition: var(--link-hover-transition);
-
-    &:hover {
-        background-color: var(--purple-blue);
-    }
-`
-
 const ContentWrapper = styled.div`
-    margin-top: 5rem;
+    margin-top: var(--space-xxl);
+    max-width: 600px;
 `

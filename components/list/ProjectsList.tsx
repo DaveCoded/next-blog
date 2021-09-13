@@ -33,16 +33,17 @@ const Project = styled(Article)`
 `
 
 const P = styled.p`
-    margin: 0.6rem 0;
+    margin: var(--space-xs) 0;
+    color: var(--light-grey);
 `
 
 const ImageContainer = styled.div`
-    margin-right: 2rem;
+    margin-right: var(--space-lg);
 `
 
 const LI = styled.li`
     list-style: none;
-    margin-left: 8px;
+    margin-left: var(--space-sm);
 `
 
 const UL = styled.ul`
@@ -51,13 +52,13 @@ const UL = styled.ul`
 `
 
 const Tech = styled.p`
-    margin: 0;
-    font-weight: 300;
-    color: var(--cool-grey);
+    font-size: var(--text-sm);
+    line-height: 1;
 `
 
 const TechContainer = styled.div`
-    font-size: var(--sm-text);
+    color: var(--cool-grey);
+    font-size: var(--text-sm);
     display: flex;
     align-items: center;
 `

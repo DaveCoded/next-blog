@@ -1,19 +1,21 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { getPostSlugsForTag, getAllTags } from '../../lib/tags'
+import { getPostSlugsForTag, getAllTags, getUniqueTags } from '../../lib/tags'
 import { getPostdata } from '../../lib/posts'
 import matter from 'gray-matter'
 import { PostData } from '../blog'
 import Link from 'next/link'
 import styled from 'styled-components'
 import DynamicPostsList from '../../components/list/DynamicPostsList'
+import TagPill from '../../components/TagPill'
 
 interface Props {
     tag: string
+    tags: string[]
     frontMatterAndSlug: PostData[]
 }
 
-export default function Posts({ tag, frontMatterAndSlug }: Props) {
+export default function TagPage({ tag, tags, frontMatterAndSlug }: Props) {
     const tagName = tag[0].toUpperCase() + tag.slice(1)
 
     return (
@@ -26,6 +28,15 @@ export default function Posts({ tag, frontMatterAndSlug }: Props) {
                 ></meta>
             </Head>
 
+            <Header>
+                Other topics:{' '}
+                <UL>
+                    {tags.map((tag) => (
+                        <TagPill tag={tag} key={tag} />
+                    ))}
+                </UL>
+            </Header>
+
             <H1>{tagName} posts</H1>
 
             <DynamicPostsList postsToShow={frontMatterAndSlug} />
@@ -33,35 +44,22 @@ export default function Posts({ tag, frontMatterAndSlug }: Props) {
     )
 }
 
+const Header = styled.header`
+    margin-bottom: var(--space-lg);
+`
+
 const H1 = styled.h1`
     text-transform: none;
     letter-spacing: normal;
 `
 
-const H3 = styled.h3`
-    margin: 0;
-    margin-bottom: 0.7rem;
-    transition: all 0.15s ease-in;
+const UL = styled.ul`
+    display: inline-flex;
+    margin-left: var(--space-xs);
 
-    &:hover {
-        color: #290168;
-        text-shadow: 2px 2px #ffdbe2;
+    a + a {
+        margin-left: var(--space-sm);
     }
-`
-
-const Post = styled.div`
-    padding: 10px 20px;
-    border: 2px solid var(--black);
-
-    & + & {
-        margin-top: 24px;
-    }
-`
-
-const StyledDate = styled.div`
-    font-size: 1.1rem;
-    color: #383245;
-    font-style: italic;
 `
 
 export async function getStaticPaths() {
@@ -74,6 +72,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const tag = params?.tag
+    const tags = getUniqueTags().filter((t) => t !== tag) // Get all OTHER unique tags
     const slugsWithTag = getPostSlugsForTag(params?.tag as string)
     const postsWithTag = await Promise.all(slugsWithTag.map((slug) => getPostdata(slug)))
     const frontMatterArr = postsWithTag.map((post) => matter(post).data)
@@ -82,6 +81,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
         props: {
             tag,
+            tags,
             frontMatterAndSlug
         }
     }

@@ -12,8 +12,18 @@ type Props = {
 //  regex options to parse the route
 export const GlobalStyle = createGlobalStyle<Props>`
     :root {
+        /* Spacing */
+        --space-xxs:  4px;
+        --space-xs:   8px;
+        --space-sm:   12px;
+        --space-md:   20px;
+        --space-lg:   32px;
+        --space-xl:   52px;
+        --space-xxl:  84px;
+        --space-xxxl: 105px;
+
         /* Colors */
-        --black-background: #191B1F;
+        --black: #191B1F;
         --light-black: #2a2b2c;
         --dark-grey: #444549;
         --dark-grey-see-through: #444549f2;
@@ -27,16 +37,16 @@ export const GlobalStyle = createGlobalStyle<Props>`
         --teal: #85D0D7;
 
         /* Font sizes */
-        --xl-text: 2.686rem;
-        --lg-text: 2.15rem;
-        --ml-text: 1.719rem;
-        --md-text: 1.375rem; 
-        --body-text: 1.1rem;
-        --sm-text: 1rem;
+        --text-xl: 2.686rem;
+        --text-lg: 2.15rem;
+        --text-ml: 1.719rem;
+        --text-md: 1.375rem; 
+        --text-body: 1.13rem;
+        --text-sm: 1rem;
+        --text-xs: 0.75rem;
 
         /* Code block styles */
         --prism-theme-white: #fff;
-        --prism-theme-background: hsl(222deg 51% 13%);
         --prism-theme-char: #d8dee9;
         --prism-theme-comment: #b2b2b2;
         --prism-theme-keyword: #c5a5c5;
@@ -55,7 +65,6 @@ export const GlobalStyle = createGlobalStyle<Props>`
 
         /* Measurements */
         --highlight-before-width: 0.43em;
-        --nav-height: 5.6rem;
 
         /* Transitions */
         --link-hover-transition: all .2s cubic-bezier(0.65, 0.05, 0.36, 1);
@@ -63,6 +72,8 @@ export const GlobalStyle = createGlobalStyle<Props>`
 
     * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
     html {
@@ -79,7 +90,7 @@ export const GlobalStyle = createGlobalStyle<Props>`
 
     body {
         background-color: ${(props) =>
-            isBlogPostRoute(props.route) ? 'var(--white)' : 'var(--black-background)'};
+            isBlogPostRoute(props.route) ? 'var(--white)' : 'var(--black)'};
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -100,18 +111,19 @@ export const GlobalStyle = createGlobalStyle<Props>`
 
     h1 {
         font-family: 'Yeseva One', cursive;
-        font-size: var(--xl-text);
-        color: var(--purple)
+        font-size: var(--text-xl);
+        color: var(--purple);
+        margin-bottom: var(--space-lg);
     }
 
     h2 {
         color: var(--off-white);
-        font-size: var(--ml-text);
+        font-size: var(--text-ml);
     }
 
     h3 {
         color: var(--light-grey);
-        font-size: var(--md-text);
+        font-size: var(--text-md);
     }
 
     code {
@@ -123,7 +135,7 @@ export const GlobalStyle = createGlobalStyle<Props>`
     }
 
     p {
-        font-size: var(--body-text);
+        font-size: var(--text-body);
         line-height: 1.6;
         color: var(--cool-grey)
     }
@@ -188,15 +200,15 @@ export const GlobalStyle = createGlobalStyle<Props>`
 
     /* Code blocks */
     pre[class*='language-'] {
-        padding: 1.5rem;
-        margin: 0px 0px 2.5em;
+        padding: var(--space-sm) var(--space-lg) var(--space-lg);
+        margin-bottom: var(--space-lg);
         overflow: auto;
-        border-radius: 0 0 10px 10px;
+        border-radius: 0 0 6px 6px;
     }
 
     :not(pre) > code[class*='language-'],
     pre[class*='language-'] {
-        background: var(--prism-theme-background);
+        background: var(--black);
     }
 
     pre[class*='language-']::-webkit-scrollbar {

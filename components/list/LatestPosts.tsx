@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { PostData } from '../../pages/blog'
+import TagPill from '../TagPill'
 
 type Props = {
     posts: PostData[]
@@ -20,11 +21,7 @@ export default function LatestPosts({ posts }: Props) {
                     {tags && tags?.length > 0 && (
                         <UL>
                             {tags.map((tag) => (
-                                <Link href={`/tag/${tag}`} key={tag}>
-                                    <a>
-                                        <LI>{tag}</LI>
-                                    </a>
-                                </Link>
+                                <TagPill tag={tag} key={tag} />
                             ))}
                         </UL>
                     )}
@@ -35,17 +32,19 @@ export default function LatestPosts({ posts }: Props) {
 }
 
 export const Article = styled.article`
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-lg);
 `
 
 const StyledDate = styled.div`
+    line-height: 1.6;
     color: var(--cool-grey);
+    margin-bottom: var(--space-xs);
 `
 
 export const H3 = styled.h3`
+    font-size: var(--text-md);
     font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 0.2rem;
+    margin-bottom: var(--space-xs);
     transition: var(--link-hover-transition);
 
     &:hover {
@@ -55,12 +54,12 @@ export const H3 = styled.h3`
 
 const LI = styled.li`
     list-style: none;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     font-weight: 600;
     background-color: var(--light-black);
     color: var(--cool-grey);
-    border-radius: 10rem;
-    padding: 4px 11px;
+    border-radius: 100px;
+    padding: var(--space-xxs) var(--space-sm);
     transition: var(--link-hover-transition);
 
     &:hover {
@@ -70,7 +69,6 @@ const LI = styled.li`
 
 const UL = styled.ul`
     display: flex;
-    margin-top: 0.6rem;
 
     a + a {
         margin-left: 8px;

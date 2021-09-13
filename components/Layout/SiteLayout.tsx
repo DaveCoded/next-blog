@@ -33,12 +33,15 @@ const Container = styled.div`
     flex-direction: column;
 
     @media (max-width: 700px) {
-        margin: 0 3rem;
+        margin: 0 var(--space-lg);
     }
 `
 
 const Main = styled.main`
-    padding: 6rem 7rem 0;
+    padding: var(--space-xxl) var(--space-xxxl) var(--space-xxl);
+    @media (min-width: 1600px) {
+        padding: var(--space-xxl) 15vw var(--space-xxl);
+    }
 `
 
 export default SiteLayout

@@ -25,12 +25,12 @@ function SearchBox({ refine }: any) {
 
 const Input = styled.input`
     border: none;
-    font-size: var(--body-text);
+    font-size: var(--text-body);
     background-color: var(--light-black);
     border: 2px solid var(--light-black);
     color: var(--off-white);
     border-radius: 4px;
-    padding: 7px 14px;
+    padding: var(--space-xs) var(--space-sm);
     width: 21rem;
 
     &:focus {
@@ -44,7 +44,7 @@ const Input = styled.input`
 
     &::placeholder {
         color: var(--light-grey);
-        font-size: var(--sm-text);
+        font-size: var(--text-sm);
     }
 `
 

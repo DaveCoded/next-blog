@@ -25,7 +25,6 @@ function Hits({ searchState, searchResults, allPostsData }: Props) {
 }
 
 const Container = styled.div`
-    margin-top: 1rem;
     /* This is to prevent layout shift while searching. But it shoves the footer to
        the bottom of the page. Make it the height of 5 posts when you have 5 posts */
     min-height: 40rem;
@@ -34,7 +33,7 @@ const Container = styled.div`
 const P = styled.p`
     color: var(--purple);
     font-weight: 700;
-    margin-left: 14px;
+    margin-bottom: var(--space-lg);
 `
 
 export default connectStateResults(Hits)

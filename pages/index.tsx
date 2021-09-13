@@ -62,7 +62,7 @@ export default function Home({ latestPosts }: Props) {
 
 const Header = styled.header`
     max-width: 30rem;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-lg);
 `
 
 const Section = styled.section`
@@ -78,9 +78,9 @@ const Section = styled.section`
 `
 
 const H2 = styled.h2`
-    font-size: 1.8rem;
+    font-size: var(--text-ml);
     margin-top: 0;
-    margin-bottom: 1.9rem;
+    margin-bottom: var(--space-lg);
 `
 
 const AllPostsLink = styled.a`

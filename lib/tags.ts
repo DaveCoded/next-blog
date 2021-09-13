@@ -47,3 +47,9 @@ export const getAllTags = () => {
     // Return those tags
     return result
 }
+
+// todo: this could be a blog post?
+export const getUniqueTags = () => {
+    const tags = getAllTags().map((obj) => obj.params.tag)
+    return Array.from(new Set(tags))
+}

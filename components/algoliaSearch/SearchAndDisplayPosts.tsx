@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import SearchBox from './SearchBox'
 import SearchHits from './SearchHits'
 import { PostData } from '../../pages'
+import TagPill from '../TagPill'
 
 const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
@@ -22,12 +23,8 @@ export default function SearchAndDisplayPosts({ tags, allPostsData }: Props) {
             <SearchContainer>
                 <SearchBox />
                 <UL>
-                    {tags.map((tag, i) => (
-                        <Link key={i} href={`/tag/${tag}`}>
-                            <a>
-                                <Tag>{tag}</Tag>
-                            </a>
-                        </Link>
+                    {tags.map((tag) => (
+                        <TagPill tag={tag} key={tag} />
                     ))}
                 </UL>
             </SearchContainer>
@@ -39,31 +36,14 @@ export default function SearchAndDisplayPosts({ tags, allPostsData }: Props) {
 const SearchContainer = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: var(--space-lg);
 `
 
 const UL = styled.ul`
-    margin-left: 1.6rem;
+    margin-left: var(--space-sm);
     display: flex;
 
     a + a {
-        margin-left: 12px;
-    }
-`
-
-const Tag = styled.li`
-    list-style: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    background-color: var(--light-black);
-    color: var(--cool-grey);
-    border-radius: 10rem;
-    padding: 5px 14px;
-    transition: var(--link-hover-transition);
-
-    &:hover {
-        background-color: #363a3c;
-        a {
-            color: inherit;
-        }
+        margin-left: var(--space-sm);
     }
 `
