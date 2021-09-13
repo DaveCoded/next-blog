@@ -1,11 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Search from '../components/Search/Search'
 import { getSortedPosts } from '../lib/posts'
-import { getAllTags } from '../lib/tags'
-import classes from './index.module.css'
-import styles from './index.module.css'
+import LatestPosts from '../components/list/LatestPosts'
+import ProjectsList from '../components/list/ProjectsList'
 
 export interface PostData {
     slug: string
@@ -19,11 +17,10 @@ export interface PostData {
 }
 
 interface Props {
-    allPostsData: PostData[]
-    tags: string[]
+    latestPosts: PostData[]
 }
 
-export default function Home({ allPostsData, tags }: Props) {
+export default function Home({ latestPosts }: Props) {
     return (
         <>
             <Head>
@@ -34,126 +31,68 @@ export default function Home({ allPostsData, tags }: Props) {
                 ></meta>
             </Head>
 
-            <PageContainer>
-                <Search />
-                <TagsContainer>
-                    <SearchLabel>Search by tag:</SearchLabel>
-                    <ul>
-                        {tags.map((tag, i) => (
-                            <Tag key={i}>
-                                <Link href={`/tag/${tag}`}>
-                                    <a>{tag}</a>
-                                </Link>
-                            </Tag>
-                        ))}
-                    </ul>
-                </TagsContainer>
-                <PostsList>
-                    {allPostsData.map(({ slug, date, title, excerpt, status }, i) => (
-                        <li key={i}>
-                            <Post>
-                                <Link href="/blog/[slug]" as={`/blog/${slug}`}>
-                                    <a>
-                                        <H2>
-                                            {title}
-                                            {status === 'draft' ? <Draft> Draft</Draft> : null}
-                                        </H2>
-                                    </a>
-                                </Link>
-                                <Excerpt>{excerpt}</Excerpt>
-                                <StyledDate>{date}</StyledDate>
-                            </Post>
-                        </li>
-                    ))}
-                </PostsList>
-            </PageContainer>
+            <Header>
+                <h1>Welcome</h1>
+                <p>
+                    I'm Dave, a frontend developer at Feed. I work on a global, cross-channel
+                    marketing solution for ebay. I also write about what I learn in my{' '}
+                    <Link href="/blog">
+                        <a>blog</a>
+                    </Link>
+                    .
+                </p>
+            </Header>
+
+            <Section>
+                <div>
+                    <H2>Latest posts</H2>
+                    <LatestPosts posts={latestPosts} />
+                    <Link href="/blog">
+                        <AllPostsLink>See all posts &#8594;</AllPostsLink>
+                    </Link>
+                </div>
+                <div>
+                    <H2>Projects</H2>
+                    <ProjectsList />
+                </div>
+            </Section>
         </>
     )
 }
 
-const PageContainer = styled.div`
-    width: min(90%, 640px);
-    margin: 0 auto;
+const Header = styled.header`
+    max-width: 30rem;
+    margin-bottom: var(--space-lg);
 `
 
-const TagsContainer = styled.div`
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
-`
+const Section = styled.section`
+    max-width: 80rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3rem 5rem;
+    margin-bottom: 5rem;
 
-const SearchLabel = styled.span`
-    font-size: 1.2rem;
-    margin-right: 4px;
-`
-
-const Tag = styled.li`
-    border: 2px solid var(--black);
-    margin-left: 8px;
-    list-style: none;
-    display: inline;
-    padding: 4px 8px;
-    cursor: pointer;
-
-    &:hover {
-        background-color: hsl(0deg 0% 100% / 55%);
+    @media (max-width: 930px) {
+        grid-template-columns: 1fr;
     }
-`
-
-const PostsList = styled.ul`
-    margin: 0;
-    padding: 4rem 0 5rem;
-
-    li {
-        list-style: none;
-    }
-`
-
-const Post = styled.div`
-    margin-bottom: 3.5rem;
-    border: 2px solid var(--black);
-    padding: 1rem 2rem;
 `
 
 const H2 = styled.h2`
-    margin: 0;
-    margin-bottom: 1rem;
+    font-size: var(--text-ml);
+    margin-top: 0;
+    margin-bottom: var(--space-lg);
 `
 
-const StyledDate = styled.span`
-    font-size: 1.1rem;
-    color: #383245;
-    font-style: italic;
-`
-
-// todo: change to paragraph?
-const Excerpt = styled.div`
-    font-size: 1.4rem;
-    margin-bottom: 0.4rem;
-`
-
-const Draft = styled.span`
-    color: white;
-    font-family: 'Poppins';
-    font-size: 1.1rem;
-    font-weight: 800;
-    vertical-align: super;
-    margin-left: 0.6rem;
-    padding-right: 0.3rem;
-    border: 2px solid red;
-    border-radius: 4px;
-    background: red;
+const AllPostsLink = styled.a`
+    color: var(--cool-grey);
 `
 
 export async function getStaticProps() {
-    const allPostsData = getSortedPosts()
-    const tags = getAllTags().map((obj) => obj.params.tag)
-    const uniqueTags = Array.from(new Set(tags))
+    const latestPosts = getSortedPosts().slice(0, 3)
 
     return {
         props: {
-            allPostsData,
-            tags: uniqueTags
+            latestPosts
         }
     }
 }

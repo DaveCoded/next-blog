@@ -24,12 +24,12 @@ const CodeBlock = (props: any) => {
 const TitleContainer = styled.div`
     display: flex;
     align-items: center;
-    background-color: hsl(219deg 45% 21%);
-    color: rgb(238 238 238);
+    background-color: var(--light-black);
+    color: var(--light-grey);
     font-weight: 600;
-    padding: 0.7rem 1.5rem;
-    border-radius: 10px 10px 0 0;
-    margin-top: 1.2rem;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 6px 6px 0 0;
+    margin-top: var(--space-lg);
     font-family: 'Ubuntu Mono';
     font-size: 1.1rem;
     letter-spacing: 0.4px;
@@ -45,11 +45,16 @@ const CopyButton = styled.button`
     font-weight: 800;
     letter-spacing: 0.6px;
     border-radius: 4px;
-    background-color: hsl(222deg 52% 13%);
-    border: 2px solid #4a6696;
-    color: white;
+    background-color: var(--black);
+    border: 2px solid var(--cool-grey);
+    color: var(--light-grey);
     cursor: pointer;
-    transition: all 0.4s;
+    transition: var(--link-hover-transition);
+
+    &:hover {
+        color: var(--white);
+        background-color: var(--light-black);
+    }
 `
 
 export default CodeBlock

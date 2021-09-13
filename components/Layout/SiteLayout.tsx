@@ -1,78 +1,46 @@
-import Link from 'next/link'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { GlobalStyle } from '../GlobalStyle'
+import Navigation from './Navigation'
+import SiteFooter from './SiteFooter'
+import ContactModal from '../modals/ContactModal'
 
 type Props = {
+    route: string
     children: JSX.Element
 }
 
-function SiteLayout({ children }: Props) {
+function SiteLayout({ route, children }: Props) {
+    const [isContactOpen, setIsContactopen] = useState(false)
+
     return (
-        <>
-            <GlobalStyle />
-            <Nav>
-                <Container>
-                    <Link href="/">
-                        <Logo>DB</Logo>
-                    </Link>
-                    <UL>
-                        <li>
-                            <Link href="/">
-                                <a>blog</a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/about">
-                                <a>about</a>
-                            </Link>
-                        </li>
-                    </UL>
-                </Container>
-            </Nav>
-            <main>{children}</main>
-        </>
+        <Container>
+            <GlobalStyle route={route} />
+            <Navigation setIsContactopen={setIsContactopen} />
+            <ContactModal
+                isContactOpen={isContactOpen}
+                closeContact={() => setIsContactopen(false)}
+            />
+            <Main>{children}</Main>
+            <SiteFooter />
+        </Container>
     )
 }
 
-const Nav = styled.nav`
-    height: var(--nav-height);
-    margin-bottom: 24px;
-`
-
 const Container = styled.div`
-    font-family: 'Oswald';
-    width: min(90%, 1000px);
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    margin: 0 auto;
-    height: 100%;
+    flex-direction: column;
+
+    @media (max-width: 700px) {
+        margin: 0 var(--space-lg);
+    }
 `
 
-const Logo = styled.a`
-    font-size: 3.9rem;
-    font-weight: 700;
-    height: 100%;
-    line-height: 1.5;
-    cursor: pointer;
-`
-
-const UL = styled.ul`
-    margin-left: auto;
-    padding: 0;
-    display: flex;
-
-    li {
-        list-style: none;
-    }
-
-    a {
-        list-style: none;
-        font-size: 1.8rem;
-        margin-right: 2rem;
-    }
-
-    li:last-child a {
-        margin-right: 0;
+const Main = styled.main`
+    padding: var(--space-xxl) var(--space-xxxl) var(--space-xxl);
+    @media (min-width: 1600px) {
+        padding: var(--space-xxl) 15vw var(--space-xxl);
     }
 `
 

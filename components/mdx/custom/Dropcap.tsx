@@ -21,14 +21,13 @@ const Dropcap = ({ children }: Props) => {
 }
 
 const Illuminated = styled.span`
-    border-radius: 4px;
+    font-family: 'Yeseva One';
     float: left;
-    font-size: 6.8rem;
+    font-size: 6rem;
     font-weight: 600;
     line-height: 1;
     margin: 0 0.5rem 0 0;
-    padding: 1.6rem 0.7rem 0 0;
-    text-shadow: 4px 4px #d894a0;
+    padding: 1.4rem 0.6rem 0 0;
 
     &:before,
     &:after {

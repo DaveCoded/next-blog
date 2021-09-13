@@ -12,56 +12,38 @@ export default function Home() {
                 ></meta>
             </Head>
 
-            <OuterContainer>
-                <InnerContainer>
-                    <H1>Hi. I'm Dave Bernhard, a frontend developer working in London.</H1>
-                    <Bio>
-                        This is my blog. It's a space for me to write about what I'm learning in
-                        tech; hopefully you'll learn something interesting here. If you do, or if
-                        you have any suggestions for improvements to my articles, please reach out
-                        on Twitter. I'm{' '}
-                        <a
-                            href="https://twitter.com/daveforall"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="external-link"
-                        >
-                            @daveforall
-                        </a>
-                    </Bio>
-                </InnerContainer>
-            </OuterContainer>
+            <H1>
+                Hi. I'm Dave Bernhard,
+                <br />
+                <Span>a frontend developer working in London.</Span>
+            </H1>
+            <Bio>
+                This is my blog. It's a space for me to write about what I'm learning in tech;
+                hopefully you'll learn something interesting here. If you do, or if you have any
+                suggestions for improvements to my articles, please reach out on Twitter. I'm{' '}
+                <a
+                    href="https://twitter.com/daveforall"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="external-link"
+                >
+                    @daveforall
+                </a>
+            </Bio>
         </>
     )
 }
 
-// todo: rename containers
-const OuterContainer = styled.div`
-    width: min(90%, 900px);
-    margin: 0 auto;
-`
-
-const InnerContainer = styled.div`
-    height: calc(100vh - var(--nav-height));
-    padding-bottom: var(--nav-height);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-`
-
 const H1 = styled.h1`
-    text-align: center;
-    font-size: 3.8rem;
+    line-height: 1;
+`
+
+const Span = styled.span`
+    font-size: var(--text-lg);
+    color: var(--cool-grey);
 `
 
 const Bio = styled.p`
-    font-weight: 200;
-    width: min(90%, 700px);
-    font-size: 1.4rem;
-    line-height: 1.7;
-
-    @media (max-width: 560px) {
-        font-size: 1.3rem;
-    }
+    color: var(--light-grey);
+    width: min(90%, 60ch);
 `

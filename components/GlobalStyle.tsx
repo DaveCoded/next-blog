@@ -1,14 +1,52 @@
 import { createGlobalStyle } from 'styled-components'
+import { isBlogPostRoute } from '../lib/strings'
 
-export const GlobalStyle = createGlobalStyle`
+type Props = {
+    route: string
+}
+
+// todo: write blog post on this
+//  passing props to createGlobalStyle
+//  appeasing the TypeScript compiler
+//  applying styles based on the route
+//  regex options to parse the route
+export const GlobalStyle = createGlobalStyle<Props>`
     :root {
+        /* Spacing */
+        --space-xxs:  4px;
+        --space-xs:   8px;
+        --space-sm:   12px;
+        --space-md:   20px;
+        --space-lg:   32px;
+        --space-xl:   52px;
+        --space-xxl:  84px;
+        --space-xxxl: 105px;
+
         /* Colors */
-        --black: hsl(256deg 72% 12%);
-        --purple: purple;
+        --black: #191B1F;
+        --light-black: #2a2b2c;
+        --dark-grey: #444549;
+        --dark-grey-see-through: #444549f2;
+        --mid-grey: #909CA2;
+        --cool-grey: #9dadbc;
+        --light-grey: #DCD6CD;
+        --off-white: #E8E1D8;
+        --white: #fbfbfb;
+        --purple: #707BD9;
+        --purple-blue: #4e58b4;
+        --teal: #85D0D7;
+
+        /* Font sizes */
+        --text-xl: 2.686rem;
+        --text-lg: 2.15rem;
+        --text-ml: 1.719rem;
+        --text-md: 1.375rem; 
+        --text-body: 1.13rem;
+        --text-sm: 1rem;
+        --text-xs: 0.75rem;
 
         /* Code block styles */
         --prism-theme-white: #fff;
-        --prism-theme-background: hsl(222deg 51% 13%);
         --prism-theme-char: #d8dee9;
         --prism-theme-comment: #b2b2b2;
         --prism-theme-keyword: #c5a5c5;
@@ -27,33 +65,19 @@ export const GlobalStyle = createGlobalStyle`
 
         /* Measurements */
         --highlight-before-width: 0.43em;
-        --nav-height: 5.6rem;
+
+        /* Transitions */
+        --link-hover-transition: all .2s cubic-bezier(0.65, 0.05, 0.36, 1);
     }
 
     * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
     html {
         -webkit-font-smoothing: antialiased;
-    }
-
-    @media (max-width: 900px) {
-        html {
-            font-size: 90%;
-        }
-    }
-
-    @media (max-width: 700px) {
-        html {
-            font-size: 84%;
-        }
-    }
-
-    @media (max-width: 540px) {
-        html {
-            font-size: 78%;
-        }
     }
 
     html,
@@ -61,9 +85,16 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         color: var(--black);
-        font-family: 'century', serif;
-        background-color: hsl(350, 49%, 81%);
-        background-image: url('/images/cream-dust.png');
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+        background-color: ${(props) =>
+            isBlogPostRoute(props.route) ? 'var(--white)' : 'var(--black)'};
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        color: var(--off-white);
     }
 
     strong {
@@ -75,47 +106,24 @@ export const GlobalStyle = createGlobalStyle`
     h3,
     h4,
     h5 {
-        color: var(--black);
-        line-height: 1.1;
-        font-family: 'Oswald';
-        text-transform: uppercase;
+        line-height: 1.3;
     }
 
     h1 {
-        color: var(--black);
-        font-size: 4rem;
-        font-weight: 700;
-        letter-spacing: 1.8px;
-    }
-
-    @media (max-width: 540px) {
-        h1 {
-            font-size: 2.8rem;
-        }
+        font-family: 'Yeseva One', cursive;
+        font-size: var(--text-xl);
+        color: var(--purple);
+        margin-bottom: var(--space-lg);
     }
 
     h2 {
-        font-size: 2.8rem;
-        font-weight: 600;
+        color: var(--off-white);
+        font-size: var(--text-ml);
     }
 
     h3 {
-        font-size: 2rem;
-        font-weight: 700;
-    }
-
-    h2,
-    h3,
-    h4 {
-        margin: 1.3rem 0 0.7rem;
-    }
-
-    p {
-        font-size: 1.3rem;
-        font-weight: 400;
-        line-height: 1.6;
-        margin-block-start: 0;
-        margin-block-end: 1.5em;
+        color: var(--light-grey);
+        font-size: var(--text-md);
     }
 
     code {
@@ -124,6 +132,12 @@ export const GlobalStyle = createGlobalStyle`
         font-family: var(--code-font-family);
         border-radius: 4px;
         white-space: pre-wrap;
+    }
+
+    p {
+        font-size: var(--text-body);
+        line-height: 1.6;
+        color: var(--cool-grey)
     }
 
     p > code {
@@ -135,6 +149,12 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: inherit;
         cursor: pointer;
+        transition: var(--link-hover-transition);
+        display: inline-block;
+
+        &:hover {
+            color: var(--purple);
+        }
     }
 
     ul {
@@ -142,7 +162,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .external-link {
-        color: hsl(327deg 100% 60%);
+        color: var(--teal);
         text-decoration: underline;
         font-weight: inherit;
     }
@@ -180,15 +200,15 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Code blocks */
     pre[class*='language-'] {
-        padding: 1.5rem;
-        margin: 0px 0px 2.5em;
+        padding: var(--space-sm) var(--space-lg) var(--space-lg);
+        margin-bottom: var(--space-lg);
         overflow: auto;
-        border-radius: 0 0 10px 10px;
+        border-radius: 0 0 6px 6px;
     }
 
     :not(pre) > code[class*='language-'],
     pre[class*='language-'] {
-        background: var(--prism-theme-background);
+        background: var(--black);
     }
 
     pre[class*='language-']::-webkit-scrollbar {
@@ -327,6 +347,20 @@ export const GlobalStyle = createGlobalStyle`
     h4::selection,
     h5::selection {
         background: none;
-        text-shadow: 3px 3px #d894a0;
+        text-shadow: 2px 2px #15cedb;
+    }
+
+    /* React Modal transitions */
+    .ReactModal__Overlay {
+        opacity: 0;
+        transition: opacity 500ms ease-in-out;
+    }
+
+    .ReactModal__Overlay--after-open{
+        opacity: 1;
+    }
+
+    .ReactModal__Overlay--before-close{
+        opacity: 0;
     }
 `
