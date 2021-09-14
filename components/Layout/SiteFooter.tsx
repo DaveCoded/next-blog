@@ -41,6 +41,10 @@ const Footer = styled.footer`
     @media (min-width: 1600px) {
         padding: var(--space-lg) 15vw var(--space-lg);
     }
+
+    @media (max-width: 700px) {
+        padding: var(--space-lg) 7% var(--space-lg);
+    }
 `
 
 const LI = styled.li`

@@ -13,9 +13,9 @@ export default function Home() {
             </Head>
 
             <H1>
-                Hi. I'm Dave Bernhard,
+                <Intro>Hi. I'm Dave Bernhard,</Intro>
                 <br />
-                <Span>a frontend developer working in London.</Span>
+                <Desc>a frontend developer working in London.</Desc>
             </H1>
             <Bio>
                 This is my blog. It's a space for me to write about what I'm learning in tech;
@@ -34,16 +34,37 @@ export default function Home() {
     )
 }
 
+// ! DO THIS IN MEDIA QUERIES!!
 const H1 = styled.h1`
-    line-height: 1;
+    line-height: 0;
 `
 
-const Span = styled.span`
+const Intro = styled.span`
+    display: block;
+    line-height: 1.2;
+
+    @media (max-width: 600px) {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-md);
+        line-height: 1.1;
+    }
+`
+
+const Desc = styled.span`
     font-size: var(--text-lg);
     color: var(--cool-grey);
+    line-height: 1.2;
+
+    @media (max-width: 600px) {
+        font-size: var(--text-ml);
+    }
 `
 
 const Bio = styled.p`
     color: var(--light-grey);
     width: min(90%, 60ch);
+
+    @media (max-width: 600px) {
+        margin-bottom: var(--space-xl);
+    }
 `

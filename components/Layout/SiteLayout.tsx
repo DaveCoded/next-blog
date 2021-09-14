@@ -31,16 +31,17 @@ const Container = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
-    @media (max-width: 700px) {
-        margin: 0 var(--space-lg);
-    }
 `
 
 const Main = styled.main`
-    padding: var(--space-xxl) var(--space-xxxl) var(--space-xxl);
+    padding: var(--space-xxl) var(--space-xl) var(--space-xxl) var(--space-xxxl);
+
     @media (min-width: 1600px) {
         padding: var(--space-xxl) 15vw var(--space-xxl);
+    }
+
+    @media (max-width: 700px) {
+        padding: 0 7%;
     }
 `
 

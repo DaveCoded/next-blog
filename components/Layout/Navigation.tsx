@@ -57,7 +57,7 @@ const Nav = styled.nav`
     }
 
     @media (max-width: 700px) {
-        padding-top: var(--space-lg);
+        padding: var(--space-xxl) 7% var(--space-xxl);
     }
 `
 
@@ -97,6 +97,10 @@ const UL = styled.ul`
 
     a {
         margin-right: var(--space-lg);
+
+        @media (max-width: 400px) {
+            margin-right: var(--space-md);
+        }
     }
 `
 

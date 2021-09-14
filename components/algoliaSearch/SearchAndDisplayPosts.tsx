@@ -37,6 +37,11 @@ const SearchContainer = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: var(--space-lg);
+
+    @media (max-width: 630px) {
+        flex-direction: column;
+        align-items: initial;
+    }
 `
 
 const UL = styled.ul`
@@ -45,5 +50,10 @@ const UL = styled.ul`
 
     a + a {
         margin-left: var(--space-sm);
+    }
+
+    @media (max-width: 630px) {
+        margin-left: 0;
+        margin-top: var(--space-sm);
     }
 `
