@@ -23,8 +23,7 @@ const Dropcap = ({ children }: Props) => {
 const Illuminated = styled.span`
     font-family: 'Yeseva One';
     float: left;
-    font-size: 6rem;
-    font-weight: 600;
+    font-size: 7rem;
     line-height: 1;
     margin: 0 0.5rem 0 0;
     padding: 1.4rem 0.6rem 0 0;

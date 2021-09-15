@@ -27,7 +27,7 @@ export default function Home({ allPostsData, tags }: Props) {
                 <title>Dave Bernhard's blog</title>
                 <meta
                     name="description"
-                    content="Dave Bernhard's web development blog. Dave is a frontend developer in London; come check out his writing and projects."
+                    content="Dave Bernhard's blog index page. See a full list of writings he's written."
                 ></meta>
             </Head>
 
