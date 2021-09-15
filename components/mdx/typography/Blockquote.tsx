@@ -1,19 +1,19 @@
 import styled from 'styled-components'
 
 const Blockquote = styled.blockquote`
-    margin: 4rem auto;
-    max-width: 600px;
-    padding: 0 2rem;
+    margin: 0 auto var(--space-xl);
 
     p {
-        font-size: 1.6rem;
-        font-style: italic;
-        padding: 0 2rem;
-        border-left: 10px solid rgb(223 119 136 / 26%);
-        border-radius: 20px;
-        font-weight: 300;
+        font-size: var(--text-ml);
+        padding: 0 var(--space-lg);
+        border-left: 10px solid var(--cool-grey);
+        font-weight: 800;
         line-height: 1.4;
-        margin-bottom: 0;
+
+        @media (max-width: 600px) {
+            font-size: var(--text-md);
+            padding: 0 var(--space-md);
+        }
     }
 `
 

@@ -95,9 +95,14 @@ const PostContainer = styled.div`
 `
 
 const Title = styled.h1`
-    margin-bottom: 0;
-    margin-top: -17px;
+    margin-bottom: var(--space-lg);
     max-width: min(100%, 1000px);
+    line-height: 1.1;
+
+    @media (max-width: 500px) {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-sm);
+    }
 `
 
 const Subtitle = styled(H2)`
@@ -110,6 +115,7 @@ const Subtitle = styled(H2)`
 
 const StyledDate = styled.div`
     font-size: var(--text-sm);
+    font-weight: 600;
     color: var(--dark-grey);
     margin-bottom: var(--space-xs);
 `

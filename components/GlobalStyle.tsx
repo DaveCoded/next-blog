@@ -33,11 +33,11 @@ export const GlobalStyle = createGlobalStyle`
         --teal: #85D0D7;
 
         /* Font sizes */
-        --text-xl: 2.686rem;
-        --text-lg: 2.15rem;
-        --text-ml: 1.719rem;
-        --text-md: 1.375rem; 
-        --text-body: 1.13rem;
+        --text-xl: 3.0517578125rem;
+        --text-lg: 2.44140625rem;
+        --text-ml: 1.953125rem;
+        --text-md: 1.5625rem; 
+        --text-body: 1.25rem;
         --text-sm: 1rem;
         --text-xs: 0.75rem;
 
@@ -181,7 +181,7 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--prism-theme-white);
         background: none;
         font-family: var(--code-font-family), Consolas, Monaco, 'Andale Mono', monospace;
-        font-size: 1.12rem;
+        font-size: 1.18rem;
         text-align: left;
         white-space: pre;
         word-spacing: normal;

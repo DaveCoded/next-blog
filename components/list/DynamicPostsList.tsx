@@ -38,7 +38,7 @@ const PostsList = styled.ul`
 `
 
 const Post = styled.div`
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-xl);
 `
 
 const H2 = styled.h2`

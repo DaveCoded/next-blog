@@ -36,7 +36,7 @@ export default function SearchAndDisplayPosts({ tags, allPostsData }: Props) {
 const SearchContainer = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-xl);
 
     @media (max-width: 630px) {
         flex-direction: column;
@@ -45,11 +45,11 @@ const SearchContainer = styled.div`
 `
 
 const UL = styled.ul`
-    margin-left: var(--space-sm);
+    margin-left: var(--space-md);
     display: flex;
 
     a + a {
-        margin-left: var(--space-sm);
+        margin-left: var(--space-md);
     }
 
     @media (max-width: 630px) {

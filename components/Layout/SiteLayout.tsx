@@ -43,7 +43,7 @@ const Main = styled.main<{ route: string }>`
     }
 
     @media (max-width: 700px) {
-        padding: 0 7%;
+        padding: var(--space-xl) 5% var(--space-lg);
     }
 `
 

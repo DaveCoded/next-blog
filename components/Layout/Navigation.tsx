@@ -39,7 +39,7 @@ function Navigation({ setIsContactopen }: Props) {
             <UL>
                 <NavLink link="blog" />
                 <NavLink link="about" />
-                <NavLink link="projects" />
+                {/* <NavLink link="projects" /> */}
                 <li>
                     <button onClick={() => setIsContactopen(true)}>contact</button>
                 </li>
@@ -57,7 +57,7 @@ const Nav = styled.nav`
     }
 
     @media (max-width: 700px) {
-        padding: var(--space-xxl) 7% var(--space-xxl);
+        padding: var(--space-xl) 5% var(--space-xl);
     }
 `
 

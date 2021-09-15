@@ -43,7 +43,7 @@ const Footer = styled.footer`
     }
 
     @media (max-width: 700px) {
-        padding: var(--space-lg) 7% var(--space-lg);
+        padding: var(--space-lg) 5% var(--space-lg);
     }
 `
 

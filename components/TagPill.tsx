@@ -33,7 +33,7 @@ type StyleProps = {
 const Tag = styled.li<StyleProps>`
     list-style: none;
     font-size: var(--text-xs);
-    font-weight: 600;
+    font-weight: 700;
     background-color: ${(props) =>
         props.backgroundColor ? props.backgroundColor : 'var(--light-black)'};
     color: ${(props) => (props.color ? props.color : 'var(--cool-grey)')};

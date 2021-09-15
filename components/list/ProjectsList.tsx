@@ -1,11 +1,14 @@
 import styled from 'styled-components'
+import ExternalLink from '../ExternalLink'
 import { Article, H3 } from './LatestPosts'
 
 export default function ProjectsList() {
     return (
         <Project>
             <img src="/images/PUYL.svg" alt="Abstract broken circle shape" width={60} height={60} />
-            <Heading>Prompt up your life</Heading>
+            <ExternalLink href="https://promptupyour.life" newTab>
+                <Heading>Prompt up your life</Heading>
+            </ExternalLink>
             <P>A random prompt generator for practising UI design/development and illustration</P>
             <TechContainer>
                 <Tech>Tech used:</Tech>
