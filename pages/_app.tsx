@@ -1,12 +1,14 @@
 import { AppProps } from 'next/app'
 import { motion } from 'framer-motion'
 import MDXProvider from '../components/mdx/MDXProvider'
+import { GlobalStyle } from '../components/GlobalStyle'
 import SiteLayout from '../components/Layout/SiteLayout'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     return (
         <MDXProvider>
-            <SiteLayout route={router.route}>
+            <GlobalStyle />
+            <SiteLayout>
                 <motion.div
                     key={router.route}
                     initial={{ opacity: 0 }}

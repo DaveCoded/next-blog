@@ -1,16 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
-import { isBlogPostRoute } from '../lib/strings'
-
-type Props = {
-    route: string
-}
 
 // todo: write blog post on this
 //  passing props to createGlobalStyle
 //  appeasing the TypeScript compiler
 //  applying styles based on the route
 //  regex options to parse the route
-export const GlobalStyle = createGlobalStyle<Props>`
+// ! passing router.route made a weird flash happen in the Navbar (site layout)
+export const GlobalStyle = createGlobalStyle`
     :root {
         /* Spacing */
         --space-xxs:  4px;
@@ -89,8 +85,7 @@ export const GlobalStyle = createGlobalStyle<Props>`
     }
 
     body {
-        background-color: ${(props) =>
-            isBlogPostRoute(props.route) ? 'var(--white)' : 'var(--black)'};
+        background-color: var(--black);
         display: flex;
         flex-direction: column;
         min-height: 100vh;

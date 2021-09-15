@@ -34,7 +34,6 @@ export default function Home() {
     )
 }
 
-// ! DO THIS IN MEDIA QUERIES!!
 const H1 = styled.h1`
     line-height: 0;
 `
