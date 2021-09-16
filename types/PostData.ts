@@ -7,4 +7,5 @@ export type PostData = {
     description?: string
     status?: 'published' | 'draft'
     tags?: string[]
+    content?: string
 }
