@@ -10,6 +10,7 @@ class MyDocument extends Document {
         try {
             ctx.renderPage = () =>
                 originalRenderPage({
+                    // eslint-disable-next-line react/display-name
                     enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
                 })
 
@@ -33,7 +34,6 @@ class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <link rel="icon" href="/favicon.ico" />
-                    <link rel="stylesheet" href="/fonts.css" />
                 </Head>
                 <body>
                     <Main />

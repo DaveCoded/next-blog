@@ -30,7 +30,7 @@ export default function Posts({ source, frontMatter }: Props) {
     return (
         <>
             <Head>
-                <title>Dave Bernhard's blog | {title}</title>
+                <title>Dave Bernhard&apos;s blog | {title}</title>
                 <meta name="description" content={description}></meta>
             </Head>
 

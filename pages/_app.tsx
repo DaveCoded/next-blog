@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import MDXProvider from '../components/mdx/MDXProvider'
 import { GlobalStyle } from '../components/GlobalStyle'
 import SiteLayout from '../components/Layout/SiteLayout'
+import './_app.css'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     return (

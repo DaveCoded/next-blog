@@ -18,7 +18,7 @@ function Hits({ searchState, searchResults, allPostsData }: Props) {
 
     return (
         <Container>
-            {noHits && <P>I'm sorry. I don't write that kind of thing.</P>}
+            {noHits && <P>I&apos;m sorry. I don&apos;t write that kind of thing.</P>}
             <DynamicPostsList postsToShow={postsToShow} />
         </Container>
     )

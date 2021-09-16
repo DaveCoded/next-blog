@@ -14,7 +14,7 @@ export default function Home({ latestPosts }: Props) {
     return (
         <>
             <Head>
-                <title>Dave Bernhard's blog</title>
+                <title>Dave Bernhard&apos;s blog</title>
                 <meta
                     name="description"
                     content="Dave Bernhard's web development blog. Dave is a frontend developer in London; come check out his writing and projects."
@@ -24,9 +24,9 @@ export default function Home({ latestPosts }: Props) {
             <Header>
                 <h1>Welcome</h1>
                 <p>
-                    I'm Dave, a frontend developer at Feed. I work on a global, cross-channel
+                    I&apos;m Dave, a frontend developer at Feed. I work on a global, cross-channel
                     marketing solution for ebay. I also write about what I learn in my{' '}
-                    <Link href="/blog">
+                    <Link href="/blog" passHref>
                         <BlogLink>blog</BlogLink>
                     </Link>
                     .
@@ -37,7 +37,7 @@ export default function Home({ latestPosts }: Props) {
                 <div>
                     <H2>Latest posts</H2>
                     <LatestPosts posts={latestPosts} />
-                    <Link href="/blog">
+                    <Link href="/blog" passHref>
                         <AllPostsLink>See all posts &#8594;</AllPostsLink>
                     </Link>
                 </div>

@@ -7,6 +7,7 @@ import {
 import { MDXProvider } from '@mdx-js/react'
 import { P, A, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
@@ -21,7 +22,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
         hr: (props: HTMLAttributes<HTMLElement>) => <hr {...props} />,
         img: (props: DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLElement>) => (
             <ImgContainer>
-                <img src={props.src} alt={props.alt} width="100%" />
+                <Image src={props.src as string} alt={props.alt} width="100%" />
             </ImgContainer>
         ),
         pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,

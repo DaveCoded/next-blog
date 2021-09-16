@@ -32,7 +32,7 @@ type Props = {
 function Navigation({ setIsContactopen }: Props) {
     return (
         <Nav>
-            <Link href="/">
+            <Link href="/" passHref>
                 <Logo tabIndex={0}>Dave Bernhard</Logo>
             </Link>
             <Tagline>Web Developer</Tagline>

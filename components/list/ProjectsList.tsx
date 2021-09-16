@@ -5,6 +5,7 @@ import { Article, H3 } from './LatestPosts'
 export default function ProjectsList() {
     return (
         <Project>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/PUYL.svg" alt="Abstract broken circle shape" width={60} height={60} />
             <ExternalLink href="https://promptupyour.life" newTab>
                 <Heading>Prompt up your life</Heading>
