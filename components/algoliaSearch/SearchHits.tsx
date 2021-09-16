@@ -1,6 +1,6 @@
 import { connectStateResults } from 'react-instantsearch-dom'
 import styled from 'styled-components'
-import { PostData } from '../../pages'
+import { PostData } from '../../types/PostData'
 import DynamicPostsList from '../list/DynamicPostsList'
 
 type Props = {

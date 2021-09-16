@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { PostData } from '../../pages'
+import { PostData } from '../../types/PostData'
 
 type Props = {
     postsToShow: PostData[]

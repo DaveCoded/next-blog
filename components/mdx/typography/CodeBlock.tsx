@@ -1,18 +1,27 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { copyCodeToClipboard } from '../../../lib/copyCodeToClipboard'
 
 const CodeBlock = (props: any) => {
+    const [isCopied, setIsCopied] = useState(false)
     const codeRef = useRef<HTMLPreElement>(null)
     const title = props.children.props.title
+
+    const handleClick = () => {
+        copyCodeToClipboard(codeRef)
+        setIsCopied(true)
+        setTimeout(() => setIsCopied(false), 1500)
+    }
 
     return (
         <>
             <TitleContainer>
                 {title ? <span>{title}</span> : null}
-                <span style={{ marginLeft: 'auto' }}>
-                    <CopyButton onClick={() => copyCodeToClipboard(codeRef)}>Copy</CopyButton>
-                </span>
+                <ButtonContainer>
+                    <CopyButton onClick={handleClick} isCopied={isCopied}>
+                        {isCopied ? 'Copied!' : 'Copy'}
+                    </CopyButton>
+                </ButtonContainer>
             </TitleContainer>
             <pre {...props} ref={codeRef}>
                 {props.children}
@@ -35,7 +44,11 @@ const TitleContainer = styled.div`
     letter-spacing: 0.4px;
 `
 
-const CopyButton = styled.button`
+const ButtonContainer = styled.span`
+    margin-left: auto;
+`
+
+const CopyButton = styled.button<{ isCopied: boolean }>`
     border: 0;
     margin: 0;
     padding: 0.25rem 0.6rem;
@@ -45,7 +58,7 @@ const CopyButton = styled.button`
     font-weight: 800;
     letter-spacing: 0.6px;
     border-radius: 4px;
-    background-color: var(--black);
+    background-color: ${(props) => (props.isCopied ? '#085e06' : 'var(--black)')};
     border: 2px solid var(--cool-grey);
     color: var(--light-grey);
     cursor: pointer;
@@ -53,7 +66,7 @@ const CopyButton = styled.button`
 
     &:hover {
         color: var(--white);
-        background-color: var(--light-black);
+        background-color: ${(props) => (props.isCopied ? '#085e06' : 'var(--light-black)')};
     }
 `
 

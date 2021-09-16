@@ -4,17 +4,7 @@ import styled from 'styled-components'
 import { getSortedPosts } from '../lib/posts'
 import LatestPosts from '../components/list/LatestPosts'
 import ProjectsList from '../components/list/ProjectsList'
-
-export interface PostData {
-    slug: string
-    date: string
-    title: string
-    subtitle?: string
-    excerpt?: string
-    description?: string
-    status?: 'published' | 'draft'
-    tags?: string[]
-}
+import { PostData } from '../types/PostData'
 
 interface Props {
     latestPosts: PostData[]
@@ -37,7 +27,7 @@ export default function Home({ latestPosts }: Props) {
                     I'm Dave, a frontend developer at Feed. I work on a global, cross-channel
                     marketing solution for ebay. I also write about what I learn in my{' '}
                     <Link href="/blog">
-                        <a>blog</a>
+                        <BlogLink>blog</BlogLink>
                     </Link>
                     .
                 </p>
@@ -63,6 +53,14 @@ export default function Home({ latestPosts }: Props) {
 const Header = styled.header`
     max-width: 30rem;
     margin-bottom: var(--space-lg);
+`
+
+const BlogLink = styled.a`
+    color: var(--purple);
+    text-decoration: underline;
+    &:hover {
+        color: var(--teal);
+    }
 `
 
 const Section = styled.section`

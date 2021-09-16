@@ -1,8 +1,8 @@
-import { FormEvent } from 'react'
+import { ChangeEvent, FormEvent } from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
 import styled from 'styled-components'
 
-function SearchBox({ refine }: any) {
+function SearchBox({ refine }: { refine: (value: string) => void }) {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         return
@@ -17,7 +17,7 @@ function SearchBox({ refine }: any) {
                 id="algolia_search"
                 type="search"
                 placeholder="search posts"
-                onChange={(e: any) => refine(e.currentTarget.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => refine(e.currentTarget.value)}
             />
         </form>
     )
@@ -25,6 +25,7 @@ function SearchBox({ refine }: any) {
 
 const Input = styled.input`
     border: none;
+    font-family: inherit;
     font-size: var(--text-body);
     background-color: var(--light-black);
     border: 2px solid var(--light-black);

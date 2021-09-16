@@ -3,17 +3,7 @@ import styled from 'styled-components'
 import SearchAndDisplayPosts from '../../components/algoliaSearch/SearchAndDisplayPosts'
 import { getSortedPosts } from '../../lib/posts'
 import { getAllTags } from '../../lib/tags'
-
-export interface PostData {
-    slug: string
-    date: string
-    title: string
-    subtitle?: string
-    excerpt?: string
-    description?: string
-    status?: 'published' | 'draft'
-    tags?: string[]
-}
+import { PostData } from '../../types/PostData'
 
 interface Props {
     allPostsData: PostData[]

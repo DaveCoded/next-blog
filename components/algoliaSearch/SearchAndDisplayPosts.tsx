@@ -1,11 +1,10 @@
-import Link from 'next/link'
 import algoliasearch from 'algoliasearch/lite'
 import { InstantSearch } from 'react-instantsearch-dom'
 import styled from 'styled-components'
 import SearchBox from './SearchBox'
 import SearchHits from './SearchHits'
-import { PostData } from '../../pages'
 import TagPill from '../TagPill'
+import { PostData } from '../../types/PostData'
 
 const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,

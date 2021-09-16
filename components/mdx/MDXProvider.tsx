@@ -1,4 +1,9 @@
-import { BlockquoteHTMLAttributes, HTMLAttributes } from 'react'
+import {
+    BlockquoteHTMLAttributes,
+    DetailedHTMLProps,
+    HTMLAttributes,
+    ImgHTMLAttributes
+} from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { P, A, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
 import styled from 'styled-components'
@@ -14,7 +19,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <Blockquote {...props}>{props.children}</Blockquote>
         ),
         hr: (props: HTMLAttributes<HTMLElement>) => <hr {...props} />,
-        img: (props: any) => (
+        img: (props: DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLElement>) => (
             <ImgContainer>
                 <img src={props.src} alt={props.alt} width="100%" />
             </ImgContainer>

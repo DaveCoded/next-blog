@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { PostData } from '../../pages/blog'
 import TagPill from '../TagPill'
+import { PostData } from '../../types/PostData'
 
 type Props = {
     posts: PostData[]

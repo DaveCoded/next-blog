@@ -3,10 +3,10 @@ import { GetStaticProps } from 'next'
 import { getPostSlugsForTag, getAllTags, getUniqueTags } from '../../lib/tags'
 import { getPostdata } from '../../lib/posts'
 import matter from 'gray-matter'
-import { PostData } from '../blog'
 import styled from 'styled-components'
 import DynamicPostsList from '../../components/list/DynamicPostsList'
 import TagPill from '../../components/TagPill'
+import { PostData } from '../../types/PostData'
 
 interface Props {
     tag: string
