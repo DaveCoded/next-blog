@@ -1,8 +1,12 @@
-import { BlockquoteHTMLAttributes, HTMLAttributes } from 'react'
+import {
+    BlockquoteHTMLAttributes,
+    DetailedHTMLProps,
+    HTMLAttributes,
+    ImgHTMLAttributes
+} from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { P, A, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
-import Image, { ImageProps } from 'next/image'
-
+import styled from 'styled-components'
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
         h2: (props: HTMLAttributes<HTMLHeadingElement>) => <H2 {...props} />,
@@ -14,7 +18,11 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             <Blockquote {...props}>{props.children}</Blockquote>
         ),
         hr: (props: HTMLAttributes<HTMLElement>) => <hr {...props} />,
-        img: (props: ImageProps) => <Image {...props} alt={props.alt} />,
+        img: (props: DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) => (
+            <ImgContainer>
+                <img {...props} alt={props.alt} width="100%" />
+            </ImgContainer>
+        ),
         pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
         a: (props: HTMLAttributes<HTMLAnchorElement>) => <A {...props}>{props.children}</A>
     }
@@ -25,3 +33,10 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
         </MDXProvider>
     )
 }
+
+const ImgContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+`
