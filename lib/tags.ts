@@ -37,7 +37,7 @@ export const getAllTags = () => {
         const fileContents = fs.readFileSync(fullPath, 'utf8')
         const { data } = matter(fileContents)
 
-        if (data.tags) {
+        if (data.tags && data.status === 'publish') {
             data.tags.forEach((tag: string) => {
                 if (!result.includes({ params: { tag } })) result.push({ params: { tag } })
             })
