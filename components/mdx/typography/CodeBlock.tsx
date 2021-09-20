@@ -35,7 +35,7 @@ const TitleContainer = styled.div`
     align-items: center;
     background-color: var(--light-black);
     color: var(--light-grey);
-    font-weight: 600;
+    font-weight: 700;
     padding: var(--space-sm) var(--space-lg);
     border-radius: 6px 6px 0 0;
     margin-top: var(--space-lg);
@@ -55,7 +55,7 @@ const CopyButton = styled.button<{ isCopied: boolean }>`
     line-height: 1.2;
     font-family: inherit;
     font-size: 0.95rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.6px;
     border-radius: 4px;
     background-color: ${(props) => (props.isCopied ? '#085e06' : 'var(--black)')};

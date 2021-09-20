@@ -63,6 +63,7 @@ const Nav = styled.nav`
 
 const Logo = styled.a`
     font-size: var(--text-ml);
+    line-height: 1;
 `
 
 const Tagline = styled.p`
@@ -74,7 +75,8 @@ const Tagline = styled.p`
 
 const UL = styled.ul`
     display: flex;
-    font-size: 20px; /* custom font size for nav links */
+    font-size: var(--text-md);
+    font-weight: 300;
     line-height: 1;
     li {
         list-style: none;
@@ -84,6 +86,7 @@ const UL = styled.ul`
             border: none;
             background: none;
             font-size: inherit;
+            font-weight: inherit;
             font-family: inherit;
             color: inherit;
             cursor: pointer;

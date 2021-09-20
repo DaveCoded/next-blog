@@ -1,2 +1,47 @@
 /* todo: this could be a blog post too */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+    font-family: 'Wotfard';
+    src: url('/fonts/wotfard-regular.eot');
+    src: url('/fonts/wotfard-regular.woff2') format('woff2'),
+        url('/fonts/wotfard-regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Wotfard';
+    src: url('/fonts/wotfard-regularitalic.eot');
+    src: url('/fonts/wotfard-regularitalic.woff2') format('woff2'),
+        url('/fonts/wotfard-regularitalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Wotfard';
+    src: url('/fonts/wotfard-light.eot');
+    src: url('/fonts/wotfard-light.woff2') format('woff2'),
+        url('/fonts/wotfard-light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Wotfard';
+    src: url('/fonts/wotfard-bold.eot');
+    src: url('/fonts/wotfard-bold.woff2') format('woff2'),
+        url('/fonts/wotfard-bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Wotfard';
+    src: url('/fonts/wotfard-bolditalic.eot');
+    src: url('/fonts/wotfard-bolditalic.woff2') format('woff2'),
+        url('/fonts/wotfard-bolditalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 700;
+}

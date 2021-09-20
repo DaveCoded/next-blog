@@ -5,7 +5,6 @@ const Paragraph = styled.p`
     min-width: 90%;
     margin-bottom: var(--space-md);
     letter-spacing: 0.3px;
-    line-height: 1.8;
 `
 
 export default Paragraph

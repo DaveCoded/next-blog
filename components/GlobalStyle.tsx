@@ -33,13 +33,13 @@ export const GlobalStyle = createGlobalStyle`
         --teal: #85D0D7;
 
         /* Font sizes */
-        --text-xl: 3.0517578125rem;
-        --text-lg: 2.44140625rem;
-        --text-ml: 1.953125rem;
-        --text-md: 1.5625rem; 
+        --text-xl: 3.357rem;
+        --text-lg: 2.686rem;
+        --text-ml: 2.1485rem;
+        --text-md: 1.718rem; 
         --text-body: 1.25rem;
-        --text-sm: 1rem;
-        --text-xs: 0.75rem;
+        --text-sm: 1.1rem;
+        --text-xs: 0.88rem;
 
         /* Code block styles */
         --prism-theme-white: #fff;
@@ -81,7 +81,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         color: var(--black);
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Wotfard', sans-serif;
     }
 
     body {
@@ -93,7 +93,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     strong {
-        font-weight: 600;
+        font-weight: 700;
     }
 
     h1,
@@ -101,11 +101,12 @@ export const GlobalStyle = createGlobalStyle`
     h3,
     h4,
     h5 {
+        font-family: 'Jost';
         line-height: 1.3;
     }
 
     h1 {
-        font-family: 'Yeseva One', cursive;
+        font-family: 'Wotfard', sans-serif;
         font-size: var(--text-xl);
         color: var(--purple);
         margin-bottom: var(--space-lg);
@@ -136,7 +137,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p > code {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         padding: 0.2rem 0.4rem;
     }
 

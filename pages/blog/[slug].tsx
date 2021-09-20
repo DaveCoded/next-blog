@@ -95,7 +95,7 @@ const PostContainer = styled.div`
 `
 
 const Title = styled.h1`
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     max-width: min(100%, 1000px);
     line-height: 1.1;
 
@@ -106,6 +106,7 @@ const Title = styled.h1`
 `
 
 const Subtitle = styled(H2)`
+    font-family: 'Wotfard', sans-serif;
     font-weight: 400;
     margin-top: 0;
     margin-bottom: var(--space-lg);
@@ -114,8 +115,8 @@ const Subtitle = styled(H2)`
 `
 
 const StyledDate = styled.div`
+    font-family: 'Wotfard', sans-serif;
     font-size: var(--text-sm);
-    font-weight: 600;
     color: var(--dark-grey);
     margin-bottom: var(--space-xs);
 `

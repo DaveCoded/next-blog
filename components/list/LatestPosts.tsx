@@ -17,14 +17,16 @@ export default function LatestPosts({ posts }: Props) {
                             <H3>{title}</H3>
                         </a>
                     </Link>
-                    <StyledDate>{date}</StyledDate>
-                    {tags && tags?.length > 0 && (
-                        <UL>
-                            {tags.map((tag) => (
-                                <TagPill tag={tag} key={tag} />
-                            ))}
-                        </UL>
-                    )}
+                    <Metadata>
+                        <StyledDate>{date}</StyledDate>
+                        {tags && tags?.length > 0 && (
+                            <UL>
+                                {tags.map((tag) => (
+                                    <TagPill tag={tag} key={tag} />
+                                ))}
+                            </UL>
+                        )}
+                    </Metadata>
                 </Article>
             ))}
         </>
@@ -32,13 +34,14 @@ export default function LatestPosts({ posts }: Props) {
 }
 
 export const Article = styled.article`
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
 `
 
 const StyledDate = styled.div`
+    font-family: 'Wotfard', sans-serif;
     line-height: 1.6;
     color: var(--cool-grey);
-    margin-bottom: var(--space-xs);
+    margin-right: var(--space-sm);
 `
 
 export const H3 = styled.h3`
@@ -52,19 +55,8 @@ export const H3 = styled.h3`
     }
 `
 
-const LI = styled.li`
-    list-style: none;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    background-color: var(--light-black);
-    color: var(--cool-grey);
-    border-radius: 100px;
-    padding: var(--space-xxs) var(--space-sm);
-    transition: var(--link-hover-transition);
-
-    &:hover {
-        background-color: #363a3c;
-    }
+const Metadata = styled.div`
+    display: flex;
 `
 
 const UL = styled.ul`

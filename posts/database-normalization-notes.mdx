@@ -8,7 +8,56 @@ status: 'draft'
 tags: ['Databases']
 ---
 
+## History
+
+- "It was first proposed by Edgar F. Codd as part of his relational model." (wikipedia)
+
 ## What is database normalization?
 
 - It concerns how we _structure_ a relational (usually) database
 - The aim is to reduce data redundancy and to improve data integrity
+- We do this by adhering to the "**normal forms**"
+
+### Data redundancy
+
+- Essentially the duplication of data in multiple records, either within a table or across multiple tables
+- Can lead to corruption of data, or just increased storage requirements
+
+### Data integrity
+
+- Ensuring the persistence and retention of data
+
+## 3 kinds of anomaly
+
+There are three main dangers for databases that have not been normalized:
+
+### Update anomaly
+
+- When you have the same data expressed in multiple places, they must be updated together
+- Therefore, if for any reason an update is only partially successful, some records may update while others do not
+- It is then possible to get two different answers to the same query
+
+### Insertion anomaly
+
+- When you need to add a record to a table that can't because of the specified columns
+- Wikipedia example gives faculty members as below:
+
+<FacultyTable />
+
+- Now imagine a new member starts, but is not yet teaching a course. Their Course Code
+  would have to be given as `null`
+
+### Deletion anomaly
+
+- This is when deleting data holding one fact necessarily deletes data holding another fact
+- The Faculty Table suffers from this anomaly. If you delete a course, you will also delete
+  the faculty member, unless the course code is set to `null`
+
+## Principle: extensions should require minimal redesign
+
+- You should be able to add new types of data to a database without changing its structure too much
+- Each change in structure could potentially break existing applications that interact with the data
+
+## The normal forms
+
+(summarise 1 - 4? Research what is useful to know. Write about the _process_ of normalizing a db)

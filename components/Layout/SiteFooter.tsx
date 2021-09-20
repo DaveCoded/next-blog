@@ -33,6 +33,7 @@ function SiteFooter() {
 }
 
 const Footer = styled.footer`
+    font-size: var(--text-sm);
     margin-top: auto;
     padding: var(--space-lg) var(--space-xxxl) var(--space-lg);
     background-color: var(--black);
