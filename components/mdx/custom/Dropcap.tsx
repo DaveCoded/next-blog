@@ -21,7 +21,6 @@ const Dropcap = ({ children }: Props) => {
 }
 
 const Illuminated = styled.span`
-    font-family: 'Jost';
     font-weight: 600;
     float: left;
     font-size: 6.6rem;

@@ -101,7 +101,6 @@ export const GlobalStyle = createGlobalStyle`
     h3,
     h4,
     h5 {
-        font-family: 'Jost';
         line-height: 1.3;
     }
 

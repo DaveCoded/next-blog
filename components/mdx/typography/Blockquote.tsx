@@ -7,7 +7,6 @@ const Blockquote = styled.blockquote`
         font-size: var(--text-md);
         padding: 0 var(--space-md);
         border-left: 8px solid var(--cool-grey);
-        font-family: 'Jost';
         font-weight: 600;
         line-height: 1.4;
 

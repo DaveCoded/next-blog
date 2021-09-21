@@ -68,14 +68,15 @@ const Logo = styled.a`
 
 const Tagline = styled.p`
     font-style: italic;
-    font-size: var(--text-ml);
+    font-size: var(--text-md);
     line-height: 1.4;
     margin-bottom: var(--space-lg);
 `
 
 const UL = styled.ul`
     display: flex;
-    font-size: var(--text-md);
+    font-size: 1.5rem;
+    color: var(--light-grey);
     font-weight: 300;
     line-height: 1;
     li {
