@@ -32,7 +32,7 @@ export default function FacultyTable() {
 }
 
 const Styles = styled.div`
-    padding-top: var(--space-md);
+    padding: var(--space-md) 0;
 
     table {
         border-spacing: 0;

@@ -95,9 +95,10 @@ const PostContainer = styled.div`
 `
 
 const Title = styled.h1`
-    margin-bottom: var(--space-md);
+    color: var(--black);
+    margin-bottom: var(--space-xs);
     max-width: min(100%, 1000px);
-    line-height: 1.1;
+    line-height: 1;
 
     @media (max-width: 500px) {
         font-size: var(--text-lg);
@@ -109,7 +110,7 @@ const Subtitle = styled(H2)`
     font-family: 'Wotfard', sans-serif;
     font-weight: 400;
     margin-top: 0;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     font-size: var(--text-md);
     max-width: min(100%, 1000px);
 `

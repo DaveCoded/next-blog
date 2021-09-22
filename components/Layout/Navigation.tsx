@@ -11,7 +11,7 @@ function NavLink({ link }: { link: string }) {
     const style: CSSProperties = {
         ...(router.asPath === href && {
             textDecoration: 'underline',
-            fontWeight: 600,
+            fontWeight: 400,
             color: 'var(--teal)'
         })
     }

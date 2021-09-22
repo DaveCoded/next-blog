@@ -27,17 +27,17 @@ tags: ['Databases']
 
 - Ensuring the persistence and retention of data
 
-## 3 kinds of anomaly
+### 3 kinds of anomaly
 
 There are three main dangers for databases that have not been normalized:
 
-### Update anomaly
+#### Update anomaly
 
 - When you have the same data expressed in multiple places, they must be updated together
 - Therefore, if for any reason an update is only partially successful, some records may update while others do not
 - It is then possible to get two different answers to the same query
 
-### Insertion anomaly
+#### Insertion anomaly
 
 - When you need to add a record to a table that can't because of the specified columns
 - Wikipedia example gives faculty members as below:
@@ -47,17 +47,40 @@ There are three main dangers for databases that have not been normalized:
 - Now imagine a new member starts, but is not yet teaching a course. Their Course Code
   would have to be given as `null`
 
-### Deletion anomaly
+#### Deletion anomaly
 
 - This is when deleting data holding one fact necessarily deletes data holding another fact
 - The Faculty Table suffers from this anomaly. If you delete a course, you will also delete
   the faculty member, unless the course code is set to `null`
 
-## Principle: extensions should require minimal redesign
+### Principle: extensions should require minimal redesign
 
 - You should be able to add new types of data to a database without changing its structure too much
 - Each change in structure could potentially break existing applications that interact with the data
 
-## The normal forms
+### The normal forms
 
-(summarise 1 - 4? Research what is useful to know. Write about the _process_ of normalizing a db)
+#### 1NF
+
+- Every cell value must contain only one balue
+- All entries in the same column are of the same types
+- Rows are uniquely identified (by adding a unique ID or enough columns that data is necessarily unique)
+
+#### 2NF
+
+- All attributes (columns that aren't keys) are dependent on the keys
+- In other words, if you have a column or columns that are related to each other, or some other data,
+  but not the primary key, then they belong in a different table
+
+#### 3NF
+
+- All columns/fields can be determined only by the key in the table, and not by any other column
+
+#### 4NF
+
+- No multi-valued dependencies
+- Let's assume your primary key is a customer ID. What if that customers has multiple addresses?
+  Or multiple credit cards? Multiple subscriptions?
+- Rather than storing those _multi-valued dependencies_ on the Customer table, they can go in their
+  own **address**, **credit_card** and **subscription** tables
+- That way, we prevent obvious update anomalies

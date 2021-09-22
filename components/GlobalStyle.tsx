@@ -153,7 +153,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     ul {
-        padding: 0;
+        font-size: var(--text-body);
+        line-height: 1.6;
     }
 
     .external-link {

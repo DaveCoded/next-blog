@@ -30,6 +30,24 @@
 
 @font-face {
     font-family: 'Wotfard';
+    src: url('/fonts/wotfard-medium.eot');
+    src: url('/fonts/wotfard-medium.woff2') format('woff2'),
+        url('/fonts/wotfard-medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Wotfard';
+    src: url('/fonts/wotfard-semibold.eot');
+    src: url('/fonts/wotfard-semibold.woff2') format('woff2'),
+        url('/fonts/wotfard-semibold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Wotfard';
     src: url('/fonts/wotfard-bold.eot');
     src: url('/fonts/wotfard-bold.woff2') format('woff2'),
         url('/fonts/wotfard-bold.ttf') format('truetype');
