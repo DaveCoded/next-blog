@@ -31,7 +31,7 @@ want to avoid data redundancy:
 
 Data _integrity_ concerns its reliability over time. Imagine we have a database of users. Each user has an
 email address stored. If I query for Hans Andersen's email address and the database returns
-thelittlemermaid@fairytales.com, I want to know that running the same query will return me the same
+thelittlemermaid<span>@</span>fairytales.com, I want to know that running the same query will return me the same
 address in five years' time (assuming that Hans's address is not deliberately changed).
 
 This predicatability can be compromised by duplicate data or storing data with invalid types, to name a couple.
@@ -94,9 +94,8 @@ Otherwise, each change in structure could potentially break existing application
 #### BCNF (Boyce-Codd Normal Form)
 
 BCNF is a slightly stronger version of 3NF developed to address a few edge cases. Its definition is
-slightly complex and beyond the scope of this introduction. In short, a relation (table) "that does
-not have multiple overlapping candidate keys is guaranteed to be in BCNF" (Vincent, M. W. and B. Srinivasan.
-"A Note on Randi Schemes Which Are in 3NF But Not in BCNF". Information Processing Letters 48(6), 1993, pp. 281–283)
+slightly complex and beyond the scope of this introduction. In short, a relation (table) will be in
+BCNF if it satisfies 3NF and does not contain any overlapping candidate keys.
 
 #### 4NF
 
@@ -106,3 +105,22 @@ not have multiple overlapping candidate keys is guaranteed to be in BCNF" (Vince
 - Rather than storing those _multi-valued dependencies_ on the Customer table, they can go in their
   own **address**, **credit_card** and **subscription** tables
 - That way, we prevent obvious update anomalies
+
+## Things not covered
+
+Database normalization is an enormous topic. Since it is the subject of multiple hefty textbooks, please
+be aware that we have not even scratched the surface here.
+
+It might be useful to be aware that there are disagreements over which normal forms are useful to adhere to.
+I have seen it suggested on Stack Overflow that one should aim for 5NF and use an algorithm to achieve it.
+Others consider 3NF to be more than enough. The professors taking CS186 at Berkley consider 2NF and 3NF to
+be only of historical interest, preferring to focus on 1NF and BCNF. Though, presumably, adhering to BCNF
+implies also covering 2NF and 3NF!
+
+There are also cases in which normalization is less desirable. Splitting your functional dependencies over
+multiple tables can require joins, which results in slower queries. In fact, there is a process called
+denormalization that seeks to address the cases in which this is a problem for certain business cases.
+
+And these are just, of the things that I know I haven't covered, those that I have bothered to note! So
+please make sure that, if you have learned anything here, you consult other resources to learn more about
+database normalization 👍
