@@ -24,7 +24,7 @@ const components = AllComponents
 export default function Posts({ source, frontMatter }: Props) {
     const content = hydrate(source, { components })
     const options = { month: 'long', day: 'numeric', year: 'numeric' } as any
-    const { title, description, subtitle, date, tags } = frontMatter
+    const { title, description, subtitle, date, tags, keywords } = frontMatter
     const formattedDate = new Date(date).toLocaleDateString('en-US', options)
 
     return (
@@ -32,6 +32,7 @@ export default function Posts({ source, frontMatter }: Props) {
             <Head>
                 <title>Dave Bernhard&apos;s blog | {title}</title>
                 <meta name="description" content={description}></meta>
+                <meta name="keywords" content={keywords}></meta>
             </Head>
 
             <PostContainer>
@@ -53,7 +54,6 @@ export default function Posts({ source, frontMatter }: Props) {
                         </ul>
                     </TagContainer>
                 ) : null}
-                {/* <div className={styles.Categories}>Some category tags here maybe?</div> */}
                 {/* <TableOfContents headings={headings} /> */}
                 <ContentWrapper>{content}</ContentWrapper>
             </PostContainer>

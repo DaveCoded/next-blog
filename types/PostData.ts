@@ -8,4 +8,5 @@ export type PostData = {
     status?: 'published' | 'draft'
     tags?: string[]
     content?: string
+    keywords?: string
 }
