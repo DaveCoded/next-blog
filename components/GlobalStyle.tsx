@@ -31,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
         --purple: #707BD9;
         --purple-blue: #4e58b4;
         --teal: #85D0D7;
+        --link-pink: hsl(327deg 100% 60%);
 
         /* Font sizes */
         --text-xl: 3.357rem;
@@ -74,6 +75,7 @@ export const GlobalStyle = createGlobalStyle`
 
     html {
         -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
     }
 
     html,
@@ -93,7 +95,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     strong {
-        font-weight: 700;
+        font-weight: 600;
     }
 
     h1,
@@ -171,6 +173,9 @@ export const GlobalStyle = createGlobalStyle`
 
     ol {
         padding-inline-start: 1.5rem;
+        font-size: var(--text-body);
+        line-height: 1.6;
+        margin-bottom: var(--space-md);
     }
 
     /* ======================================================= */

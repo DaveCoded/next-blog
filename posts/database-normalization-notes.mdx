@@ -3,68 +3,83 @@ title: 'Notes on Database Normalization'
 subtitle: 'What is it? Why do we need it? How is it done?'
 excerpt: "Research notes I'm making with a view to understanding the concept of database normalization."
 description: "Research notes I'm making with a view to understanding the concept of database normalization."
-date: '09/16/21'
-status: 'draft'
+date: '09/23/21'
+status: 'publish'
 tags: ['Databases']
 ---
 
-## History
-
-- "It was first proposed by Edgar F. Codd as part of his relational model." (wikipedia)
-
 ## What is database normalization?
 
-- It concerns how we _structure_ a relational (usually) database
-- The aim is to reduce data redundancy and to improve data integrity
-- We do this by adhering to the "**normal forms**"
+Normalization is a database design methodology. Proposed by Edgar F. Codd in 1970 - and subsequently developed
+in the following years with some collaborators - database normalization gives us a framework for structuring
+relational (usually) databases. Its aim is to reduce <a href="#data-redundancy">data redundancy</a>, and to
+improve <a href="#data-integrity">data integrity</a>. This is done by adhering to the "**normal forms**", of
+which there are _technically_ 10 (or 11 if you count "Unnormalized form", which I don't). Fortunately, however,
+a database is generally considered to be normalized by **following the first three norms**.
 
 ### Data redundancy
 
-- Essentially the duplication of data in multiple records, either within a table or across multiple tables
-- Can lead to corruption of data, or just increased storage requirements
+Data _redundancy_ is the duplication of data in multiple records. Whether the data is recorded in the same
+table, or represented across multiple tables, it is still considered redundant. There are **two reasons** we
+want to avoid data redundancy:
+
+1. It uses unnecessary resources. There is more data to store in the first place. That means our data takes
+   up more space, and it will take longer to query it.
+2. It can easily lead to corrupted data, thanks to <a href="#update-anomaly">update anomalies</a>.
 
 ### Data integrity
 
-- Ensuring the persistence and retention of data
+Data _integrity_ concerns its reliability over time. Imagine we have a database of users. Each user has an
+email address stored. If I query for Hans Andersen's email address and the database returns
+thelittlemermaid@fairytales.com, I want to know that running the same query will return me the same
+address in five years' time (assuming that Hans's address is not deliberately changed).
+
+This predicatability can be compromised by duplicate data or storing data with invalid types, to name a couple.
+For example, if you want to store some phone numbers, it might be a bad idea to use the `VARCHAR` type. This
+would allow non-numeric characters to be listed, and therefore invalid phone numbers.
 
 ### 3 kinds of anomaly
 
 There are three main dangers for databases that have not been normalized:
 
-#### Update anomaly
+#### Update anomalies
 
-- When you have the same data expressed in multiple places, they must be updated together
-- Therefore, if for any reason an update is only partially successful, some records may update while others do not
-- It is then possible to get two different answers to the same query
+One issue with having the same data expressed in multiple places, is that it has to be updated in multiple places.
+So if for some reason an update is only partially successful, some records may update while others will not.
+It will then be possible to get two different answers to the same query.
 
-#### Insertion anomaly
+#### Insertion anomalies
 
-- When you need to add a record to a table that can't because of the specified columns
-- Wikipedia example gives faculty members as below:
+An insertion anomaly is when you want to add a new record to a table, but can't because of the way the data has
+been structured. To repurpose the example given on Wikipedia, consider this table of faculty members:
 
 <FacultyTable />
 
-- Now imagine a new member starts, but is not yet teaching a course. Their Course Code
-  would have to be given as `null`
+Each faculty member has a unique ID, a name, the date they were hired and a course code. Now imagine we have a new
+member of the faculty starting so we need to make a new record. Marston Porkhabit will be give a unique ID, their
+name will be entered and their start date, 01/09/2021, will be recorded. But, for various reasons that are none
+of your business actually, they are working on their own research initially. They are not currently taking a course.
+It will be impossible to add a record for Marston unless we record `null` for the Course Code, which may be
+undesirable.
 
-#### Deletion anomaly
+#### Deletion anomalies
 
-- This is when deleting data holding one fact necessarily deletes data holding another fact
-- The Faculty Table suffers from this anomaly. If you delete a course, you will also delete
-  the faculty member, unless the course code is set to `null`
+A deletion anomaly occurs when deleting data holding one fact will also delete data holding another fact.
+The Faculty Table suffers from this. It is not possible to delete a course without also removing a faculty member;
+unless, again, we are able to set the Course Code to `null`.
 
-### Principle: extensions should require minimal redesign
+### Extensions should require minimal redesign
 
-- You should be able to add new types of data to a database without changing its structure too much
-- Each change in structure could potentially break existing applications that interact with the data
+This is just a principle that is worth mentioning before we get onto the normal forms.
+You should be able to add new types of data to a database without changing its structure too much.
+Otherwise, each change in structure could potentially break existing applications that interact with the database.
 
 ### The normal forms
 
 #### 1NF
 
-- Every cell value must contain only one balue
-- All entries in the same column are of the same types
-- Rows are uniquely identified (by adding a unique ID or enough columns that data is necessarily unique)
+- Every record (row) must be unique
+- Each cell contains only one value
 
 #### 2NF
 
@@ -75,6 +90,13 @@ There are three main dangers for databases that have not been normalized:
 #### 3NF
 
 - All columns/fields can be determined only by the key in the table, and not by any other column
+
+#### BCNF (Boyce-Codd Normal Form)
+
+BCNF is a slightly stronger version of 3NF developed to address a few edge cases. Its definition is
+slightly complex and beyond the scope of this introduction. In short, a relation (table) "that does
+not have multiple overlapping candidate keys is guaranteed to be in BCNF" (Vincent, M. W. and B. Srinivasan.
+"A Note on Randi Schemes Which Are in 3NF But Not in BCNF". Information Processing Letters 48(6), 1993, pp. 281–283)
 
 #### 4NF
 

@@ -1,5 +1,5 @@
 import Dropcap from './custom/Dropcap'
-import FacultyTable from './post-assets/database-normalization-notes/FacultyTable'
+import FacultyTable from './FacultyTable'
 
 const AllComponents = {
     Dropcap,

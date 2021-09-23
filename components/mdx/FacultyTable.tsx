@@ -15,13 +15,13 @@ export default function FacultyTable() {
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Snarky Bufflins</td>
+                        <td>Felula Tortellini</td>
                         <td>05/11/1984</td>
                         <td>CS150</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Randy Botellini</td>
+                        <td>Snarky Bufflins</td>
                         <td>01/03/1991</td>
                         <td>The Canterbury Ales: Chaucer and his beers</td>
                     </tr>
@@ -32,7 +32,7 @@ export default function FacultyTable() {
 }
 
 const Styles = styled.div`
-    padding: var(--space-md) 0;
+    margin: var(--space-lg) 0;
 
     table {
         border-spacing: 0;

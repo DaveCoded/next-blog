@@ -136,5 +136,5 @@ const TagContainer = styled.div`
 
 const ContentWrapper = styled.div`
     margin-top: var(--space-xxl);
-    max-width: 600px;
+    max-width: 650px;
 `

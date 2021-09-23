@@ -17,6 +17,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
         blockquote: (props: BlockquoteHTMLAttributes<HTMLElement>) => (
             <Blockquote {...props}>{props.children}</Blockquote>
         ),
+        ul: (props: HTMLAttributes<HTMLUListElement>) => <UL {...props} />,
         hr: (props: HTMLAttributes<HTMLElement>) => <hr {...props} />,
         img: (props: DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>) => (
             <ImgContainer>
@@ -33,6 +34,10 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
         </MDXProvider>
     )
 }
+
+const UL = styled.ul`
+    padding-inline-start: 1.5rem;
+`
 
 const ImgContainer = styled.div`
     width: 100%;
