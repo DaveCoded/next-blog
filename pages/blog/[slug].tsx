@@ -36,7 +36,7 @@ export default function Posts({ source, frontMatter }: Props) {
             </Head>
 
             <PostContainer>
-                <Title>{title}</Title>
+                <Title hasSubtitle={!!subtitle}>{title}</Title>
                 {subtitle && <Subtitle>{subtitle}</Subtitle>}
                 <StyledDate>{formattedDate}</StyledDate>
                 {tags && tags.length > 0 ? (
@@ -94,10 +94,10 @@ const PostContainer = styled.div`
     color: var(--black);
 `
 
-const Title = styled.h1`
+const Title = styled.h1<{ hasSubtitle: boolean }>`
     color: var(--black);
-    margin-bottom: var(--space-xs);
-    max-width: min(100%, 1000px);
+    margin-bottom: ${(props) => (props.hasSubtitle ? 'var(--space-xs)' : 'var(--space-lg)')};
+    max-width: min(100%, 800px);
     line-height: 1;
 
     @media (max-width: 500px) {

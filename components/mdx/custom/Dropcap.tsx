@@ -2,12 +2,15 @@ import styled from 'styled-components'
 import { P } from '../typography'
 
 interface Props {
-    children: string
+    children: string | any[]
 }
 
 const Dropcap = ({ children }: Props) => {
-    const firstLetter = children[0]
-    const remainder = children.slice(1)
+    const isChildrenString = typeof children === 'string'
+    const firstLetter = isChildrenString ? children[0] : children[0][0]
+    const remainder = isChildrenString
+        ? children.slice(1)
+        : [children[0].slice(1), ...children.slice(1)]
 
     return (
         <P>

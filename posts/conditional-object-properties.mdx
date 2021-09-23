@@ -1,0 +1,28 @@
+---
+title: 'How to conditionally add a property to an object'
+excerpt: 'I forget how to do this so often I just had to write it down'
+description: 'How to conditionally add a property to an object'
+date: '09/23/21'
+status: 'publish'
+tags: ['JavaScript']
+keywords: 'JavaScript, objects, conditional properties, spread operator'
+---
+
+If you have an object literal in JavaScript, and you want
+to add a property to it only if some condition is met,
+you're in luck. The neatest way is with the spread
+operator, introduced in ES6.
+
+```JavaScript title=conditional-property.js
+const isConditional = true;
+
+const myObject = {
+    type: 'excellent',
+    size: 'enormous',
+    aromas: ['jasmine', 'honeysuckle', 'puddle water'],
+    ...(isConditional && { optionalProperty: true })
+}
+```
+
+As you can see, how this actually works syntactically, is by spreading an object - `{ optionalProperty: true }` -
+into our existing object literal if a certain condition is met. Handy stuff 🤚
