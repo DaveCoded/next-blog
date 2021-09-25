@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import { getSortedPosts } from '../lib/posts'
 import LatestPosts from '../components/list/LatestPosts'
 import ProjectsList from '../components/list/ProjectsList'
+import RollingText from '../components/RollingText'
 import { PostData } from '../types/PostData'
+import ExternalLink from '../components/ExternalLink'
 
 interface Props {
     latestPosts: PostData[]
@@ -22,14 +24,17 @@ export default function Home({ latestPosts }: Props) {
             </Head>
 
             <Header>
-                <h1>Welcome</h1>
+                <h1>
+                    This is a{' '}
+                    <RollingText options={['blog', 'portfolio', 'playground', 'website']} />
+                </h1>
                 <p>
-                    I&apos;m Dave, a frontend developer at Feed. I work on a global, cross-channel
-                    marketing solution for ebay. I also write about what I learn in my{' '}
-                    <Link href="/blog" passHref>
-                        <BlogLink>blog</BlogLink>
-                    </Link>
-                    .
+                    I&apos;m Dave, a frontend developer at{' '}
+                    <ExternalLink href="https://www.feed.xyz/" newTab>
+                        Feed
+                    </ExternalLink>
+                    . I work on a global, cross-channel marketing solution for ebay. I also write
+                    about what I learn on my blog.
                 </p>
             </Header>
 
@@ -51,15 +56,17 @@ export default function Home({ latestPosts }: Props) {
 }
 
 const Header = styled.header`
-    max-width: 30rem;
-    margin-bottom: var(--space-lg);
-`
+    max-width: 70rem;
+    margin-bottom: var(--space-xxxl);
 
-const BlogLink = styled.a`
-    color: var(--purple);
-    text-decoration: underline;
-    &:hover {
-        color: var(--teal);
+    h1 {
+        font-size: var(--text-xxl);
+        font-weight: 600;
+        margin-bottom: var(--space-md);
+    }
+
+    p {
+        max-width: 30rem;
     }
 `
 
@@ -68,7 +75,6 @@ const Section = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 3rem 5rem;
-    margin-bottom: 5rem;
 
     @media (max-width: 930px) {
         grid-template-columns: 1fr;
@@ -76,13 +82,16 @@ const Section = styled.section`
 `
 
 const H2 = styled.h2`
-    font-size: var(--text-ml);
+    font-size: var(--text-lg);
     margin-top: 0;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+    color: var(--cool-grey);
 `
 
 const AllPostsLink = styled.a`
     color: var(--cool-grey);
+    font-size: var(--text-sm);
 `
 
 export async function getStaticProps() {

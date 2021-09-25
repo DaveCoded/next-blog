@@ -11,7 +11,7 @@ export default function DynamicPostsList({ postsToShow }: Props) {
         <PostsList>
             {postsToShow.map(({ slug, date, title, excerpt, status }) => (
                 <li key={slug}>
-                    <Post>
+                    <div>
                         <Link href="/blog/[slug]" as={`/blog/${slug}`}>
                             <a>
                                 <H2>
@@ -22,7 +22,7 @@ export default function DynamicPostsList({ postsToShow }: Props) {
                         </Link>
                         <Excerpt>{excerpt}</Excerpt>
                         <StyledDate>{date}</StyledDate>
-                    </Post>
+                    </div>
                 </li>
             ))}
         </PostsList>
@@ -30,18 +30,18 @@ export default function DynamicPostsList({ postsToShow }: Props) {
 }
 
 const PostsList = styled.ul`
-    padding-bottom: var(--space-lg);
+    li + li {
+        margin-top: var(--space-lg);
+    }
 
     li {
         list-style: none;
     }
 `
 
-const Post = styled.div`
-    margin-bottom: var(--space-xl);
-`
-
 const H2 = styled.h2`
+    font-weight: 600;
+    color: var(--cool-grey);
     transition: var(--link-hover-transition);
 
     &:hover {
@@ -57,6 +57,7 @@ const StyledDate = styled.span`
 const Excerpt = styled.p`
     margin: var(--space-xs) 0;
     color: var(--light-grey);
+    line-height: 1.4;
 `
 
 const Draft = styled.span`

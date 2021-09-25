@@ -90,7 +90,7 @@ const LI = styled.li`
 
     a:hover,
     a:focus {
-        color: var(--teal);
+        color: inherit;
         span {
             text-decoration: underline;
         }

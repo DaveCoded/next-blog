@@ -27,7 +27,7 @@ function SiteFooter() {
                     </ExternalLink>
                 </LI>
             </UL>
-            <span>&copy; {new Date().getFullYear()} David Bernhard</span>
+            <Copyright>&copy; {new Date().getFullYear()} David Bernhard</Copyright>
         </Footer>
     )
 }
@@ -57,10 +57,15 @@ const LI = styled.li`
 `
 const UL = styled.ul`
     display: flex;
+    font-size: inherit;
     margin-bottom: var(--space-xs);
     ${LI} + ${LI} {
         margin-left: var(--space-md);
     }
+`
+
+const Copyright = styled.span`
+    color: var(--cool-grey);
 `
 
 export default SiteFooter

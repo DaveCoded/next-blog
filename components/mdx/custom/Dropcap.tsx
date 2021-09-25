@@ -24,12 +24,14 @@ const Dropcap = ({ children }: Props) => {
 }
 
 const Illuminated = styled.span`
-    font-weight: 600;
+    font-family: 'Headline';
+    font-weight: 400;
+    color: var(--light-black);
     float: left;
-    font-size: 6.6rem;
+    font-size: 6.9rem;
     line-height: 1;
     margin: 0 0.5rem 0 0;
-    padding: 1.2rem 0.3rem 0 0;
+    padding: 1rem 0.2rem 0 0;
 
     &:before,
     &:after {

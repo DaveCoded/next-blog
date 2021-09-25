@@ -34,13 +34,14 @@ export const GlobalStyle = createGlobalStyle`
         --link-pink: hsl(327deg 100% 60%);
 
         /* Font sizes */
+        --text-xxl: 4.2rem;
         --text-xl: 3.357rem;
         --text-lg: 2.686rem;
         --text-ml: 2.1485rem;
         --text-md: 1.718rem; 
-        --text-body: 1.25rem;
+        --text-body: 1.375rem;
         --text-sm: 1.1rem;
-        --text-xs: 0.88rem;
+        --text-xs: 0.94rem;
 
         /* Code block styles */
         --prism-theme-white: #fff;
@@ -108,7 +109,7 @@ export const GlobalStyle = createGlobalStyle`
 
     h1 {
         font-family: 'Headline';
-        font-size: var(--text-xl);
+        font-size: var(--text-xxl);
         color: var(--purple);
         margin-bottom: var(--space-lg);
     }
@@ -117,6 +118,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Headline';
         color: var(--off-white);
         font-size: var(--text-ml);
+        font-weight: 600;
     }
 
     h3 {

@@ -45,7 +45,7 @@ const StyledDate = styled.div`
 
 export const H3 = styled.h3`
     font-size: var(--text-md);
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: var(--space-xs);
     transition: var(--link-hover-transition);
 
@@ -56,12 +56,11 @@ export const H3 = styled.h3`
 
 const Metadata = styled.div`
     display: flex;
+    align-items: baseline;
 `
 
 const UL = styled.ul`
     display: flex;
-
-    a + a {
-        margin-left: 8px;
-    }
+    flex-wrap: wrap;
+    gap: var(--space-sm);
 `

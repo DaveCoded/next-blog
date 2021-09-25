@@ -38,22 +38,26 @@ export default function Posts({ source, frontMatter }: Props) {
             <PostContainer>
                 <Title hasSubtitle={!!subtitle}>{title}</Title>
                 {subtitle && <Subtitle>{subtitle}</Subtitle>}
-                <StyledDate>{formattedDate}</StyledDate>
-                {tags && tags.length > 0 ? (
-                    <TagContainer>
-                        <ul>
-                            {tags.map((tag) => (
-                                <TagPill
-                                    tag={tag}
-                                    key={tag}
-                                    color="var(--white)"
-                                    backgroundColor="var(--purple)"
-                                    hoverBackgroundColor="var(--purple-blue)"
-                                />
-                            ))}
-                        </ul>
-                    </TagContainer>
-                ) : null}
+
+                <Metadata>
+                    <StyledDate>{formattedDate}</StyledDate>
+                    {tags && tags.length > 0 ? (
+                        <TagContainer>
+                            <ul>
+                                {tags.map((tag) => (
+                                    <TagPill
+                                        tag={tag}
+                                        key={tag}
+                                        color="var(--white)"
+                                        backgroundColor="var(--cool-grey)"
+                                        hoverBackgroundColor="var(--mid-grey)"
+                                    />
+                                ))}
+                            </ul>
+                        </TagContainer>
+                    ) : null}
+                </Metadata>
+
                 {/* <TableOfContents headings={headings} /> */}
                 <ContentWrapper>{content}</ContentWrapper>
             </PostContainer>
@@ -95,10 +99,11 @@ const PostContainer = styled.div`
 `
 
 const Title = styled.h1<{ hasSubtitle: boolean }>`
-    color: var(--black);
-    margin-bottom: ${(props) => (props.hasSubtitle ? 'var(--space-sm)' : 'var(--space-lg)')};
+    color: var(--light-black);
+    margin-top: var(--space-lg);
+    margin-bottom: ${(props) => (props.hasSubtitle ? 'var(--space-md)' : 'var(--space-xl)')};
     max-width: min(100%, 800px);
-    line-height: 1;
+    line-height: 1.1;
 
     @media (max-width: 500px) {
         font-size: var(--text-lg);
@@ -107,6 +112,7 @@ const Title = styled.h1<{ hasSubtitle: boolean }>`
 `
 
 const Subtitle = styled(H2)`
+    color: var(--light-black);
     font-family: 'Averta', sans-serif;
     font-weight: 400;
     margin-top: 0;
@@ -115,21 +121,23 @@ const Subtitle = styled(H2)`
     max-width: min(100%, 1000px);
 `
 
+const Metadata = styled.div`
+    display: flex;
+    align-items: baseline;
+    font-size: var(--text-xs);
+    font-weight: 600;
+`
+
 const StyledDate = styled.div`
-    font-size: var(--text-sm);
     color: var(--dark-grey);
     margin-bottom: var(--space-xs);
 `
 
 const TagContainer = styled.div`
-    margin-bottom: -15px;
-
     ul {
         display: flex;
-
-        a + a {
-            margin-left: 1rem;
-        }
+        margin-left: var(--space-md);
+        gap: var(--space-sm);
     }
 `
 

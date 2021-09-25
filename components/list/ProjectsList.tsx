@@ -43,6 +43,7 @@ const P = styled.p`
     margin: var(--space-xs) 0;
     color: var(--light-grey);
     grid-column: 2;
+    font-weight: 300;
 
     @media (max-width: 500px) {
         grid-column: 1 / 3;
@@ -51,11 +52,13 @@ const P = styled.p`
 
 const LI = styled.li`
     list-style: none;
+    font-size: var(--text-sm);
     margin-left: var(--space-sm);
 `
 
 const UL = styled.ul`
     display: inline-flex;
+    align-items: baseline;
     margin: 0;
 `
 
@@ -68,7 +71,7 @@ const TechContainer = styled.div`
     color: var(--cool-grey);
     font-size: var(--text-sm);
     display: flex;
-    align-items: center;
+    align-items: baseline;
     grid-column: 2;
 
     @media (max-width: 500px) {

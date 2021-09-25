@@ -12,7 +12,7 @@ function NavLink({ link }: { link: string }) {
         ...(router.asPath === href && {
             textDecoration: 'underline',
             fontWeight: 400,
-            color: 'var(--teal)'
+            color: 'var(--cool-grey)'
         })
     }
 
@@ -50,14 +50,14 @@ function Navigation({ setIsContactopen }: Props) {
 
 const Nav = styled.nav`
     background: var(--black);
-    padding: var(--space-xxxl) var(--space-xxxl) var(--space-xxl);
+    padding: var(--space-xl) var(--space-xxxl);
 
     @media (min-width: 1600px) {
-        padding: var(--space-xxl) 15vw var(--space-xxl);
+        padding: var(--space-xl) 15vw;
     }
 
     @media (max-width: 700px) {
-        padding: var(--space-xl) 5% var(--space-xl);
+        padding: var(--space-xl) 5%;
     }
 `
 
@@ -70,7 +70,7 @@ const Tagline = styled.p`
     font-style: italic;
     font-size: var(--text-md);
     line-height: 1.4;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
 `
 
 const UL = styled.ul`
