@@ -9,7 +9,7 @@
         "postbuild": "ts-node ./scripts/build-search.ts",
         "start": "next start",
         "export": "npm run build && next export && npm run postbuild",
-        "fonts:fetch": "wget -O Fonts.zip $SECRET_FONTS_URL; unzip Fonts.zip -d ./public/fonts; rm Fonts.zip"
+        "fonts:fetch": "wget -O Fonts.zip $SECRET_FONTS_URL; unzip Fonts.zip -d ./public; rm Fonts.zip"
     },
     "husky": {
         "hooks": {
