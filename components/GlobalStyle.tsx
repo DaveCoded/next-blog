@@ -83,7 +83,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         color: var(--black);
-        font-family: 'Wotfard', sans-serif;
+        font-family: 'Averta', sans-serif;
     }
 
     body {
@@ -107,13 +107,14 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-        font-family: 'Wotfard', sans-serif;
+        font-family: 'Headline';
         font-size: var(--text-xl);
         color: var(--purple);
         margin-bottom: var(--space-lg);
     }
 
     h2 {
+        font-family: 'Headline';
         color: var(--off-white);
         font-size: var(--text-ml);
     }

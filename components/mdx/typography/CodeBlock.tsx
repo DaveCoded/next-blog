@@ -39,7 +39,7 @@ const TitleContainer = styled.div`
     padding: var(--space-sm) var(--space-lg);
     border-radius: 6px 6px 0 0;
     margin-top: var(--space-lg);
-    font-family: 'Ubuntu Mono';
+    font-family: var(--code-font-family);
     font-size: 1.1rem;
     letter-spacing: 0.4px;
 `

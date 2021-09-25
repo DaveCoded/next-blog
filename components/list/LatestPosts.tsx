@@ -38,7 +38,6 @@ export const Article = styled.article`
 `
 
 const StyledDate = styled.div`
-    font-family: 'Wotfard', sans-serif;
     line-height: 1.6;
     color: var(--cool-grey);
     margin-right: var(--space-sm);

@@ -96,7 +96,7 @@ const PostContainer = styled.div`
 
 const Title = styled.h1<{ hasSubtitle: boolean }>`
     color: var(--black);
-    margin-bottom: ${(props) => (props.hasSubtitle ? 'var(--space-xs)' : 'var(--space-lg)')};
+    margin-bottom: ${(props) => (props.hasSubtitle ? 'var(--space-sm)' : 'var(--space-lg)')};
     max-width: min(100%, 800px);
     line-height: 1;
 
@@ -107,7 +107,7 @@ const Title = styled.h1<{ hasSubtitle: boolean }>`
 `
 
 const Subtitle = styled(H2)`
-    font-family: 'Wotfard', sans-serif;
+    font-family: 'Averta', sans-serif;
     font-weight: 400;
     margin-top: 0;
     margin-bottom: var(--space-md);
@@ -116,7 +116,6 @@ const Subtitle = styled(H2)`
 `
 
 const StyledDate = styled.div`
-    font-family: 'Wotfard', sans-serif;
     font-size: var(--text-sm);
     color: var(--dark-grey);
     margin-bottom: var(--space-xs);

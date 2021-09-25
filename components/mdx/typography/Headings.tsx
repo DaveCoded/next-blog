@@ -18,7 +18,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
     color: var(--black);
     font-size: var(--text-md);
-    font-weight: 500;
+    font-weight: 600;
     margin-top: var(--space-md);
     margin-bottom: var(--space-xs);
 `
