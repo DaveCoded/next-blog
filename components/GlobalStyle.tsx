@@ -34,13 +34,14 @@ export const GlobalStyle = createGlobalStyle`
         --link-pink: hsl(327deg 100% 60%);
 
         /* Font sizes */
+        --text-xxl: 4.2rem;
         --text-xl: 3.357rem;
         --text-lg: 2.686rem;
         --text-ml: 2.1485rem;
         --text-md: 1.718rem; 
-        --text-body: 1.25rem;
+        --text-body: 1.375rem;
         --text-sm: 1.1rem;
-        --text-xs: 0.88rem;
+        --text-xs: 0.94rem;
 
         /* Code block styles */
         --prism-theme-white: #fff;
@@ -83,7 +84,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         color: var(--black);
-        font-family: 'Wotfard', sans-serif;
+        font-family: 'Averta', sans-serif;
     }
 
     body {
@@ -107,15 +108,17 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-        font-family: 'Wotfard', sans-serif;
-        font-size: var(--text-xl);
+        font-family: 'Headline';
+        font-size: var(--text-xxl);
         color: var(--purple);
         margin-bottom: var(--space-lg);
     }
 
     h2 {
+        font-family: 'Headline';
         color: var(--off-white);
         font-size: var(--text-ml);
+        font-weight: 600;
     }
 
     h3 {
@@ -172,7 +175,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     ol {
-        padding-inline-start: 1.5rem;
+        padding-inline-start: 2rem;
         font-size: var(--text-body);
         line-height: 1.6;
         margin-bottom: var(--space-md);
@@ -340,15 +343,6 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    h1::selection,
-    h2::selection,
-    h3::selection,
-    h4::selection,
-    h5::selection {
-        background: none;
-        text-shadow: 2px 2px #15cedb;
     }
 
     /* React Modal transitions */

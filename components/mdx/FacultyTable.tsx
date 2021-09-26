@@ -6,7 +6,7 @@ export default function FacultyTable() {
             <table>
                 <thead>
                     <tr>
-                        <th>Faculty ID</th>
+                        <th>ID</th>
                         <th>Faculty Name</th>
                         <th>Faculty Hire Date</th>
                         <th>Course Code</th>

@@ -34,11 +34,10 @@ export default function LatestPosts({ posts }: Props) {
 }
 
 export const Article = styled.article`
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
 `
 
 const StyledDate = styled.div`
-    font-family: 'Wotfard', sans-serif;
     line-height: 1.6;
     color: var(--cool-grey);
     margin-right: var(--space-sm);
@@ -46,7 +45,7 @@ const StyledDate = styled.div`
 
 export const H3 = styled.h3`
     font-size: var(--text-md);
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: var(--space-xs);
     transition: var(--link-hover-transition);
 
@@ -57,12 +56,12 @@ export const H3 = styled.h3`
 
 const Metadata = styled.div`
     display: flex;
+    align-items: baseline;
+    font-weight: 600;
 `
 
 const UL = styled.ul`
     display: flex;
-
-    a + a {
-        margin-left: 8px;
-    }
+    flex-wrap: wrap;
+    gap: var(--space-sm);
 `

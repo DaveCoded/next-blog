@@ -9,8 +9,6 @@ tags: ['Databases']
 keywords: 'Databases, normalization, Edgar F. Codd, Data redundancy, Data integrity'
 ---
 
-## What is database normalization?
-
 <Dropcap>
   Normalization is a database design methodology. Proposed
   by Edgar F. Codd in 1970 - and subsequently developed in
@@ -27,7 +25,7 @@ keywords: 'Databases, normalization, Edgar F. Codd, Data redundancy, Data integr
   </strong>.
 </Dropcap>
 
-### Data redundancy
+## Data redundancy
 
 Data _redundancy_ is the duplication of data in multiple records. Whether the data is recorded in the same
 table, or represented across multiple tables, it is still considered redundant. There are **two reasons** we
@@ -37,7 +35,7 @@ want to avoid data redundancy:
    up more space, and it will take longer to query it.
 2. It can easily lead to corrupted data, thanks to <a href="#update-anomaly">update anomalies</a>.
 
-### Data integrity
+## Data integrity
 
 Data _integrity_ concerns its reliability over time. Imagine we have a database of users. Each user has an
 email address stored. If I query for Hans Andersen's email address and the database returns
@@ -48,17 +46,17 @@ This predicatability can be compromised by duplicate data or storing data with i
 For example, if you want to store some phone numbers, it might be a bad idea to use the `VARCHAR` type. This
 would allow non-numeric characters to be listed, and therefore invalid phone numbers.
 
-### 3 kinds of anomaly
+## 3 kinds of anomaly
 
 There are three main dangers for databases that have not been normalized:
 
-#### Update anomalies
+### Update anomalies
 
 One issue with having the same data expressed in multiple places, is that it has to be updated in multiple places.
 So if for some reason an update is only partially successful, some records may update while others will not.
 It will then be possible to get two different answers to the same query.
 
-#### Insertion anomalies
+### Insertion anomalies
 
 An insertion anomaly is when you want to add a new record to a table, but can't because of the way the data has
 been structured. To repurpose the example given on Wikipedia, consider this table of faculty members:
@@ -72,19 +70,19 @@ of your business actually, they are working on their own research initially. The
 It will be impossible to add a record for Marston unless we record `null` for the Course Code, which may be
 undesirable.
 
-#### Deletion anomalies
+### Deletion anomalies
 
 A deletion anomaly occurs when deleting data holding one fact will also delete data holding another fact.
 The Faculty Table suffers from this. It is not possible to delete a course without also removing a faculty member;
 unless, again, we are able to set the Course Code to `null`.
 
-### Extensions should require minimal redesign
+## Extensions should require minimal redesign
 
 This is just a principle that is worth mentioning before we get onto the normal forms.
 You should be able to add new types of data to a database without changing its structure too much.
 Otherwise, each change in structure could potentially break existing applications that interact with the database.
 
-### The normal forms
+## The normal forms
 
 #### 1NF
 

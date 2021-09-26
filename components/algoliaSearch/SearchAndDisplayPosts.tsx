@@ -18,19 +18,30 @@ type Props = {
 
 export default function SearchAndDisplayPosts({ tags, allPostsData }: Props) {
     return (
-        <InstantSearch searchClient={searchClient} refresh={false} indexName="dev-blog">
-            <SearchContainer>
-                <SearchBox />
+        <div>
+            <TagsContainer>
+                <span>Topics: </span>
                 <UL>
                     {tags.map((tag) => (
                         <TagPill tag={tag} key={tag} />
                     ))}
                 </UL>
-            </SearchContainer>
-            <SearchHits allPostsData={allPostsData} />
-        </InstantSearch>
+            </TagsContainer>
+            <InstantSearch searchClient={searchClient} refresh={false} indexName="dev-blog">
+                <SearchContainer>
+                    <SearchBox />
+                </SearchContainer>
+                <SearchHits allPostsData={allPostsData} />
+            </InstantSearch>
+        </div>
     )
 }
+
+const TagsContainer = styled.div`
+    display: flex;
+    align-items: baseline;
+    margin-bottom: var(--space-lg);
+`
 
 const SearchContainer = styled.div`
     display: flex;
@@ -44,15 +55,13 @@ const SearchContainer = styled.div`
 `
 
 const UL = styled.ul`
-    margin-left: var(--space-md);
     display: flex;
-
-    a + a {
-        margin-left: var(--space-md);
-    }
+    align-items: baseline;
+    margin-left: var(--space-sm);
+    gap: var(--space-sm);
+    flex-wrap: wrap;
 
     @media (max-width: 630px) {
-        margin-left: 0;
         margin-top: var(--space-sm);
     }
 `

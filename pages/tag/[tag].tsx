@@ -27,24 +27,24 @@ export default function TagPage({ tag, tags, frontMatterAndSlug }: Props) {
                 ></meta>
             </Head>
 
-            <Header>
+            <H1>{tagName} posts</H1>
+
+            <DynamicPostsList postsToShow={frontMatterAndSlug} />
+
+            <OtherTopics>
                 Other topics:{' '}
                 <UL>
                     {tags.map((tag) => (
                         <TagPill tag={tag} key={tag} />
                     ))}
                 </UL>
-            </Header>
-
-            <H1>{tagName} posts</H1>
-
-            <DynamicPostsList postsToShow={frontMatterAndSlug} />
+            </OtherTopics>
         </>
     )
 }
 
-const Header = styled.header`
-    margin-bottom: var(--space-lg);
+const OtherTopics = styled.div`
+    margin-top: var(--space-lg);
 `
 
 const H1 = styled.h1`

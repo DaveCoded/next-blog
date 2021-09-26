@@ -36,10 +36,10 @@ const Container = styled.div`
 const Main = styled.main<{ route: string }>`
     background-color: ${(props) =>
         isBlogPostRoute(props.route) ? 'var(--white)' : 'var(--black)'};
-    padding: var(--space-xxl) var(--space-xl) var(--space-xxl) var(--space-xxxl);
+    padding: var(--space-xl) var(--space-xl) var(--space-xxl) var(--space-xxxl);
 
     @media (min-width: 1600px) {
-        padding: var(--space-xxl) 15vw var(--space-xxl);
+        padding: var(--space-xl) 15vw var(--space-xxl);
     }
 
     @media (max-width: 700px) {

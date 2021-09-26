@@ -5,9 +5,10 @@ const Blockquote = styled.blockquote`
 
     p {
         font-size: var(--text-md);
+        font-style: italic;
         padding: 0 var(--space-md);
-        border-left: 8px solid var(--cool-grey);
-        font-weight: 600;
+        border-left: 4px solid var(--dark-grey);
+        color: var(--dark-grey);
         line-height: 1.4;
 
         @media (max-width: 600px) {
