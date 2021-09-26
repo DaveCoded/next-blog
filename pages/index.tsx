@@ -30,7 +30,11 @@ export default function Home({ latestPosts }: Props) {
                 </h1>
                 <p>
                     I&apos;m Dave, a frontend developer at{' '}
-                    <ExternalLink href="https://www.feed.xyz/" newTab>
+                    <ExternalLink
+                        href="https://www.feed.xyz/"
+                        newTab
+                        style={{ textDecoration: 'underline', color: 'var(--link-pink)' }}
+                    >
                         Feed
                     </ExternalLink>
                     . I work on a global, cross-channel marketing solution for ebay. I also write
@@ -84,9 +88,9 @@ const Section = styled.section`
 const H2 = styled.h2`
     font-size: var(--text-lg);
     margin-top: 0;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
     font-weight: 600;
-    color: var(--cool-grey);
+    color: var(--light-grey);
 `
 
 const AllPostsLink = styled.a`

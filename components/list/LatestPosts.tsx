@@ -34,7 +34,7 @@ export default function LatestPosts({ posts }: Props) {
 }
 
 export const Article = styled.article`
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
 `
 
 const StyledDate = styled.div`
@@ -57,6 +57,7 @@ export const H3 = styled.h3`
 const Metadata = styled.div`
     display: flex;
     align-items: baseline;
+    font-weight: 600;
 `
 
 const UL = styled.ul`

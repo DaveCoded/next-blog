@@ -175,7 +175,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     ol {
-        padding-inline-start: 1.5rem;
+        padding-inline-start: 2rem;
         font-size: var(--text-body);
         line-height: 1.6;
         margin-bottom: var(--space-md);
@@ -343,15 +343,6 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    h1::selection,
-    h2::selection,
-    h3::selection,
-    h4::selection,
-    h5::selection {
-        background: none;
-        text-shadow: 2px 2px #15cedb;
     }
 
     /* React Modal transitions */

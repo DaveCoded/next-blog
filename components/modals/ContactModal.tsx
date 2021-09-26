@@ -51,7 +51,7 @@ export default function ContactModal({ isContactOpen, closeContact }: Props) {
                         <Span>
                             <Mail width={30} height={33} />
                         </Span>{' '}
-                        <Span>Email me</Span>
+                        <Span>Email</Span>
                     </ExternalLink>
                 </LI>
             </UL>

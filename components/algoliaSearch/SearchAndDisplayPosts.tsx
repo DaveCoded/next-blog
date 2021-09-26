@@ -62,7 +62,6 @@ const UL = styled.ul`
     flex-wrap: wrap;
 
     @media (max-width: 630px) {
-        margin-left: 0;
         margin-top: var(--space-sm);
     }
 `

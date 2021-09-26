@@ -41,7 +41,7 @@ const PostsList = styled.ul`
 
 const H2 = styled.h2`
     font-weight: 600;
-    color: var(--cool-grey);
+    color: var(--light-grey);
     transition: var(--link-hover-transition);
 
     &:hover {

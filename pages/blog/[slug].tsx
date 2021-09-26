@@ -101,7 +101,7 @@ const PostContainer = styled.div`
 const Title = styled.h1<{ hasSubtitle: boolean }>`
     color: var(--light-black);
     margin-top: var(--space-lg);
-    margin-bottom: ${(props) => (props.hasSubtitle ? 'var(--space-md)' : 'var(--space-xl)')};
+    margin-bottom: ${(props) => (props.hasSubtitle ? 'var(--space-md)' : 'var(--space-lg)')};
     max-width: min(100%, 800px);
     line-height: 1.1;
 
@@ -124,8 +124,8 @@ const Subtitle = styled(H2)`
 const Metadata = styled.div`
     display: flex;
     align-items: baseline;
-    font-size: var(--text-xs);
     font-weight: 600;
+    font-size: var(--text-sm);
 `
 
 const StyledDate = styled.div`

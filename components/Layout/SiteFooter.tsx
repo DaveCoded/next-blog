@@ -23,7 +23,7 @@ function SiteFooter() {
                 </LI>
                 <LI>
                     <ExternalLink href={MAILTO_LINK} newTab>
-                        Email me
+                        Email
                     </ExternalLink>
                 </LI>
             </UL>
