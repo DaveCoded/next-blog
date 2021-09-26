@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
+import PageLayout from '../components/Layout/PageLayout'
 
 export default function Home() {
     return (
@@ -12,25 +13,27 @@ export default function Home() {
                 ></meta>
             </Head>
 
-            <H1>
-                <Intro>Hi. I&apos;m Dave Bernhard,</Intro>
-                <br />
-                <Desc>a frontend developer working in London.</Desc>
-            </H1>
-            <Bio>
-                This is my blog. It&apos;s a space for me to write about what I&apos;m learning in
-                tech; hopefully you&apos;ll learn something interesting here. If you do, or if you
-                have any suggestions for improvements to my articles, please reach out on Twitter.
-                I&apos;m{' '}
-                <a
-                    href="https://twitter.com/daveforall"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="external-link"
-                >
-                    @daveforall
-                </a>
-            </Bio>
+            <PageLayout>
+                <H1>
+                    <Intro>Hi. I&apos;m Dave Bernhard,</Intro>
+                    <br />
+                    <Desc>a frontend developer working in London.</Desc>
+                </H1>
+                <Bio>
+                    This is my blog. It&apos;s a space for me to write about what I&apos;m learning
+                    in tech; hopefully you&apos;ll learn something interesting here. If you do, or
+                    if you have any suggestions for improvements to my articles, please reach out on
+                    Twitter. I&apos;m{' '}
+                    <a
+                        href="https://twitter.com/daveforall"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="external-link"
+                    >
+                        @daveforall
+                    </a>
+                </Bio>
+            </PageLayout>
         </>
     )
 }

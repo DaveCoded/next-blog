@@ -1,24 +1,25 @@
 import { AppProps } from 'next/app'
-import { motion } from 'framer-motion'
 import MDXProvider from '../components/mdx/MDXProvider'
 import { GlobalStyle } from '../components/GlobalStyle'
 import SiteLayout from '../components/Layout/SiteLayout'
+import { AnimatePresence } from 'framer-motion'
 import './_app.css'
+import { useRouter } from 'next/router'
 
-function MyApp({ Component, pageProps, router }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
+    const route = useRouter().route
+
     return (
         <MDXProvider>
             <GlobalStyle />
             <SiteLayout>
-                <motion.div
-                    key={router.route}
-                    initial={{ opacity: 0 }}
-                    transition={{ duration: 1.2 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                <AnimatePresence
+                    exitBeforeEnter
+                    initial={false}
+                    onExitComplete={() => window.scrollTo(0, 0)}
                 >
-                    <Component {...pageProps} key={router.route} />
-                </motion.div>
+                    <Component {...pageProps} key={route} />
+                </AnimatePresence>
             </SiteLayout>
         </MDXProvider>
     )

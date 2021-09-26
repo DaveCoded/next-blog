@@ -7,6 +7,7 @@ import ProjectsList from '../components/list/ProjectsList'
 import RollingText from '../components/RollingText'
 import { PostData } from '../types/PostData'
 import ExternalLink from '../components/ExternalLink'
+import PageLayout from '../components/Layout/PageLayout'
 
 interface Props {
     latestPosts: PostData[]
@@ -22,39 +23,40 @@ export default function Home({ latestPosts }: Props) {
                     content="Dave Bernhard's web development blog. Dave is a frontend developer in London; come check out his writing and projects."
                 ></meta>
             </Head>
+            <PageLayout>
+                <Header>
+                    <h1>
+                        This is a{' '}
+                        <RollingText options={['blog', 'portfolio', 'playground', 'website']} />
+                    </h1>
+                    <p>
+                        I&apos;m Dave, a frontend developer at{' '}
+                        <ExternalLink
+                            href="https://www.feed.xyz/"
+                            newTab
+                            style={{ textDecoration: 'underline', color: 'var(--link-pink)' }}
+                        >
+                            Feed
+                        </ExternalLink>
+                        . I work on a global, cross-channel marketing solution for ebay. I also
+                        write about what I learn on my blog.
+                    </p>
+                </Header>
 
-            <Header>
-                <h1>
-                    This is a{' '}
-                    <RollingText options={['blog', 'portfolio', 'playground', 'website']} />
-                </h1>
-                <p>
-                    I&apos;m Dave, a frontend developer at{' '}
-                    <ExternalLink
-                        href="https://www.feed.xyz/"
-                        newTab
-                        style={{ textDecoration: 'underline', color: 'var(--link-pink)' }}
-                    >
-                        Feed
-                    </ExternalLink>
-                    . I work on a global, cross-channel marketing solution for ebay. I also write
-                    about what I learn on my blog.
-                </p>
-            </Header>
-
-            <Section>
-                <div>
-                    <H2>Latest posts</H2>
-                    <LatestPosts posts={latestPosts} />
-                    <Link href="/blog" passHref>
-                        <AllPostsLink>See all posts &#8594;</AllPostsLink>
-                    </Link>
-                </div>
-                <div>
-                    <H2>Projects</H2>
-                    <ProjectsList />
-                </div>
-            </Section>
+                <Section>
+                    <div>
+                        <H2>Latest posts</H2>
+                        <LatestPosts posts={latestPosts} />
+                        <Link href="/blog" passHref>
+                            <AllPostsLink>See all posts &#8594;</AllPostsLink>
+                        </Link>
+                    </div>
+                    <div>
+                        <H2>Projects</H2>
+                        <ProjectsList />
+                    </div>
+                </Section>
+            </PageLayout>
         </>
     )
 }

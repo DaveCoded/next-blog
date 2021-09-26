@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import DynamicPostsList from '../../components/list/DynamicPostsList'
 import TagPill from '../../components/TagPill'
 import { PostData } from '../../types/PostData'
+import PageLayout from '../../components/Layout/PageLayout'
 
 interface Props {
     tag: string
@@ -27,18 +28,20 @@ export default function TagPage({ tag, tags, frontMatterAndSlug }: Props) {
                 ></meta>
             </Head>
 
-            <H1>{tagName} posts</H1>
+            <PageLayout>
+                <H1>{tagName} posts</H1>
 
-            <DynamicPostsList postsToShow={frontMatterAndSlug} />
+                <DynamicPostsList postsToShow={frontMatterAndSlug} />
 
-            <OtherTopics>
-                Other topics:{' '}
-                <UL>
-                    {tags.map((tag) => (
-                        <TagPill tag={tag} key={tag} />
-                    ))}
-                </UL>
-            </OtherTopics>
+                <OtherTopics>
+                    Other topics:{' '}
+                    <UL>
+                        {tags.map((tag) => (
+                            <TagPill tag={tag} key={tag} />
+                        ))}
+                    </UL>
+                </OtherTopics>
+            </PageLayout>
         </>
     )
 }

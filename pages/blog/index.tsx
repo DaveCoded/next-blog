@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 import SearchAndDisplayPosts from '../../components/algoliaSearch/SearchAndDisplayPosts'
+import PageLayout from '../../components/Layout/PageLayout'
 import { getSortedPosts } from '../../lib/posts'
 import { getAllTags } from '../../lib/tags'
 import { PostData } from '../../types/PostData'
@@ -21,10 +22,12 @@ export default function Home({ allPostsData, tags }: Props) {
                 ></meta>
             </Head>
 
-            <Container>
-                <h1>Blog roll</h1>
-                <SearchAndDisplayPosts tags={tags} allPostsData={allPostsData} />
-            </Container>
+            <PageLayout>
+                <Container>
+                    <h1>Blog roll</h1>
+                    <SearchAndDisplayPosts tags={tags} allPostsData={allPostsData} />
+                </Container>
+            </PageLayout>
         </>
     )
 }
