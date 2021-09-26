@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import { H2 } from '../../components/mdx/typography'
 import TagPill from '../../components/TagPill'
 import { PostData } from '../../types/PostData'
+import PageLayout from '../../components/Layout/PageLayout'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
@@ -35,32 +36,34 @@ export default function Posts({ source, frontMatter }: Props) {
                 <meta name="keywords" content={keywords}></meta>
             </Head>
 
-            <PostContainer>
-                <Title hasSubtitle={!!subtitle}>{title}</Title>
-                {subtitle && <Subtitle>{subtitle}</Subtitle>}
+            <PageLayout>
+                <PostContainer>
+                    <Title hasSubtitle={!!subtitle}>{title}</Title>
+                    {subtitle && <Subtitle>{subtitle}</Subtitle>}
 
-                <Metadata>
-                    <StyledDate>{formattedDate}</StyledDate>
-                    {tags && tags.length > 0 ? (
-                        <TagContainer>
-                            <ul>
-                                {tags.map((tag) => (
-                                    <TagPill
-                                        tag={tag}
-                                        key={tag}
-                                        color="var(--white)"
-                                        backgroundColor="var(--cool-grey)"
-                                        hoverBackgroundColor="var(--mid-grey)"
-                                    />
-                                ))}
-                            </ul>
-                        </TagContainer>
-                    ) : null}
-                </Metadata>
+                    <Metadata>
+                        <StyledDate>{formattedDate}</StyledDate>
+                        {tags && tags.length > 0 ? (
+                            <TagContainer>
+                                <ul>
+                                    {tags.map((tag) => (
+                                        <TagPill
+                                            tag={tag}
+                                            key={tag}
+                                            color="var(--white)"
+                                            backgroundColor="var(--cool-grey)"
+                                            hoverBackgroundColor="var(--mid-grey)"
+                                        />
+                                    ))}
+                                </ul>
+                            </TagContainer>
+                        ) : null}
+                    </Metadata>
 
-                {/* <TableOfContents headings={headings} /> */}
-                <ContentWrapper>{content}</ContentWrapper>
-            </PostContainer>
+                    {/* <TableOfContents headings={headings} /> */}
+                    <ContentWrapper>{content}</ContentWrapper>
+                </PostContainer>
+            </PageLayout>
         </>
     )
 }

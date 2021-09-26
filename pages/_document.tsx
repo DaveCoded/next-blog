@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { isBlogPostRoute } from '../lib/strings'
 
 class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext) {
@@ -30,12 +31,15 @@ class MyDocument extends Document {
     }
 
     render() {
+        // todo: write a blog post about this (setting class and putting bg-color on body)
+        const onBlogPostPage = isBlogPostRoute(this.props.__NEXT_DATA__.page)
+
         return (
             <Html lang="en">
                 <Head>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                <body>
+                <body className={onBlogPostPage ? 'whiteBackground' : ''}>
                     <Main />
                     <NextScript />
                 </body>

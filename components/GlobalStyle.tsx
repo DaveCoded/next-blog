@@ -83,16 +83,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        color: var(--black);
         font-family: 'Averta', sans-serif;
-    }
-
-    body {
-        background-color: var(--black);
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        color: var(--off-white);
     }
 
     strong {
