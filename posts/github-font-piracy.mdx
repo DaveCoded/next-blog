@@ -1,0 +1,38 @@
+---
+title: 'Avoiding font piracy on a Netlify-deployed static site'
+description: 'How to self-host web fonts without accidentally committing font piracy'
+date: '09/27/21'
+status: 'draft'
+tags: ['Netlify', 'Git']
+keywords: 'Netlify, GitHub, web fonts, self-hosting'
+---
+
+<Dropcap>
+  Self-hosting web fonts is the best font-loading strategy
+  for many websites. And the idea is simple. Put the font
+  files in directory that serves assets to the client -
+  usually public/. Then, in a css file, load the fonts with{' '}
+  <code>@import</code> or <code>@font-face</code>. The
+  details of the implementation are outside of the scope of
+  this post, but I would recomment{' '}
+  <a href="https://css-tricks.com/snippets/css/using-font-face/">
+    this CSS tricks article
+  </a>{' '}
+  if you need help.
+</Dropcap>
+
+The issue with this strategy comes when you have a static site - such as the one you're on now, which is built with Next.js - deployed on Netlify.
+(It's a fantastic service that I'm grateful for; this isn't really a critique.) The common way <MarginNote>Possibly the best way, or the only way.
+Certainly the path of least resistance and one with many DX benefits.</MarginNote> to deploy static sites on Netlify, is to configure a branch
+to watch on GitHub. Any merge into that branch triggers a deploy, and in a flash, the new version of your site is built and deployed
+to the web.
+
+In this model, your assets - fonts, images, favicon etc. - are also usually kept in a `public/` or `static/` directory. And since Netlify
+gets your project files from GitHub, those assets that you're choosing to host also need to go on GitHub.
+
+## How does font piracy fit in here?
+
+It's now common enough, if you have more than a handful, to have images hosted on a CDN. And, because images can take some time to load, the very little
+amount of time it takes to make a request for those images, is negligible. Doing the same for your fonts _is_ an option. BUT FOR VARIOUS REASONS,
+HOSTING THME YOURSELF CREATES A BETTER EXPERIENCE - **you need to research and justify this to turn this into a more long-form essay. If there is**
+**significant benefit to self-hosting fonts for a static site, then this article has value(ish)**
