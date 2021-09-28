@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { P } from '../typography'
 
@@ -25,13 +26,13 @@ const Dropcap = ({ children }: Props) => {
 
 const Illuminated = styled.span`
     font-family: 'Headline';
-    font-weight: 400;
+    font-weight: 700;
     color: var(--light-black);
     float: left;
-    font-size: 6.9rem;
+    font-size: 7.4rem;
     line-height: 1;
     margin: 0 0.5rem 0 0;
-    padding: 1rem 0.2rem 0 0;
+    padding: 0.8rem 0.2rem 0 0;
 
     &:before,
     &:after {

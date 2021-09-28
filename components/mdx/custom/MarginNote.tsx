@@ -49,7 +49,7 @@ const Span = styled.span`
     }
 
     .sidenote-number:after {
-        content: counter(sidenote-counter);
+        content: '[' counter(sidenote-counter) ']';
         font-size: 0.8em;
         top: -0.5rem;
         left: -0.2em;
