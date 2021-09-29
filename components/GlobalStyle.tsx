@@ -100,6 +100,7 @@ export const GlobalStyle = createGlobalStyle`
 
     h1 {
         font-family: 'Headline';
+        font-weight: 700;
         font-size: var(--text-xxl);
         color: var(--purple);
         margin-bottom: var(--space-lg);
@@ -109,7 +110,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Headline';
         color: var(--off-white);
         font-size: var(--text-ml);
-        font-weight: 600;
+        font-weight: 700;
     }
 
     h3 {

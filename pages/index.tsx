@@ -67,7 +67,6 @@ const Header = styled.header`
 
     h1 {
         font-size: var(--text-xxl);
-        font-weight: 600;
         margin-bottom: var(--space-md);
     }
 
@@ -91,7 +90,6 @@ const H2 = styled.h2`
     font-size: var(--text-lg);
     margin-top: 0;
     margin-bottom: var(--space-lg);
-    font-weight: 600;
     color: var(--light-grey);
 `
 

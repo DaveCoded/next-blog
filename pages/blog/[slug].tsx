@@ -145,6 +145,7 @@ const TagContainer = styled.div`
 `
 
 const ContentWrapper = styled.div`
+    counter-reset: sidenote-counter;
     margin-top: var(--space-xxl);
     max-width: 650px;
 `
