@@ -5,8 +5,9 @@ import {
     ImgHTMLAttributes
 } from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import { P, A, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
+import { P, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
 import styled from 'styled-components'
+import ExternalLink from '../ExternalLink'
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
         h2: (props: HTMLAttributes<HTMLHeadingElement>) => <H2 {...props} />,
@@ -25,7 +26,11 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             </ImgContainer>
         ),
         pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
-        a: (props: HTMLAttributes<HTMLAnchorElement>) => <A {...props}>{props.children}</A>
+        a: (props: any) => (
+            <ExternalLink href={props.href} style={{ color: 'var(--link-pink)' }} newTab {...props}>
+                {props.children}
+            </ExternalLink>
+        )
     }
 
     return (
