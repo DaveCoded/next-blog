@@ -1,3 +1,5 @@
+import { FireType } from '../components/FireLevel'
+
 export type PostData = {
     slug: string
     date: string
@@ -9,4 +11,6 @@ export type PostData = {
     tags?: string[]
     content?: string
     keywords?: string
+    completion?: FireType
+    updated?: string
 }
