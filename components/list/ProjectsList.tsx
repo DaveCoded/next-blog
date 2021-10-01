@@ -44,6 +44,7 @@ const P = styled.p`
     color: var(--light-grey);
     grid-column: 2;
     font-weight: 300;
+    line-height: 1.4;
 
     @media (max-width: 500px) {
         grid-column: 1 / 3;
@@ -60,6 +61,7 @@ const UL = styled.ul`
     display: inline-flex;
     align-items: baseline;
     margin: 0;
+    line-height: 1;
 `
 
 const Tech = styled.p`

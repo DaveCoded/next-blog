@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism'
 import renderToString from 'next-mdx-remote/render-to-string'
@@ -9,7 +10,6 @@ import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { MdxRemote } from 'next-mdx-remote/types'
 import styled from 'styled-components'
 import { H2 } from '../../components/mdx/typography'
-import TagPill from '../../components/TagPill'
 import { PostData } from '../../types/PostData'
 import PageLayout from '../../components/Layout/PageLayout'
 import FireLevel from '../../components/FireLevel'
@@ -57,20 +57,17 @@ export default function Posts({ source, frontMatter }: Props) {
                     <HR />
 
                     <Metadata>
+                        Tags:
                         {tags && tags.length > 0 ? (
-                            <TagContainer>
-                                <ul>
-                                    {tags.map((tag) => (
-                                        <TagPill
-                                            tag={tag}
-                                            key={tag}
-                                            color="var(--white)"
-                                            backgroundColor="var(--cool-grey)"
-                                            hoverBackgroundColor="var(--mid-grey)"
-                                        />
-                                    ))}
-                                </ul>
-                            </TagContainer>
+                            <TagList>
+                                {tags.map((tag) => (
+                                    <Link key={tag} href={`/tag/${tag}`}>
+                                        <a>
+                                            <Tag>{tag}</Tag>
+                                        </a>
+                                    </Link>
+                                ))}
+                            </TagList>
                         ) : null}
                         <FireWrapper>
                             <FireLevel completion={completion} />
@@ -158,6 +155,20 @@ const Metadata = styled.div`
     font-size: var(--text-sm);
 `
 
+const Tag = styled.li`
+    font-style: italic;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    list-style: none;
+    color: var(--light-black);
+    text-decoration: underline;
+    transition: var(--link-hover-transition);
+
+    &:hover {
+        color: var(--link-pink);
+    }
+`
+
 const FireWrapper = styled.span`
     margin-left: var(--space-md);
 `
@@ -173,11 +184,10 @@ const FirstLit = styled.span`
     margin-bottom: var(--space-xxs);
 `
 
-const TagContainer = styled.div`
-    ul {
-        display: flex;
-        gap: var(--space-sm);
-    }
+const TagList = styled.ul`
+    margin-left: var(--space-sm);
+    display: flex;
+    gap: var(--space-sm);
 `
 
 const ContentWrapper = styled.div`
