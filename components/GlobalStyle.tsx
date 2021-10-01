@@ -311,8 +311,8 @@ export const GlobalStyle = createGlobalStyle`
     .mdx-marker {
         background: var(--prism-theme-highlight);
         position: relative;
-        left: -0.57em;
-        padding-left: 0.57em;
+        left: -1.27em;
+        padding-left: 1.27em;
         /* Add width of padding left and right, and width of highlight */
         width: calc(100% + 1.14em + 0.43em);
     }
