@@ -5,7 +5,7 @@ import { getPostdata } from '../../lib/posts'
 import matter from 'gray-matter'
 import styled from 'styled-components'
 import DynamicPostsList from '../../components/list/DynamicPostsList'
-import TagPill from '../../components/TagPill'
+import SubjectTag from '../../components/SubjectTag'
 import { PostData } from '../../types/PostData'
 import PageLayout from '../../components/Layout/PageLayout'
 
@@ -37,7 +37,7 @@ export default function TagPage({ tag, tags, frontMatterAndSlug }: Props) {
                     Other topics:{' '}
                     <UL>
                         {tags.map((tag) => (
-                            <TagPill tag={tag} key={tag} />
+                            <SubjectTag tag={tag} key={tag} />
                         ))}
                     </UL>
                 </OtherTopics>

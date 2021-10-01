@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import TagPill from '../TagPill'
+import SubjectTag from '../SubjectTag'
 import { PostData } from '../../types/PostData'
 
 type Props = {
@@ -22,7 +22,7 @@ export default function LatestPosts({ posts }: Props) {
                         {tags && tags?.length > 0 && (
                             <UL>
                                 {tags.map((tag) => (
-                                    <TagPill tag={tag} key={tag} />
+                                    <SubjectTag tag={tag} key={tag} />
                                 ))}
                             </UL>
                         )}
@@ -46,7 +46,7 @@ const StyledDate = styled.div`
 export const H3 = styled.h3`
     font-size: var(--text-md);
     font-weight: 400;
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--space-xxs);
     transition: var(--link-hover-transition);
 
     &:hover {

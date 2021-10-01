@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism'
 import renderToString from 'next-mdx-remote/render-to-string'
@@ -9,9 +10,10 @@ import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { MdxRemote } from 'next-mdx-remote/types'
 import styled from 'styled-components'
 import { H2 } from '../../components/mdx/typography'
-import TagPill from '../../components/TagPill'
 import { PostData } from '../../types/PostData'
 import PageLayout from '../../components/Layout/PageLayout'
+import FireLevel from '../../components/FireLevel'
+import { timeAgo } from '../../lib/dates'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
@@ -25,8 +27,19 @@ const components = AllComponents
 export default function Posts({ source, frontMatter }: Props) {
     const content = hydrate(source, { components })
     const options = { month: 'long', day: 'numeric', year: 'numeric' } as any
-    const { title, description, subtitle, date, tags, keywords } = frontMatter
-    const formattedDate = new Date(date).toLocaleDateString('en-US', options)
+    const {
+        title,
+        description,
+        subtitle,
+        date,
+        tags,
+        keywords,
+        completion = 'spark',
+        updated
+    } = frontMatter
+    const firstLitDate = new Date(date)
+    const formattedLitDate = firstLitDate.toLocaleDateString('en-US', options)
+    const lastStoked = (updated && timeAgo(new Date(updated))) || null
 
     return (
         <>
@@ -41,23 +54,28 @@ export default function Posts({ source, frontMatter }: Props) {
                     <Title hasSubtitle={!!subtitle}>{title}</Title>
                     {subtitle && <Subtitle>{subtitle}</Subtitle>}
 
+                    <HR />
+
                     <Metadata>
-                        <StyledDate>{formattedDate}</StyledDate>
+                        Tags:
                         {tags && tags.length > 0 ? (
-                            <TagContainer>
-                                <ul>
-                                    {tags.map((tag) => (
-                                        <TagPill
-                                            tag={tag}
-                                            key={tag}
-                                            color="var(--white)"
-                                            backgroundColor="var(--cool-grey)"
-                                            hoverBackgroundColor="var(--mid-grey)"
-                                        />
-                                    ))}
-                                </ul>
-                            </TagContainer>
+                            <TagList>
+                                {tags.map((tag) => (
+                                    <Link key={tag} href={`/tag/${tag}`}>
+                                        <a>
+                                            <Tag>{tag}</Tag>
+                                        </a>
+                                    </Link>
+                                ))}
+                            </TagList>
                         ) : null}
+                        <FireWrapper>
+                            <FireLevel completion={completion} />
+                        </FireWrapper>
+                        <DateWrapper>
+                            <FirstLit>First lit on {formattedLitDate}</FirstLit>
+                            {updated && <span>Last stoked {lastStoked}</span>}
+                        </DateWrapper>
                     </Metadata>
 
                     {/* <TableOfContents headings={headings} /> */}
@@ -99,6 +117,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const PostContainer = styled.div`
     color: var(--black);
+    max-width: min(100%, 800px);
 `
 
 const Title = styled.h1<{ hasSubtitle: boolean }>`
@@ -119,29 +138,56 @@ const Subtitle = styled(H2)`
     font-family: 'Averta', sans-serif;
     font-weight: 400;
     margin-top: 0;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
     font-size: var(--text-md);
     max-width: min(100%, 1000px);
+`
+
+const HR = styled.hr`
+    border: 1px solid var(--cool-grey);
 `
 
 const Metadata = styled.div`
     display: flex;
     align-items: baseline;
+    margin-top: var(--space-md);
     font-weight: 600;
     font-size: var(--text-sm);
 `
 
-const StyledDate = styled.div`
-    color: var(--dark-grey);
-    margin-bottom: var(--space-xs);
+const Tag = styled.li`
+    font-style: italic;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    list-style: none;
+    color: var(--light-black);
+    text-decoration: underline;
+    transition: var(--link-hover-transition);
+
+    &:hover {
+        color: var(--link-pink);
+    }
 `
 
-const TagContainer = styled.div`
-    ul {
-        display: flex;
-        margin-left: var(--space-md);
-        gap: var(--space-sm);
-    }
+const FireWrapper = styled.span`
+    margin-left: var(--space-md);
+`
+
+const DateWrapper = styled.span`
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+`
+
+const FirstLit = styled.span`
+    margin-bottom: var(--space-xxs);
+`
+
+const TagList = styled.ul`
+    margin-left: var(--space-sm);
+    display: flex;
+    gap: var(--space-sm);
 `
 
 const ContentWrapper = styled.div`

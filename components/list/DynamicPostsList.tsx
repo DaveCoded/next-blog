@@ -30,6 +30,8 @@ export default function DynamicPostsList({ postsToShow }: Props) {
 }
 
 const PostsList = styled.ul`
+    line-height: 1;
+
     li + li {
         margin-top: var(--space-lg);
     }

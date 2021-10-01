@@ -3,7 +3,7 @@ import { InstantSearch } from 'react-instantsearch-dom'
 import styled from 'styled-components'
 import SearchBox from './SearchBox'
 import SearchHits from './SearchHits'
-import TagPill from '../TagPill'
+import SubjectTag from '../SubjectTag'
 import { PostData } from '../../types/PostData'
 
 const searchClient = algoliasearch(
@@ -23,7 +23,7 @@ export default function SearchAndDisplayPosts({ tags, allPostsData }: Props) {
                 <span>Topics: </span>
                 <UL>
                     {tags.map((tag) => (
-                        <TagPill tag={tag} key={tag} />
+                        <SubjectTag tag={tag} key={tag} />
                     ))}
                 </UL>
             </TagsContainer>
