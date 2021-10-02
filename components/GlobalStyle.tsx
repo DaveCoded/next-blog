@@ -314,7 +314,7 @@ export const GlobalStyle = createGlobalStyle`
         left: -1.27em;
         padding-left: 1.27em;
         /* Add width of padding left and right, and width of highlight */
-        width: calc(100% + 1.14em + 0.43em);
+        width: calc(100% + 1.27em + var(--space-lg));
     }
 
     .mdx-marker::before {
