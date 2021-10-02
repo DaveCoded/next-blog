@@ -1,9 +1,8 @@
 import dotenv from 'dotenv'
 import algoliasearch from 'algoliasearch'
-import { getSortedPosts } from '../lib/posts'
-import { PostData } from '../types/PostData'
+import { getSortedPosts, PostFileContents } from '../lib/posts'
 
-function transformPostsToSearchObjects(posts: PostData[]) {
+function transformPostsToSearchObjects(posts: PostFileContents[]) {
     const transformed = posts.map((post) => {
         const postId = post.title.toLowerCase().replace(/\s/g, '-')
 

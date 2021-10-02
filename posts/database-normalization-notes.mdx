@@ -1,5 +1,10 @@
 ---
 title: 'Notes on Database Normalization'
+aliases:
+  [
+    'how to do database normalization',
+    'on database normalization'
+  ]
 subtitle: 'What is it? Why do we need it? How is it done?'
 excerpt: "Research notes I'm making with a view to understanding the concept of database normalization."
 description: "Research notes I'm making with a view to understanding the concept of database normalization."
@@ -38,12 +43,12 @@ want to avoid data redundancy:
 
 ## Data integrity
 
-Data _integrity_ concerns its reliability over time. Imagine we have a database of users. Each user has an
+Data _integrity_ concerns its reliability over time. [[conditionally adding properties to objects]] Imagine we have a database of users. Each user has an
 email address stored. If I query for Hans Andersen's email address and the database returns
 thelittlemermaid<span>@</span>fairytales.com, I want to know that running the same query will return me the same
 address in five years' time (assuming that Hans's address is not deliberately changed).
 
-This predicatability can be compromised by duplicate data or storing data with invalid types, to name a couple.
+This predicatability can be compromised by duplicate [[Avoiding font piracy on a Netlify-deployed static site]] data or storing data with invalid types, to name a couple.
 For example, if you want to store some phone numbers, it might be a bad idea to use the `VARCHAR` type. This
 would allow non-numeric characters to be listed, and therefore invalid phone numbers.
 
