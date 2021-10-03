@@ -3,14 +3,9 @@ import { getBracketPairs } from './bracketPairs'
 
 export function linkify(content: string, title: string) {
     if (!content) return content
-    // ? How will this fail if opening braces are found with no matching closing brace?
-    // First matched brackets will correspond to first outbound link
-    // Replace first bracket of open and close doubles
-    // Append (link)
+
     const matchingBracketPairs = getBracketPairs(content)
     if (matchingBracketPairs.length < 1) return content
-
-    console.log('matchingBracketPairs', matchingBracketPairs)
 
     let result = ''
     let previousIndex = 0
@@ -28,9 +23,9 @@ export function linkify(content: string, title: string) {
         // * but instead must be a Next Link component, which currently, must ALSO be passed to MDX remote :(
 
         if (outboundLinks && outboundLinks.length > 0) {
-            const { slug, excerpt, completion } = outboundLinks[index]
+            const { slug, excerpt, title } = outboundLinks[index]
             result += content.substring(previousIndex, opening - 1)
-            result += `<Tooltip content={<div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>`
+            result += `<Tooltip content={<div><div><strong>${title}</strong></div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>`
             result += content.substring(opening + 1, closing - 1)
             result += '</InternalLink></Tooltip>'
         } else {

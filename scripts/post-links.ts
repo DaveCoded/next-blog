@@ -49,7 +49,6 @@ const getExcerpt = (str?: string) => {
         ids: [title, ...(aliases ? aliases : [])],
         slug,
         completion,
-        content,
         outboundLinks: [],
         inboundLinks: []
     }))
@@ -60,7 +59,15 @@ const getExcerpt = (str?: string) => {
         const bracketContents = bracketsExtractor(content)
         bracketContents?.forEach((alias) => {
             // If matched text is an alias of another post
-            const match = posts.find((p) => p.ids.includes(alias))
+            // todo: Try stripping the whitespace and newlines from both to make the matching fuzzier
+            const match = posts.find((p) => {
+                const normalisedAlias = alias
+                    .replace(/\n/g, '')
+                    .replace('  ', ' ')
+                    .replace(`{' '}`, ' ')
+                    .replace(`{" "}`, ' ')
+                return p.ids.includes(normalisedAlias)
+            })
 
             if (match) {
                 const matchedPostData = totalPostData.find((p) => p.title === match.ids[0])

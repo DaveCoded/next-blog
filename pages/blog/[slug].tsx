@@ -102,9 +102,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // todo: figure out if getting the headings is a good idea or not
     // const headings = await getHeadings(content)
 
-    // ! Strip out code blocks from content first!
-    const linkifiedContent = linkify(data.slug, content)
-
     const mdxSource = await serialize(linkify(content, data.title), {
         mdxOptions: {
             rehypePlugins: [mdxPrism, require('rehype-slug'), require('rehype-autolink-headings')]
