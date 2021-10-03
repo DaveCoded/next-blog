@@ -20,11 +20,19 @@ export function linkify(content: string, title: string) {
         const closing = pair[1]
         // Get corresponding outbound link
         const outboundLinks = linkMaps.find((map) => map.ids[0] === title)?.outboundLinks
+
+        // * This is very far from generic. Since we want a tooltip to wrap the link, we have to
+        // * make sure the tooltip is also provided to MDXRemote, so that it knows to transform it
+        // * Also, this means that the tooltip's children can't be treated as markdown (unless we
+        // * want to parse them?) and so the link cannot take the form [I am a link](https://www.link.to)
+        // * but instead must be a Next Link component, which currently, must ALSO be passed to MDX remote :(
+
         if (outboundLinks && outboundLinks.length > 0) {
-            const slug = outboundLinks[index].slug
+            const { slug, excerpt, completion } = outboundLinks[index]
             result += content.substring(previousIndex, opening - 1)
-            result += content.substring(opening, closing)
-            result += `(/blog/${slug})`
+            result += `<Tooltip content={<div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>`
+            result += content.substring(opening + 1, closing - 1)
+            result += '</InternalLink></Tooltip>'
         } else {
             result += content.substring(previousIndex, closing)
         }

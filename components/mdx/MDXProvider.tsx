@@ -8,6 +8,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { P, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
 import styled from 'styled-components'
 import ExternalLink from '../ExternalLink'
+
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
         h2: (props: HTMLAttributes<HTMLHeadingElement>) => <H2 {...props} />,

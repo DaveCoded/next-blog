@@ -28,7 +28,7 @@ const stripJSXAndNewlines = (str: string) =>
     str
         .substring(0, 700) // Work on a smaller substring for efficiency
         .replace(/(<([^>]+)>)/gi, '') // Remove all JSX tags
-        .replace(/\r?\n|\r/g, '') // Replace all line breaks
+        .replace(/\r?\n|\r/g, ' ') // Replace all line breaks
         .replace(/{' '}/g, '') // Replace spaces in braces that occur in JSX components
         .replaceAll('  ', ' ') // Some double spaces left because of React component indentation
         .trim()
