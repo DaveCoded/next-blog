@@ -8,7 +8,14 @@
         "slug": "github-font-piracy",
         "completion": "spark",
         "outboundLinks": [],
-        "inboundLinks": []
+        "inboundLinks": [
+            {
+                "title": "Notes on Database Normalization",
+                "excerpt": "Normalization is a database design methodology [[the great  font heist]]. Proposed by Edgar F. Codd in 1970 - and  subsequently developed in the following years with some  collaborators - database normalization gives us a  framework for structuring relational (usually) databases....",
+                "slug": "database-normalization-notes",
+                "completion": "spark"
+            }
+        ]
     },
     {
         "ids": [
@@ -55,7 +62,14 @@
                 "excerpt": "If you have an object literal in JavaScript, and you want to add a property to it only if some condition is met, you're in luck. The neatest way is with the spread operator, introduced in ES6. ```JavaScript title=conditional-property.js const isConditional = true; const myObject..."
             }
         ],
-        "inboundLinks": []
+        "inboundLinks": [
+            {
+                "title": "Mapping a list in React: altering the last element",
+                "excerpt": "It is a truth universally acknowledged, that a coding   man (woman, other) in possession of good arrays, must be   in want of JSX.     Poor Jane. Her insightful, sensitive, entertaining work  has been co-opted by mysoginy, by people wanting to give  Colin Firth something to do, a...",
+                "slug": "last-element-jsx-array",
+                "completion": "bonfire"
+            }
+        ]
     },
     {
         "ids": [
@@ -66,7 +80,14 @@
         "slug": "conditional-object-properties",
         "completion": "bonfire",
         "outboundLinks": [],
-        "inboundLinks": []
+        "inboundLinks": [
+            {
+                "title": "Notes on Database Normalization",
+                "excerpt": "Normalization is a database design methodology [[the great  font heist]]. Proposed by Edgar F. Codd in 1970 - and  subsequently developed in the following years with some  collaborators - database normalization gives us a  framework for structuring relational (usually) databases....",
+                "slug": "database-normalization-notes",
+                "completion": "spark"
+            }
+        ]
     },
     {
         "ids": [
@@ -86,7 +107,14 @@
                 "excerpt": "Often in code, you handle arrays of items. Sometimes you  know their types but not their number. Sometimes you even  know the complete list of possible values, but not their  number. What if that is the case and you want to sort them  in a particular order? Not alphabetically, or..."
             }
         ],
-        "inboundLinks": []
+        "inboundLinks": [
+            {
+                "title": "Eating your greens - ordering arrays of strings",
+                "excerpt": "Often in code, you handle arrays of items. Sometimes you  know their types but not their number. Sometimes you even  know the complete list of possible values, but not their  number. What if that is the case and you want to sort them  in a particular order? Not alphabetically, or...",
+                "slug": "sorting-dynamic-arrays-js",
+                "completion": "bonfire"
+            }
+        ]
     },
     {
         "ids": [
@@ -105,7 +133,20 @@
                 "excerpt": "Working on the frontend can often feel a bit hacky. It can  be difficult to identify what the \"right\" way to do  something is. When I have to stray from the affordances of  the native web platform, I get a strange feeling, an  instinct instilled in me by listening to those who kn..."
             }
         ],
-        "inboundLinks": []
+        "inboundLinks": [
+            {
+                "title": "Uploading files with React and Typescript",
+                "excerpt": "Working on the frontend can often feel a bit hacky. It can  be difficult to identify what the \"right\" way to do  something is. When I have to stray from the affordances of  the native web platform, I get a strange feeling, an  instinct instilled in me by listening to those who kn...",
+                "slug": "pretty-file-upload-in-react",
+                "completion": "flame"
+            },
+            {
+                "title": "Mapping a list in React: altering the last element",
+                "excerpt": "It is a truth universally acknowledged, that a coding   man (woman, other) in possession of good arrays, must be   in want of JSX.     Poor Jane. Her insightful, sensitive, entertaining work  has been co-opted by mysoginy, by people wanting to give  Colin Firth something to do, a...",
+                "slug": "last-element-jsx-array",
+                "completion": "bonfire"
+            }
+        ]
     },
     {
         "ids": ["Mapping a list in React: altering the last element"],

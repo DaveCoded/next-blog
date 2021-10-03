@@ -14,17 +14,21 @@ import { timeAgo } from '../../lib/dates'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import { linkify } from '../../lib/linkify'
+import PostLinks from '../../links.json'
+import Backlinks from '../../components/Backlinks'
+import { LinkReference } from '../../scripts/post-links'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
     source: any
     frontMatter: PostData
+    backlinks: LinkReference[]
     headings?: { text: string; level: number }[]
 }
 
 const components = AllComponents
 
-export default function Posts({ source, frontMatter }: Props) {
+export default function Posts({ source, frontMatter, backlinks }: Props) {
     const options = { month: 'long', day: 'numeric', year: 'numeric' } as any
     const {
         title,
@@ -81,6 +85,7 @@ export default function Posts({ source, frontMatter }: Props) {
                     <ContentWrapper>
                         <MDXRemote {...source} components={components} />
                     </ContentWrapper>
+                    <Backlinks backlinks={backlinks} />
                 </PostContainer>
             </PageLayout>
         </>
@@ -108,10 +113,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         },
         scope: data
     })
+
+    const backlinks = PostLinks.find((post) => post.ids[0] === data.title)?.inboundLinks || []
+
     return {
         props: {
             source: mdxSource,
-            frontMatter: data
+            frontMatter: data,
+            backlinks
             // headings
         }
     }
