@@ -26,6 +26,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             </ImgContainer>
         ),
         pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
+        // todo: not all links in posts will be external (#data-redundancy) so change this
         a: (props: any) => (
             <ExternalLink href={props.href} style={{ color: 'var(--link-pink)' }} newTab {...props}>
                 {props.children}

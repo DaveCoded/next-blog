@@ -45,10 +45,11 @@ const getExcerpt = (str?: string) => {
 
     // Create initial objects. Identify each by a combined title and aliases identifier
     // Initialise empty outbound and inbound link arrays
-    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion }) => ({
+    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion, content }) => ({
         ids: [title, ...(aliases ? aliases : [])],
         slug,
         completion,
+        content,
         outboundLinks: [],
         inboundLinks: []
     }))

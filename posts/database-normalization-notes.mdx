@@ -50,7 +50,7 @@ address in five years' time (assuming that Hans's address is not deliberately ch
 
 This predicatability can be compromised by duplicate [[Avoiding font piracy on a Netlify-deployed static site]] data or storing data with invalid types, to name a couple.
 For example, if you want to store some phone numbers, it might be a bad idea to use the `VARCHAR` type. This
-would allow non-numeric characters to be listed, and therefore invalid phone numbers.
+would allow non-numeric characters to be listed, and therefore invalid phone numbers. [[conditional spread trick]]
 
 ## 3 kinds of anomaly
 
@@ -65,7 +65,7 @@ It will then be possible to get two different answers to the same query.
 ### Insertion anomalies
 
 An insertion anomaly is when you want to add a new record to a table, but can't because of the way the data has
-been structured. To repurpose the example given on Wikipedia, consider this table of faculty members:
+been structured. To repurpose [[conditional spread trick]] the example given on Wikipedia, consider this table of faculty members:
 
 <FacultyTable />
 

@@ -3,21 +3,21 @@ import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism'
-import renderToString from 'next-mdx-remote/render-to-string'
-import hydrate from 'next-mdx-remote/hydrate'
 import AllComponents from '../../components/mdx/AllComponents'
 import { getAllPostSlugs, getPostdata } from '../../lib/posts'
-import { MdxRemote } from 'next-mdx-remote/types'
 import styled from 'styled-components'
 import { H2 } from '../../components/mdx/typography'
 import { PostData } from '../../types/PostData'
 import PageLayout from '../../components/Layout/PageLayout'
 import FireLevel from '../../components/FireLevel'
 import { timeAgo } from '../../lib/dates'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
+import { linkify } from '../../lib/linkify'
 // import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
-    source: MdxRemote.Source
+    source: any
     frontMatter: PostData
     headings?: { text: string; level: number }[]
 }
@@ -25,7 +25,6 @@ interface Props {
 const components = AllComponents
 
 export default function Posts({ source, frontMatter }: Props) {
-    const content = hydrate(source, { components })
     const options = { month: 'long', day: 'numeric', year: 'numeric' } as any
     const {
         title,
@@ -79,7 +78,9 @@ export default function Posts({ source, frontMatter }: Props) {
                     </Metadata>
 
                     {/* <TableOfContents headings={headings} /> */}
-                    <ContentWrapper>{content}</ContentWrapper>
+                    <ContentWrapper>
+                        <MDXRemote {...source} components={components} />
+                    </ContentWrapper>
                 </PostContainer>
             </PageLayout>
         </>
@@ -97,10 +98,14 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const postContent = await getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
+
     // todo: figure out if getting the headings is a good idea or not
     // const headings = await getHeadings(content)
-    const mdxSource = await renderToString(content, {
-        components,
+
+    // ! Strip out code blocks from content first!
+    const linkifiedContent = linkify(data.slug, content)
+
+    const mdxSource = await serialize(linkify(content, data.title), {
         mdxOptions: {
             rehypePlugins: [mdxPrism, require('rehype-slug'), require('rehype-autolink-headings')]
         },
