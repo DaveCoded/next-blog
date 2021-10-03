@@ -33,13 +33,13 @@ completion: 'spark'
 
 ## Data redundancy
 
-Data _redundancy_ is the <InternalLink href="/blog">duplication of data</InternalLink> in multiple records. Whether the data is recorded in the same
+Data _redundancy_ is the duplication of data in multiple records. Whether the data is recorded in the same
 table, or represented across multiple tables, it is still considered redundant. There are **two reasons** we
 want to avoid data redundancy:
 
 1. It uses unnecessary resources. There is more data to store in the first place. That means our data takes
    up more space, and it will take longer to query it.
-2. It can easily lead to corrupted data, thanks to <a href="#update-anomaly">update anomalies</a>.
+2. It can easily lead to corrupted data, thanks to <a href="#update-anomalies">update anomalies</a>.
 
 ## Data integrity
 
@@ -60,7 +60,7 @@ There are three main dangers for databases that have not been normalized:
 
 One issue with having the same data expressed in multiple places, is that it has to be updated in multiple places.
 So if for some reason an update is only partially successful, some records may update while others will not.
-It will then be possible to get two different answers to the same query. [link to Google](https://www.google.com)
+It will then be possible to get two different answers to the same query.
 
 ### Insertion anomalies
 
