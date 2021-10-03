@@ -5,7 +5,8 @@
     "scripts": {
         "lint": "next lint",
         "dev": "next dev",
-        "build": "npm run fonts:fetch && next build",
+        "build": "npm run prebuild && npm run fonts:fetch && next build",
+        "prebuild": "ts-node ./scripts/post-links.ts",
         "postbuild": "ts-node ./scripts/build-search.ts",
         "start": "next start",
         "export": "npm run build && next export && npm run postbuild",
