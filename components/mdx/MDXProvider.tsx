@@ -8,6 +8,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { P, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
 import styled from 'styled-components'
 import ExternalLink from '../ExternalLink'
+
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
         h2: (props: HTMLAttributes<HTMLHeadingElement>) => <H2 {...props} />,
@@ -26,11 +27,21 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
             </ImgContainer>
         ),
         pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
-        a: (props: any) => (
-            <ExternalLink href={props.href} style={{ color: 'var(--link-pink)' }} newTab {...props}>
-                {props.children}
-            </ExternalLink>
-        )
+        a: (props: any) => {
+            const href: string = props.href
+            if (href.startsWith('#')) {
+                return (
+                    <a href={href} style={{ color: 'var(--link-pink)' }}>
+                        {props.children}
+                    </a>
+                )
+            }
+            return (
+                <ExternalLink href={href} style={{ color: 'var(--link-pink)' }} newTab {...props}>
+                    {props.children}
+                </ExternalLink>
+            )
+        }
     }
 
     return (
