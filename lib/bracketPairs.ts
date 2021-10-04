@@ -14,24 +14,46 @@ export const getBracketPairs = (value: string) => {
         let pointer = 0
         let lastChar = ''
         let bracketStart = -1
+        let codeBlock = ''
         while (pointer < value.length) {
             const char = value[pointer]
-            if (char === '[') {
-                if (lastChar !== '[[') {
-                    if (value[pointer - 1] === '[') {
-                        lastChar = '[['
-                        bracketStart = pointer
+
+            // * This appalling code is to skip matching any double brackets inside of code blocks
+            if (char === '`') {
+                if (value[pointer + 1] === '`' && value[pointer + 2] === '`') {
+                    if (codeBlock === '```') {
+                        codeBlock = ''
                     } else {
-                        lastChar = '['
-                        bracketStart = pointer
+                        codeBlock = '```'
+                    }
+                    pointer += 2
+                } else {
+                    if (codeBlock === '`') {
+                        codeBlock = ''
+                    } else {
+                        codeBlock = '`'
                     }
                 }
-            } else if (char === ']' && value[pointer - 1] === ']') {
-                if (lastChar !== '') {
-                    // We have a pair
-                    lastChar = ''
-                    bracketPairs.push([bracketStart, pointer])
-                    bracketStart = -1
+            }
+
+            if (!codeBlock) {
+                if (char === '[') {
+                    if (lastChar !== '[[') {
+                        if (value[pointer - 1] === '[') {
+                            lastChar = '[['
+                            bracketStart = pointer
+                        } else {
+                            lastChar = '['
+                            bracketStart = pointer
+                        }
+                    }
+                } else if (char === ']' && value[pointer - 1] === ']') {
+                    if (lastChar !== '') {
+                        // We have a pair
+                        lastChar = ''
+                        bracketPairs.push([bracketStart, pointer])
+                        bracketStart = -1
+                    }
                 }
             }
             pointer++

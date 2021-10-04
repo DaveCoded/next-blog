@@ -16,12 +16,11 @@ completion: 'spark'
 ---
 
 <Dropcap>
-  Normalization is a database design methodology [[the great
-  font heist]]. Proposed by Edgar F. Codd in 1970 - and
-  subsequently developed in the following years with some
-  collaborators - database normalization gives us a
-  framework for structuring relational (usually) databases.
-  Its aim is to reduce{' '}
+  Normalization is a database design methodology. Proposed
+  by Edgar F. Codd in 1970 - and subsequently developed in
+  the following years with some collaborators - database
+  normalization gives us a framework for structuring
+  relational (usually) databases. Its aim is to reduce{' '}
   <a href="#data-redundancy">data redundancy</a>, and to
   improve <a href="#data-integrity">data integrity</a>. This
   is done by adhering to the "<strong>normal forms</strong>
@@ -44,14 +43,14 @@ want to avoid data redundancy:
 
 ## Data integrity
 
-Data _integrity_ concerns its reliability over time. [[conditionally adding properties to objects]] Imagine we have a database of users. Each user has an
+Data _integrity_ concerns its reliability over time. Imagine we have a database of users. Each user has an
 email address stored. If I query for Hans Andersen's email address and the database returns
 thelittlemermaid<span>@</span>fairytales.com, I want to know that running the same query will return me the same
 address in five years' time (assuming that Hans's address is not deliberately changed).
 
-This predicatability can be compromised by duplicate [[Avoiding font piracy on a Netlify-deployed static site]] data or storing data with invalid types, to name a couple.
+This predicatability can be compromised by duplicate data or storing data with invalid types, to name a couple.
 For example, if you want to store some phone numbers, it might be a bad idea to use the `VARCHAR` type. This
-would allow non-numeric characters to be listed, and therefore invalid phone numbers. [[conditional spread trick]]
+would allow non-numeric characters to be listed, and therefore invalid phone numbers.
 
 ## 3 kinds of anomaly
 
@@ -66,7 +65,7 @@ It will then be possible to get two different answers to the same query.
 ### Insertion anomalies
 
 An insertion anomaly is when you want to add a new record to a table, but can't because of the way the data has
-been structured. To repurpose [[conditional spread trick]] the example given on Wikipedia, consider this table of faculty members:
+been structured. To repurpose the example given on Wikipedia, consider this table of faculty members:
 
 <FacultyTable />
 
