@@ -14,7 +14,7 @@ export default function FireLevel({ completion = 'spark' }: Props) {
     const show = () => setVisible(true)
     const hide = () => setVisible(false)
 
-    const emoji = completion === 'spark' ? '✨' : completion === 'flame' ? '🔥' : null
+    const emoji = completion === 'spark' ? '✨' : completion === 'flame' ? '🕯' : '🔥'
     const metaphor = completion[0].toUpperCase() + completion.slice(1)
 
     return (
@@ -25,16 +25,15 @@ export default function FireLevel({ completion = 'spark' }: Props) {
                 <div>
                     <strong>From least complete to most:</strong>{' '}
                     <OL>
-                        <li>Spark - sketchy notes</li>
-                        <li>Flame - proper post</li>
-                        <li>Bonfire - fully researched</li>
+                        <li>✨ Spark - sketchy notes</li>
+                        <li>🕯 Flame - proper post</li>
+                        <li>🔥 Bonfire - fully researched</li>
                     </OL>
                 </div>
             }
         >
             <Span onClick={visible ? hide : show}>
-                {emoji}
-                {metaphor}
+                {emoji} {metaphor}
             </Span>
         </Tippy>
     )
