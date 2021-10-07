@@ -22,14 +22,14 @@ export default function FireLevel({ completion = 'spark' }: Props) {
             visible={visible}
             onClickOutside={hide}
             content={
-                <div>
+                <Container>
                     <strong>From least complete to most:</strong>{' '}
                     <OL>
                         <li>✨ Spark - sketchy notes</li>
                         <li>🕯 Flame - proper post</li>
                         <li>🔥 Bonfire - fully researched</li>
                     </OL>
-                </div>
+                </Container>
             }
         >
             <Span onClick={visible ? hide : show}>
@@ -38,6 +38,10 @@ export default function FireLevel({ completion = 'spark' }: Props) {
         </Tippy>
     )
 }
+
+const Container = styled.div`
+    padding: var(--space-xs) var(--space-sm);
+`
 
 const OL = styled.ol`
     padding-inline-start: 1.3rem;
