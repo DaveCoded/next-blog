@@ -41,7 +41,7 @@ const stripJSXAndNewlines = (str: string) =>
 const getExcerpt = (str?: string) => {
     if (!str) return ''
     const stripped = stripJSXAndNewlines(str)
-    return `${stripped.substring(0, 280).trimEnd()} ...`
+    return `${stripped.substring(0, 280).trimEnd()}...`
 }
 
 ;(function () {

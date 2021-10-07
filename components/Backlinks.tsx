@@ -37,9 +37,10 @@ const Section = styled.section`
 
     li {
         padding: var(--space-md);
-        border: 2px solid var(--light-black);
+        border: 3px solid var(--light-black);
         border-radius: 4px;
         list-style: none;
+        margin-bottom: var(--space-lg);
 
         p {
             font-size: var(--text-sm);

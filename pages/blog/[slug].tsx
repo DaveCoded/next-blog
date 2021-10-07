@@ -60,26 +60,30 @@ export default function Posts({ source, frontMatter, backlinks }: Props) {
                     <HR />
 
                     <Metadata>
-                        Tags:
-                        {tags && tags.length > 0 ? (
-                            <TagList>
-                                {tags.map((tag) => (
-                                    <Link key={tag} href={`/tag/${tag}`}>
-                                        <a>
-                                            <Tag>{tag}</Tag>
-                                        </a>
-                                    </Link>
-                                ))}
-                            </TagList>
-                        ) : null}
-                        <FireWrapper>
-                            <FireLevel completion={completion} />
-                        </FireWrapper>
-                        <Pipe>|</Pipe>
-                        <DateWrapper>
-                            <FirstLit>First lit on {formattedLitDate}</FirstLit>
-                            {updated && <span>Last stoked {lastStoked}</span>}
-                        </DateWrapper>
+                        <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                            Tags:
+                            {tags && tags.length > 0 ? (
+                                <TagList>
+                                    {tags.map((tag) => (
+                                        <Link key={tag} href={`/tag/${tag}`}>
+                                            <a>
+                                                <Tag>{tag}</Tag>
+                                            </a>
+                                        </Link>
+                                    ))}
+                                </TagList>
+                            ) : null}
+                        </div>
+                        <InnerMetadata>
+                            <FireWrapper>
+                                <FireLevel completion={completion} />
+                            </FireWrapper>
+                            <Pipe>|</Pipe>
+                            <DateWrapper>
+                                <FirstLit>First lit on {formattedLitDate}</FirstLit>
+                                {updated && <span>Last stoked {lastStoked}</span>}
+                            </DateWrapper>
+                        </InnerMetadata>
                     </Metadata>
 
                     {/* <TableOfContents headings={headings} /> */}
@@ -139,7 +143,7 @@ const Title = styled.h1<{ hasSubtitle: boolean }>`
     max-width: min(100%, 800px);
     line-height: 1.1;
 
-    @media (max-width: 500px) {
+    @media (max-width: 900px) {
         font-size: var(--text-lg);
         margin-bottom: var(--space-sm);
     }
@@ -165,6 +169,21 @@ const Metadata = styled.div`
     margin-top: var(--space-md);
     font-weight: 600;
     font-size: var(--text-sm);
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+    }
+`
+
+const InnerMetadata = styled.div`
+    margin-left: auto;
+    display: flex;
+    align-items: baseline;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        margin-left: 0;
+    }
 `
 
 const Tag = styled.li`
@@ -183,11 +202,18 @@ const Tag = styled.li`
 
 const FireWrapper = styled.span`
     margin-left: auto;
-    margin-right: var(--space-xs);
+
+    @media (max-width: 900px) {
+        margin-left: 0;
+    }
 `
 
 const Pipe = styled.span`
-    margin-right: var(--space-xs);
+    margin: 0 var(--space-xs);
+
+    @media (max-width: 900px) {
+        display: none;
+    }
 `
 
 const DateWrapper = styled.span`
