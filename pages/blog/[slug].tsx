@@ -75,6 +75,7 @@ export default function Posts({ source, frontMatter, backlinks }: Props) {
                         <FireWrapper>
                             <FireLevel completion={completion} />
                         </FireWrapper>
+                        <Pipe>|</Pipe>
                         <DateWrapper>
                             <FirstLit>First lit on {formattedLitDate}</FirstLit>
                             {updated && <span>Last stoked {lastStoked}</span>}
@@ -181,11 +182,15 @@ const Tag = styled.li`
 `
 
 const FireWrapper = styled.span`
-    margin-left: var(--space-md);
+    margin-left: auto;
+    margin-right: var(--space-xs);
+`
+
+const Pipe = styled.span`
+    margin-right: var(--space-xs);
 `
 
 const DateWrapper = styled.span`
-    margin-left: auto;
     display: flex;
     flex-direction: column;
     text-align: right;
