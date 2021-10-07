@@ -24,6 +24,8 @@ const bracketsExtractor = (str: string) => {
     return str.match(matcher)
 }
 
+var rx = new RegExp('```[\\d\\D]*?```', 'g')
+
 const stripJSXAndNewlines = (str: string) =>
     str
         .substring(0, 700) // Work on a smaller substring for efficiency
@@ -31,6 +33,9 @@ const stripJSXAndNewlines = (str: string) =>
         .replace(/\r?\n|\r/g, ' ') // Replace all line breaks
         .replace(/{' '}/g, '') // Replace spaces in braces that occur in JSX components
         .replaceAll('  ', ' ') // Some double spaces left because of React component indentation
+        .replaceAll('[[', '') // Remove brackets from excerpt
+        .replaceAll(']]', '')
+        .replace(rx, '') // Remove code blocks
         .trim()
 
 const getExcerpt = (str?: string) => {
