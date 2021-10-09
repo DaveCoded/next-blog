@@ -73,6 +73,7 @@ const getExcerpt = (str?: string) => {
         bracketContents?.forEach((alias) => {
             // If matched text is an alias of another post
             const match = posts.find((p) => {
+                // If an alias was found between JSX tags in the markdown string, it may contain undesirable substrings
                 const normalisedAlias = alias
                     .replace(/\n/g, '')
                     .replace('  ', ' ')
@@ -85,7 +86,7 @@ const getExcerpt = (str?: string) => {
                 const matchedPostData = totalPostData.find((p) => p.title === match.ids[0])
                 const excerpt = getExcerpt(matchedPostData?.content)
                 // Add it to the outbound links
-                posts[index]?.outboundLinks.push({
+                posts[index].outboundLinks.push({
                     matchedId: alias,
                     title: match.ids[0],
                     slug: match.slug,
@@ -96,28 +97,24 @@ const getExcerpt = (str?: string) => {
         })
     })
 
-    // Get inbound links for all posts
-    // Loop through each post
-    for (let index = 0; index < posts.length; index++) {
-        const post = posts[index]
-        const postTitle = post.ids[0]
+    // Get inbound links for all posts. For each post (first loop), compare with all other posts (second loop)
+    for (const outerPost of posts) {
+        const outerPostTitle = outerPost.ids[0]
 
-        // Loop through posts again
-        for (let j = 0; j < posts.length; j++) {
-            const secondPost = posts[j]
-            const secondPostTitle = secondPost.ids[0]
+        for (const innerPost of posts) {
+            const innerPostTitle = innerPost.ids[0]
 
-            // If inner loop post's outboundLinks contains a reference to the original post,
-            // then the original post must have the second post as an inbound link
-            if (secondPost.outboundLinks.some((link) => link.title === postTitle)) {
-                const matchedPostData = totalPostData.find((p) => p.title === secondPostTitle)
+            // If inner post's outboundLinks contains a reference to the outer post,
+            // then the outer post must have the inner post as an inbound link
+            if (innerPost.outboundLinks.some((link) => link.title === outerPostTitle)) {
+                const matchedPostData = totalPostData.find((p) => p.title === innerPostTitle)
                 const excerpt = getExcerpt(matchedPostData?.content)
 
-                post.inboundLinks.push({
-                    title: secondPostTitle,
+                outerPost.inboundLinks.push({
+                    title: innerPostTitle,
                     excerpt,
-                    slug: secondPost.slug,
-                    completion: secondPost.completion
+                    slug: innerPost.slug,
+                    completion: innerPost.completion
                 })
             }
         }
