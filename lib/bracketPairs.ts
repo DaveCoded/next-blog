@@ -11,8 +11,7 @@ export const getBracketPairs = (value: string) => {
         let codeBlock = ''
         while (pointer < value.length) {
             const char = value[pointer]
-
-            // * This appalling code is to skip matching any double brackets inside of code blocks
+            // Skip matching any double brackets inside of code blocks
             if (char === '`') {
                 if (value[pointer + 1] === '`' && value[pointer + 2] === '`') {
                     if (codeBlock === '```') {
