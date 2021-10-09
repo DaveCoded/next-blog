@@ -72,7 +72,6 @@ const getExcerpt = (str?: string) => {
         const bracketContents = bracketsExtractor(content)
         bracketContents?.forEach((alias) => {
             // If matched text is an alias of another post
-            // todo: Try stripping the whitespace and newlines from both to make the matching fuzzier
             const match = posts.find((p) => {
                 const normalisedAlias = alias
                     .replace(/\n/g, '')
