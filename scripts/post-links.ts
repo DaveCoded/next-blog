@@ -26,7 +26,14 @@ const bracketsExtractor = (str: string) => {
 
 const matchCodeBlocks = new RegExp('```[\\d\\D]*?```', 'g')
 
-const stripJSXAndNewlines = (str: string) =>
+/**
+ * I need to work out rendering the html previews for excerpts. Until then, this function
+ * is for stripping out JSX tags, newline characters, extra spaces, double brackets and code
+ * blocks so that an excerpt can be shown as a string of content.
+ * @param str raw markdown string
+ * @returns stripped string
+ */
+const stripExcerpt = (str: string) =>
     str
         .substring(0, 700) // Work on a smaller substring for efficiency
         .replace(/(<([^>]+)>)/gi, '') // Remove all JSX tags
@@ -40,7 +47,7 @@ const stripJSXAndNewlines = (str: string) =>
 
 const getExcerpt = (str?: string) => {
     if (!str) return ''
-    const stripped = stripJSXAndNewlines(str)
+    const stripped = stripExcerpt(str)
     return `${stripped.substring(0, 280).trimEnd()}...`
 }
 
