@@ -24,7 +24,7 @@ const bracketsExtractor = (str: string) => {
     return str.match(matcher)
 }
 
-var rx = new RegExp('```[\\d\\D]*?```', 'g')
+const matchCodeBlocks = new RegExp('```[\\d\\D]*?```', 'g')
 
 const stripJSXAndNewlines = (str: string) =>
     str
@@ -35,7 +35,7 @@ const stripJSXAndNewlines = (str: string) =>
         .replaceAll('  ', ' ') // Some double spaces left because of React component indentation
         .replaceAll('[[', '') // Remove brackets from excerpt
         .replaceAll(']]', '')
-        .replace(rx, '') // Remove code blocks
+        .replace(matchCodeBlocks, '') // Remove code blocks
         .trim()
 
 const getExcerpt = (str?: string) => {
