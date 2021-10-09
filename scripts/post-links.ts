@@ -39,7 +39,7 @@ const stripExcerpt = (str: string) =>
         .replace(/(<([^>]+)>)/gi, '') // Remove all JSX tags
         .replace(/\r?\n|\r/g, ' ') // Replace all line breaks
         .replace(/{' '}/g, '') // Replace spaces in braces that occur in JSX components
-        .replaceAll('  ', ' ') // Some double spaces left because of React component indentation
+        .replace(/\s+/g, ' ') // Replaces all whitespace exceeding one space character
         .replaceAll('[[', '') // Remove brackets from excerpt
         .replaceAll(']]', '')
         .replace(matchCodeBlocks, '') // Remove code blocks
@@ -76,7 +76,7 @@ const getExcerpt = (str?: string) => {
                 // If an alias was found between JSX tags in the markdown string, it may contain undesirable substrings
                 const normalisedAlias = alias
                     .replace(/\n/g, '')
-                    .replace('  ', ' ')
+                    .replace(/\s+/g, ' ') // Replaces all whitespace exceeding one space character
                     .replace(`{' '}`, ' ')
                     .replace(`{" "}`, ' ')
                 return p.ids.includes(normalisedAlias)
