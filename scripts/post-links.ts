@@ -83,7 +83,7 @@ const getExcerpt = (str?: string) => {
             })
 
             if (match) {
-                // Get data for the matched post
+                // Get data for post that was referenced in the link
                 const matchedPostData = totalPostData.find((p) => p.title === match.ids[0])
                 const excerpt = getExcerpt(matchedPostData?.content)
                 // Add it to the outbound links
