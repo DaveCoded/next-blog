@@ -107,7 +107,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h2 {
-        font-family: 'Headline';
         color: var(--off-white);
         font-size: var(--text-ml);
         font-weight: 700;

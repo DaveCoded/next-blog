@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const H2 = styled.h2`
+    font-family: 'Headline', serif;
     color: var(--light-black);
     font-size: var(--text-lg);
     line-height: 1.1;
