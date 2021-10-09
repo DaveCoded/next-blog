@@ -18,7 +18,7 @@ type LinkMap = {
     inboundLinks: LinkReference[]
 }
 
-// Extract all instances of substrings between double brackets [[]] in a long string
+// Extract all instances of substrings between double brackets [[]] from a long string
 const bracketsExtractor = (str: string) => {
     const matcher = /((?!\])(?!\[).)+/gs
     return str.match(matcher)
