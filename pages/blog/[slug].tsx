@@ -12,18 +12,16 @@ import PageLayout from '../../components/Layout/PageLayout'
 import FireLevel from '../../components/FireLevel'
 import { timeAgo } from '../../lib/dates'
 import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote } from 'next-mdx-remote'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { linkify } from '../../lib/linkify'
 import PostLinks from '../../links.json'
 import Backlinks from '../../components/Backlinks'
 import { LinkReference } from '../../scripts/post-links'
-// import TableOfContents from '../../components/TableOfContents'
 
 interface Props {
-    source: any
+    source: MDXRemoteSerializeResult<Record<string, unknown>>
     frontMatter: PostData
     backlinks: LinkReference[]
-    headings?: { text: string; level: number }[]
 }
 
 const components = AllComponents
@@ -86,7 +84,6 @@ export default function Posts({ source, frontMatter, backlinks }: Props) {
                         </InnerMetadata>
                     </Metadata>
 
-                    {/* <TableOfContents headings={headings} /> */}
                     <ContentWrapper>
                         <MDXRemote {...source} components={components} />
                     </ContentWrapper>
@@ -108,17 +105,14 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const postContent = await getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
+    const contentWithBidirectionalLinks = linkify(content, data.title)
 
-    // todo: figure out if getting the headings is a good idea or not
-    // const headings = await getHeadings(content)
-
-    const mdxSource = await serialize(linkify(content, data.title), {
+    const mdxSource = await serialize(contentWithBidirectionalLinks, {
         mdxOptions: {
             rehypePlugins: [mdxPrism, require('rehype-slug'), require('rehype-autolink-headings')]
         },
         scope: data
     })
-
     const backlinks = PostLinks.find((post) => post.ids[0] === data.title)?.inboundLinks || []
 
     return {
@@ -126,7 +120,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             source: mdxSource,
             frontMatter: data,
             backlinks
-            // headings
         }
     }
 }
