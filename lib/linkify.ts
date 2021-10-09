@@ -1,6 +1,14 @@
 import linkMaps from '../links.json'
 import { getBracketPairs } from './bracketPairs'
 
+/**
+ * This replaces double bracketed links [[like this one]] in the markdown for
+ * JSX elements that link to the referenced blog post. It also adds a tooltip
+ * to the links in order to preview the title and an excerpt from the post
+ * @param content : markdown string for a blog post
+ * @param title
+ * @returns transformed markdown string for blog post
+ */
 export function linkify(content: string, title: string) {
     if (!content) return content
 
@@ -8,36 +16,35 @@ export function linkify(content: string, title: string) {
     if (matchingBracketPairs.length < 1) return content
 
     let result = ''
-    let previousIndex = 0
+    let previousIndex = 0 // Starts from first character of the content string
 
+    // For each pair of brackets (link) found, append the content found before to the result,
+    // then append the link itself with JSX replacing the brackets, then append the rest of
+    // the markdown string until the next pair of brackets
     matchingBracketPairs.forEach((pair, index) => {
         const opening = pair[0]
         const closing = pair[1]
+
         // Get corresponding outbound link
         const outboundLinks = linkMaps.find((map) => map.ids[0] === title)?.outboundLinks
 
-        // * This is very far from generic. Since we want a tooltip to wrap the link, we have to
-        // * make sure the tooltip is also provided to MDXRemote, so that it knows to transform it
-        // * Also, this means that the tooltip's children can't be treated as markdown (unless we
-        // * want to parse them?) and so the link cannot take the form [I am a link](https://www.link.to)
-        // * but instead must be a Next Link component, which currently, must ALSO be passed to MDX remote :(
-
         if (outboundLinks && outboundLinks.length > 0) {
             const { slug, excerpt, title } = outboundLinks[index]
-            result += content.substring(previousIndex, opening - 1)
-            result += `<Tooltip content={<div><div><strong>${title}</strong></div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>`
-            result += content.substring(opening + 1, closing - 1)
-            result += '</InternalLink></Tooltip>'
+
+            result += content.substring(previousIndex, opening - 1) // append content up to link
+            result += `<Tooltip content={<div><div><strong>${title}</strong></div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>` // append JSX opening tags
+            result += content.substring(opening + 1, closing - 1) // skip opening brackets, then append link content (referenced post title or alias)
+            result += '</InternalLink></Tooltip>' // append JSX closing tags
         } else {
             result += content.substring(previousIndex, closing)
         }
-        previousIndex = closing + 1
+        previousIndex = closing + 1 // skip closing brackets and start new loop until reaching end of the bracket pairs
     })
 
     const numPairs = matchingBracketPairs.length
     const lastClosingBracket = matchingBracketPairs[numPairs - 1][1]
 
-    // Content from last closing bracket of last link to end of content
+    // Append content from last bracket pair to end of content
     result += content.substring(lastClosingBracket + 1, content.length - 1)
 
     return result
