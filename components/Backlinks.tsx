@@ -7,8 +7,6 @@ type Props = {
 }
 
 export default function Backlinks({ backlinks }: Props) {
-    if (backlinks.length < 1) return null
-
     return (
         <Section>
             <h2>Backlinks</h2>

@@ -62,7 +62,8 @@ export default function Posts({ source, frontMatter, backlinks }: Props) {
                     <ContentWrapper>
                         <MDXRemote {...source} components={components} />
                     </ContentWrapper>
-                    <Backlinks backlinks={backlinks} />
+
+                    {backlinks.length > 0 && <Backlinks backlinks={backlinks} />}
                 </PostContainer>
             </PageLayout>
         </>
