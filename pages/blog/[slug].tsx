@@ -1,20 +1,23 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import matter from 'gray-matter'
-import mdxPrism from 'mdx-prism'
-import AllComponents from '../../components/mdx/AllComponents'
-import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import styled from 'styled-components'
-import { H2 } from '../../components/mdx/typography'
-import { PostData } from '../../types/PostData'
-import PageLayout from '../../components/Layout/PageLayout'
+import mdxPrism from 'mdx-prism'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+
+import { getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { linkify } from '../../lib/linkify'
-import PostLinks from '../../links.json'
-import Backlinks from '../../components/Backlinks'
-import { LinkReference } from '../../scripts/post-links'
+
+import AllComponents from '../../components/mdx/AllComponents'
 import PostMetadata from '../../components/PostMetadata'
+import { H2 } from '../../components/mdx/typography'
+import PageLayout from '../../components/Layout/PageLayout'
+import Backlinks from '../../components/Backlinks'
+
+import { LinkReference } from '../../scripts/post-links'
+import { PostData } from '../../types/PostData'
+import PostLinks from '../../links.json'
 
 interface Props {
     source: MDXRemoteSerializeResult<Record<string, unknown>>
