@@ -57,7 +57,7 @@ const getExcerpt = (str?: string) => {
 
     // Create initial objects. Identify each by a combined title and aliases identifier
     // Initialise empty outbound and inbound link arrays
-    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion, content }) => ({
+    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion }) => ({
         ids: [title, ...(aliases ? aliases : [])],
         slug,
         completion,
@@ -83,6 +83,7 @@ const getExcerpt = (str?: string) => {
             })
 
             if (match) {
+                // Get data for post that was referenced in the link
                 const matchedPostData = totalPostData.find((p) => p.title === match.ids[0])
                 const excerpt = getExcerpt(matchedPostData?.content)
                 // Add it to the outbound links
