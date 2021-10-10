@@ -1,4 +1,5 @@
 import linkMaps from '../links.json'
+import { LinkReference } from '../scripts/post-links'
 import { getBracketPairs } from './bracketPairs'
 
 /**
@@ -15,6 +16,9 @@ export function linkify(content: string, title: string) {
     const matchingBracketPairs = getBracketPairs(content)
     if (matchingBracketPairs.length < 1) return content
 
+    // Get all outbound links for this post
+    const outboundLinks = linkMaps.find((map) => map.ids[0] === title)?.outboundLinks
+
     let result = ''
     let previousIndex = 0 // Starts from first character of the content string
 
@@ -24,12 +28,15 @@ export function linkify(content: string, title: string) {
     matchingBracketPairs.forEach((pair, index) => {
         const opening = pair[0]
         const closing = pair[1]
+        const foundLinkText = content.substring(opening + 1, closing - 1)
+        const matchedOutboundLink =
+            outboundLinks &&
+            (outboundLinks as LinkReference[]).find(
+                (ol) => ol.matchedId?.toLowerCase() === foundLinkText.toLowerCase()
+            )
 
-        // Get corresponding outbound link
-        const outboundLinks = linkMaps.find((map) => map.ids[0] === title)?.outboundLinks
-
-        if (outboundLinks && outboundLinks.length > 0) {
-            const { slug, excerpt, title } = outboundLinks[index]
+        if (matchedOutboundLink) {
+            const { slug, excerpt, title } = matchedOutboundLink
 
             result += content.substring(previousIndex, opening - 1) // append content up to link
             result += `<Tooltip content={<div><div><strong>${title}</strong></div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>` // append JSX opening tags
