@@ -1,11 +1,26 @@
 import fs from 'fs'
 import { FireType } from '../components/FireLevel'
-import { getSortedPosts } from '../lib/posts'
+import { getSortedPosts, PostFileContents } from '../lib/posts'
+import unified from 'unified'
+import parse from 'remark-parse'
+// import remark2react from 'remark-react'
+import rehype from 'remark-rehype'
+import rehypeFormat from 'rehype-format'
+import rehypeStringify from 'rehype-stringify'
+
+const markdownToHTML = (markdown: string) =>
+    unified()
+        .use(parse)
+        .use(rehype)
+        .use(rehypeFormat)
+        .use(rehypeStringify)
+        .processSync(markdown)
+        .toString()
 
 export type LinkReference = {
     title: string
     slug: string
-    excerpt: string
+    excerpt: any
     matchedId?: string
     completion?: FireType
 }
@@ -47,25 +62,14 @@ const stripExcerpt = (str: string) =>
 
 const getExcerpt = (str?: string) => {
     if (!str) return ''
-    const stripped = stripExcerpt(str)
-    return `${stripped.substring(0, 280).trimEnd()}...`
+    const HTMLPreview = markdownToHTML(str)
+    console.log('HTMLPreview', HTMLPreview)
+    // const stripped = stripExcerpt(str)
+    // return `${stripped.substring(0, 280).trimEnd()}...`
+    return HTMLPreview
 }
 
-;(function () {
-    // Get content and frontmatter for each post
-    const totalPostData = getSortedPosts({ getContent: true })
-
-    // Create initial objects. Identify each by a combined title and aliases identifier
-    // Initialise empty outbound and inbound link arrays
-    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion }) => ({
-        ids: [title, ...(aliases ? aliases : [])],
-        slug,
-        completion,
-        outboundLinks: [],
-        inboundLinks: []
-    }))
-
-    // Get all outbound links
+const getOutboundLinks = (totalPostData: PostFileContents[], posts: LinkMap[]) =>
     totalPostData.forEach((postData, index) => {
         const { content } = postData
         // Get all substrings between brackets from post body
@@ -98,7 +102,7 @@ const getExcerpt = (str?: string) => {
         })
     })
 
-    // Get inbound links for all posts. For each post (first loop), compare with all other posts (second loop)
+const getInboundLinks = (totalPostData: PostFileContents[], posts: LinkMap[]) => {
     for (const outerPost of posts) {
         const outerPostTitle = outerPost.ids[0]
 
@@ -120,6 +124,25 @@ const getExcerpt = (str?: string) => {
             }
         }
     }
+}
+
+;(function () {
+    // Get content and frontmatter for each post
+    const totalPostData = getSortedPosts({ getContent: true })
+
+    // Create initial objects. Identify each by a combined title and aliases identifier
+    // Initialise empty outbound and inbound link arrays
+    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion }) => ({
+        ids: [title, ...(aliases ? aliases : [])],
+        slug,
+        completion,
+        outboundLinks: [],
+        inboundLinks: []
+    }))
+
+    // Get all outbound links
+    getOutboundLinks(totalPostData, posts)
+    getInboundLinks(totalPostData, posts)
 
     fs.writeFile('links.json', JSON.stringify(posts), () => console.log('links recorded'))
 })()
