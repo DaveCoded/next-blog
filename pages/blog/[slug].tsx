@@ -6,7 +6,7 @@ import mdxPrism from 'mdx-prism'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-import { getAllPostSlugs, getPostdata } from '../../lib/posts'
+import { FrontMatter, getAllPostSlugs, getPostdata } from '../../lib/posts'
 import { linkify } from '../../lib/linkify'
 
 import AllComponents from '../../components/mdx/AllComponents'
@@ -16,7 +16,6 @@ import PageLayout from '../../components/Layout/PageLayout'
 import Backlinks from '../../components/Backlinks'
 
 import { LinkReference } from '../../scripts/post-links'
-import { PostData } from '../../types/PostData'
 import PostLinks from '../../links.json'
 import { getHeadings } from '../../lib/getHeadings'
 import TableOfContents from '../../components/TableOfContents'
@@ -28,7 +27,7 @@ type Heading = {
 
 interface Props {
     source: MDXRemoteSerializeResult<Record<string, unknown>>
-    frontMatter: PostData
+    frontMatter: FrontMatter
     headings: Heading[]
     backlinks: LinkReference[]
 }
@@ -44,7 +43,8 @@ export default function Posts({ source, frontMatter, headings, backlinks }: Prop
         tags,
         keywords,
         completion = 'spark',
-        updated
+        updated,
+        hideTOC
     } = frontMatter
 
     return (
@@ -67,7 +67,9 @@ export default function Posts({ source, frontMatter, headings, backlinks }: Prop
                         tags={tags}
                     />
 
-                    <TableOfContents headings={headings} />
+                    {headings.length > 0 && !hideTOC ? (
+                        <TableOfContents headings={headings} />
+                    ) : null}
                     <ContentWrapper>
                         <MDXRemote {...source} components={components} />
                     </ContentWrapper>

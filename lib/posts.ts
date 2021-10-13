@@ -16,6 +16,7 @@ export type FrontMatter = {
     status?: 'publish' | 'draft'
     completion?: FireType
     updated?: string
+    hideTOC?: boolean
 }
 
 export type PostFileContents = FrontMatter & {

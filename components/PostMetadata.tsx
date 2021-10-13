@@ -55,6 +55,7 @@ const Metadata = styled.div`
     margin-top: var(--space-md);
     font-weight: 600;
     font-size: var(--text-sm);
+    margin-bottom: var(--space-xxl);
 
     @media (max-width: 900px) {
         flex-direction: column;
