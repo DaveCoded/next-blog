@@ -106,6 +106,10 @@ const DateWrapper = styled.span`
     display: flex;
     flex-direction: column;
     text-align: right;
+
+    @media (max-width: 900px) {
+        text-align: left;
+    }
 `
 
 const FirstLit = styled.span`

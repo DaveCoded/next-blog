@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Blockquote = styled.blockquote`
-    margin: var(--space-xl) 0;
+    margin: var(--space-lg) 0;
 
     p {
         font-weight: 700;

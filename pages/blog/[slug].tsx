@@ -145,6 +145,5 @@ const HR = styled.hr`
 
 const ContentWrapper = styled.div`
     counter-reset: sidenote-counter;
-    margin-top: var(--space-xxl);
     max-width: 650px;
 `
