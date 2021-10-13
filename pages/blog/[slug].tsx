@@ -18,16 +18,24 @@ import Backlinks from '../../components/Backlinks'
 import { LinkReference } from '../../scripts/post-links'
 import { PostData } from '../../types/PostData'
 import PostLinks from '../../links.json'
+import { getHeadings } from '../../lib/getHeadings'
+import TableOfContents from '../../components/TableOfContents'
+
+type Heading = {
+    text: string
+    level: number
+}
 
 interface Props {
     source: MDXRemoteSerializeResult<Record<string, unknown>>
     frontMatter: PostData
+    headings: Heading[]
     backlinks: LinkReference[]
 }
 
 const components = AllComponents
 
-export default function Posts({ source, frontMatter, backlinks }: Props) {
+export default function Posts({ source, frontMatter, headings, backlinks }: Props) {
     const {
         title,
         description,
@@ -59,6 +67,7 @@ export default function Posts({ source, frontMatter, backlinks }: Props) {
                         tags={tags}
                     />
 
+                    <TableOfContents headings={headings} />
                     <ContentWrapper>
                         <MDXRemote {...source} components={components} />
                     </ContentWrapper>
@@ -81,6 +90,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const postContent = await getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
+    const headings = await getHeadings(content)
     const contentWithBidirectionalLinks = linkify(content, data.title)
 
     const mdxSource = await serialize(contentWithBidirectionalLinks, {
@@ -95,6 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             source: mdxSource,
             frontMatter: data,
+            headings,
             backlinks
         }
     }
@@ -134,6 +145,5 @@ const HR = styled.hr`
 
 const ContentWrapper = styled.div`
     counter-reset: sidenote-counter;
-    margin-top: var(--space-xxl);
     max-width: 650px;
 `
