@@ -86,6 +86,14 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Averta', sans-serif;
     }
 
+    body {
+        background-color: var(--black);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        color: var(--off-white);
+    }
+
     strong {
         font-weight: 600;
     }

@@ -320,15 +320,3 @@
     font-weight: 800;
     font-style: normal;
 }
-
-body {
-    background-color: var(--black);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    color: var(--off-white);
-}
-
-.whiteBackground {
-    background-color: var(--white);
-}

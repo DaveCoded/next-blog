@@ -34,6 +34,7 @@ const Main = styled.main<{ route: string }>`
         isBlogPostRoute(props.route) ? 'var(--white)' : 'var(--black)'};
     padding: var(--space-xl) var(--space-xl) var(--space-xxl) var(--space-xxxl);
     transition: background-color 2s;
+    min-height: calc(100vh - 220px - 121px);
 
     @media (min-width: 1600px) {
         padding: var(--space-xl) 15vw var(--space-xxl);
