@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { P } from '../typography'
 
 interface Props {
     children: string | any[]
 }
 
+/**
+ * Wraps the first word
+ */
 const Dropcap = ({ children }: Props) => {
     const isChildrenString = typeof children === 'string'
     const firstLetter = isChildrenString ? children[0] : children[0][0]
@@ -14,13 +16,13 @@ const Dropcap = ({ children }: Props) => {
         : [children[0].slice(1), ...children.slice(1)]
 
     return (
-        <P>
+        <>
             <span aria-hidden="true">
                 <Illuminated>{firstLetter}</Illuminated>
+                {remainder}
             </span>
-            {remainder}
             <SROnly>{children}</SROnly>
-        </P>
+        </>
     )
 }
 

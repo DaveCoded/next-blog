@@ -9,15 +9,16 @@ completion: 'spark'
 updated: '09/30/21'
 ---
 
-<Dropcap>
-  Self-hosting web fonts is the best font-loading strategy
-  for many websites. Done correctly, it yields the best
-  performance results and gives you the most options and
-  flexibility. The only reason to avoid it might be that you
-  get too much control, which puts the onus of understanding
-  how to optimise web fonts all on you. But that's another
-  matter entirely.
-</Dropcap>
+<p>
+  <Dropcap>Self-hosting</Dropcap> web fonts is the best
+  font-loading strategy for many websites. Done correctly,
+  it yields the best performance results and gives you the
+  most options and flexibility. The
+  <MarginNote id={1}>Oh hello darling</MarginNote> only reason
+  to avoid it might be that you get too much control, which puts
+  the onus of understanding how to optimise web fonts all on
+  you. But that's another matter entirely.
+</p>
 
 And the idea is simple. Put the font files in a directory that
 serves assets to the client - usually `public/`. Then, in a css
@@ -27,7 +28,7 @@ this [CSS tricks article](https://css-tricks.com/snippets/css/using-font-face/)
 if you need help.
 
 The issue with this strategy comes when you have a static site - such as the one you're on now, which is built with Next.js - deployed on Netlify.
-(It's a fantastic service that I'm grateful for; this isn't really a critique.) The common way<MarginNote id={1}>Possibly the best way, or the only way.
+(It's a fantastic service that I'm grateful for; this isn't really a critique.) The common way<MarginNote id={2}>Possibly the best way, or the only way.
 Certainly the path of least resistance and one with many DX benefits.</MarginNote> to deploy static sites on Netlify, is to configure a branch
 to watch on GitHub. Any merge into that branch triggers a deployment and, in a flash, the new version of your site is built and deployed
 to the web.
@@ -38,7 +39,7 @@ gets your project files from GitHub, those assets that you're choosing to host a
 ## How does font piracy fit in here?
 
 Do you see the issue? Any assets, in this case fonts, pushed to a GitHub repository are now free for others to
-download. Which results in theft from a font foundry, and the hard work of a dedicated typographer<MarginNote id={2}>Let's
+download. Which results in theft from a font foundry, and the hard work of a dedicated typographer<MarginNote id={3}>Let's
 face it, they're all dedicated. Do you know how much work creating a font is?!</MarginNote> earns them nothing.
 
 ## The ship has already sailed. Do the right thing anyway.
