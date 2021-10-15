@@ -1,0 +1,84 @@
+---
+title: 'Deleting merged branches in git'
+description: 'How to quickly delete all git branches that have already been merged'
+date: '10/15/21'
+status: 'publish'
+tags: ['Git']
+keywords: 'Git, GitHub, branches, delete, merged'
+completion: 'flame'
+---
+
+<Dropcap>
+  If you're anything like me – poor soul, I'm so very sorry
+  for you – then your git branching strategies will likely
+  leave you with a litter of dead twigs in your git
+  repository. It's not a disaster, but for those of us that
+  like things clean and organised, it's just enough to spasm
+  an eyebrow every time we spend as much as five seconds
+  scanning our list of branches searching for an exact name.
+</Dropcap>
+
+Once a branch is merged, there's no reason not to get the tree surgeons with their
+toolbelts and chainsaws<MarginNote id={1}>Seriously. What a cool job. If I had a do-over,
+it would be high on the list.</MarginNote> round to lop it off. It's dead now. Let it go.
+There there.
+
+Of course, tree surgery is manual labour, and _everyone knows_<MarginNote id={2}>Always
+be careful when somebody claims this. In my experience, it's far more likely that nobody
+_truly_ knows anything</MarginNote> that developers prefer to automate everything they
+possibly can.
+
+So, how can we quickly get rid of all the branches we no longer need without accidentally
+deleting those that have not yet been merged?
+
+## Stack Overflow heroes
+
+It's worth noting here that, although the Git documentation is comprehensive, Stack Overflow
+will usually be your best bet for doing very specific things with Git. I owe the entirety
+of the following snippets to Adam Dymitruk and Michael Freidgeim in
+[their answer to this question](https://stackoverflow.com/a/6127884/10233315).
+
+## Always list before you delete
+
+This is done in the answer too, but I think it's worth calling out explicitly. Before you go
+to delete anything – even if the deletion weren't permanent, because recovering _deletees_
+can be a real time-sucking pain – and especially when using a regular expression, always
+list what you're trying to delete first. Take the extra few seconds to scan the list and
+confirm that you will be deleting the items you wish to, and only the items you wish to.
+
+So, first try `git branch --merged`. This will show you a list of local branches that have
+been merged into your remote. You will very likely see some branches you _don't_ want to
+delete, namely your main development branch, be it `master`, `main` or `dev`.
+
+So, let's list again with an argument passed to exclude those three:
+
+```shell
+git branch --merged | egrep -v "(^\*|master|main|dev)"
+```
+
+If there are any other branches that you are still working on that you would like to keep,
+you can add them to the regex. To also skip `skip_branch_name`:
+
+```shell
+git branch --merged | egrep -v "(^\*|master|main|dev|skip_branch_name)"
+```
+
+## Checks done? Time to delete
+
+And finally, once you have confirmed that you have the right list and that you won't be
+deleting anything by accident, you can safely execute the command to **delete merged branches**.
+N.B. Remember to add any branches you're working on to the regex!
+
+```shell
+git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+```
+
+## Take the time to take care
+
+And there you have it. An unnecessarily long post to explain what has already been posted on
+Stack Overflow. But it's worth emphasising the process that was implicit in the answer, I think.
+In this example, we're taking the time to list the branches we want to delete and double check
+them before doing so. But it's not only in deletion that it pays dividends to take care. In
+making software, there are myriad ways to cut corners. In testing – automated or manual – and in
+considering all edge cases, and in architecting future-proof solutions, and in many more. It is
+_always_ worth taking the extra time.
