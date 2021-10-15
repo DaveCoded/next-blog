@@ -52,7 +52,7 @@ const Span = styled.span`
         content: '[' counter(sidenote-counter) ']';
         font-size: 0.8em;
         top: -0.5rem;
-        left: -0.1em;
+        left: 0.1em;
         padding-right: 0px;
     }
 
