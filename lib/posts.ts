@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { FireType } from '../components/FireLevel'
+import { formatDate } from './dates'
 
 export type FrontMatter = {
     title: string
@@ -48,11 +49,9 @@ export const getSortedPosts = (options: Partial<Options> = {}) => {
         if (shouldNotPublish(data)) {
             return
         }
-        const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' }
-        const formattedDate = new Date(data.date).toLocaleDateString('en-US', dateOptions as any)
         const frontmatter = {
             ...data,
-            date: formattedDate
+            date: formatDate(data.date)
         }
         published.push({
             slug,

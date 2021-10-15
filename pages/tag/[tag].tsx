@@ -8,6 +8,7 @@ import DynamicPostsList from '../../components/list/DynamicPostsList'
 import SubjectTag from '../../components/SubjectTag'
 import { PostData } from '../../types/PostData'
 import PageLayout from '../../components/Layout/PageLayout'
+import { formatDate } from '../../lib/dates'
 
 interface Props {
     tag: string
@@ -77,7 +78,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const tags = getUniqueTags().filter((t) => t !== tag) // Get all OTHER unique tags
     const slugsWithTag = getPostSlugsForTag(params?.tag as string)
     const postsWithTag = await Promise.all(slugsWithTag.map((slug) => getPostdata(slug)))
-    const frontMatterArr = postsWithTag.map((post) => matter(post).data)
+    const frontMatterArr = postsWithTag
+        .map((post) => matter(post).data)
+        .map((fm) => ({
+            ...fm,
+            date: formatDate(fm.date)
+        }))
     const frontMatterAndSlug = frontMatterArr.map((fm, i) => ({ ...fm, slug: slugsWithTag[i] }))
 
     return {

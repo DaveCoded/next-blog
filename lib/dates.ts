@@ -17,3 +17,11 @@ export const timeAgo = (date: Date) => {
     }
     return result
 }
+
+export const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    })
+}
