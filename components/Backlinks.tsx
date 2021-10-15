@@ -12,14 +12,13 @@ export default function Backlinks({ backlinks }: Props) {
             <h2>Backlinks</h2>
             <ul>
                 {backlinks.map((bl) => (
-                    <li key={bl.slug}>
+                    <Backlink key={bl.slug}>
                         <Link href={`/blog/${bl.slug}`}>
                             <a>
-                                <H3>{bl.title}</H3>
-                                <p>{bl.excerpt}</p>
+                                <H4>{bl.title}</H4>
                             </a>
                         </Link>
-                    </li>
+                    </Backlink>
                 ))}
             </ul>
         </Section>
@@ -30,26 +29,21 @@ const Section = styled.section`
     margin-top: var(--space-xxl);
 
     h2 {
-        margin-bottom: var(--space-lg);
-    }
-
-    li {
-        padding: var(--space-md);
-        border: 3px solid var(--light-black);
-        border-radius: 4px;
-        list-style: none;
-        margin-bottom: var(--space-lg);
-
-        p {
-            font-size: var(--text-sm);
-        }
-    }
-
-    & * {
         color: var(--light-black);
+        margin-bottom: var(--space-sm);
     }
 `
 
-const H3 = styled.h3`
+const Backlink = styled.li`
+    list-style: none;
+`
+
+const H4 = styled.h4`
+    color: var(--link-pink);
     margin-bottom: var(--space-xs);
+    text-decoration: underline;
+
+    &:hover {
+        color: var(--purple);
+    }
 `
