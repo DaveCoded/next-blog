@@ -33,7 +33,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-.vscode/
+.vscode/settings.json
 .env
 
 public/fonts

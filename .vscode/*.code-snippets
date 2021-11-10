@@ -1,0 +1,24 @@
+{
+    "New Blog Post": {
+        "prefix": "blogpost",
+        "description": "Template for starting a blog post",
+        "scope": "markdown",
+        "body": [
+            "---",
+            "title: '$1'",
+            "subtitle: ''",
+            "description: '$2'",
+            "excerpt: ''",
+            "date: '$3'",
+            "status: 'draft'",
+            "tags: ['$4']",
+            "keywords: '$5'",
+            "completion: 'spark'",
+            "---",
+            "",
+            "<p>",
+            "  <Dropcap>Welcome</Dropcap> to a beautiful new post",
+            "</p>"
+        ]
+    }
+}
