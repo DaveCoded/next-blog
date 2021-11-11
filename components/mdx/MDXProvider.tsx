@@ -53,6 +53,7 @@ export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivEle
 
 const UL = styled.ul`
     padding-inline-start: 1.5rem;
+    margin-bottom: var(--space-md);
 `
 
 const ImgContainer = styled.div`
