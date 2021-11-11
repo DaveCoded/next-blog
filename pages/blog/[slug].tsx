@@ -58,7 +58,7 @@ export default function Posts({ source, frontMatter, headings, backlinks }: Prop
             <PageLayout>
                 <PostContainer>
                     <Title hasSubtitle={!!subtitle}>{title}</Title>
-                    {subtitle && <Subtitle>{subtitle}</Subtitle>}
+                    {subtitle && <Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />}
                     <HR />
                     <PostMetadata
                         completion={completion}
