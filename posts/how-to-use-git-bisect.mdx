@@ -13,6 +13,23 @@ keywords:
 completion: 'spark'
 ---
 
+## Outline
+
+- Introduction: I'm going to tell you about how I went about finding a bug in production.
+  It turns out, I could have done the same thing much quicker with `git bisect`, so skip
+  ahead for that. Mention that it may not have been Linus responsible for the feature.
+- Give context for the bug. It was merged into master/main but nobody knew when because it
+  was a relatively unused feature of a program with only a few beta users.
+- Go through the process of hunting it down. Checking out some commits, thinking of using
+  binary search, then finding a snippet with good arguments for `git log` that helped
+  narrow down commits that were merges into master.
+- Explain how `git bisect` does the same and show the basic commands. Link to the proper
+  documentation or show how to pull up the `man` page for it.
+- Show how to narrow down the selection of commits that you want to consider and credit
+  Shiva Rajagopal for this great post: https://interrupt.memfault.com/blog/git-bisect
+- Write a bit about how learning `git` well, not just the basic features, is very
+  beneficial. Advocate for more sharing of good tips etc.
+
 <p>
   <Dropcap>Welcome</Dropcap> to a beautiful new post
 </p>
