@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
+import ExternalLink from '../components/ExternalLink'
 import PageLayout from '../components/Layout/PageLayout'
 
 export default function Home() {
@@ -14,24 +15,38 @@ export default function Home() {
             </Head>
 
             <PageLayout>
-                <H1>
-                    <Intro>Hi. I&apos;m Dave Bernhard,</Intro>
-                    <br />
-                    <Desc>a frontend developer working in London.</Desc>
-                </H1>
+                <H1>About</H1>
                 <Bio>
-                    This is my blog. It&apos;s a space for me to write about what I&apos;m learning
-                    in tech; hopefully you&apos;ll learn something interesting here. If you do, or
-                    if you have any suggestions for improvements to my articles, please reach out on
-                    Twitter. I&apos;m{' '}
-                    <a
-                        href="https://twitter.com/daveforall"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="external-link"
-                    >
-                        @daveforall
-                    </a>
+                    <p>
+                        I&apos;m a Frontend Developer with polyglot ambitions. I currently work at
+                        Feed, a creative agency in London. In my day-to-day, I build complex
+                        interactive interfaces with React, TypeScript and MobX. And also design Node
+                        APIs, using MySQL for a DBMS.
+                    </p>
+                    <p>
+                        In a former life, I was in book publishing. I still spend a lot of my spare
+                        time reading, both for pleasure and to learn new things (which is also a
+                        pleasure).
+                    </p>
+                    <p>
+                        My more unusual experiences include climbing Mount Stanley in Uganda and
+                        playing a Victorian policeman in an interactive murder mystery at the
+                        Edinburgh Fringe. I&apos;ll still answer to Constable Crowley.
+                    </p>{' '}
+                    <p>
+                        Music has always been very important to me. I have sung Mozart&apos;s
+                        Requiem Mass and been to see NOFX live on five occasions. They were,
+                        respectively, average, brilliant, disinterested, very drunk, and then
+                        brilliant again. I&apos;m currently trying to learn{' '}
+                        <ExternalLink
+                            href="https://www.youtube.com/watch?v=L42sbnQxEmw&ab_channel=Rousseau"
+                            newTab
+                            style={{ color: 'var(--link-pink)' }}
+                        >
+                            Un Sospiro
+                        </ExternalLink>{' '}
+                        by Liszt on the piano; wish me luck!
+                    </p>
                 </Bio>
             </PageLayout>
         </>
@@ -39,34 +54,16 @@ export default function Home() {
 }
 
 const H1 = styled.h1`
-    line-height: 0;
-`
-
-const Intro = styled.span`
-    display: block;
-    line-height: 1.2;
-
     @media (max-width: 600px) {
-        font-size: var(--text-lg);
+        font-size: var(--text-xl);
         margin-bottom: var(--space-md);
         line-height: 1.1;
     }
 `
 
-const Desc = styled.span`
-    font-size: var(--text-lg);
+const Bio = styled.div`
+    width: min(90%, 650px);
     color: var(--cool-grey);
-    line-height: 1.2;
-
-    @media (max-width: 600px) {
-        font-size: var(--text-ml);
-    }
-`
-
-const Bio = styled.p`
-    color: var(--light-grey);
-    width: min(90%, 60ch);
-
     @media (max-width: 600px) {
         margin-bottom: var(--space-xl);
     }

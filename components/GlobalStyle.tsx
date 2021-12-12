@@ -136,7 +136,8 @@ export const GlobalStyle = createGlobalStyle`
     p {
         font-size: var(--text-body);
         line-height: 1.6;
-        color: var(--cool-grey)
+        color: var(--cool-grey);
+        margin-bottom: var(--space-md);
     }
 
     p > code {
