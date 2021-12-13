@@ -2,12 +2,29 @@ import { useState } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import PageLayout from '../components/Layout/PageLayout'
-import BioControls from '../components/bio/BioControls'
-import Neutral from '../components/bio/Neutral'
+import {
+    BioControls,
+    Bitter,
+    Snobby,
+    Neutral,
+    Melancholic,
+    SelfDeprecating
+} from '../components/bio'
 
 const BIO_TONES = ['bitter', 'snobby', 'neutral', 'melancholic', 'self-deprecating'] as const
 type BioTuple = typeof BIO_TONES
 export type BioTone = BioTuple[number]
+
+const showActiveBio = (activeBio: BioTone) => {
+    const map = {
+        bitter: <Bitter />,
+        snobby: <Snobby />,
+        neutral: <Neutral />,
+        melancholic: <Melancholic />,
+        'self-deprecating': <SelfDeprecating />
+    }
+    return map[activeBio]
+}
 
 export default function Home() {
     const [activeBio, setActiveBio] = useState<BioTone>('neutral')
@@ -15,7 +32,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Dave Bernhard&apos;s blog</title>
+                <title>Dave Bernhard's blog</title>
                 <meta
                     name="description"
                     content="About Dave. Some more information about the website author and his proclivities."
@@ -31,9 +48,7 @@ export default function Home() {
                         setActiveBio={setActiveBio}
                     />
                 </ControlsWrapper>
-                <Bio>
-                    <Neutral />
-                </Bio>
+                <Bio>{showActiveBio(activeBio)}</Bio>
             </PageLayout>
         </>
     )
