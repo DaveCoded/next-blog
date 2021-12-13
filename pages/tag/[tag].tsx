@@ -22,7 +22,7 @@ export default function TagPage({ tag, tags, frontMatterAndSlug }: Props) {
     return (
         <>
             <Head>
-                <title>Dave Bernhard&apos;s blog | {tag} posts</title>
+                <title>Dave Bernhard's blog | {tag} posts</title>
                 <meta
                     name="description"
                     content={`A collection of all posts with the ${tag} tag`}
