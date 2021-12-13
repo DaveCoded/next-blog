@@ -1,9 +1,17 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import ExternalLink from '../components/ExternalLink'
 import PageLayout from '../components/Layout/PageLayout'
+import BioControls from '../components/BioControls'
+
+const BIO_TONES = ['bitter', 'snobby', 'neutral', 'melancholic', 'self-deprecating'] as const
+type BioTuple = typeof BIO_TONES
+export type BioTone = BioTuple[number]
 
 export default function Home() {
+    const [activeBio, setActiveBio] = useState<BioTone>('neutral')
+
     return (
         <>
             <Head>
@@ -16,6 +24,13 @@ export default function Home() {
 
             <PageLayout>
                 <H1>About</H1>
+                <ControlsWrapper>
+                    <BioControls
+                        bios={BIO_TONES}
+                        activeBio={activeBio}
+                        setActiveBio={setActiveBio}
+                    />
+                </ControlsWrapper>
                 <Bio>
                     <p>
                         I&apos;m a Frontend Developer with polyglot ambitions. I currently work at
@@ -57,7 +72,6 @@ const H1 = styled.h1`
     @media (max-width: 600px) {
         font-size: var(--text-xl);
         margin-bottom: var(--space-md);
-        line-height: 1.1;
     }
 `
 
@@ -67,4 +81,9 @@ const Bio = styled.div`
     @media (max-width: 600px) {
         margin-bottom: var(--space-xl);
     }
+`
+
+const ControlsWrapper = styled.div`
+    overflow: scroll;
+    margin-bottom: var(--space-md);
 `
