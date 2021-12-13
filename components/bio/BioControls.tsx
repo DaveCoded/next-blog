@@ -1,7 +1,7 @@
 import { motion, AnimateSharedLayout } from 'framer-motion'
 import { Dispatch, SetStateAction } from 'react'
 import styled from 'styled-components'
-import { BioTone } from '../pages/about'
+import { BioTone } from '../../pages/about'
 
 type Props = {
     bios: ReadonlyArray<BioTone>
@@ -68,6 +68,15 @@ const ListItem = styled(motion.li)<{ isActive: boolean }>`
     }
 `
 
+const Label = styled.span`
+    color: var(--off-white);
+    opacity: 0.8;
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+    transition: opacity 350ms ease-out;
+`
+
 const Button = styled.button`
     font-family: inherit;
     font-weight: 600;
@@ -84,15 +93,11 @@ const Button = styled.button`
     &:focus {
         cursor: pointer;
     }
-`
 
-const Label = styled.span`
-    color: var(--off-white);
-    opacity: 0.8;
-    position: relative;
-    z-index: 2;
-    white-space: nowrap;
-    transition: opacity 350ms ease-out;
+    &:focus ${Label} {
+        outline: var(--light-grey) solid 3px;
+        outline-offset: 4px;
+    }
 `
 
 const ActiveControl = styled(motion.div)`
