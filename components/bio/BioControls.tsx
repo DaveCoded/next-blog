@@ -21,7 +21,12 @@ export default function Backlinks({ bios, activeBio, setActiveBio }: Props) {
                             whileTap={isActive ? { scale: 0.95 } : { opacity: 0.8 }}
                             key={bio}
                         >
-                            <Button onClick={() => setActiveBio(bio)} type="button">
+                            <Button
+                                onClick={() => setActiveBio(bio)}
+                                // Prevents focus state from appearing on click
+                                onMouseDown={(e) => e.preventDefault()}
+                                type="button"
+                            >
                                 {isActive && <ActiveControl layoutId="SegmentedControlActive" />}
                                 <Label>{bio}</Label>
                             </Button>
