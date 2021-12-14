@@ -70,6 +70,6 @@ const Bio = styled.div`
 `
 
 const ControlsWrapper = styled.div`
-    overflow: scroll;
+    overflow: auto;
     margin-bottom: var(--space-md);
 `
