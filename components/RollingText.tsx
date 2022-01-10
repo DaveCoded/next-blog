@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 export default function RollingText({ options }: { options: string[] }) {

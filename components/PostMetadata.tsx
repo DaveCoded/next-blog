@@ -22,17 +22,19 @@ export default function PostMetadata({ tags, completion, date, updated }: Props)
     return (
         <Metadata>
             <div style={{ display: 'flex', alignItems: 'baseline' }}>
-                Tags:
                 {tags && tags.length > 0 ? (
-                    <TagList>
-                        {tags.map((tag) => (
-                            <Link key={tag} href={`/tag/${tag}`}>
-                                <a>
-                                    <Tag>{tag}</Tag>
-                                </a>
-                            </Link>
-                        ))}
-                    </TagList>
+                    <>
+                        Tags:
+                        <TagList>
+                            {tags.map((tag) => (
+                                <Link key={tag} href={`/tag/${tag}`}>
+                                    <a>
+                                        <Tag>{tag}</Tag>
+                                    </a>
+                                </Link>
+                            ))}
+                        </TagList>
+                    </>
                 ) : null}
             </div>
             <InnerMetadata>
