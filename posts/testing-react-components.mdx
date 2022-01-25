@@ -257,6 +257,22 @@ export<MarginNote id={5}>I know it's imaginary in this case, but it's most likel
 validations file will make use of multiple named exports</MarginNote> of the module, we
 need to first import all the methods an on object.
 
+## Treat tests as source code
+
+Some final advice. Just as you strive to make your source code readable, terse and
+[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), you should aim for the same
+in your tests. As requirements change and functionality is added, you or your colleagues
+will have to revisit tests, updating them to reflect your new expectations of the
+behaviour. You will be glad of any clarifying comments, any common mocks/helpers that have
+been abstracted etc.
+
+**NB**: when you find yourself having to reuse the same mocked object for multiple tests
+you will want to lift it to some outer scope - of the `describe` block or the module - so
+that it is available to all test blocks. **_Be careful!_** Since JS objects are assigned
+by reference, every test will be using that object. If any one of them mutates the object,
+it will be mutated for every test that runs after it. Consider writing a function that
+returns that mocked object instead.
+
 <h2>
   <em>fin</em>
 </h2>
