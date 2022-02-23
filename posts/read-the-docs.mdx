@@ -1,0 +1,64 @@
+---
+title: ''
+subtitle: ''
+description: ''
+excerpt: ''
+date: ''
+status: 'draft'
+tags: ['']
+keywords: ''
+completion: 'spark'
+---
+
+<p>
+  <Dropcap>Welcome</Dropcap> to a beautiful new post
+</p>
+
+What order do I put these in?!
+
+Points:
+
+- "Read the docs" is common advice from senior devs. It can be easy to dismiss it as "not
+  for me". I know that I prefer to read books on technical topics when I want to go deep
+  on them. That's all very well for a programming language, or for mature paradigms and
+  methodologies, but there aren't books written on the latest JS framework. Most of the
+  books written on the established ones are aimed at beginners anyway.
+- Reading _all_ the documentation for something is a great way of getting an idea of the
+  surface area. If it's a technology you use regularly, you _should_ know **about**
+  everything it can do, if not how to do it. It will make your life easier!
+- Reading docs will teach you about how to write your own documentation - public or
+  internal - well/badly. Talk about what styled-components document well, and what is
+  buried in the FAQs
+- Frameworks, and to some extent libraries, were designed with certain patterns in mind.
+  styled-components shows you good options for how to use it. Mui (at least v4) shows a
+  lot of ways to override styles (look this up). It's fair enough to enumerate them, but
+  you need some advice to use _one_ system and agree within your team. Otherwise you'll
+  wind up with a mess. So don't think that the docs are everything. They were written by
+  devs, some better than others, some more serious about docs than others.
+- Credit JC
+- Read more than the docs if you don't understand. Going to the source might be too far
+  for some projects, but might be realistic for others, so try it. It's good practice just
+  to peek at how OSS in your ecosystem is structured anyway!
+  - Otherwise, find the posts written about it. If you're lucky, they'll be linked to from
+    the docs!
+- There are things I learned about styled-components **from** reading the docs, but there
+  are also things I learned more generally **by** reading the docs.
+- Solved text flickering on my blog!
+- Information about the (incredibly useful) Babel plugin is off the beaten track - well,
+  it's not in the normal installation/getting started instructions, but in a separate,
+  slightly boring sounding section named "tooling"
+- Issues with SSG; don't use `@import` in the `createGlobalStyle` function. Good to know!
+  Think I'd done that when trying out some Google fonts and had some issues
+- The `attrs` api looks very useful and "idiomatic", but the main bit of the docs is
+  unclear about when it should be used. It's in the FAQ!
+- Transient props look pretty vital, especially if you're also using TypeScript, which
+  might fail to compile (check this?) if you're passing props to HTML elements that can't
+  handle them.
+- The "Test utilities" are buried in the API Reference, not the "Basics" or "Advanced"
+  bits.
+- I have probably said - maybe even in an interview or two - that I learn things by
+  reading the docs. While I definitely dipped to find out answers to questions as I used
+  the tool, that's not true; at least not to the extent I let on. But, instead of changing
+  the story (so that I'm not telling porkies), it's sometimes a better idea to make the
+  story into a reality and reap the benefits. (It's as much a lie I told myself as it is a
+  lie I told to others!)
