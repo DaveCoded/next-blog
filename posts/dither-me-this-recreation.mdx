@@ -1,0 +1,67 @@
+---
+title: '[Recreation] Image reveal slider from dither-me-this'
+subtitle: ''
+description: ''
+excerpt: ''
+date: '02/23/22'
+status: 'draft'
+tags: ['']
+keywords: ''
+completion: 'spark'
+---
+
+<p>
+  <Dropcap>Welcome</Dropcap> to a beautiful new post
+</p>
+
+## Points to include:
+
+- Make it in html, css and js first. Just a clean environment with three files and
+  live-server extension
+- Copy the markup from the Devtools:
+  - Elements tab. Right click on element > copy > copy outerHTML
+- Go through every element and coyp the CSS rules being applied wholesale
+  - Don't forget the custom properties
+  - Don't forget anything on the \* wildcard selector
+- Use the DevTools to work out what all the CSS values are doing. Turn on off; what
+  changed? Change its value; what changed? _Try to break it!_
+- Click and drag was pretty easy to implement thanks to javascript.info
+
+## So how does it work?
+
+- Two images (`<canvas>` elements in dither-me-this but I simplified with images), one on
+  top of the other
+- As the slider moves, the width of the top image is being updted with JS
+- The top image needs to be absolutely positioned to one edge. In dither-me-this, it's the
+  right edge, so that's what I've recreated. It could just as easily (maybe more easily)
+  have been the left edge
+- overflow: hidden; on the overlay image container is also important? [**Check this**].
+
+### JS
+
+- Get the slider (by class in my case)
+- Position it initially (better than hardcoding in the markup). Position to the left edge
+  of the container with CSS. Then shift it to the middle of the images with JS (shift to
+  the right by the difference between the container and images' left edges PLUS half the
+  width of the images)
+- Add an onmousedown event listener (either with slider.addEventListener() or directly to
+  the onmousedown property)
+  - This is where we will then set the logic for the "mousemove" event, and then remove
+    the listener on "mouseup"
+  - We also have `slider.ondragstart = () => false;` which prevents the default draggable
+    image behaviour. It's probably not needed for this example in the end because the
+    slider moves with the cursor, but is useful to know about.
+- The real work happens in the `handleMouseMove` function.
+  - The slider is moved with a transform along the x axis. We get the `pageX` value from
+    the mousemove's `event` object and subtract the x position (on the page) of the
+    container.
+  - For the overlay width, we subtract the `pageX` value from the width of the images
+    (imagesRect) PLUS the position of the images on the page.
+  - The x axis positions of the container and images are obtained using
+    `getBoundingClientRect().x`
+- Prevent the slider from going "out of bounds" by returning early
+- I _had_ set the `mouseup` event listener on the slider. This caused a bug where if you
+  let go of the mouse button outside of the container, you'd still be moving the slider
+  with your mouse and you'd have to refresh to reset the behaviour! (Include the buggy
+  version in the post for illustration!)
+- That's it!
