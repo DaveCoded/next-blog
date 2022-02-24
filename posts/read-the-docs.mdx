@@ -14,7 +14,154 @@ completion: 'spark'
   <Dropcap>Welcome</Dropcap> to a beautiful new post
 </p>
 
-What order do I put these in?!
+## Outline
+
+- Introduction: I read all the documentation styled-components. Here's what I learned
+- Where did the idea come from?
+- Developing a doc-reading habit
+-
+
+## Intended audience
+
+Don't need to know or even want to use styled-components. This is more about
+documentation, why you should consider reading it, and maybe how to write it.
+
+## Where did the idea to do this come from?
+
+I'm working through JC's excellent CSS for JS devs course. In it, there's a whole module
+about styled-components. Though it covers basic syntax and how to use the library, its
+real value is the discussion around why to use it. JC lists pros and cons of other styling
+approaches (and includes the caveat that these are his opinions and that many smart people
+will disagree).
+
+I also chose to use it for this blog. It's been around for a while, it's popular and Max
+Stoiber seems like a good dude (and yes, that's a totally valid way to choose what OSS you
+use! Maybe even critical when you consider the recent colors.js debacle)
+
+I have knowledge of how to do basic things, but occasionally found myself doing things I
+didn't like. Creating extra wrappers or targeting nested elements, for instance, which
+felt wrong.
+
+My next workplace my be adopting it too, so it would be a good idea to be an expert!
+
+## Develop a docs-reading habit
+
+I wanted to practice reading documentation. The styled-components docs are pretty short.
+They took me a little over an hour to read at a careful pace, so much less than an hour if
+you want to skim them. They're also organised quite broadly. The sidebar wasn't
+overwhelming!
+
+Why get good at reading docs? Sometimes, reading the docs is your best/only option. In the
+case of closed-source tech, you have to rely on the documentation. And for OSS, reading
+the source might be wildly inefficient. It takes some time to acclimatise yourself in a
+project, especially if it's written in an unfamiliar language or paradigm.
+
+I've also never done that before. I've definitely claimed that I learn new tech from the
+docs, but realised when I heard Wes Bos say he skims all the docs to get an idea of a
+technology's surface area, that I had never done that. So, instead of changing my
+narrative, I wanted to do the work to make it come true!
+
+## What I learned
+
+I learned things _about_ styled-components. I have a better mental model for how it works.
+I have a better feel for idiomatic usage (how to use the library as it was designed to be
+used). I know the _surface area_ of the api, so if I come up against an issue, my memory
+will likely remind me that there's a method for solving x problem. I now know about some
+gotchas with SSR, which I use on this blog.
+
+But I learned about other things by doing this too. Primarily, I developed my ideas about
+good documentation and information architecture; this is important if you're a dev and you
+need to write docs yourself. I also engaged critically with the docs, which is always good
+practice.
+
+## Things I didn't know about styled-components
+
+This is more for my reference, or for those who know styled-components and are curious.
+
+### attrs
+
+`attrs` is an interesting api. Explain what it does and how to use it (maybe look up an
+article about using it if you're uncertain). Though I thought I understood what it did, I
+wasn't clear on when I might want/need to. It turns out, I'm not the only one. There's a
+question in the FAQs addressing exactly that!
+
+It might be better to also have it in the _main_ docs (it's fairly clear that Tooling and
+FAQs are "extras" that most people won't read).
+
+### Transient Props
+
+[Figure out why this is needed exactly. Is it because styled-components forwards all props
+to DOM nodes and some are invalid or accidentally valid? Ask on Twitter]
+
+[Work out if Typescript fails to compile if you pass invalid attributes. Just experiment
+on the blog]
+
+### Test utilities
+
+It had never occured to me that using styled-components could affect your tests. Nice to
+know up front before using it in a serious application. So reading the docs is clearly a
+good way to assess whether you want to adopt a technology at work because this prompts
+further research. Does it play nicely with our test suite? Might be easier to use Jest
+than something like Mocha!
+
+[Understand and write about the class name stuff]
+
+### SSR text flickering
+
+I had this issue on the blog!! I wouldn't even have known how to research the issue.
+
+### SSG @import in `createGlobalStyle`
+
+Kind of satisfies curiosity more than anything else, but good to know
+
+## Other things I learned by reading the docs
+
+### Information Architecture
+
+I (and I guess we) compartmentalise information into need-to-know and nice-to-know. How
+you structure your docs will tell readers what to learn and what they needn't bother with.
+
+Some information that I would consider very useful is hidden in separate sections (Tooling
+and FAQs). It turns out that frequently asked questions does not equate to a frequently
+visited section. Following JC's example on his excelling blog/course platform, it's better
+to have an accordion than a link to an external section. You're _much_ more likely to find
+out and read about something.
+
+Babel plugin is buried in the tooling. This is not essential for usage, but it is arguably
+essential for debugging. I wouldn't recommend anyone forego it unless it absolutely didn't
+fit in with their build pipeline.
+
+When/why to use the `attr` api is buried in the FAQs. It should be colocated with the
+information about the api, because actually it's vital to understanding it.
+
+### Idiomatic usage
+
+All software is designed. If you're using something in a way that is never documented by
+its creators, you may be slipping into some unidiomatic usage. Have you come up with a
+clever way of adapting something for your use case, or have you embraced a foot-gun /
+maintainability issue / performance killer?
+
+### Extra reading
+
+The docs won't be exhaustive. They're quite unlikely to tell you everything about _how_
+the tech works, for instance. For that, you may have to go to the source. Fortunately, in
+this case, I have JC to help again! (styled-components also include a list of further
+reading artlicles on their site which is a really great practice that's much appreaciated)
+
+Reading the docs will answer lots of your questions, but it might raise new ones. Follow
+your curiosity!
+
+### Confidence
+
+The more you understand about a technology - how to use it, _all_ the things it can do,
+and how it actually works - the more confident you will be in using it. A big part of
+development is stitching pieces together. If you don't know exactly where the boundaries
+of those constituent parts lie, then debugging issues can be very tricky. Is it a
+React/Next/SSR/styled-comopnents/TypeScript/Babel/Webpack issue?!
+
+You'll also be better placed to contribute to discussions about what tech to use at work
+and why. And if you're already using it, you'll be more able to teach others on your team.
+Win win win!
 
 Points:
 
@@ -26,6 +173,7 @@ Points:
 - Reading _all_ the documentation for something is a great way of getting an idea of the
   surface area. If it's a technology you use regularly, you _should_ know **about**
   everything it can do, if not how to do it. It will make your life easier!
+
 - Reading docs will teach you about how to write your own documentation - public or
   internal - well/badly. Talk about what styled-components document well, and what is
   buried in the FAQs
@@ -35,7 +183,6 @@ Points:
   you need some advice to use _one_ system and agree within your team. Otherwise you'll
   wind up with a mess. So don't think that the docs are everything. They were written by
   devs, some better than others, some more serious about docs than others.
-- Credit JC
 - Read more than the docs if you don't understand. Going to the source might be too far
   for some projects, but might be realistic for others, so try it. It's good practice just
   to peek at how OSS in your ecosystem is structured anyway!
