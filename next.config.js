@@ -1,5 +1,6 @@
-const withMDX = require('@next/mdx')()
-
-module.exports = withMDX({
-    pageExtensions: ['js', 'mdx', 'tsx']
-})
+module.exports = {
+    compiler: {
+        // ssr and displayName are configured by default
+        styledComponents: true
+    }
+}
