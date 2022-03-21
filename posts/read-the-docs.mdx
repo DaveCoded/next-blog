@@ -1,6 +1,6 @@
 ---
-title: 'Read the docs'
-subtitle: ''
+title: 'Read the docs. The whole thing.'
+subtitle: 'What I learned from reading the documentation for styled-components'
 description: ''
 excerpt: ''
 date: '02/23/22'
@@ -11,45 +11,54 @@ completion: 'spark'
 ---
 
 <p>
-  <Dropcap>Welcome</Dropcap> to a beautiful new post
+  <Dropcap>I</Dropcap> had never read <em>all of</em> the documentation for a technology
+  from start to finish before last week. I'm currently working through Josh Comeau's
+  excellent <a href="https://css-for-js.dev/">CSS for JS devs course</a> in which he
+  chooses to use styled-components.
+  <MarginNote id={1}>
+    And gives an excellent breakdown of the pros and cons of various styling choices which
+    I won't reproduce here.
+  </MarginNote> I chose to use styled-components for this blog because I wanted to learn it;
+  it's popular and I was seeking to understand the debates around css-in-js by trying it out
+  myself. But after installing it and learning how to add CSS styles, I didn't dig any further.
+  It turns out, I was missing out on a whole mental model.
 </p>
 
-## Outline
-
-- Introduction: I read all the documentation styled-components. Here's what I learned
-- Where did the idea come from?
-- Developing a doc-reading habit
--
+<!-- TODO: Turn this into some component instead of being an h2 -->
 
 ## Intended audience
 
-Don't need to know or even want to use styled-components. This is more about
-documentation, why you should consider reading it, and maybe how to write it.
+You don't need to know anything about styled-components, but you'll get more out of this
+if you do. Otherwise, developers and technical writers who think about documentation and
+developers interested in learning technologies well.
 
-## Where did the idea to do this come from?
+## Why did I decide to read all the docs?
 
-I'm working through JC's excellent CSS for JS devs course. In it, there's a whole module
-about styled-components. Though it covers basic syntax and how to use the library, its
-real value is the discussion around why to use it. JC lists pros and cons of other styling
-approaches (and includes the caveat that these are his opinions and that many smart people
-will disagree).
+Regarding styled-componets, I already knew everything I _needed_ to. I knew how to style
+components dynamically based on their props. I knew about the `createGlobalStyle` function
+for, yep you guessed it, creating global styles. But occasionally I found myself doing
+things I didn't like. I would create extra wrappers - unnecessarily polluting the DOM with
+more `<div>` elements - or sometimes style nested elements from a parent comopnent. And
+although I couldn't identify why I disliked it, I trusted my instincts and decided to find
+out what I was doing wrong.
 
-I also chose to use it for this blog. It's been around for a while, it's popular and Max
-Stoiber seems like a good dude (and yes, that's a totally valid way to choose what OSS you
-use! Maybe even critical when you consider the recent colors.js debacle)
+Also, in one of my interviews for a company I'll be joining soon, it sounded like they
+were considering adopting styled-components. It seemed like the opportune moment to become
+an expert on styled-components. And if you want to know everything about a technology,
+then you better have read the documentation, right?<MarginNote id={2}>This isn't actually
+rhetorical. Mastering a technology takes more than just reading the docs. And reading all
+of the documentation is only as useful as the documentation is good.</MarginNote>
 
-I have knowledge of how to do basic things, but occasionally found myself doing things I
-didn't like. Creating extra wrappers or targeting nested elements, for instance, which
-felt wrong.
+## Developing a docs-reading habit
 
-My next workplace my be adopting it too, so it would be a good idea to be an expert!
+Another reason is that I wanted to practice reading documentation. And the
+styled-components docs are relatively short, so this was a good place to start. They took
+me a little over an hour to read at a careful pace, so much less than an hour if you want
+to skim them. They are also very approachably organised. You don't suffer from sidebar
+overwhelm.
 
-## Develop a docs-reading habit
-
-I wanted to practice reading documentation. The styled-components docs are pretty short.
-They took me a little over an hour to read at a careful pace, so much less than an hour if
-you want to skim them. They're also organised quite broadly. The sidebar wasn't
-overwhelming!
+[**Add pics side by side of styled-components sidebar with another overwhelming docs
+site**]
 
 Why get good at reading docs? Sometimes, reading the docs is your best/only option. In the
 case of closed-source tech, you have to rely on the documentation. And for OSS, reading
