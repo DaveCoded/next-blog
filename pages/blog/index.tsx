@@ -15,7 +15,7 @@ export default function Home({ allPostsData, tags }: Props) {
     return (
         <>
             <Head>
-                <title>Dave Bernhard&apos;s blog</title>
+                <title>Dave Bernhard's blog</title>
                 <meta
                     name="description"
                     content="Dave Bernhard's blog index page. See a full list of writings he's written."

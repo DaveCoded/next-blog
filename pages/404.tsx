@@ -5,7 +5,7 @@ export default function NotFound() {
     return (
         <>
             <Head>
-                <title>Dave Bernhard&apos;s blog</title>
+                <title>Dave Bernhard's blog</title>
                 <meta name="description" content="Page not found!"></meta>
             </Head>
 
