@@ -4,43 +4,44 @@ excerpt: 'How to render different JSX for the last (or first) item in an array'
 description: 'How to render different JSX for the last (or first) item in an array'
 date: '03/10/21'
 status: 'publish'
-tags: ['React', 'Arrays', 'JavaScript']
+tags: ['React', 'arrays', 'JavaScript']
 keywords: 'React, JavaScript, arrays, .map()'
 completion: 'bonfire'
 ---
 
 <blockquote style={{ marginTop: 0 }}>
   <p className="BlogPost__Paragraph">
-    It is a truth universally acknowledged, that a coding
-    man (woman, other) in possession of good arrays, must be
-    in want of JSX.
+    It is a truth universally acknowledged, that a coding man (woman, other) in possession
+    of good arrays, must be in want of JSX.
   </p>
 </blockquote>
 
 <p>
-  <Dropcap>Poor</Dropcap> Jane. Her insightful, sensitive,
-  entertaining work has been co-opted by mysoginy, by people
-  wanting to give Colin Firth something to do, and now by
-  yet another React tutorial. She'd probably have been into
-  Vue; maybe she'd have considered rolling in the muddy
-  frontend obscene and opted for Lisp or Haskell. Never
+  <Dropcap>Poor</Dropcap> Jane. Her insightful, sensitive, entertaining work has been
+  co-opted by mysoginy, by people wanting to give Colin Firth something to do, and now by
+  yet another React tutorial. She'd probably have been into Vue; maybe she'd have
+  considered rolling in the muddy frontend obscene and opted for Lisp or Haskell. Never
   mind.
 </p>
 
 ## Code that does things
 
-This is pretty simple so I'm not going to bang on about Austen any longer. This is mostly a reminder to myself,
-because although it's not overly complicated, it did trip me up for a few minutes at work, and I wasn't totally sure what to search for to unblock
-myself. Besides, I do hope, intrepid blog-burrower (that's you, my furry little reader), that it is also useful to you.
+This is pretty simple so I'm not going to bang on about Austen any longer. This is mostly
+a reminder to myself, because although it's not overly complicated, it did trip me up for
+a few minutes at work, and I wasn't totally sure what to search for to unblock myself.
+Besides, I do hope, intrepid blog-burrower (that's you, my furry little reader), that it
+is also useful to you.
 
 ### Let's assume an array of Power Rangers
 
-PR fans (not Public Relations. They don't shout "it's morphing time!" do they?) will notice that the names belong to the first
-lot of Power Rangers and that I've omitted the Green guy. He later became the White Ranger, which I was never comfortable with. How could I be? Way
-too big for his boots...
+PR fans (not Public Relations. They don't shout "it's morphing time!" do they?) will
+notice that the names belong to the first lot of Power Rangers and that I've omitted the
+Green guy. He later became the White Ranger, which I was never comfortable with. How could
+I be? Way too big for his boots...
 
-Here's how we could list out our heroes, putting an `<hr />` (horizontal rule) after each but the last. First, we remember that the second argument
-of JavaScript's `.map()` array function is an **index**. Then, we use it:
+Here's how we could list out our heroes, putting an `<hr />` (horizontal rule) after each
+but the last. First, we remember that the second argument of JavaScript's `.map()` array
+function is an **index**. Then, we use it:
 
 ```JavaScript title=file.jsx
 const powerRangers = [
@@ -80,9 +81,12 @@ const listOfRangers = () =>  (
 )
 ```
 
-That handy `<>` tag is the same as `React.Fragment`. Since we're rendering an `li` and an `hr` as siblings (for all but the last Ranger),
-we need to wrap them in a parent element. You could opt for a `div` if you were going to use it for something. Remember to move the key
-attribute to it if you do.
+That handy `<>` tag is the same as `React.Fragment`. Since we're rendering an `li` and an
+`hr` as siblings (for all but the last Ranger), we need to wrap them in a parent element.
+You could opt for a `div` if you were going to use it for something. Remember to move the
+key attribute to it if you do.
 
-Of course, it doesn't need to be the last element of the array. Once you have the current index, you can do anything your bloody, pumping
-heart desires. `index === 0 ? <hr /> : null` would add an `hr` after the first element only, for instance. Anyway, happy mapping!
+Of course, it doesn't need to be the last element of the array. Once you have the current
+index, you can do anything your bloody, pumping heart desires.
+`index === 0 ? <hr /> : null` would add an `hr` after the first element only, for
+instance. Anyway, happy mapping!

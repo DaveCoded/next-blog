@@ -1,220 +1,177 @@
 ---
-title: 'Read the docs. The whole thing.'
+title: 'Read the docs. Every last word.'
 subtitle: 'What I learned from reading the documentation for styled-components'
-description: ''
-excerpt: ''
-date: '02/23/22'
-status: 'draft'
-tags: ['']
-keywords: ''
-completion: 'spark'
+description:
+  'A summary of lessons learned by reading all of the styled-components documentation.
+  Both about the tech itself and about documentation.'
+date: '03/28/22'
+status: 'publish'
+tags: ['styled-components', 'documentation']
+keywords: 'styled-components, documentation, React, reading, learning to code'
+completion: 'flame'
 ---
 
 <p>
-  <Dropcap>I</Dropcap> had never read <em>all of</em> the documentation for a technology
-  from start to finish before last week. I'm currently working through Josh Comeau's
+  <Dropcap>Before</Dropcap> last week, I had never read <em>all of</em> the documentation
+  for a technology from start to finish. I'm currently working through Josh Comeau's
   excellent <a href="https://css-for-js.dev/">CSS for JS devs course</a> in which he
   chooses to use styled-components.
   <MarginNote id={1}>
     And gives an excellent breakdown of the pros and cons of various styling choices which
     I won't reproduce here.
-  </MarginNote> I chose to use styled-components for this blog because I wanted to learn it;
-  it's popular and I was seeking to understand the debates around css-in-js by trying it out
-  myself. But after installing it and learning how to add CSS styles, I didn't dig any further.
+  </MarginNote> I chose to use SC (styled-components) for this blog because I wanted to learn
+  it—it's popular and I was seeking to understand the debates around CSS-in-JS by trying it
+  out myself. But after installing it and learning how to add styling, I didn't dig much deeper.
   It turns out, I was missing out on a whole mental model.
 </p>
 
-<!-- TODO: Turn this into some component instead of being an h2 -->
-
-## Intended audience
-
-You don't need to know anything about styled-components, but you'll get more out of this
-if you do. Otherwise, developers and technical writers who think about documentation and
-developers interested in learning technologies well.
-
 ## Why did I decide to read all the docs?
 
-Regarding styled-componets, I already knew everything I _needed_ to. I knew how to style
-components dynamically based on their props. I knew about the `createGlobalStyle` function
-for, yep you guessed it, creating global styles. But occasionally I found myself doing
+I already knew everything I _needed_ to about SC to use it. I knew how to style components
+dynamically based on their props. I knew about the `createGlobalStyle` function for, yep
+you guessed it, creating global styles<MarginNote id={2}>That temptation to roll your eyes
+is how you know it was well named.</MarginNote>. But occasionally I found myself doing
 things I didn't like. I would create extra wrappers - unnecessarily polluting the DOM with
-more `<div>` elements - or sometimes style nested elements from a parent comopnent. And
-although I couldn't identify why I disliked it, I trusted my instincts and decided to find
-out what I was doing wrong.
+more divs - or sometimes style nested elements from a parent component. And although I
+couldn't identify why I disliked it, I trusted my instincts and decided to find out what I
+was doing wrong.
 
 Also, in one of my interviews for a company I'll be joining soon, it sounded like they
-were considering adopting styled-components. It seemed like the opportune moment to become
-an expert on styled-components. And if you want to know everything about a technology,
-then you better have read the documentation, right?<MarginNote id={2}>This isn't actually
-rhetorical. Mastering a technology takes more than just reading the docs. And reading all
-of the documentation is only as useful as the documentation is good.</MarginNote>
+were considering adopting SC, making this the opportune moment to become an expert on it.
+And if you want to know everything about a technology, then you better have read the
+documentation, right?<MarginNote id={3}>This isn't actually rhetorical. Mastering a
+technology takes more than just reading the docs. And reading all of the documentation is
+only as useful as the documentation is good.</MarginNote>
 
 ## Developing a docs-reading habit
 
-Another reason is that I wanted to practice reading documentation. And the
-styled-components docs are relatively short, so this was a good place to start. They took
-me a little over an hour to read at a careful pace, so much less than an hour if you want
-to skim them. They are also very approachably organised. You don't suffer from sidebar
-overwhelm.
+I wanted to practice reading documentation. And the SC docs are relatively short, so this
+was a good place to start. They took me a little over an hour to read at a careful pace,
+so much less than an hour if you want to skim them. They are also organised. I didn't
+suffer from sidebar overwhelm.
 
-[**Add pics side by side of styled-components sidebar with another overwhelming docs
-site**]
+Why get good at reading docs? Sometimes, reading the docs is your best, or only, option.
+In closed-source tech, you have to rely on documentation. And for OSS, reading the source
+may take a lot of time. That might be worthwhile if you're looking to contribute, but not
+if you just want to assess the api.
 
-Why get good at reading docs? Sometimes, reading the docs is your best/only option. In the
-case of closed-source tech, you have to rely on the documentation. And for OSS, reading
-the source might be wildly inefficient. It takes some time to acclimatise yourself in a
-project, especially if it's written in an unfamiliar language or paradigm.
-
-I've also never done that before. I've definitely claimed that I learn new tech from the
-docs, but realised when I heard Wes Bos say he skims all the docs to get an idea of a
-technology's surface area, that I had never done that. So, instead of changing my
-narrative, I wanted to do the work to make it come true!
+Also, I've never done it before. I've definitely claimed that I learn new tech by reading
+documentation, but realised when I heard Wes Bos say that he skims all the docs to get an
+idea of a technology's surface area, that I had never done that. So, instead of changing
+my narrative, I did the work to make it come true.
 
 ## What I learned
 
-I learned things _about_ styled-components. I have a better mental model for how it works.
-I have a better feel for idiomatic usage (how to use the library as it was designed to be
-used). I know the _surface area_ of the api, so if I come up against an issue, my memory
-will likely remind me that there's a method for solving x problem. I now know about some
-gotchas with SSR, which I use on this blog.
+I learned things _about_ SC. I have a better mental model for how it works. I have a
+better feel for idiomatic usage—how to use the library as it was designed to be used. I
+know the _surface area_ of the api, so if I come up against an issue, my memory will
+likely remind me that there's a method for solving it. And I now know about some gotchas
+with SSR, which I use on this blog, so I could apply that benefit immediately.
 
 But I learned about other things by doing this too. Primarily, I developed my ideas about
 good documentation and information architecture; this is important if you're a dev and you
-need to write docs yourself. I also engaged critically with the docs, which is always good
-practice.
+need to write docs yourself.
 
-## Things I didn't know about styled-components
+## Things I didn't know about SC
 
-This is more for my reference, or for those who know styled-components and are curious.
+This is more for my reference, or for those who know SC and are curious.
 
-### attrs
+### attrs
 
-`attrs` is an interesting api. Explain what it does and how to use it (maybe look up an
-article about using it if you're uncertain). Though I thought I understood what it did, I
-wasn't clear on when I might want/need to. It turns out, I'm not the only one. There's a
-question in the FAQs addressing exactly that!
+`.attrs()` is a useful method I didn't know about. It provides a way for adding props to a
+styled component. Use it when you want _every_ instant of that styled component to have
+the same prop(s).
 
-It might be better to also have it in the _main_ docs (it's fairly clear that Tooling and
-FAQs are "extras" that most people won't read).
+How to use it is well documented in the basics section of the documentation. The api is
+clarified in the API reference. What wasn't clear to me was when to use it—and when _not_
+to. I had to find that out in the FAQs section. So that's another win for reading all the
+documentation, but it also shows that I wasn't the only one unsure of the use case for
+`.attrs()`. It is better to include these things in the _main_ docs. Sections like Tooling
+and FAQs are extras that most people won't be reaching.
 
 ### Transient Props
 
-[Figure out why this is needed exactly. Is it because styled-components forwards all props
-to DOM nodes and some are invalid or accidentally valid? Ask on Twitter]
+Forwarding props is a useful pattern in React. In using it, however, we risk passing
+non-standard attributes to HTML elements. This will probably show an annoying warning in
+the console and nothing more. But accidentally forwarding the wrong prop to another React
+component could change its expected behaviour.
 
-[Work out if Typescript fails to compile if you pass invalid attributes. Just experiment
-on the blog]
+As of v5.1, SC allows you to prefix a prop with a dollar sign, marking it as _for SC's use
+only_.
+
+Incidentally, look at how they highlighted which version this is available from.
+Definitely something to emulate.
+
+<figure>
+  <img
+    src="/images/styled-components-version.png"
+    alt="A screenshot from the docs showing how version numbers are included in the API reference's headings"
+  />
+  <figcaption style={{ textAlign: 'center', fontSize: '1.1rem' }}>
+    Taken from <a href="https://styled-components.com/docs/api">the docs</a>
+  </figcaption>
+</figure>
 
 ### Test utilities
 
-It had never occured to me that using styled-components could affect your tests. Nice to
-know up front before using it in a serious application. So reading the docs is clearly a
-good way to assess whether you want to adopt a technology at work because this prompts
-further research. Does it play nicely with our test suite? Might be easier to use Jest
-than something like Mocha!
+It had never occurred to me that using SC could affect your tests. It's useful to know
+before using it in a serious application that the library itself provides some methods.
 
-[Understand and write about the class name stuff]
+So reading the docs is clearly a good way to assess whether you want to adopt a technology
+at work because this prompts further research. Does it play nicely with our test suite? Is
+it easier to use with Jest than with Mocha?
 
-### SSR text flickering
+### SSG @import in `createGlobalStyle`
 
-I had this issue on the blog!! I wouldn't even have known how to research the issue.
+The docs recommend - again in the FAQs instead of somewhere more prominent - that we don't
+use `@import` in the `createGlobalStyle` function "due to some issues with how browsers
+process @import via the CSSOM APIs."
 
-### SSG @import in `createGlobalStyle`
-
-Kind of satisfies curiosity more than anything else, but good to know
+I can easily imagine doing exactly that - why would I not? - and spending hours, if not
+days, trying to work out what had gone wrong. Now, I am forewarned.
 
 ## Other things I learned by reading the docs
 
 ### Information Architecture
 
-I (and I guess we) compartmentalise information into need-to-know and nice-to-know. How
-you structure your docs will tell readers what to learn and what they needn't bother with.
+We compartmentalise information into need-to-know and nice-to-know. How you structure your
+docs will tell readers what to learn and what they needn't bother with.
 
-Some information that I would consider very useful is hidden in separate sections (Tooling
-and FAQs). It turns out that frequently asked questions does not equate to a frequently
-visited section. Following JC's example on his excelling blog/course platform, it's better
-to have an accordion than a link to an external section. You're _much_ more likely to find
-out and read about something.
+Some information that I would consider very useful is relegated to the Tooling and FAQs
+sections, both of which feel optional. I would bet that Frequently Asked Questions is not
+a frequently visited section. Following JC's example on his excellent blog - and course
+platform - it's better to disclose additional information about something immediately,
+rather than in a link to an external section. You can progressively disclose with an
+accordion if necessary.
 
-Babel plugin is buried in the tooling. This is not essential for usage, but it is arguably
-essential for debugging. I wouldn't recommend anyone forego it unless it absolutely didn't
-fit in with their build pipeline.
-
-When/why to use the `attr` api is buried in the FAQs. It should be colocated with the
-information about the api, because actually it's vital to understanding it.
+The Babel plugin is a good example. While not essential for usage, it _is_ essential for
+debugging. I don't recommend foregoing it unless if you have the choice.
 
 ### Idiomatic usage
 
-All software is designed. If you're using something in a way that is never documented by
-its creators, you may be slipping into some unidiomatic usage. Have you come up with a
-clever way of adapting something for your use case, or have you embraced a foot-gun /
-maintainability issue / performance killer?
+All software is designed<MarginNote id={4}>Ideally. In theory. At least a bit. Even if
+thoughtlessly. Oh, just go with it.</MarginNote>. If you're using something in a way that
+is never documented by its authors, you may be slipping into some unidiomatic usage. Have
+you come up with a clever way of adapting something for your use case, or have you just
+invented a foot-gun?
 
-### Extra reading
+### Extra reading
 
 The docs won't be exhaustive. They're quite unlikely to tell you everything about _how_
 the tech works, for instance. For that, you may have to go to the source. Fortunately, in
-this case, I have JC to help again! (styled-components also include a list of further
-reading artlicles on their site which is a really great practice that's much appreaciated)
+this case, I have JC to help again! SC also includes a list of further reading articles on
+the website, which is a really great practice that's much appreciated.
 
-Reading the docs will answer lots of your questions, but it might raise new ones. Follow
-your curiosity!
+Reading the docs will answer most of your questions, but it might raise new ones. Follow
+your curiosity 🌈
 
-### Confidence
+### Confidence
 
 The more you understand about a technology - how to use it, _all_ the things it can do,
 and how it actually works - the more confident you will be in using it. A big part of
 development is stitching pieces together. If you don't know exactly where the boundaries
-of those constituent parts lie, then debugging issues can be very tricky. Is it a
-React/Next/SSR/styled-comopnents/TypeScript/Babel/Webpack issue?!
+of those constituent parts lie, then debugging issues can be very tricky. "Is it a React,
+Next, SSR, styled-components, TypeScript, Babel or Webpack issue?"
 
-You'll also be better placed to contribute to discussions about what tech to use at work
-and why. And if you're already using it, you'll be more able to teach others on your team.
-Win win win!
-
-Points:
-
-- "Read the docs" is common advice from senior devs. It can be easy to dismiss it as "not
-  for me". I know that I prefer to read books on technical topics when I want to go deep
-  on them. That's all very well for a programming language, or for mature paradigms and
-  methodologies, but there aren't books written on the latest JS framework. Most of the
-  books written on the established ones are aimed at beginners anyway.
-- Reading _all_ the documentation for something is a great way of getting an idea of the
-  surface area. If it's a technology you use regularly, you _should_ know **about**
-  everything it can do, if not how to do it. It will make your life easier!
-
-- Reading docs will teach you about how to write your own documentation - public or
-  internal - well/badly. Talk about what styled-components document well, and what is
-  buried in the FAQs
-- Frameworks, and to some extent libraries, were designed with certain patterns in mind.
-  styled-components shows you good options for how to use it. Mui (at least v4) shows a
-  lot of ways to override styles (look this up). It's fair enough to enumerate them, but
-  you need some advice to use _one_ system and agree within your team. Otherwise you'll
-  wind up with a mess. So don't think that the docs are everything. They were written by
-  devs, some better than others, some more serious about docs than others.
-- Read more than the docs if you don't understand. Going to the source might be too far
-  for some projects, but might be realistic for others, so try it. It's good practice just
-  to peek at how OSS in your ecosystem is structured anyway!
-  - Otherwise, find the posts written about it. If you're lucky, they'll be linked to from
-    the docs!
-- There are things I learned about styled-components **from** reading the docs, but there
-  are also things I learned more generally **by** reading the docs.
-- Solved text flickering on my blog!
-- Information about the (incredibly useful) Babel plugin is off the beaten track - well,
-  it's not in the normal installation/getting started instructions, but in a separate,
-  slightly boring sounding section named "tooling"
-- Issues with SSG; don't use `@import` in the `createGlobalStyle` function. Good to know!
-  Think I'd done that when trying out some Google fonts and had some issues
-- The `attrs` api looks very useful and "idiomatic", but the main bit of the docs is
-  unclear about when it should be used. It's in the FAQ!
-- Transient props look pretty vital, especially if you're also using TypeScript, which
-  might fail to compile (check this?) if you're passing props to HTML elements that can't
-  handle them.
-- The "Test utilities" are buried in the API Reference, not the "Basics" or "Advanced"
-  bits.
-- I have probably said - maybe even in an interview or two - that I learn things by
-  reading the docs. While I definitely dipped to find out answers to questions as I used
-  the tool, that's not true; at least not to the extent I let on. But, instead of changing
-  the story (so that I'm not telling porkies), it's sometimes a better idea to make the
-  story into a reality and reap the benefits. (It's as much a lie I told myself as it is a
-  lie I told to others!)
+You can also contribute better to discussions at work about what tech to use and why. And
+if you're already using it, you'll be better at teaching others on your team. Win win win!
