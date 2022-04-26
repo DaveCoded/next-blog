@@ -5,7 +5,7 @@ description:
   'A story about hunting down a bug in production and how much easier it would have been
   if I had known about git bisect.'
 excerpt: ''
-date: '11/11/21'
+date: '04/26/22'
 status: 'draft'
 tags: ['git']
 keywords:
@@ -45,6 +45,32 @@ infrequent user base and a relaxed company culture will feel very different to d
 for a large payment-processing organisation used several hundred times a second
 internationally.
 
-But panic is no use to us at this point.<MarginNote id={1}>Putting aside that fact that a
-visceral emotional response may be useful in convincing us that something should be taken
-seriously.</MarginNote>
+But panic is no use to us at this point.<MarginNote id={1}>The feeling that you're about
+to see your breakfast again is only useful for showing that you should take this
+seriously. Or eat less for breakfast.</MarginNote> We are liable to rush, make erroneous
+connections and overlook evidence in an effort to fix something quickly. The "more haste,
+less speed" adage—despite being a yawnful cliché—is most pertinent when our emotions
+threaten to seize control.
+
+So what can help us? What will reduce the heart-rate, dispel the brain fog and prime the
+solution pumps? I'm so glad you asked.
+
+## Have a Plan
+
+It's scintillatingly brilliant, don't you think? Instead of crying, stealing as much
+office stationary as fits in your bag<MarginNote id={2}>It seems I've stumbled blindly
+into the most overlooked reason for not working from home. Who wants to pay for
+pens?</MarginNote> and retreating to a bunker for 20 years, just make a plan and execute
+it. Oh, you want more, do you? Very well. Here's the real point.
+
+> Make a plan now, _before_ you need to find and fix a bug in production.
+
+Fixing the bug will depend entirely on your situation. I could probably only speak to the
+web developers about that, and even then, there are so many possibilities that it's not
+much use my trying to make plans for all eventualities. _Finding_ the bug, however, is
+scoped enough that we can make a plan for it.
+
+## Isolate the bug to a git commit
+
+Depending on what the feedback loop is with your software, it may not be obvious what is
+causing the bug and when the offending code was introduced into the project.
