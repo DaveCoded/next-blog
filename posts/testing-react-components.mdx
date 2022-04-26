@@ -1,0 +1,283 @@
+---
+title: 'Is writing tests hard? Or does your code suck?'
+subtitle: 'Tips for testing React components with Mocha, Enzyme and Sinon'
+description:
+  'Some pratical tips for writing tests for React components using Mocha, Enzyme and Sinon'
+date: '01/24/22'
+status: 'publish'
+tags: ['React', 'TypeScript', 'testing']
+keywords: 'React, TypeScript, testing, mocha, enzyme, sinon'
+completion: 'spark'
+---
+
+<p>
+  <Dropcap>Well</Dropcap> ok then, you got me. Maybe that title is overly spicy.
+  <MarginNote id={1}>
+    It was probably the capsicum that just tipped it. Lesson learned.
+  </MarginNote> I'm sure your code is gorgeous - intelligent and a real looker - and, to be
+  honest, writing tests can be difficult, and it's not always our fault. I'm not a fan of blaming
+  tools, but given the choice, I'd use Jest and React Testing Library over Mocha and Enzyme,
+  even though I'm less familiar with both. That said, allow me to show you the voluptuously
+  grassed hill that I'm prepared to die on:
+</p>
+
+> Code that is easy to test is better than code that is difficult to test. If you're
+> struggling to write a test, you should improve the source code, not your testing
+> knowledge.
+
+I'm not going to claim that this opinion is novel. I'm sure I've read something similar
+myself some time ago. But it's something I've arrived at through my own experience of
+writing tests, and so in that sense, it is _original_. And besides, I believe it to be
+worth reiterating. Not least because it's a tenet that I am frequently guilty of
+forgetting myself.
+
+## TDD light, or Diet TDD
+
+I very rarely use test-driven development. When I do, it's usually because I need to write
+a complex function that covers some gnarly edge cases. And usually, I have a clear idea of
+input and output so that the test cases are the easiest place to start. I find, in these
+circumstances, that the greatest advantage of starting with tests is the clarity of
+thought I gain. Once the test cases are written, not only am I crystal clear on what I'm
+trying to acheive with my code, but I have them to hand as a constant reminder. It keeps
+me focused while I write the implementation.
+
+So why aren't I recommending TDD? In part, because it's a TLA.<MarginNote id={2}>Three
+Letter Acronym. Har-dee-har-har.</MarginNote> And because words such as "ethos" and
+"philosophy" are erroneously attached to it. Once you start to recommend an approach,
+people get dogmatic and start wanting rules to follow, blindfolds to wear and teats to
+suckle. And I want better for you.<MarginNote id={3}>There are also plenty of occasions
+when writing code is more exploratory, when some of the thinking is best done while
+immersed in a system's guts, rather than trying to reason about it all from the
+outside.</MarginNote>
+
+Instead of having all your test cases planned out beforehand, I think it's enough to try
+to write code that is easy to test. It just so happens that writing code that is easy test
+means writing code that is easy to reason about and nicely decoupled from dependencies.
+Because dependencies are easy to mock when you've thought about how they're integrations,
+and they're devils if not.
+
+## Easy-to-test React components
+
+When it comes to React, testing becomes much easier when following these four
+_guidelines_:<MarginNote id={4}>Yep; they're just guidelines. Don't go sticking to them
+against your better judgement</MarginNote>
+
+1. Add ids to interactive elements to give yourself unambiguous selectors for targeting
+   elements from tests. Or, if you want to be more explicit, use data attributes, such as
+   `data-testid`.
+2. Write smaller, composable components that follow the single responsibility principle
+   (where possible). The smaller your component, the less there is to test at once. It
+   also makes it more apparent what cases there are to test, which means you're less
+   likely to leave edge cases uncovered.
+3. If a function does not need to be in the body of a component, move it to the
+   file/module level, or to a helper file if it's reusable. That way you can call and make
+   assertions directly on that function without having to trigger an event that calls it.
+4. If you have the choice and it makes sense to do so in the source code, prefer defining
+   functions in parent components and passing them to children via props over defining and
+   calling functions in the same component. Any component prop is trivial to mock; when
+   you mount the component for testing, you can replace that prop with whatever you like.
+
+## Tips for using Enzyme
+
+### Mounting / Rendering a wrapper
+
+When you mount a component, use `shallow()` to test it in isolation, and `mount()` if you
+need access to nested components and elements. `mount` is a more expensive operation, so
+don't use it unnecessarily; you won't notice a difference at first, but I promise you will
+when you have to run hundreds or thousands of tests.
+
+When debugging a test, it can be useful to see what Enzyme is actually rendering. Do this
+by adding `console.log(wrapper.debug())` (where the mounted component tree has been
+assigned to `wrapper`) and running the test again. The rendered wrapper will be logged to
+your terminal as long as no errors are thrown before executing the log statement. And when
+shallow rendering, optionally pass `debug({ verbose: true })` for more information on the
+rendered elements' props.
+
+If you expect the elements in the wrapper to change as a result of an action - you
+simulate a click, a `useEffect` hook executes etc. - then call `wrapper.update()` before
+making an assertion. And if the action was asynchronous, you may have to `await`, or call
+this handy `nextTick()` utility:
+
+```js
+const nextTick = () =>
+  new Promise((resolve, reject) => process.nextTick(() => resolve(searchData)))
+```
+
+### Simulating events and calling functions passed as props
+
+Enzyme has its own method for simulating events. To simulate a button click, for instance,
+you can find the button element on the wrapper and pass `'click'` to the `simulate`
+method:
+
+```JSX
+const button = wrapper.find('#test-button');
+button.simulate('click');
+```
+
+Be aware, however, that while this is usually ok for clicks, many events do not behave
+well with the `simulate` method. It's more reliable to, where possible, call an event
+directly via an element's props:
+
+```JSX
+const input = wrapper.find('#test-input');
+const onChange = input.prop('onChange');
+onChange({
+    event: {
+        target: 'new input value'
+    }
+});
+```
+
+Since the `prop()` method can return `undefined`, TypeScript does not know if a value will
+be found on any prop, so you will have to guard against that case.
+
+### Events and casting types
+
+These synthetic React events, when found and triggered directly, know to expect a certain
+event object. TypeScript will fail to compile until it is reassured that you have passed
+an appropriate event object. You can do this with type casting:
+
+```JSX
+const onChange = input.prop('onChange');
+const changeEventMock = {
+    target: {
+        value: 'testing'
+    }
+} as unknown as React.ChangeEvent<HTMLInputElement>;
+
+if (onChange) {
+    onChange(changeEventMock);
+}
+```
+
+- Be sure to also mock any event methods that are actually called in the source code, e.g.
+  `preventDefault()` or `stopPropagation()`.
+
+- Casting types is also useful for mocking class instances. Tests run faster if you mock
+  what you need to test in, for example, a user object, rather than instantiating a
+  `new AppUser()` with _all_ of its methods and properties.
+
+- Be aware that type casting does not, however, make your mock an instance of that class.
+  So if the source code uses the `instanceof` operator or needs the instance's prototype,
+  you will in fact have to create an instance of the class.
+
+- `as unknown` is only necessary when your mock is a very different shape to the type you
+  are casting your mock as.
+
+### Events that call React hooks
+
+If you call an event that results in the firing of a React hook, you will need to wrap it
+in `act` from the 'react-test-renderer' package to ensure the hook takes effect, and then
+update the wrapper (if you expect a change in the element tree):
+
+```JSX
+import { act } from 'react-test-renderer';
+
+...
+
+if (onChange) {
+    act(() => onChange(onChangeMock));
+}
+wrapper.update();
+```
+
+## Spying, mocking and stubbing with Sinon
+
+### Spies
+
+To assert on a method, by expecting it to run a certain number of times or with certain
+arguments, _without hijacking its execution_, you can use a "spy". This is especially
+useful if you want to test that something is logged to the console, for instance:
+
+```js
+import sinon from 'sinon';
+...
+const consoleSpy = sinon.spy(console, 'error');
+
+// Execute code path that logs an error in the console
+expect(consoleSpy.calledOnce).to.be.true;
+```
+
+### Fakes
+
+Fakes are mock functions that capture details about how they were called. They are like
+spies, only instead of calling the original function, the implementation is completely
+replaced. In fact, you can use a fake to return a value, resolve a value (if mocking an
+async function), and even thrown an error or reject a Promise.
+
+Consider this example, which tests that a modal will close when the "done" button is
+clicked.
+
+- Note how we're not **_really_** checking that the modal is closed. We're checking that
+  the function which closes the modal is called in the correct circumstances. This is
+  because we are interested in testing our source code, not in testing that, for instance,
+  React updates the DOM as it should.
+
+```jsx
+it('should close the modal on pressing done button', () => {
+    const handleClose = sinon.fake(); // A fake allows us to replace and assert on this function
+    const wrapper = mount(
+        <ConfirmationModal
+            ...
+            handleClose={handleClose}
+        />
+    );
+
+    const doneButton = wrapper.find('#confirmation-modal-done-button').first();
+    doneButton.simulate('click');
+    wrapper.update();
+
+    expect(handleClose.calledOnce).to.be.true;
+});
+```
+
+### Stubs
+
+Stubs do the same job but for object (and class) methods. Make sure to call `restore()` at
+the end of the test, otherwise that same method will still be using the same stub in any
+tests that run after it in the suite.
+
+Stubs are also great for replacing functions that were imported into the module under test
+from another module. Imagine, for instance, that we are testing a function that calls
+`getErrors` from the `@/utils/validations.ts` module. We can replace the `getErrors`
+helper method with our own, stubbed implementation:
+
+```js
+import * as validationHelpers from '@/utils/validations';
+...
+const getErrorsStub = sinon.stub(validationHelpers, 'getErrors').returns([]);
+
+// call function under test and make assertions
+getErrorsStub.restore();
+```
+
+Note how we import all the exports from the module as `validationHelpers`. This is because
+we can only stub methods on an object. And since `getErrors` is a _named_
+export<MarginNote id={5}>I know it's imaginary in this case, but it's most likely that a
+validations file will make use of multiple named exports</MarginNote> of the module, we
+need to first import all the methods an on object.
+
+## Treat tests as source code
+
+Some final advice. Just as you strive to make your source code readable, terse and
+[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), you should aim for the same
+in your tests. As requirements change and functionality is added, you or your colleagues
+will have to revisit tests, updating them to reflect your new expectations of the
+behaviour. You will be glad of any clarifying comments, any common mocks/helpers that have
+been abstracted etc.
+
+**NB**: when you find yourself having to reuse the same mocked object for multiple tests
+you will want to lift it to some outer scope - of the `describe` block or the module - so
+that it is available to all test blocks. **_Be careful!_** Since JS objects are assigned
+by reference, every test will be using that object. If any one of them mutates the object,
+it will be mutated for every test that runs after it. Consider writing a function that
+returns that mocked object instead.
+
+<h2>
+  <em>fin</em>
+</h2>
+
+Ok, that just about does it for today's edition of Uncurated Hot Tips. I hope to catch you
+next time when we'll be talking about the kinds of jar you'll need to be saving if you're
+to have a happy pickling season, and why looking underneath your sofa just might be the
+last thing you ever do. Go on, take a peek. I dare you.

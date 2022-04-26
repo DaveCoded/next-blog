@@ -25,7 +25,7 @@ function Hits({ searchState, searchResults, allPostsData }: Props) {
 }
 
 const Container = styled.div`
-    /* This is to prevent layout shift while searching. But it shoves the footer to
+    /* TODO: This is to prevent layout shift while searching. But it shoves the footer to
        the bottom of the page. Make it the height of 5 posts when you have 5 posts */
     min-height: 40rem;
 `
