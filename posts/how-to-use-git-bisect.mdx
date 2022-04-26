@@ -1,5 +1,5 @@
 ---
-title: 'Yeah Linus already thought of that'
+title: 'Yeah, Linus already thought of that'
 subtitle: 'How to hunt down bugs with <code>git bisect</code>'
 description:
   'A story about hunting down a bug in production and how much easier it would have been
@@ -31,5 +31,20 @@ completion: 'spark'
   beneficial. Advocate for more sharing of good tips etc.
 
 <p>
-  <Dropcap>Welcome</Dropcap> to a beautiful new post
+  <Dropcap>Until</Dropcap> no people are involved in the process, writing software will
+  always produce bugs. Many are preventable with good practices and checks in place. Many
+  can be caught by automated tests or a rigorous QA team before they are released and
+  cause any great damage. But there will always be some that escape us, making their way
+  into production.
 </p>
+
+At such a time, we are likely to panic to some degree. How much depends on what the
+software does, how many people rely on it, how frequently they use it and how your company
+and colleagues react. Making this manner of mistake on a small SaaS product with an
+infrequent user base and a relaxed company culture will feel very different to doing it
+for a large payment-processing organisation used several hundred times a second
+internationally.
+
+But panic is no use to us at this point.<MarginNote id={1}>Putting aside that fact that a
+visceral emotional response may be useful in convincing us that something should be taken
+seriously.</MarginNote>
