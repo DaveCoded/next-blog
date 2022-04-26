@@ -9,7 +9,7 @@
             "subtitle: ''",
             "description: '$2'",
             "excerpt: ''",
-            "date: '$3'",
+            "date: '${3:MM/DD/YY}'",
             "status: 'draft'",
             "tags: ['$4']",
             "keywords: '$5'",
