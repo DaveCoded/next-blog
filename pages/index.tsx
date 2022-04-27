@@ -17,7 +17,7 @@ export default function Home({ latestPosts }: Props) {
     return (
         <>
             <Head>
-                <title>Dave Bernhard&apos;s blog</title>
+                <title>Dave Bernhard's blog</title>
                 <meta
                     name="description"
                     content="Dave Bernhard's web development blog. Dave is a frontend developer in London; come check out his writing and projects."
@@ -30,7 +30,7 @@ export default function Home({ latestPosts }: Props) {
                         <RollingText options={['blog', 'portfolio', 'playground', 'website']} />
                     </h1>
                     <p>
-                        I&apos;m Dave, a frontend developer at{' '}
+                        I'm Dave, a frontend developer at{' '}
                         <ExternalLink
                             href="https://www.feed.xyz/"
                             newTab

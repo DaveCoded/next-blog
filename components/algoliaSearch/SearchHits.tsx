@@ -17,18 +17,12 @@ function Hits({ searchState, searchResults, allPostsData }: Props) {
     const postsToShow: PostData[] = showHits ? searchResults.hits : allPostsData
 
     return (
-        <Container>
-            {noHits && <P>I&apos;m sorry. I don&apos;t write that kind of thing.</P>}
+        <div>
+            {noHits && <P>I'm sorry. I don't write that kind of thing.</P>}
             <DynamicPostsList postsToShow={postsToShow} />
-        </Container>
+        </div>
     )
 }
-
-const Container = styled.div`
-    /* TODO: This is to prevent layout shift while searching. But it shoves the footer to
-       the bottom of the page. Make it the height of 5 posts when you have 5 posts */
-    min-height: 40rem;
-`
 
 const P = styled.p`
     color: var(--purple);

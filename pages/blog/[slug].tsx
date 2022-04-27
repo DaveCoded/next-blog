@@ -50,7 +50,7 @@ export default function Posts({ source, frontMatter, headings, backlinks }: Prop
     return (
         <>
             <Head>
-                <title>Dave Bernhard&apos;s blog | {title}</title>
+                <title>Dave Bernhard's blog | {title}</title>
                 <meta name="description" content={description}></meta>
                 <meta name="keywords" content={keywords}></meta>
             </Head>
