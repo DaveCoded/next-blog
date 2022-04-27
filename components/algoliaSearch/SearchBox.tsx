@@ -26,7 +26,7 @@ function SearchBox({ refine }: { refine: (value: string) => void }) {
 const Input = styled.input`
     border: none;
     font-family: inherit;
-    font-size: var(--text-body);
+    font-size: var(--text-sm);
     background-color: var(--light-black);
     border: 2px solid var(--light-black);
     color: var(--off-white);
