@@ -1,6 +1,6 @@
 ---
 title: 'Yeah, Linus already thought of that'
-subtitle: 'How to hunt down bugs with <code>git bisect</code>'
+subtitle: "Don't know when a bug was introduced? Use <code>git bisect</code>"
 description:
   'A story about hunting down a bug in production and how much easier it would have been
   if I had known about git bisect.'
@@ -13,22 +13,7 @@ keywords:
 completion: 'spark'
 ---
 
-## Outline
-
-- Introduction: I'm going to tell you about how I went about finding a bug in production.
-  It turns out, I could have done the same thing much quicker with `git bisect`, so skip
-  ahead for that. Mention that it may not have been Linus responsible for the feature.
-- Give context for the bug. It was merged into master/main but nobody knew when because it
-  was a relatively unused feature of a program with only a few beta users.
-- Go through the process of hunting it down. Checking out some commits, thinking of using
-  binary search, then finding a snippet with good arguments for `git log` that helped
-  narrow down commits that were merges into master.
-- Explain how `git bisect` does the same and show the basic commands. Link to the proper
-  documentation or show how to pull up the `man` page for it.
-- Show how to narrow down the selection of commits that you want to consider and credit
-  Shiva Rajagopal for this great post: https://interrupt.memfault.com/blog/git-bisect
-- Write a bit about how learning `git` well, not just the basic features, is very
-  beneficial. Advocate for more sharing of good tips etc.
+## Bugs happen
 
 <p>
   <Dropcap>Until</Dropcap> no people are involved in the process, writing software will
@@ -38,39 +23,81 @@ completion: 'spark'
   into production.
 </p>
 
-At such a time, we are likely to panic to some degree. How much depends on what the
-software does, how many people rely on it, how frequently they use it and how your company
-and colleagues react. Making this manner of mistake on a small SaaS product with an
-infrequent user base and a relaxed company culture will feel very different to doing it
-for a large payment-processing organisation used several hundred times a second
-internationally.
+## Bugs can hide under rocks
 
-But panic is no use to us at this point.<MarginNote id={1}>The feeling that you're about
-to see your breakfast again is only useful for showing that you should take this
-seriously. Or eat less for breakfast.</MarginNote> We are liable to rush, make erroneous
-connections and overlook evidence in an effort to fix something quickly. The "more haste,
-less speed" adage—despite being a yawnful cliché—is most pertinent when our emotions
-threaten to seize control.
+Once we know we have a bug, it is often reasonably obvious what piece of code is causing
+an issue. Though fixing it will usually be an entirely more difficult
+proposition.<MarginNote id={1}>Otherwise you would have done it perfectly the first time,
+right?</MarginNote>
 
-So what can help us? What will reduce the heart-rate, dispel the brain fog and prime the
-solution pumps? I'm so glad you asked.
+But this is not always the case. Code is interconnected and our codebases can become
+complexly intertwined. Adding a new feature might require refactoring existing code. Or a
+large refactor might be made to ease progress more generally. Some new code might reuse an
+existing function that worked perfectly for all previous use cases, but this new use shows
+that it was buggy all along.
 
-## Have a Plan
+It's no wonder then that a release can cause a bug in an area of an application that the
+new code apparently didn't even touch. Cue glaze-eyed head-scratching.
 
-It's scintillatingly brilliant, don't you think? Instead of crying, stealing as much
-office stationary as fits in your bag<MarginNote id={2}>It seems I've stumbled blindly
-into the most overlooked reason for not working from home. Who wants to pay for
-pens?</MarginNote> and retreating to a bunker for 20 years, just make a plan and execute
-it. Oh, you want more, do you? Very well. Here's the real point.
+## Send out the search party
 
-> Make a plan now, _before_ you need to find and fix a bug in production.
+But what do you do when a bug is found in your application and nobody can know how long
+it's been there? If that seems improbable, let me detail some possible scenarios:
 
-Fixing the bug will depend entirely on your situation. I could probably only speak to the
-web developers about that, and even then, there are so many possibilities that it's not
-much use my trying to make plans for all eventualities. _Finding_ the bug, however, is
-scoped enough that we can make a plan for it.
+1. You work on an internal tool that has not yet been adopted by too many users.
+2. The feedback chain between you and your users is broken: someone vital is on leave;
+   insufficient process; given too low a priority; managers trying to shield you (take
+   your pick).
+3. Or more simply, the bug is a pretty rare edge case that will not be experienced by many
+   users. And the first to report it is not necessarily the first to have experienced it.
 
-## Isolate the bug to a git commit
+In short, we are at the mercy of human error. So of course this will happen. When it
+happened to me, it was a combination of scenarios 1 and 3. A feature that had been in the
+application forever suddenly no longer worked. But when was the last time we knew it to be
+working? We didn't know. The test cases we had didn't cover what had happened (a lesson in
+itself).
 
-Depending on what the feedback loop is with your software, it may not be obvious what is
-causing the bug and when the offending code was introduced into the project.
+## Apply a well-known algorithm
+
+It was clear that the first step was to find the exact git commit that introduced the bug.
+Lucky for me, fixing it was—though definitely a priority—not critical since no users had
+noticed in however long it had been. That meant the panic was manageable enough that I
+could take a breath and think.
+
+How does a programmer find something? They use a search algorithm, of course. This seemed
+to me like the perfect use-case for applying a binary search. I checked out an older
+commit. The bug was still there. That meant it had been introduced before then even. I
+checked out an even older commit. No bug. Good, now I had a range.
+
+I'd cast my net wide so it was time to narrow it down. I wanted to check out a commit
+halfway between the two: the older that didn't have the bug and the more recent that did.
+Using the formatting arguments that can be passed to `git log` helped a huge amount here
+as the defaults add too much noise in the terminal, spreading the commits so that they
+can't easily be scanned. I used this from a helpful
+[stack overflow article](https://stackoverflow.com/questions/21623699/is-it-possible-to-get-a-list-of-merges-into-a-branch-from-the-github-website-or):
+
+```shell
+git log --merges --first-parent master \
+--pretty=format:"%h %<(10,trunc)%aN %C(white)%<(15)%ar%Creset %C(red bold)%<(15)%D%Creset %s"
+```
+
+This gave me all the merge commits into the master branch with the following information:
+
+- Shortened commit hash
+- Name of contributor
+- How long ago the merge took place
+- Commit message
+
+And they were all displayed on their own line, which meant that scanning for a commit
+halfway (roughly) between those I'd checked out previously was now a breeze. I was able to
+progressively diminish the range of possible offending commits until, finally, I found the
+commit I'd been looking for. It had been merged five months before!
+
+## Know your tools
+
+## How git bisect works
+
+- Explain how `git bisect` does the same and show the basic commands. Link to the proper
+  documentation or show how to pull up the `man` page for it.
+- Show how to narrow down the selection of commits that you want to consider and credit
+  Shiva Rajagopal for this great post: https://interrupt.memfault.com/blog/git-bisect
