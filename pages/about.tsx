@@ -18,10 +18,8 @@ export default function Home() {
                 <H1>About</H1>
                 <Bio>
                     <p>
-                        I'm a Frontend Developer with polyglot ambitions. I currently work at Feed,
-                        a creative agency in London. In my day-to-day, I build complex interactive
-                        interfaces with React, TypeScript and MobX. And also design Node APIs, using
-                        MySQL for a DBMS.
+                        I'm a Frontend Developer with polyglot ambitions. I currently work at
+                        tray.io, a low-code automation platform.
                     </p>
                     <p>
                         In a former life, I was in book publishing. I still spend a lot of my spare

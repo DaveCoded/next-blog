@@ -30,16 +30,15 @@ export default function Home({ latestPosts }: Props) {
                         <RollingText options={['blog', 'portfolio', 'playground', 'website']} />
                     </h1>
                     <p>
-                        I'm Dave, a frontend developer at{' '}
+                        I'm Dave, a frontend developer working on the Enterprise team at{' '}
                         <ExternalLink
-                            href="https://www.feed.xyz/"
+                            href="https://tray.io/"
                             newTab
                             style={{ textDecoration: 'underline', color: 'var(--link-pink)' }}
                         >
-                            Feed
+                            tray.io
                         </ExternalLink>
-                        . I work on a global, cross-channel marketing solution for ebay. I also
-                        write about what I learn on my blog.
+                        . I code, read and write about what I learn on my blog.
                     </p>
                 </Header>
 
