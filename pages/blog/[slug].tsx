@@ -97,7 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const mdxSource = await serialize(contentWithBidirectionalLinks, {
         mdxOptions: {
-            rehypePlugins: [mdxPrism, require('rehype-slug'), require('rehype-autolink-headings')]
+            rehypePlugins: [mdxPrism, require('rehype-slug')]
         },
         scope: data
     })

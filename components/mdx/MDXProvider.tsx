@@ -6,15 +6,30 @@ import {
 } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { P, Blockquote, CodeBlock, H2, H3, H4, H5 } from './typography'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 import ExternalLink from '../ExternalLink'
+import React from 'react'
+
+const wrapHeadingInLink = (
+    Heading: StyledComponent<'h2' | 'h3' | 'h4' | 'h5', any, {}, never>,
+    props: HTMLAttributes<HTMLHeadingElement>
+) => {
+    if (props.id) {
+        return (
+            <a href={`#${props.id}`}>
+                <Heading {...props} />
+            </a>
+        )
+    }
+    return <Heading {...props} />
+}
 
 export default function MDXCompProvider(providerProps: HTMLAttributes<HTMLDivElement>) {
     const state = {
-        h2: (props: HTMLAttributes<HTMLHeadingElement>) => <H2 {...props} />,
-        h3: (props: HTMLAttributes<HTMLHeadingElement>) => <H3 {...props} />,
-        h4: (props: HTMLAttributes<HTMLHeadingElement>) => <H4 {...props} />,
-        h5: (props: HTMLAttributes<HTMLHeadingElement>) => <H5 {...props} />,
+        h2: (props: HTMLAttributes<HTMLHeadingElement>) => wrapHeadingInLink(H2, props),
+        h3: (props: HTMLAttributes<HTMLHeadingElement>) => wrapHeadingInLink(H3, props),
+        h4: (props: HTMLAttributes<HTMLHeadingElement>) => wrapHeadingInLink(H4, props),
+        h5: (props: HTMLAttributes<HTMLHeadingElement>) => wrapHeadingInLink(H5, props),
         p: (props: HTMLAttributes<HTMLParagraphElement>) => <P {...props} />,
         blockquote: (props: BlockquoteHTMLAttributes<HTMLElement>) => (
             <Blockquote {...props}>{props.children}</Blockquote>
