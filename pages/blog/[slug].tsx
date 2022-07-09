@@ -19,6 +19,7 @@ import { LinkReference } from '../../scripts/post-links'
 import PostLinks from '../../links.json'
 import { getHeadings } from '../../lib/getHeadings'
 import TableOfContents from '../../components/TableOfContents'
+import getReadingTime from 'reading-time'
 
 type Heading = {
     text: string
@@ -29,12 +30,13 @@ interface Props {
     source: MDXRemoteSerializeResult<Record<string, unknown>>
     frontMatter: FrontMatter
     headings: Heading[]
+    readingTime: string
     backlinks: LinkReference[]
 }
 
 const components = AllComponents
 
-export default function Posts({ source, frontMatter, headings, backlinks }: Props) {
+export default function Posts({ source, frontMatter, headings, readingTime, backlinks }: Props) {
     const {
         title,
         description,
@@ -63,6 +65,7 @@ export default function Posts({ source, frontMatter, headings, backlinks }: Prop
                     <PostMetadata
                         completion={completion}
                         date={date}
+                        readingTime={readingTime}
                         updated={updated}
                         tags={tags}
                     />
@@ -93,6 +96,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const postContent = await getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
     const headings = await getHeadings(content)
+    const readingTime = getReadingTime(postContent).text
     const contentWithBidirectionalLinks = linkify(content, data.title)
 
     const mdxSource = await serialize(contentWithBidirectionalLinks, {
@@ -108,6 +112,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             source: mdxSource,
             frontMatter: data,
             headings,
+            readingTime,
             backlinks
         }
     }

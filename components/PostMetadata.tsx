@@ -2,15 +2,18 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import FireLevel, { FireType } from './FireLevel'
 import { timeAgo } from '../lib/dates'
+import ReadingTime from './ReadingTime'
 
 type Props = {
     date: string
     completion: FireType
+    readingTime: string
     updated?: string
     tags?: string[]
 }
 
-export default function PostMetadata({ tags, completion, date, updated }: Props) {
+export default function PostMetadata({ tags, completion, readingTime, date, updated }: Props) {
+    const hasTags = tags && tags.length > 0
     const firstLitDate = new Date(date)
     const formattedLitDate = firstLitDate.toLocaleDateString('en-US', {
         month: 'long',
@@ -21,43 +24,52 @@ export default function PostMetadata({ tags, completion, date, updated }: Props)
 
     return (
         <Metadata>
-            <div style={{ display: 'flex', alignItems: 'baseline' }}>
-                {tags && tags.length > 0 ? (
-                    <>
-                        Tags:
-                        <TagList>
-                            {tags.map((tag) => (
-                                <Link key={tag} href={`/tag/${tag}`}>
-                                    <a>
-                                        <Tag>{tag}</Tag>
-                                    </a>
-                                </Link>
-                            ))}
-                        </TagList>
-                    </>
-                ) : null}
-            </div>
-            <InnerMetadata>
-                <FireWrapper>
-                    <FireLevel completion={completion} />
-                </FireWrapper>
-                <Pipe>|</Pipe>
-                <DateWrapper>
-                    <FirstLit>First lit on {formattedLitDate}</FirstLit>
-                    {updated && <span>Last stoked {lastStoked}</span>}
-                </DateWrapper>
-            </InnerMetadata>
+            <TagsAndCompletion>
+                <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                    {hasTags ? (
+                        <>
+                            Tags:
+                            <TagList>
+                                {tags.map((tag) => (
+                                    <Link key={tag} href={`/tag/${tag}`}>
+                                        <a>
+                                            <Tag>{tag}</Tag>
+                                        </a>
+                                    </Link>
+                                ))}
+                            </TagList>
+                        </>
+                    ) : (
+                        <ReadingTime readingTime={readingTime} />
+                    )}
+                </div>
+                <InnerMetadata>
+                    <FireWrapper>
+                        <FireLevel completion={completion} />
+                    </FireWrapper>
+                    <Pipe>|</Pipe>
+                    <DateWrapper>
+                        <FirstLit>First lit on {formattedLitDate}</FirstLit>
+                        {updated && <span>Last stoked {lastStoked}</span>}
+                    </DateWrapper>
+                </InnerMetadata>
+            </TagsAndCompletion>
+            {hasTags && <ReadingTime readingTime={readingTime} />}
         </Metadata>
     )
 }
 
 const Metadata = styled.div`
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xxl);
+    font-size: var(--text-sm);
+    line-height: 1.3;
+`
+
+const TagsAndCompletion = styled.div`
     display: flex;
     align-items: baseline;
-    margin-top: var(--space-md);
     font-weight: 600;
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-xxl);
 
     @media (max-width: 900px) {
         flex-direction: column;
