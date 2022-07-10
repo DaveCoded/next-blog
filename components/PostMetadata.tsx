@@ -22,18 +22,15 @@ export default function PostMetadata({ tags, completion, readingTime, date, upda
             <TagsAndCompletion>
                 <div style={{ display: 'flex', alignItems: 'baseline' }}>
                     {hasTags ? (
-                        <>
-                            Tags:
-                            <TagList>
-                                {tags.map((tag) => (
-                                    <Link key={tag} href={`/tag/${tag}`}>
-                                        <a>
-                                            <Tag>{tag}</Tag>
-                                        </a>
-                                    </Link>
-                                ))}
-                            </TagList>
-                        </>
+                        <TagList>
+                            {tags.map((tag) => (
+                                <Link key={tag} href={`/tag/${tag}`}>
+                                    <a>
+                                        <Tag>{tag}</Tag>
+                                    </a>
+                                </Link>
+                            ))}
+                        </TagList>
                     ) : (
                         <ReadingTime readingTime={readingTime} />
                     )}
@@ -127,7 +124,6 @@ const FirstLit = styled.span`
 `
 
 const TagList = styled.ul`
-    margin-left: var(--space-sm);
     display: flex;
     gap: var(--space-sm);
 `
