@@ -3,34 +3,61 @@ import ExternalLink from '../ExternalLink'
 import { Article, H3 } from './LatestPosts'
 
 export default function ProjectsList() {
+    const PUYL_LINK = 'https://promptupyour.life'
+    const LODASH_CODEMOD_LINK = 'https://github.com/DaveCoded/lodash-imports-codemod'
+
     return (
-        <Project>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/PUYL.svg" alt="Abstract broken circle shape" width={60} height={60} />
-            <ExternalLink href="https://promptupyour.life" newTab>
-                <Heading>Prompt up your life</Heading>
-            </ExternalLink>
-            <P>A random prompt generator for practising UI design/development and illustration</P>
-            <TechContainer>
-                <Tech>Tech used:</Tech>
-                <UL>
-                    <LI>Svelte</LI>,<LI>TypeScript</LI>
-                </UL>
-            </TechContainer>
-        </Project>
+        <div>
+            <Project>
+                <a href={PUYL_LINK} target="_blank" rel="noreferrer noopener">
+                    <img
+                        src="/images/PUYL.svg"
+                        alt="Abstract broken circle shape"
+                        width={60}
+                        height={60}
+                    />
+                </a>
+                <div>
+                    <ExternalLink href={PUYL_LINK} newTab>
+                        <Heading>Prompt up your life</Heading>
+                    </ExternalLink>
+                    <P>
+                        A random prompt generator for practising UI design/development and
+                        illustration
+                    </P>
+                    <TechContainer>
+                        <Tech>Tech used:</Tech>
+                        <UL>
+                            <LI>Svelte</LI>,<LI>TypeScript</LI>
+                        </UL>
+                    </TechContainer>
+                </div>
+            </Project>
+            <Project>
+                <a href={LODASH_CODEMOD_LINK} target="_blank" rel="noreferrer noopener">
+                    <img src="/images/github-mark.svg" alt="Github logo" width={60} height={60} />
+                </a>
+                <div>
+                    <ExternalLink href={LODASH_CODEMOD_LINK} newTab>
+                        <Heading>Lodash imports codemod</Heading>
+                    </ExternalLink>
+                    <P>A codemod for converting to single method imports from lodash</P>
+                    <TechContainer>
+                        <Tech>Tech used:</Tech>
+                        <UL>
+                            <LI>JavaScript</LI>,<LI>jscodeshift</LI>
+                        </UL>
+                    </TechContainer>
+                </div>
+            </Project>
+        </div>
     )
 }
 
 // todo: write a blog article about this CSS grid trick (defining a row height shorter than image)
 const Project = styled(Article)`
-    display: grid;
-    grid-template-columns: min-content minmax(min-content, 45ch);
-    grid-template-rows: var(--space-lg) 1fr;
-    grid-column-gap: var(--space-lg);
-
-    @media (max-width: 500px) {
-        grid-template-rows: auto;
-    }
+    display: flex;
+    gap: var(--space-lg);
 `
 
 const Heading = styled(H3)`
