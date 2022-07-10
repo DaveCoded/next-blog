@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import FireLevel, { FireType } from './FireLevel'
-import { timeAgo } from '../lib/dates'
+import { formatDateYear, timeAgo } from '../lib/dates'
 import ReadingTime from './ReadingTime'
 
 type Props = {
@@ -14,12 +14,7 @@ type Props = {
 
 export default function PostMetadata({ tags, completion, readingTime, date, updated }: Props) {
     const hasTags = tags && tags.length > 0
-    const firstLitDate = new Date(date)
-    const formattedLitDate = firstLitDate.toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-    })
+    const formattedLitDate = formatDateYear(date)
     const lastStoked = (updated && timeAgo(new Date(updated))) || null
 
     return (

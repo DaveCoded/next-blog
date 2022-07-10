@@ -25,3 +25,13 @@ export const formatDate = (date: string) => {
         year: 'numeric'
     })
 }
+
+export const formatDateYear = (date: string) => {
+    const showYear = new Date(date).getFullYear() !== new Date().getFullYear()
+    const formattedDate = new Date(date).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        ...(showYear && { year: 'numeric' })
+    })
+    return formattedDate
+}

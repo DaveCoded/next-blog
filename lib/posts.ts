@@ -74,7 +74,6 @@ export const getAllPostSlugs = () => {
     const fileNames = fs.readdirSync(postDirectory)
     const published: string[] = []
     fileNames.forEach((filename) => {
-        const slug = filename.replace('.mdx', '')
         const fullPath = path.join(postDirectory, filename)
 
         // Extracts contents of the MDX file

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { PostData } from '../../types/PostData'
+import { formatDateYear } from '../../lib/dates'
 
 type Props = {
     postsToShow: PostData[]
@@ -9,22 +10,26 @@ type Props = {
 export default function DynamicPostsList({ postsToShow }: Props) {
     return (
         <PostsList>
-            {postsToShow.map(({ slug, date, title, excerpt, status }) => (
-                <li key={slug}>
-                    <div>
-                        <Link href="/blog/[slug]" as={`/blog/${slug}`}>
-                            <a>
-                                <H2>
-                                    {title}
-                                    {status === 'draft' ? <Draft> Draft</Draft> : null}
-                                </H2>
-                            </a>
-                        </Link>
-                        <Excerpt>{excerpt}</Excerpt>
-                        <StyledDate>{date}</StyledDate>
-                    </div>
-                </li>
-            ))}
+            {postsToShow.map(({ slug, date, title, excerpt, status }) => {
+                const formattedDate = formatDateYear(date)
+
+                return (
+                    <li key={slug}>
+                        <div>
+                            <Link href="/blog/[slug]" as={`/blog/${slug}`}>
+                                <a>
+                                    <H2>
+                                        {title}
+                                        {status === 'draft' ? <Draft> Draft</Draft> : null}
+                                    </H2>
+                                </a>
+                            </Link>
+                            <Excerpt>{excerpt}</Excerpt>
+                            <StyledDate>{formattedDate}</StyledDate>
+                        </div>
+                    </li>
+                )
+            })}
         </PostsList>
     )
 }
