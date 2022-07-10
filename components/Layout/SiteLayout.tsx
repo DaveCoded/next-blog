@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import Navigation from './Navigation'
 import SiteFooter from './SiteFooter'
 import ContactModal from '../modals/ContactModal'
-import { useRouter } from 'next/router'
-import { isBlogPostRoute } from '../../lib/strings'
 
 type Props = {
     children: JSX.Element
