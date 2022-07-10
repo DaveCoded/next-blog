@@ -38,6 +38,7 @@ export const getSortedPosts = (options: Partial<Options> = {}) => {
     // Reads all the files in the post directory
     const fileNames = fs.readdirSync(postDirectory)
     const published: PostFileContents[] = []
+
     fileNames.forEach((filename) => {
         const slug = filename.replace('.mdx', '')
         const fullPath = path.join(postDirectory, filename)

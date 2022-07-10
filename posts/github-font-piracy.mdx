@@ -3,69 +3,75 @@ title: 'Avoiding font piracy on a Netlify-deployed static site'
 description: 'How to self-host web fonts without accidentally committing font piracy'
 date: '09/27/21'
 status: 'publish'
-tags: ['Netlify', 'Git']
+tags: ['Netlify', 'git']
 keywords: 'Netlify, GitHub, web fonts, self-hosting'
 completion: 'spark'
 updated: '09/30/21'
 ---
 
 <p>
-  <Dropcap>Self-hosting</Dropcap> web fonts is the best
-  font-loading strategy for many websites. Done correctly,
-  it yields the best performance results and gives you the
-  most options and flexibility. The only reason to avoid it
-  might be that you get too much control, which puts the
-  onus of understanding how to optimise web fonts all on
-  you. But that's another matter entirely.
+  <Dropcap>Self-hosting</Dropcap> web fonts is the best font-loading strategy for many
+  websites. Done correctly, it yields the best performance results and gives you the most
+  options and flexibility. The only reason to avoid it might be that you get too much
+  control, which puts the onus of understanding how to optimise web fonts all on you. But
+  that's another matter entirely.
 </p>
 
-And the idea is simple. Put the font files in a directory that
-serves assets to the client - usually `public/`. Then, in a css
-file, load the fonts with `@font-face`. The details of the implementation
-are outside of the scope of this post, but I would recommend
-this [CSS tricks article](https://css-tricks.com/snippets/css/using-font-face/)
-if you need help.
+And the idea is simple. Put the font files in a directory that serves assets to the
+client - usually `public/`. Then, in a css file, load the fonts with `@font-face`. The
+details of the implementation are outside of the scope of this post, but I would recommend
+this [CSS tricks article](https://css-tricks.com/snippets/css/using-font-face/) if you
+need help.
 
-The issue with this strategy comes when you have a static site - such as the one you're on now, which is built with Next.js - deployed on Netlify.
-(It's a fantastic service that I'm grateful for; this isn't really a critique.) The common way<MarginNote id={2}>Possibly the best way, or the only way.
-Certainly the path of least resistance and one with many DX benefits.</MarginNote> to deploy static sites on Netlify, is to configure a branch
-to watch on GitHub. Any merge into that branch triggers a deployment and, in a flash, the new version of your site is built and deployed
-to the web.
+The issue with this strategy comes when you have a static site - such as the one you're on
+now, which is built with Next.js - deployed on Netlify. (It's a fantastic service that I'm
+grateful for; this isn't really a critique.) The common way<MarginNote id={2}>Possibly the
+best way, or the only way. Certainly the path of least resistance and one with many DX
+benefits.</MarginNote> to deploy static sites on Netlify, is to configure a branch to
+watch on GitHub. Any merge into that branch triggers a deployment and, in a flash, the new
+version of your site is built and deployed to the web.
 
-In this model, your assets - fonts, images, favicon etc. - are also usually kept in a `public/` or `static/` directory. And since Netlify
-gets your project files from GitHub, those assets that you're choosing to host also need to go on GitHub.
+In this model, your assets - fonts, images, favicon etc. - are also usually kept in a
+`public/` or `static/` directory. And since Netlify gets your project files from GitHub,
+those assets that you're choosing to host also need to go on GitHub.
 
 ## How does font piracy fit in here?
 
-Do you see the issue? Any assets, in this case fonts, pushed to a GitHub repository are now free for others to
-download. Which results in theft from a font foundry, and the hard work of a dedicated typographer<MarginNote id={3}>Let's
-face it, they're all dedicated. Do you know how much work creating a font is?!</MarginNote> earns them nothing.
+Do you see the issue? Any assets, in this case fonts, pushed to a GitHub repository are
+now free for others to download. Which results in theft from a font foundry, and the hard
+work of a dedicated typographer<MarginNote id={3}>Let's face it, they're all dedicated. Do
+you know how much work creating a font is?!</MarginNote> earns them nothing.
 
 ## The ship has already sailed. Do the right thing anyway.
 
-In truth, this has already happened so many times that, short of a catastrophic event such as the sudden
-disappearance of GitHub as if waking from a beautiful dream, there's nothing we can do about it. It's too
-late to prevent font piracy. Which makes it all hte easier to go with the crowd and pop your fonts up
-on GitHub because it's just easier. But should you?
+In truth, this has already happened so many times that, short of a catastrophic event such
+as the sudden disappearance of GitHub as if waking from a beautiful dream, there's nothing
+we can do about it. It's too late to prevent font piracy. Which makes it all hte easier to
+go with the crowd and pop your fonts up on GitHub because it's just easier. But should
+you?
 
-Though it might no longer help the font foundries to do so, I think there's still some value in finding
-another way. I doubt that anyone will take great notice, so you won't get bonus virtue-signalling points.
-And nobody will thank you, so you won't benefit from a heady philanthropic buzz. But, and I think this is
-_much more important_, you will be sending a signal to yourself. By bravely going down with this sinking
-ship (I should be making more of extending the piracy metaphor shouldn't I?), you will remind yourself that
+Though it might no longer help the font foundries to do so, I think there's still some
+value in finding another way. I doubt that anyone will take great notice, so you won't get
+bonus virtue-signalling points. And nobody will thank you, so you won't benefit from a
+heady philanthropic buzz. But, and I think this is _much more important_, you will be
+sending a signal to yourself. By bravely going down with this sinking ship (I should be
+making more of extending the piracy metaphor shouldn't I?), you will remind yourself that
 
-> while I frenetically mash away at my keyboard; while I Make. Magic. Happen; while I design systems that
-> may indeed make the world a little bit better, it's worth always asking this: is what I'm doing right?
+> while I frenetically mash away at my keyboard; while I Make. Magic. Happen; while I
+> design systems that may indeed make the world a little bit better, it's worth always
+> asking this: is what I'm doing right?
 
-I'm not interested in an ethical debate here. You're a big boy/girl/other now and you have to decide what's
-right for yourself. But once you do, you've got to act accordingly. Even when it's inconvenient or even
-counter to your ambitions of world domination. And in the case of accidentally stealing fonts on your
-Netlify-hosted static site, it's not that hard.
+I'm not interested in an ethical debate here. You're a big boy/girl/other now and you have
+to decide what's right for yourself. But once you do, you've got to act accordingly. Even
+when it's inconvenient or even counter to your ambitions of world domination. And in the
+case of accidentally stealing fonts on your Netlify-hosted static site, it's not that
+hard.
 
 ## How to not steal fonts (finally)
 
-All credit for this approach goes to Fabian Schultz and his [article on Dev.to](https://dev.to/fabe/avoiding-font-piracy-on-github--netlify-198f).
-His solution is clever and simple (as the best often are):
+All credit for this approach goes to Fabian Schultz and his
+[article on Dev.to](https://dev.to/fabe/avoiding-font-piracy-on-github--netlify-198f). His
+solution is clever and simple (as the best often are):
 
 1. Host your fonts on a CDN in a .zip file
 2. In your build step, fetch the zip, and pop it in your public directory
@@ -84,7 +90,7 @@ His solution is clever and simple (as the best often are):
 
 ### Netlify environment variables
 
-`$SECRET_FONTS_URL` is an environment variable. You're going to have to tell Netlify about it. To do so,
-go to your site's dashboard on Netlify, and go to **Site settings > Build & deploy > Environment**. There,
-you can add the `SECRET_FONTS_URL` (without the `$` dollar sign!) and set it to a url where you've hosted
-your fonts zip on a CDN. Ta-da 🎉
+`$SECRET_FONTS_URL` is an environment variable. You're going to have to tell Netlify about
+it. To do so, go to your site's dashboard on Netlify, and go to **Site settings > Build &
+deploy > Environment**. There, you can add the `SECRET_FONTS_URL` (without the `$` dollar
+sign!) and set it to a url where you've hosted your fonts zip on a CDN. Ta-da 🎉
