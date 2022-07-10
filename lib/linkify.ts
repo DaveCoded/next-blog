@@ -25,7 +25,7 @@ export function linkify(content: string, title: string) {
     // For each pair of brackets (link) found, append the content found before to the result,
     // then append the link itself with JSX replacing the brackets, then append the rest of
     // the markdown string until the next pair of brackets
-    matchingBracketPairs.forEach((pair, index) => {
+    matchingBracketPairs.forEach((pair) => {
         const opening = pair[0]
         const closing = pair[1]
         const foundLinkText = content.substring(opening + 1, closing - 1)
