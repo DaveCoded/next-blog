@@ -13,7 +13,17 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "module": "CommonJS",
-        "incremental": true
+        "incremental": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/components/*": ["components/*"],
+            "@/constants/*": ["constants/*"],
+            "@/lib/*": ["lib/*"],
+            "@/posts/*": ["posts/*"],
+            "@/scripts/*": ["scripts/*"],
+            "@/styles/*": ["styles/*"],
+            "@/types/*": ["types/*"]
+        }
     },
     "include": [
         "next-env.d.ts",

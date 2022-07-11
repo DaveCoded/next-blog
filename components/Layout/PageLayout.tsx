@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { isBlogPostRoute } from '../../lib/strings'
+import { isBlogPostRoute } from '@/lib/strings'
 
 type Props = {
     children: React.ReactNode

@@ -1,0 +1,21 @@
+---
+title: 'How MDX gets compiled to JSX'
+subtitle: 'A journey through AST land'
+description: 'Shows the steps taken to compile MDX to JSX'
+date: '07/11/22'
+status: 'draft'
+tags: ['ASTs', 'MDX']
+keywords: 'MDX, ASTs, Abstract Syntax Tree, JSX, compilation'
+completion: 'spark'
+---
+
+<p>
+  <Dropcap>Note</Dropcap> to self: these are the steps to compile from MDX to JSX. Use{' '}
+  <code>remark</code> to transform the MDAST and <code>rehype</code> to transform the
+  HAST.
+</p>
+
+<Lightbox
+  src="/images/MDX-compilation.svg"
+  alt="Diagram of how MDX gets compiled to JSX"
+/>
