@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import SubjectTag from '../SubjectTag'
 import { PostData } from '@/types/PostData'
+import { formatDateYear } from '@/lib/dates'
 
 type Props = {
     posts: PostData[]
@@ -18,7 +19,7 @@ export default function LatestPosts({ posts }: Props) {
                         </a>
                     </Link>
                     <Metadata>
-                        <StyledDate>{date}</StyledDate>
+                        <StyledDate>{formatDateYear(date)}</StyledDate>
                         {tags && tags?.length > 0 && (
                             <UL>
                                 {tags.map((tag) => (
