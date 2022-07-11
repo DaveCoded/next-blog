@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import SearchBox from './SearchBox'
 import SearchHits from './SearchHits'
 import SubjectTag from '../SubjectTag'
-import { PostData } from '../../types/PostData'
+import { PostData } from '@/types/PostData'
 
 const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,

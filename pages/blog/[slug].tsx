@@ -6,19 +6,19 @@ import mdxPrism from 'mdx-prism'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-import { FrontMatter, getAllPostSlugs, getPostdata } from '../../lib/posts'
-import { linkify } from '../../lib/linkify'
+import { FrontMatter, getAllPostSlugs, getPostdata } from '@/lib/posts'
+import { linkify } from '@/lib/linkify'
 
-import AllComponents from '../../components/mdx/AllComponents'
-import PostMetadata from '../../components/PostMetadata'
-import { H2 } from '../../components/mdx/typography'
-import PageLayout from '../../components/Layout/PageLayout'
-import Backlinks from '../../components/Backlinks'
+import AllComponents from '@/components/mdx/AllComponents'
+import PostMetadata from '@/components/PostMetadata'
+import { H2 } from '@/components/mdx/typography'
+import PageLayout from '@/components/Layout/PageLayout'
+import Backlinks from '@/components/Backlinks'
 
-import { LinkReference } from '../../scripts/post-links'
+import { LinkReference } from '@/scripts/post-links'
 import PostLinks from '../../links.json'
-import { getHeadings } from '../../lib/getHeadings'
-import TableOfContents from '../../components/TableOfContents'
+import { getHeadings } from '@/lib/getHeadings'
+import TableOfContents from '@/components/TableOfContents'
 import getReadingTime from 'reading-time'
 
 type Heading = {
@@ -152,5 +152,8 @@ const HR = styled.hr`
 
 const ContentWrapper = styled.div`
     counter-reset: sidenote-counter;
-    max-width: 650px;
+
+    & > * {
+        max-width: 650px;
+    }
 `

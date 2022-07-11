@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { GITHUB_LINK, LINKEDIN_LINK, MAILTO_LINK, TWITTER_LINK } from '../../constants/links'
+import { GITHUB_LINK, LINKEDIN_LINK, MAILTO_LINK, TWITTER_LINK } from '@/constants/links'
 import ExternalLink from '../ExternalLink'
 
 function SiteFooter() {

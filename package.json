@@ -25,6 +25,7 @@
         "dotenv": "^10.0.0",
         "eslint-config-prettier": "^8.3.0",
         "gray-matter": "^4.0.2",
+        "lightgallery": "^2.5.0",
         "mdx-prism": "^0.3.1",
         "next": "^12.1.0",
         "next-mdx-remote": "^3.0.5",

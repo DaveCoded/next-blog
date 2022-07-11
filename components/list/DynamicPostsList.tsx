@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { PostData } from '../../types/PostData'
-import { formatDateYear } from '../../lib/dates'
+import { PostData } from '@/types/PostData'
+import { formatDateYear } from '@/lib/dates'
 
 type Props = {
     postsToShow: PostData[]

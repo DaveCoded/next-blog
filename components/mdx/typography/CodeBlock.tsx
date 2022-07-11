@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import styled from 'styled-components'
-import { copyCodeToClipboard } from '../../../lib/copyCodeToClipboard'
+import { copyCodeToClipboard } from '@/lib/copyCodeToClipboard'
 
 const CodeBlock = (props: any) => {
     const [isCopied, setIsCopied] = useState(false)

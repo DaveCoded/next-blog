@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Modal from 'react-modal'
 import { GitHub, LinkedIn, Twitter, Mail } from '../icons'
-import { GITHUB_LINK, LINKEDIN_LINK, MAILTO_LINK, TWITTER_LINK } from '../../constants/links'
+import { GITHUB_LINK, LINKEDIN_LINK, MAILTO_LINK, TWITTER_LINK } from '@/constants/links'
 import ExternalLink from '../ExternalLink'
 
 type Props = {
