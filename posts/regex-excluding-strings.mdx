@@ -11,29 +11,24 @@ completion: 'bonfire'
 codeSnippet: true
 ---
 
-<p>
-  <Dropcap>Regex</Dropcap> can be really powerful, but remember that it comes in different
-  flavours, can be difficult to decipher, and has its limitations.
-  <MarginNote id={1}>
-    See, for example,{' '}
-    <a
-      href="https://stackoverflow.com/a/1732454"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      this incredible answer
-    </a>{' '}
-    on Stack Overflow about matching HTML tags with regex
-  </MarginNote>
-</p>
+<Dropcap>Regex</Dropcap> can be really powerful, but remember that it comes in different flavours,
+can be difficult to decipher, and has its limitations.
+<MarginNote id={1}>
+  See, for example, [this incredible answer](https://stackoverflow.com/a/1732454) on Stack
+  Overflow about matching HTML tags with regex
+</MarginNote>
 
 One powerful feature is the negative lookahead, using the `?!` syntax. When combined with
-`.*`, we can chekc that a pattern is not contained anywhere in a string:
+`.*`, we can check that a pattern is not contained anywhere in a string:
 
 ```js
-;/^(?!.*(JavaScript|TypeScript))/.test('I love all the parentheses in Lisp') // true => string does not contain "JavaScript" or "TypeScript"
+/^(?!.*(JavaScript|TypeScript))/.test(
+    'I love all the parentheses in Lisp'
+) // true => string does not contain "JavaScript" or "TypeScript"
 
-;/^(?!.*(JavaScript|TypeScript))/.test("It looks like JavaScript isn't going away") // false
+/^(?!.*(JavaScript|TypeScript))/.test(
+    'It looks like JavaScript is on its way out'
+) // false
 ```
 
 If you want to test for the presence of one pattern, but the absence of another, you can
@@ -41,7 +36,11 @@ use the `.*` syntax again. The following will match strings containing John, tha
 also contain Yoko:
 
 ```js
-;/^(?!.*Yoko).*John/.test('John and Yoko were both artists') // false => string contains Yoko
+/^(?!.*Yoko).*John/.test(
+    'John and Yoko were both artists'
+) // false => string contains Yoko
 
-;/^(?!.*Yoko).*John/.test('I wonder what John would have thought of the internet') // true => string contains John, but not Yoko
+/^(?!.*Yoko).*John/.test(
+    'I wonder what John would have thought of the internet'
+) // true => string contains John, but not Yoko
 ```

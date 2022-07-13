@@ -8,16 +8,17 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 import { FrontMatter, getAllPostSlugs, getPostdata } from '@/lib/posts'
 import { linkify } from '@/lib/linkify'
-
-import AllComponents from '@/components/mdx/AllComponents'
-import PostMetadata from '@/components/PostMetadata'
-import { H2 } from '@/components/mdx/typography'
-import PageLayout from '@/components/Layout/PageLayout'
-import Backlinks from '@/components/Backlinks'
-
 import { LinkReference } from '@/scripts/post-links'
 import PostLinks from '../../links.json'
 import { getHeadings } from '@/lib/getHeadings'
+
+import CustomComponents from '@/components/mdx/CustomComponents'
+import ReplacementComponents from '@/components/mdx/ReplacementComponents'
+import { H2 } from '@/components/mdx/typography'
+
+import PostMetadata from '@/components/PostMetadata'
+import PageLayout from '@/components/Layout/PageLayout'
+import Backlinks from '@/components/Backlinks'
 import TableOfContents from '@/components/TableOfContents'
 import getReadingTime from 'reading-time'
 
@@ -34,7 +35,10 @@ interface Props {
     backlinks: LinkReference[]
 }
 
-const components = AllComponents
+const components = {
+    ...CustomComponents,
+    ...ReplacementComponents
+}
 
 export default function Posts({ source, frontMatter, headings, readingTime, backlinks }: Props) {
     const {
