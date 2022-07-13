@@ -1,16 +1,15 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { getSortedPosts } from '../lib/posts'
+import { getSortedPosts, PostFileContents } from '../lib/posts'
 import LatestPosts from '../components/list/LatestPosts'
 import ProjectsList from '../components/list/ProjectsList'
 import RollingText from '../components/RollingText'
-import { PostData } from '../types/PostData'
 import ExternalLink from '../components/ExternalLink'
 import PageLayout from '../components/Layout/PageLayout'
 
 interface Props {
-    latestPosts: PostData[]
+    latestPosts: PostFileContents[]
 }
 
 export default function Home({ latestPosts }: Props) {

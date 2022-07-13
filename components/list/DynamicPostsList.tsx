@@ -1,16 +1,18 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { PostData } from '@/types/PostData'
 import { formatDateYear } from '@/lib/dates'
+import { PostFileContents } from '@/lib/posts'
+import SnippetPill from '@/components/SnippetPill'
+import DraftPill from '@/components/DraftPill'
 
 type Props = {
-    postsToShow: PostData[]
+    postsToShow: PostFileContents[]
 }
 
 export default function DynamicPostsList({ postsToShow }: Props) {
     return (
         <PostsList>
-            {postsToShow.map(({ slug, date, title, excerpt, status }) => {
+            {postsToShow.map(({ slug, date, title, excerpt, status, codeSnippet }) => {
                 const formattedDate = formatDateYear(date)
 
                 return (
@@ -20,7 +22,8 @@ export default function DynamicPostsList({ postsToShow }: Props) {
                                 <a>
                                     <H2>
                                         {title}
-                                        {status === 'draft' ? <Draft> Draft</Draft> : null}
+                                        {codeSnippet && <SnippetPill />}
+                                        {status === 'draft' && <DraftPill />}
                                     </H2>
                                 </a>
                             </Link>
@@ -65,16 +68,4 @@ const Excerpt = styled.p`
     margin: var(--space-xs) 0;
     color: var(--light-grey);
     line-height: 1.4;
-`
-
-const Draft = styled.span`
-    color: white;
-    font-size: var(--text-xs);
-    font-weight: 700;
-    vertical-align: super;
-    margin-left: var(--space-sm);
-    padding-right: var(--space-xxs);
-    border: 2px solid red;
-    border-radius: 4px;
-    background: red;
 `

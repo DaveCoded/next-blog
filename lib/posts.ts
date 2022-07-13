@@ -18,6 +18,7 @@ export type FrontMatter = {
     completion?: FireType
     updated?: string
     hideTOC?: boolean
+    codeSnippet?: boolean
 }
 
 export type PostFileContents = FrontMatter & {

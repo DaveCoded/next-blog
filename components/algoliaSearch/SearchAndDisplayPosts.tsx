@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import SearchBox from './SearchBox'
 import SearchHits from './SearchHits'
 import SubjectTag from '../SubjectTag'
-import { PostData } from '@/types/PostData'
+import { PostFileContents } from '@/lib/posts'
 
 const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
@@ -13,7 +13,7 @@ const searchClient = algoliasearch(
 
 type Props = {
     tags: string[]
-    allPostsData: PostData[]
+    allPostsData: PostFileContents[]
 }
 
 export default function SearchAndDisplayPosts({ tags, allPostsData }: Props) {

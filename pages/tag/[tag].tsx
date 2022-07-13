@@ -1,19 +1,18 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { getPostSlugsForTag, getAllTags, getUniqueTags } from '@/lib/tags'
-import { getPostdata } from '@/lib/posts'
+import { getPostdata, PostFileContents } from '@/lib/posts'
 import matter from 'gray-matter'
 import styled from 'styled-components'
 import DynamicPostsList from '@/components/list/DynamicPostsList'
 import SubjectTag from '@/components/SubjectTag'
-import { PostData } from '@/types/PostData'
 import PageLayout from '@/components/Layout/PageLayout'
 import { formatDate } from '@/lib/dates'
 
 interface Props {
     tag: string
     tags: string[]
-    frontMatterAndSlug: PostData[]
+    frontMatterAndSlug: PostFileContents[]
 }
 
 export default function TagPage({ tag, tags, frontMatterAndSlug }: Props) {

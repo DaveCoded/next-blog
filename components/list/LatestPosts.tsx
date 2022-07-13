@@ -1,21 +1,29 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import SubjectTag from '../SubjectTag'
-import { PostData } from '@/types/PostData'
+import SubjectTag from '@/components/SubjectTag'
 import { formatDateYear } from '@/lib/dates'
+import { PostFileContents } from '@/lib/posts'
+import SnippetPill from '@/components/SnippetPill'
+import DraftPill from '@/components/DraftPill'
 
 type Props = {
-    posts: PostData[]
+    posts: PostFileContents[]
 }
 
 export default function LatestPosts({ posts }: Props) {
     return (
         <>
-            {posts.map(({ title, date, slug, tags }) => (
+            {posts.map(({ title, date, slug, tags, status, codeSnippet }) => (
                 <Article key={title}>
                     <Link href={`/blog/${slug}`}>
                         <a>
-                            <H3>{title}</H3>
+                            <TitleContainer>
+                                <H3>
+                                    {title}
+                                    {codeSnippet && <SnippetPill />}
+                                    {status === 'draft' && <DraftPill />}
+                                </H3>
+                            </TitleContainer>
                         </a>
                     </Link>
                     <Metadata>
@@ -36,6 +44,10 @@ export default function LatestPosts({ posts }: Props) {
 
 export const Article = styled.article`
     margin-bottom: var(--space-lg);
+`
+
+const TitleContainer = styled.div`
+    position: relative;
 `
 
 const StyledDate = styled.div`

@@ -2,12 +2,11 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import SearchAndDisplayPosts from '@/components/algoliaSearch/SearchAndDisplayPosts'
 import PageLayout from '@/components/Layout/PageLayout'
-import { getSortedPosts } from '@/lib/posts'
+import { getSortedPosts, PostFileContents } from '@/lib/posts'
 import { getAllTags } from '@/lib/tags'
-import { PostData } from '@/types/PostData'
 
 interface Props {
-    allPostsData: PostData[]
+    allPostsData: PostFileContents[]
     tags: string[]
 }
 
