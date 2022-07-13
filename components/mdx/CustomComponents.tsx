@@ -5,7 +5,7 @@ import FacultyTable from './FacultyTable'
 import InternalLink from './InternalLink'
 import Tooltip from './Tooltip'
 
-const AllComponents = {
+const CustomComponents = {
     Dropcap,
     FacultyTable,
     MarginNote,
@@ -13,4 +13,4 @@ const AllComponents = {
     Tooltip,
     Lightbox
 }
-export default AllComponents
+export default CustomComponents
