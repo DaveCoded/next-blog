@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "lint": "next lint --ext .js,.jsx,.ts,.tsx",
+        "lint": "next lint",
         "dev": "next dev",
         "build": "npm run prebuild && npm run fonts:fetch && next build",
         "prebuild": "ts-node ./scripts/post-links.ts",
