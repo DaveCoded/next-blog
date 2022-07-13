@@ -46,7 +46,8 @@ export default function Posts({ source, frontMatter, headings, readingTime, back
         keywords,
         completion = 'spark',
         updated,
-        hideTOC
+        hideTOC,
+        codeSnippet
     } = frontMatter
 
     return (
@@ -59,6 +60,7 @@ export default function Posts({ source, frontMatter, headings, readingTime, back
 
             <PageLayout>
                 <PostContainer>
+                    {codeSnippet && <SnippetTag>Snippet</SnippetTag>}
                     <Title hasSubtitle={!!subtitle}>{title}</Title>
                     {subtitle && <Subtitle>{subtitle}</Subtitle>}
                     <HR />
@@ -121,6 +123,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const PostContainer = styled.div`
     color: var(--black);
     max-width: min(100%, 800px);
+`
+
+const SnippetTag = styled.p`
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1;
+    width: min-content;
+    margin-bottom: -1.5rem;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--purple-blue);
+    color: white;
+    border-radius: 4px;
 `
 
 const Title = styled.h1<{ hasSubtitle: boolean }>`
