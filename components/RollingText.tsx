@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 
+/**
+ * @unused
+ */
 export default function RollingText({ options }: { options: string[] }) {
     const [count, setCount] = useState(0)
 

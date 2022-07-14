@@ -1,25 +1,18 @@
-import { CSSProperties, Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 function NavLink({ link }: { link: string }) {
     // todo: also a simple blog post
     const router = useRouter()
     const href = `/${link}`
-
-    const style: CSSProperties = {
-        ...(router.asPath === href && {
-            textDecoration: 'underline',
-            fontWeight: 400,
-            color: 'var(--cool-grey)'
-        })
-    }
+    const isActive = router.asPath === href
 
     return (
         <li>
-            <Link href={href}>
-                <a style={style}>{link}</a>
+            <Link href={href} passHref>
+                <A isActive={isActive}>{link}</A>
             </Link>
         </li>
     )
@@ -31,46 +24,29 @@ type Props = {
 
 function Navigation({ setIsContactopen }: Props) {
     return (
-        <Nav>
-            <Link href="/" passHref>
-                <Logo tabIndex={0}>Dave Bernhard</Logo>
-            </Link>
-            <Tagline>Web Developer</Tagline>
+        <nav>
             <UL>
                 <NavLink link="blog" />
                 <NavLink link="about" />
-                {/* <NavLink link="projects" /> */}
                 <li>
                     <button onClick={() => setIsContactopen(true)}>contact</button>
                 </li>
             </UL>
-        </Nav>
+        </nav>
     )
 }
 
-const Nav = styled.nav`
-    background: var(--black);
-    padding: var(--space-xl) var(--space-xxxl);
-
-    @media (min-width: 1600px) {
-        padding: var(--space-xl) 15vw;
+const A = styled.a<{ isActive: boolean }>`
+    ${({ isActive }) =>
+        isActive &&
+        css`
+            text-decoration: underline;
+            font-weight: 400;
+            color: var(--cool-grey);
+        `}
+    &:hover {
+        color: var(--purple);
     }
-
-    @media (max-width: 700px) {
-        padding: var(--space-xl) 5%;
-    }
-`
-
-const Logo = styled.a`
-    font-size: var(--text-ml);
-    line-height: 1;
-`
-
-const Tagline = styled.p`
-    font-style: italic;
-    font-size: var(--text-md);
-    line-height: 1.4;
-    margin-bottom: var(--space-md);
 `
 
 const UL = styled.ul`

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { getSortedPosts, PostFileContents } from '../lib/posts'
 import LatestPosts from '../components/list/LatestPosts'
 import ProjectsList from '../components/list/ProjectsList'
-import RollingText from '../components/RollingText'
 import ExternalLink from '../components/ExternalLink'
 import PageLayout from '../components/Layout/PageLayout'
 
@@ -24,9 +23,7 @@ export default function Home({ latestPosts }: Props) {
             </Head>
             <PageLayout>
                 <Header>
-                    <h1>
-                        This is a <RollingText options={['blog', 'portfolio', 'website']} />
-                    </h1>
+                    <h1>This is a website</h1>
                     <p>
                         I'm Dave, a frontend developer working on the Enterprise team at{' '}
                         <ExternalLink
