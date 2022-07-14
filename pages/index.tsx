@@ -25,8 +25,7 @@ export default function Home({ latestPosts }: Props) {
             <PageLayout>
                 <Header>
                     <h1>
-                        This is a{' '}
-                        <RollingText options={['blog', 'portfolio', 'playground', 'website']} />
+                        This is a <RollingText options={['blog', 'portfolio', 'website']} />
                     </h1>
                     <p>
                         I'm Dave, a frontend developer working on the Enterprise team at{' '}

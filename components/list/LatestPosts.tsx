@@ -76,5 +76,5 @@ const Metadata = styled.div`
 const UL = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-sm);
+    gap: 0 var(--space-sm);
 `

@@ -45,7 +45,7 @@ export default function ProjectsList() {
                     <TechContainer>
                         <Tech>Tech used:</Tech>
                         <UL>
-                            <LI>JavaScript</LI>,<LI>jscodeshift</LI>
+                            <LI>jscodeshift</LI>
                         </UL>
                     </TechContainer>
                 </div>
@@ -94,6 +94,7 @@ const UL = styled.ul`
 const Tech = styled.p`
     font-size: var(--text-sm);
     line-height: 1;
+    white-space: nowrap;
 `
 
 const TechContainer = styled.div`
