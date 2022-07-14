@@ -1,0 +1,9 @@
+- What is a codemod?
+- What is an AST?
+- What is jscodeshift?
+- How to consume a codemod
+- How to write a codemod
+  - Tools and resources
+  - Writing tests and TDD
+  - Writing a simple transform
+- lodash-imports-codemod

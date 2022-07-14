@@ -1,0 +1,69 @@
+---
+title: 'Impress your friends and gain cool points with jscodeshift'
+description: 'How I wrote a codemod for transforming lodash imports with jscodeshift'
+date: '07/14/22'
+status: 'draft'
+tags: ['jscodeshift', 'ASTs', 'JavaScript']
+keywords: 'codemod, jscodeshift, AST, lodash, imports, JavaScript'
+completion: 'spark'
+---
+
+## A rambly introduction. Feel free to skip ahead.
+
+<Dropcap>When</Dropcap> I joined my current company, I was surprised to see that we had over 20,000 linting
+warnings in our frontend monorepo<MarginNote id={1}>Apparently the result of a large config change. Best not to pull at that thread.</MarginNote>. That's a lot of noise to block out, so I was less surprised to learn that
+many of my colleagues develop linter-free as a result.
+
+Sadly, I'm no cowboy cyber-cavalier, and I want a linter to keep me in line with my team's coding conventions
+as I write. Which means I'm burdening myself with the task of getting back to inbox zero.
+
+One of the rules we have governs how methods are imported from [Lodash](https://lodash.com/). It stops you from
+including the whole library in your JavaScript bundle by making sure your imports are from single method files:
+
+```js
+import _ from "lodash"; // ❌ All of lodash ends up in the bundle
+import { difference } from "lodash"; // ❌ Also includes all of lodash
+import chunk from "lodash/chunk"; // ✅ Only the chunk method (and its dependences) in the bundle
+```
+
+We'd broken [this rule](https://github.com/wix/eslint-plugin-lodash/blob/master/docs/rules/import-scope.md)
+over 600 times 🙈
+
+A quick check with [webpack bundle analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) confirmed that, yes,
+we are shipping all of Lodash (~70KB of JavaScript) in our production bundle. That would be a handy saving if that were trimmed down; not a bad vindication for ***THE POWER OF THE LINTER!!***<MarginNote id={2}>Try to hear this in a cheesy,
+American superhero cartoon narrator voice, if you wouldn't mind</MarginNote>
+
+### There's a Babel plugin for that
+
+Of course, this is a solved problem. [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash) transforms your Lodash imports for you. You can write them as carelessly as you like without your users suffering the cost.
+
+So I added the plugin and the probem was solved!
+
+Wouldn't that have been nice? But it turns out that we're already using the plugin. Alas, to no avail!
+
+> *It is at this point that our hero comes to a fork in the highway of his destiny. No longer able to plough a straight furrow, he looks down the western path. The pass through its low crags looks easy to navigate, but there are many caves, the likes of which might hide Webpack goblins, and he thinks he espies the faded, dun bones of their victims.*
+
+> *The eastern path quickly shoots up into a heady mountainscape. Its terrain looks arduous, its trees abstract, and syntactic. But the clouds. Icy peaks glint seductively, high above those clouds. He has never been above the clouds before. He has never risen so high. Now is his chance!*
+
+Either I got the plugin working, or I fixed all the imports. I've wanted to learn about Abstract Syntax Trees (ASTs) and to write a codemod for a while now. So, seeing my chance to avoid dealing with Webpack, that's what I went for.
+
+## What is a codemod?
+
+A codemod is a program that rewrites source code. It's a metaprogram. It takes source code as input, transforms it, then outputs source code. Codemods allow us to make changes to source code, ***programmatically***.
+
+Imagine that you want to upgrade the major version of a library you depend on. There are breaking changes to the API, so that might mean changing method names, changing the arguments to those methods, changing imports from that library, or a host of other things.
+
+Find and replace won't do. No matter your regex skills. We need to be able to make changes based on the programming language's syntax. To specifiy, for example:
+
+- If there are named imports from `foo-library`, and those imports functions used in the file, remove them
+- Add a new default import from `foo-library`
+- Replace the calls to those named import functions with their corresponding methods on the default import object
+
+## Notes
+
+- [ ] Go back through your Obsidian notes
+- [ ] Make a list step-by-step guide of *how* to *develop* a codemod
+- [ ] Then work backwards. What are all the bits of knowledge needed to understand each piece?
+- [ ] List all the resources that help come to an understanding
+- [ ] List all the tools that help write codeomds
+- [ ] Then replan this post
