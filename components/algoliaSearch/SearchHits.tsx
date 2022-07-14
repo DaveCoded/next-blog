@@ -2,19 +2,20 @@ import { connectStateResults } from 'react-instantsearch-dom'
 import styled from 'styled-components'
 import DynamicPostsList from '../list/DynamicPostsList'
 import { PostFileContents } from '@/lib/posts'
+import type { SearchState, SearchResults } from 'react-instantsearch-core'
 
 type Props = {
-    searchState: any
-    searchResults: any
+    searchState: SearchState
+    searchResults: SearchResults
     allPostsData: PostFileContents[]
 }
 
 function Hits({ searchState, searchResults, allPostsData }: Props) {
     const hitLength = searchResults?.hits.length
-    const validQuery = searchState.query?.length >= 3
+    const validQuery = searchState.query && searchState.query.length >= 3
     const noHits = validQuery && hitLength === 0
     const showHits = validQuery && hitLength > 0
-    const postsToShow: PostFileContents[] = showHits ? searchResults.hits : allPostsData
+    const postsToShow = showHits ? searchResults.hits : allPostsData
 
     return (
         <div>

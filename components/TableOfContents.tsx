@@ -18,7 +18,7 @@ function TableOfContents({ headings }: Props) {
                 const link = text
                     .toLowerCase()
                     .replaceAll(' ', '-')
-                    .replace(/[.,?()']/gim, '')
+                    .replace(/[.,?()'@`]/gim, '')
                 const href = `${route}#${link}`
 
                 return (

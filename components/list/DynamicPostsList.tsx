@@ -4,9 +4,10 @@ import { formatDateYear } from '@/lib/dates'
 import { PostFileContents } from '@/lib/posts'
 import SnippetPill from '@/components/SnippetPill'
 import DraftPill from '@/components/DraftPill'
+import { Hit, BasicDoc } from 'react-instantsearch-core'
 
 type Props = {
-    postsToShow: PostFileContents[]
+    postsToShow: PostFileContents[] | Hit<BasicDoc>[]
 }
 
 export default function DynamicPostsList({ postsToShow }: Props) {

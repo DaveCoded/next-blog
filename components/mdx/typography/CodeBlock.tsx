@@ -1,14 +1,15 @@
-import { useRef, useState } from 'react'
+import { HTMLAttributes, ReactElement, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { copyCodeToClipboard } from '@/lib/copyCodeToClipboard'
 
-const CodeBlock = (props: any) => {
+const CodeBlock = (props: HTMLAttributes<HTMLPreElement>) => {
     const [isCopied, setIsCopied] = useState(false)
     const codeRef = useRef<HTMLPreElement>(null)
-    const title = props.children.props.title
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    const title = (props.children as ReactElement).props.title
 
-    const handleClick = () => {
-        copyCodeToClipboard(codeRef)
+    const handleClick = async () => {
+        await copyCodeToClipboard(codeRef)
         setIsCopied(true)
         setTimeout(() => setIsCopied(false), 1500)
     }

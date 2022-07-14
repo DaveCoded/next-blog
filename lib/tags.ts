@@ -1,12 +1,13 @@
 import matter from 'gray-matter'
 import path from 'path'
 import fs from 'fs'
+import { FrontMatter } from './posts'
 
 export const getPostSlugsForTag = (tag: string) => {
     const postDirectory = path.join(process.cwd(), 'posts')
     const fileNames = fs.readdirSync(postDirectory)
 
-    let result: string[] = []
+    const result: string[] = []
 
     fileNames.forEach((filename) => {
         const fullPath = path.join(postDirectory, filename)
@@ -14,7 +15,7 @@ export const getPostSlugsForTag = (tag: string) => {
 
         // Extracts contents of the MDX file
         const fileContents = fs.readFileSync(fullPath, 'utf8')
-        const { data } = matter(fileContents)
+        const data = matter(fileContents).data as FrontMatter
         // Filter for posts that include the tag in their array
         if (data.tags && data.tags.includes(tag)) {
             result.push(slug)
@@ -29,13 +30,13 @@ export const getAllTags = () => {
     const postDirectory = path.join(process.cwd(), 'posts')
     const fileNames = fs.readdirSync(postDirectory)
 
-    let result: { params: { tag: string } }[] = []
+    const result: { params: { tag: string } }[] = []
 
     fileNames.forEach((filename) => {
         const fullPath = path.join(postDirectory, filename)
 
         const fileContents = fs.readFileSync(fullPath, 'utf8')
-        const { data } = matter(fileContents)
+        const data = matter(fileContents).data as FrontMatter
 
         if (data.tags && data.status === 'publish') {
             data.tags.forEach((tag: string) => {

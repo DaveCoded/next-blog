@@ -98,7 +98,7 @@ export const getAllPostSlugs = () => {
 }
 
 // Get Post based on Slug
-export const getPostdata = async (slug: string) => {
+export const getPostdata = (slug: string) => {
     const fullPath = path.join(postDirectory, `${slug}.mdx`)
     const postContent = fs.readFileSync(fullPath, 'utf8')
     return postContent

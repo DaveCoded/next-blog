@@ -3,18 +3,15 @@ import styled from 'styled-components'
 import { SROnly } from '@/styles/accessibility'
 
 interface Props {
-    children: string | any[]
+    children: string
 }
 
 /**
  * Wraps the first word
  */
 const Dropcap = ({ children }: Props) => {
-    const isChildrenString = typeof children === 'string'
-    const firstLetter = isChildrenString ? children[0] : children[0][0]
-    const remainder = isChildrenString
-        ? children.slice(1)
-        : [children[0].slice(1), ...children.slice(1)]
+    const firstLetter = children[0]
+    const remainder = children.slice(1)
 
     return (
         <>

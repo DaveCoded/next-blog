@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import matter from 'gray-matter'
 import styled from 'styled-components'
 import mdxPrism from 'mdx-prism'
@@ -90,7 +90,7 @@ export default function Posts({ source, frontMatter, headings, readingTime, back
     )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const paths = getAllPostSlugs()
     return {
         paths,
@@ -99,9 +99,9 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const postContent = await getPostdata(params?.slug as string)
+    const postContent = getPostdata(params?.slug as string)
     const { data, content } = matter(postContent)
-    const headings = await getHeadings(content)
+    const headings = getHeadings(content)
     const readingTime = getReadingTime(postContent).text
     const contentWithBidirectionalLinks = linkify(content, data.title)
 

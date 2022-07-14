@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const activities = ['reading', 'listening', 'watching'] as const
@@ -40,14 +40,14 @@ const capitalise = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 function MediaConsumption() {
     const [index, setIndex] = useState(0)
 
-    const setNextActivityIndex = () => {
+    const setNextActivityIndex = useCallback(() => {
         setIndex((prevIndex) => {
             if (prevIndex === media.length - 1) {
                 return 0
             }
             return prevIndex + 1
         })
-    }
+    }, [])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -55,7 +55,7 @@ function MediaConsumption() {
         }, 5000)
 
         return () => clearInterval(interval)
-    }, [index])
+    }, [setNextActivityIndex])
 
     const { activity, value } = media[index]
     const emoji = emojis[activity]

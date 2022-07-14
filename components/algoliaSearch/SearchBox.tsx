@@ -32,7 +32,7 @@ const Input = styled.input`
     color: var(--off-white);
     border-radius: 4px;
     padding: var(--space-xs) var(--space-sm);
-    width: min(100%, 21rem);
+    width: 100%;
 
     &:focus {
         outline: none;

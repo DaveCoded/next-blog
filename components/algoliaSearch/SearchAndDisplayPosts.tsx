@@ -7,8 +7,8 @@ import SubjectTag from '../SubjectTag'
 import { PostFileContents } from '@/lib/posts'
 
 const searchClient = algoliasearch(
-    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
-    process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY!
+    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+    process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY
 )
 
 type Props = {
@@ -44,14 +44,7 @@ const TagsContainer = styled.div`
 `
 
 const SearchContainer = styled.div`
-    display: flex;
-    align-items: center;
     margin-bottom: var(--space-xl);
-
-    @media (max-width: 630px) {
-        flex-direction: column;
-        align-items: initial;
-    }
 `
 
 const UL = styled.ul`
