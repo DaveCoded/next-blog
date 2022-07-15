@@ -3,7 +3,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import matter from 'gray-matter'
 import styled from 'styled-components'
 import mdxPrism from 'mdx-prism'
-import remarkGfm from 'remark-gfm'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
@@ -107,7 +106,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const mdxSource = await serialize(contentWithBidirectionalLinks, {
         mdxOptions: {
-            remarkPlugins: [remarkGfm],
             rehypePlugins: [mdxPrism, require('rehype-slug')]
         },
         scope: data
