@@ -40,6 +40,7 @@ const Wrapper = styled.details`
 const Summary = styled.summary`
     font-size: var(--text-sm);
     margin-bottom: var(--space-sm);
+    cursor: pointer;
 `
 
 const A = styled.a<StyleProps>`
