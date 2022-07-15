@@ -31,7 +31,7 @@ const Illuminated = styled.span`
     float: left;
     font-size: 7.4rem;
     line-height: 1;
-    margin: 0 0.5rem 0 0;
+    margin: 0 0.5rem 0.1rem 0;
     padding: 0.8rem 0.2rem 0 0;
 
     &:before,
