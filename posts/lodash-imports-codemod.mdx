@@ -53,9 +53,9 @@ A codemod is a program that rewrites source code. It's a metaprogram. It takes s
 
 Imagine that you want to upgrade the major version of a library you depend on. There are breaking changes to the API, so that might mean changing method names, changing the arguments to those methods, changing imports from that library, or a host of other things.
 
-Find and replace won't do. No matter your regex skills. We need to be able to make changes based on the programming language's syntax. To specifiy, for example:
+Find and replace won't do. No matter your regex skills. We need to be able to make changes based on the programming language's syntax. To specify, for example:
 
-- If there are named imports from `foo-library`, and those imports functions used in the file, remove them
+- If there are named imports from `foo-library`, and those imports are functions used in the file, remove them
 - Add a new default import from `foo-library`
 - Replace the calls to those named import functions with their corresponding methods on the default import object
 
