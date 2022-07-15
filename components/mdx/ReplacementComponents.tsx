@@ -62,14 +62,10 @@ const ReplacementComponents = {
     a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
         const href = props.href
         if (href?.startsWith('#')) {
-            return (
-                <a href={href} style={{ color: 'var(--link-pink)' }}>
-                    {props.children}
-                </a>
-            )
+            return <a style={{ color: 'var(--link-pink)' }} {...props} />
         }
         return (
-            <ExternalLink href={href ?? ''} style={{ color: 'var(--link-pink)' }} newTab {...props}>
+            <ExternalLink style={{ color: 'var(--link-pink)' }} newTab {...props}>
                 {props.children}
             </ExternalLink>
         )
