@@ -1,6 +1,7 @@
 import Dropcap from './custom/Dropcap'
 import MarginNote from './custom/MarginNote'
 import Lightbox from './custom/Lightbox'
+import Resources from './custom/Resources'
 import FacultyTable from './FacultyTable'
 import InternalLink from './InternalLink'
 import Tooltip from './Tooltip'
@@ -11,6 +12,7 @@ const CustomComponents = {
     MarginNote,
     InternalLink,
     Tooltip,
-    Lightbox
+    Lightbox,
+    Resources
 }
 export default CustomComponents
