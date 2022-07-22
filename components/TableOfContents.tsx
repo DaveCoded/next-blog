@@ -40,6 +40,7 @@ const Wrapper = styled.details`
 const Summary = styled.summary`
     font-size: var(--text-sm);
     margin-bottom: var(--space-sm);
+    cursor: pointer;
 `
 
 const A = styled.a<StyleProps>`
@@ -48,6 +49,11 @@ const A = styled.a<StyleProps>`
     margin-left: ${(props) => (props.level === 2 ? 0 : `${(props.level - 2) * 32}px`)};
     font-size: var(--text-sm);
     margin-bottom: var(--space-xs);
+    transition: 280ms ease-out;
+
+    &:hover {
+        transform: translateX(0.5rem);
+    }
 `
 
 export default TableOfContents

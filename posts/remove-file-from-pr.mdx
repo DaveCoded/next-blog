@@ -1,0 +1,26 @@
+---
+title: 'You can remove changes to a file from your PR!'
+subtitle: 'Sometimes you just have to marvel at git. And Stack Overflow.'
+description: 'How to revert the changes to a file and remove it from an active PR. This is completely stolen from this SO answer: https://stackoverflow.com/questions/38743912/remove-a-file-from-a-git-pull-request'
+excerpt: 'Shamelessly stealing from a Stack Overflow answer in case it helps someone find it easier'
+date: '07/15/22'
+status: 'publish'
+tags: ['git']
+keywords: 'git, stack overflow, remove a file, PR, revert'
+completion: 'bonfire'
+codeSnippet: true
+---
+
+<Dropcap>Whoops!</Dropcap> I've borked it again. One of my commits contained my changes to the yarn.lock.<MarginNote id={1}>...that only work with *my* local environment because web development with billions of node modules is just wonderful</MarginNote>
+
+And I've pushed it and a PR's open and I'm *this* close 🤏 to throwing my laptop out the window.
+
+> Don't worry. git can handle it. And some hero told me how on SO
+
+Now, I've been working on a branch named `dave/made-a-dumb-error-again`, which branched off `dev`. So, I can just run:
+
+```shell
+git checkout dev -- yarn.lock
+```
+
+And I'm saved thanks to [this SO answer](https://stackoverflow.com/questions/38743912/remove-a-file-from-a-git-pull-request). Many thanks to [Jared Wilber](https://www.jwilber.me/) for saving my bacon.

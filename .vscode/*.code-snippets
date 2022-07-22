@@ -16,9 +16,7 @@
             "completion: 'spark'",
             "---",
             "",
-            "<p>",
-            "  <Dropcap>Welcome</Dropcap> to a beautiful new post",
-            "</p>"
+            "<Dropcap>Welcome</Dropcap> to a beautiful new post"
         ]
     }
 }

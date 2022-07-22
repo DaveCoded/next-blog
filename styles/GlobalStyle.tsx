@@ -204,7 +204,7 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Code blocks */
     pre[class*='language-'] {
-        padding: var(--space-sm) var(--space-lg) var(--space-lg);
+        padding: var(--space-lg) var(--space-lg);
         margin-bottom: var(--space-lg);
         overflow: auto;
         border-radius: 0 0 6px 6px;

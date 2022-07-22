@@ -14,7 +14,6 @@ import { getHeadings } from '@/lib/getHeadings'
 
 import CustomComponents from '@/components/mdx/CustomComponents'
 import ReplacementComponents from '@/components/mdx/ReplacementComponents'
-import { H2 } from '@/components/mdx/typography'
 
 import PostMetadata from '@/components/PostMetadata'
 import PageLayout from '@/components/Layout/PageLayout'
@@ -154,7 +153,7 @@ const Title = styled.h1<{ hasSubtitle: boolean }>`
     }
 `
 
-const Subtitle = styled(H2)`
+const Subtitle = styled.h2`
     color: var(--light-black);
     font-family: 'Averta', sans-serif;
     font-weight: 400;

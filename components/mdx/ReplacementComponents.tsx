@@ -21,6 +21,12 @@ const ImgContainer = styled.div`
     margin-bottom: 1.5rem;
 `
 
+const HeadingLink = styled.a`
+    &:hover {
+        color: currentColor;
+    }
+`
+
 const wrapHeadingInLink = (
     // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
     Heading: StyledComponent<'h2' | 'h3' | 'h4' | 'h5', any, {}, never>,
@@ -29,7 +35,7 @@ const wrapHeadingInLink = (
     if (props.id) {
         return (
             <Heading {...props}>
-                <a href={`#${props.id}`}>{props.children}</a>
+                <HeadingLink href={`#${props.id}`}>{props.children}</HeadingLink>
             </Heading>
         )
     }
@@ -56,14 +62,10 @@ const ReplacementComponents = {
     a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
         const href = props.href
         if (href?.startsWith('#')) {
-            return (
-                <a href={href} style={{ color: 'var(--link-pink)' }}>
-                    {props.children}
-                </a>
-            )
+            return <a style={{ color: 'var(--link-pink)' }} {...props} />
         }
         return (
-            <ExternalLink href={href ?? ''} style={{ color: 'var(--link-pink)' }} newTab {...props}>
+            <ExternalLink style={{ color: 'var(--link-pink)' }} newTab {...props}>
                 {props.children}
             </ExternalLink>
         )

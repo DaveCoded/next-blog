@@ -73,8 +73,8 @@ function MediaConsumption() {
 
 export const MediaContainer = styled.div`
     width: max-content;
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--light-grey);
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid #32353a;
     border-radius: 4px;
     cursor: pointer;
 `
