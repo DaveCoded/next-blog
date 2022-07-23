@@ -9,6 +9,7 @@ import { getBracketPairs } from './bracketPairs'
  * @param content : markdown string for a blog post
  * @param title
  * @returns transformed markdown string for blog post
+ * @deprecated
  */
 export function linkify(content: string, title: string) {
     if (!content) return content

@@ -3,11 +3,11 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import matter from 'gray-matter'
 import styled from 'styled-components'
 import mdxPrism from 'mdx-prism'
+import remarkWikiLink from 'remark-wiki-link'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 import { FrontMatter, getAllPostSlugs, getPostdata } from '@/lib/posts'
-import { linkify } from '@/lib/linkify'
 import { LinkReference } from '@/scripts/post-links'
 import PostLinks from '../../links.json'
 import { getHeadings } from '@/lib/getHeadings'
@@ -102,14 +102,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { data, content } = matter(postContent)
     const headings = getHeadings(content)
     const readingTime = getReadingTime(postContent).text
-    const contentWithBidirectionalLinks = linkify(content, data.title)
 
-    const mdxSource = await serialize(contentWithBidirectionalLinks, {
+    const mdxSource = await serialize(content, {
         mdxOptions: {
+            remarkPlugins: [
+                [
+                    remarkWikiLink,
+                    {
+                        wikiLinkClassName: 'post-backlink',
+                        // Ensures the title can be parsed from the href in ReplacementComponents.tsx
+                        pageResolver: (name: string) => [name]
+                    }
+                ]
+            ],
             rehypePlugins: [mdxPrism, require('rehype-slug')]
         },
         scope: data
     })
+
     const backlinks = PostLinks.find((post) => post.ids[0] === data.title)?.inboundLinks || []
 
     return {

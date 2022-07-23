@@ -10,9 +10,13 @@ export type LinkReference = {
     completion?: FireType
 }
 
+// todo: Include the excerpt or all content?
 type LinkMap = {
+    title: string
     ids: string[]
     slug: string
+    // content: string
+    // excerpt: string
     completion?: FireType
     outboundLinks: LinkReference[]
     inboundLinks: LinkReference[]
@@ -48,7 +52,7 @@ const stripExcerpt = (str: string) =>
 const getExcerpt = (str?: string) => {
     if (!str) return ''
     const stripped = stripExcerpt(str)
-    return `${stripped.substring(0, 100).trimEnd()}...`
+    return `${stripped.substring(0, 130).trimEnd()}...`
 }
 
 ;(function () {
@@ -58,9 +62,13 @@ const getExcerpt = (str?: string) => {
     // Create initial objects. Identify each by a combined title and aliases identifier
     // Initialise empty outbound and inbound link arrays
     const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion }) => ({
+        title,
+        // todo: can you get rid of aliases thanks to the aliases in remark-wiki-link?!
         ids: [title, ...(aliases ? aliases : [])],
         slug,
         completion,
+        // content,
+        // excerpt: getExcerpt(content),
         outboundLinks: [],
         inboundLinks: []
     }))

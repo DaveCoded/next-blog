@@ -6,8 +6,11 @@ import {
     AnchorHTMLAttributes
 } from 'react'
 import styled, { StyledComponent } from 'styled-components'
+import bidirectionalLinksData from 'links.json'
 import { Blockquote, CodeBlock, H2, H3, H4, H5, P } from '@/components/mdx/typography'
 import ExternalLink from '@/components/ExternalLink'
+import Tooltip from './Tooltip'
+import InternalLink from './InternalLink'
 
 const UL = styled.ul`
     padding-inline-start: 1.5rem;
@@ -25,6 +28,12 @@ const HeadingLink = styled.a`
     &:hover {
         color: currentColor;
     }
+`
+
+const TooltipTitle = styled.h3`
+    color: white;
+    font-size: var(--text-body);
+    font-family: 'Headline';
 `
 
 const wrapHeadingInLink = (
@@ -60,7 +69,21 @@ const ReplacementComponents = {
     ),
     pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
     a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
-        const href = props.href
+        const { href, className, children } = props
+        if (className?.includes('post-backlink')) {
+            // This relies on the options passed to the remark plugin in [slug].tsx
+            const alias = href?.split('#/page/')[1]
+            if (!alias || !bidirectionalLinksData) return <>children</>
+
+            const linkData = bidirectionalLinksData.find((post) => post.ids.includes(alias))
+            const { slug, title } = linkData || { slug: '' }
+
+            return (
+                <Tooltip content={<TooltipTitle>{title}</TooltipTitle>}>
+                    <InternalLink href={`/blog/${slug}`}>{children}</InternalLink>
+                </Tooltip>
+            )
+        }
         if (href?.startsWith('#')) {
             return <a style={{ color: 'var(--link-pink)' }} {...props} />
         }
