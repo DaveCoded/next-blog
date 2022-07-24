@@ -8,7 +8,7 @@ type Props = {
     children: ReactNode
 }
 
-export default function Tooltip({ content, children }: Props) {
+export default function BacklinkTooltip({ content, children }: Props) {
     return (
         <StyledTippy content={content}>
             <span>{children}</span>
@@ -17,8 +17,15 @@ export default function Tooltip({ content, children }: Props) {
 }
 
 const StyledTippy = styled(Tippy)`
+    --tooltip-color: #161932;
+    background-color: var(--tooltip-color);
+    max-width: 380px !important;
+
     .tippy-content {
-        padding: var(--space-xs) var(--space-sm);
-        padding-top: var(--space-xxs);
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .tippy-arrow {
+        color: var(--tooltip-color);
     }
 `

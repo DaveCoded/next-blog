@@ -15,7 +15,7 @@ export default function Backlinks({ backlinks }: Props) {
                     <Backlink key={bl.slug}>
                         <Link href={`/blog/${bl.slug}`}>
                             <a>
-                                <H4>{bl.title}</H4>
+                                <H4>{bl.title} &rarr;</H4>
                             </a>
                         </Link>
                     </Backlink>
@@ -27,8 +27,13 @@ export default function Backlinks({ backlinks }: Props) {
 
 const Section = styled.section`
     margin-top: var(--space-xxl);
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    padding: var(--space-md) var(--space-lg);
+    max-width: var(--post-content-max-width);
 
     h2 {
+        font-family: 'Headline', serif;
         color: var(--light-black);
         margin-bottom: var(--space-sm);
     }
@@ -39,11 +44,6 @@ const Backlink = styled.li`
 `
 
 const H4 = styled.h4`
-    color: var(--link-pink);
-    margin-bottom: var(--space-xs);
-    text-decoration: underline;
-
-    &:hover {
-        color: var(--purple);
-    }
+    margin-bottom: var(--space-xxs);
+    font-weight: 300;
 `

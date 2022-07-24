@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
         --space-xl:   52px;
         --space-xxl:  84px;
         --space-xxxl: 105px;
+        --post-content-max-width: 650px;
 
         /* Colors */
         --black: #191B1F;

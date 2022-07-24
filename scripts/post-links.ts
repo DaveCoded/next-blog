@@ -15,8 +15,7 @@ type LinkMap = {
     title: string
     ids: string[]
     slug: string
-    // content: string
-    // excerpt: string
+    content: string
     completion?: FireType
     outboundLinks: LinkReference[]
     inboundLinks: LinkReference[]
@@ -61,14 +60,13 @@ const getExcerpt = (str?: string) => {
 
     // Create initial objects. Identify each by a combined title and aliases identifier
     // Initialise empty outbound and inbound link arrays
-    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion }) => ({
+    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion, content }) => ({
         title,
         // todo: can you get rid of aliases thanks to the aliases in remark-wiki-link?!
         ids: [title, ...(aliases ? aliases : [])],
         slug,
         completion,
-        // content,
-        // excerpt: getExcerpt(content),
+        content,
         outboundLinks: [],
         inboundLinks: []
     }))

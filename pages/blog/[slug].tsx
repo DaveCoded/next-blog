@@ -111,7 +111,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     {
                         wikiLinkClassName: 'post-backlink',
                         // Ensures the title can be parsed from the href in ReplacementComponents.tsx
-                        pageResolver: (name: string) => [name]
+                        pageResolver: (name: string) => [name],
+                        aliasDivider: '|'
                     }
                 ]
             ],
@@ -181,6 +182,6 @@ const ContentWrapper = styled.div`
     counter-reset: sidenote-counter;
 
     & > * {
-        max-width: 650px;
+        max-width: var(--post-content-max-width);
     }
 `

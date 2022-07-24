@@ -4,14 +4,14 @@ import Lightbox from './custom/Lightbox'
 import Resources from './custom/Resources'
 import FacultyTable from './FacultyTable'
 import InternalLink from './InternalLink'
-import Tooltip from './Tooltip'
+import BacklinkTooltip from './BacklinkTooltip'
 
 const CustomComponents = {
     Dropcap,
     FacultyTable,
     MarginNote,
     InternalLink,
-    Tooltip,
+    BacklinkTooltip,
     Lightbox,
     Resources
 }
