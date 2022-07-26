@@ -11,8 +11,10 @@ export type LinkReference = {
 }
 
 type LinkMap = {
+    title: string
     ids: string[]
     slug: string
+    content: string
     completion?: FireType
     outboundLinks: LinkReference[]
     inboundLinks: LinkReference[]
@@ -20,9 +22,11 @@ type LinkMap = {
 
 // Extract all instances of substrings between double brackets [[]] from a long string
 const bracketsExtractor = (str: string) => {
-    const matcher = /((?!\])(?!\[).)+/gs
+    const matcher = /\[\[(.*?)\]\]/gs
     return str.match(matcher)
 }
+
+const removeBrackets = (str: string) => str.substring(2, str.length - 2)
 
 const matchCodeBlocks = new RegExp('```[\\d\\D]*?```', 'g')
 
@@ -48,7 +52,7 @@ const stripExcerpt = (str: string) =>
 const getExcerpt = (str?: string) => {
     if (!str) return ''
     const stripped = stripExcerpt(str)
-    return `${stripped.substring(0, 100).trimEnd()}...`
+    return `${stripped.substring(0, 130).trimEnd()}...`
 }
 
 ;(function () {
@@ -57,10 +61,12 @@ const getExcerpt = (str?: string) => {
 
     // Create initial objects. Identify each by a combined title and aliases identifier
     // Initialise empty outbound and inbound link arrays
-    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion }) => ({
+    const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion, content }) => ({
+        title,
         ids: [title, ...(aliases ? aliases : [])],
         slug,
         completion,
+        content,
         outboundLinks: [],
         inboundLinks: []
     }))
@@ -70,11 +76,16 @@ const getExcerpt = (str?: string) => {
         const { content } = postData
         // Get all substrings between brackets from post body
         const bracketContents = bracketsExtractor(content)
-        bracketContents?.forEach((alias) => {
+
+        bracketContents?.forEach((titleOrAlias) => {
+            const usedAlias = titleOrAlias.includes('|')
+                ? removeBrackets(titleOrAlias).split('|')[0]
+                : removeBrackets(titleOrAlias)
+
             // If matched text is an alias of another post
             const match = posts.find((p) => {
                 // If an alias was found between JSX tags in the markdown string, it may contain undesirable substrings
-                const normalisedAlias = alias
+                const normalisedAlias = usedAlias
                     .replace(/\n/g, '')
                     .replace(/\s+/g, ' ') // Replaces all whitespace exceeding one space character
                     .replace(`{' '}`, ' ')
@@ -84,12 +95,12 @@ const getExcerpt = (str?: string) => {
 
             if (match) {
                 // Get data for post that was referenced in the link
-                const matchedPostData = totalPostData.find((p) => p.title === match.ids[0])
+                const matchedPostData = totalPostData.find((p) => p.title === match.title)
                 const excerpt = getExcerpt(matchedPostData?.content)
                 // Add it to the outbound links
                 posts[index].outboundLinks.push({
-                    matchedId: alias,
-                    title: match.ids[0],
+                    matchedId: usedAlias,
+                    title: match.title,
                     slug: match.slug,
                     completion: match.completion,
                     excerpt

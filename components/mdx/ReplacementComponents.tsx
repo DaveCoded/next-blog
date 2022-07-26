@@ -1,4 +1,4 @@
-import {
+import React, {
     HTMLAttributes,
     BlockquoteHTMLAttributes,
     DetailedHTMLProps,
@@ -8,6 +8,7 @@ import {
 import styled, { StyledComponent } from 'styled-components'
 import { Blockquote, CodeBlock, H2, H3, H4, H5, P } from '@/components/mdx/typography'
 import ExternalLink from '@/components/ExternalLink'
+import LinkWithTooltip from './custom/LinkWithTooltip'
 
 const UL = styled.ul`
     padding-inline-start: 1.5rem;
@@ -60,7 +61,10 @@ const ReplacementComponents = {
     ),
     pre: (props: HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
     a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
-        const href = props.href
+        const { href, className, children } = props
+        if (className?.includes('post-backlink')) {
+            return <LinkWithTooltip href={href}>{children}</LinkWithTooltip>
+        }
         if (href?.startsWith('#')) {
             return <a style={{ color: 'var(--link-pink)' }} {...props} />
         }

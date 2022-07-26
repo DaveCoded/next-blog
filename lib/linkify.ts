@@ -9,6 +9,7 @@ import { getBracketPairs } from './bracketPairs'
  * @param content : markdown string for a blog post
  * @param title
  * @returns transformed markdown string for blog post
+ * @deprecated
  */
 export function linkify(content: string, title: string) {
     if (!content) return content
@@ -39,9 +40,9 @@ export function linkify(content: string, title: string) {
             const { slug, excerpt, title } = matchedOutboundLink
 
             result += content.substring(previousIndex, opening - 1) // append content up to link
-            result += `<Tooltip content={<div><div><strong>${title}</strong></div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>` // append JSX opening tags
+            result += `<BacklinkTooltip content={<div><div><strong>${title}</strong></div>${excerpt}</div>}><InternalLink href={'/blog/${slug}'}>` // append JSX opening tags
             result += content.substring(opening + 1, closing - 1) // skip opening brackets, then append link content (referenced post title or alias)
-            result += '</InternalLink></Tooltip>' // append JSX closing tags
+            result += '</InternalLink></BacklinkTooltip>' // append JSX closing tags
         } else {
             result += content.substring(previousIndex, closing)
         }

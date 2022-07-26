@@ -17,4 +17,8 @@ export default function InternalLink({ href, children }: Props) {
 
 const A = styled.a`
     color: var(--link-pink);
+
+    &:hover {
+        color: var(--link-pink);
+    }
 `
