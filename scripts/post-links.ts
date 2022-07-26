@@ -10,7 +10,6 @@ export type LinkReference = {
     completion?: FireType
 }
 
-// todo: Include the excerpt or all content?
 type LinkMap = {
     title: string
     ids: string[]
@@ -64,7 +63,6 @@ const getExcerpt = (str?: string) => {
     // Initialise empty outbound and inbound link arrays
     const posts: LinkMap[] = totalPostData.map(({ title, aliases, slug, completion, content }) => ({
         title,
-        // todo: can you get rid of aliases thanks to the aliases in remark-wiki-link?!
         ids: [title, ...(aliases ? aliases : [])],
         slug,
         completion,
@@ -92,7 +90,6 @@ const getExcerpt = (str?: string) => {
                     .replace(/\s+/g, ' ') // Replaces all whitespace exceeding one space character
                     .replace(`{' '}`, ' ')
                     .replace(`{" "}`, ' ')
-                console.log('normalisedAlias', normalisedAlias)
                 return p.ids.includes(normalisedAlias)
             })
 
