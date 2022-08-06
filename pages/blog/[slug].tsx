@@ -111,8 +111,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     {
                         wikiLinkClassName: 'post-backlink',
                         // Ensures the title can be parsed from the href in ReplacementComponents.tsx
-                        pageResolver: (name: string) => [name],
-                        aliasDivider: '|'
+                        pageResolver: (name: string) => [name.trim()],
+                        aliasDivider: '§'
                     }
                 ]
             ],
