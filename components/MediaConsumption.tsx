@@ -17,15 +17,15 @@ type ActivityEmojiMap = {
 const media: Media[] = [
     {
         activity: 'reading',
-        value: 'The Riddle-Master of Hed by Patricia A. McKillip'
+        value: 'Infinite Jest by David Foster-Wallace'
     },
     {
         activity: 'listening',
-        value: 'Remotely Interesting podcast'
+        value: 'Chatabix'
     },
     {
-        activity: 'watching',
-        value: 'The Dropout (Theranos debacle series)'
+        activity: 'listening',
+        value: "Barenboim's recording of the Well-tempered Clavier"
     }
 ]
 
