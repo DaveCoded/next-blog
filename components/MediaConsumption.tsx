@@ -17,15 +17,19 @@ type ActivityEmojiMap = {
 const media: Media[] = [
     {
         activity: 'reading',
-        value: 'Infinite Jest by David Foster-Wallace'
+        value: 'Tigana by Guy Gavriel Kay'
+    },
+    {
+        activity: 'reading',
+        value: 'Novelist as a Vocation by Murakami'
     },
     {
         activity: 'listening',
-        value: 'Chatabix'
+        value: 'Maintenance Phase'
     },
     {
         activity: 'listening',
-        value: "Barenboim's recording of the Well-tempered Clavier"
+        value: 'Soft Skills Engineering'
     }
 ]
 
