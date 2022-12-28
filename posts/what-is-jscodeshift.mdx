@@ -1,0 +1,20 @@
+---
+title: 'What is jscodeshift and how do I use it?'
+description: 'An explanation of jscodeshift, and open-source library for running codemods in JavaScript.'
+date: '08/28/22'
+status: 'draft'
+tags: ['codemods', 'jscodeshift', 'JavaScript']
+keywords: 'jscodeshift, codemods, JavaScript, open-source software, metaprogramming'
+completion: 'spark'
+---
+
+<!-- todo: define codemod in a tooltip on the word codemods! (create that definition component) -->
+<Dropcap>Jscodeshift</Dropcap> is a library that helps us to run codemods on JavaScript source code. The CLI it provides lets us
+execute a transform on many source files at once by spawning and managing workers. We also get some nicely formatted output
+that tells us how many files were changed or if there were any errors.
+
+It also provides a more convenient api for writing codemods, by wrapping [recast] and [ast-types] — shoutout to [Ben Newman] who
+created _both_.
+
+## But wait. What's a codemod?
+
