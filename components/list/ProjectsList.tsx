@@ -3,7 +3,7 @@ import ExternalLink from '../ExternalLink'
 import { Article, H3 } from './LatestPosts'
 
 export default function ProjectsList() {
-    const PUYL_LINK = 'https://promptupyour.life'
+    const PUYL_LINK = 'https://prompt.davebernhard.com/'
     const LODASH_CODEMOD_LINK = 'https://github.com/DaveCoded/lodash-imports-codemod'
 
     return (
