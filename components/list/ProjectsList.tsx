@@ -5,6 +5,7 @@ import { Article, H3 } from './LatestPosts'
 export default function ProjectsList() {
     const PUYL_LINK = 'https://promptupyour.life'
     const LODASH_CODEMOD_LINK = 'https://github.com/DaveCoded/lodash-imports-codemod'
+    const PASSWORD_GENERATOR_LINK = 'https://password-gen.davebernhard.com/'
 
     return (
         <div>
@@ -50,6 +51,38 @@ export default function ProjectsList() {
                     </TechContainer>
                 </div>
             </Project>
+
+            <Project>
+                <a href={PASSWORD_GENERATOR_LINK}>
+                    <img
+                        src="/images/frontend-mentor-logo.png"
+                        alt="Frontend Mentor logo"
+                        width={60}
+                        height={60}
+                    />
+                </a>
+                <div>
+                    <ExternalLink href={PASSWORD_GENERATOR_LINK}>
+                        <Heading>Password Generator</Heading>
+                    </ExternalLink>
+                    <P>
+                        Implementation of{' '}
+                        <FFLink
+                            href="https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh"
+                            newTab
+                        >
+                            this password generator
+                        </FFLink>{' '}
+                        on Frontend Mentor
+                    </P>
+                    <TechContainer>
+                        <Tech>Tech used:</Tech>
+                        <UL>
+                            <LI>Gatsby</LI>, <LI>TypeScript</LI>, <LI>styled-components</LI>
+                        </UL>
+                    </TechContainer>
+                </div>
+            </Project>
         </div>
     )
 }
@@ -82,6 +115,7 @@ const LI = styled.li`
     list-style: none;
     font-size: var(--text-sm);
     margin-left: var(--space-sm);
+    white-space: nowrap;
 `
 
 const UL = styled.ul`
@@ -89,6 +123,8 @@ const UL = styled.ul`
     align-items: baseline;
     margin: 0;
     line-height: 1;
+    flex-wrap: wrap;
+    row-gap: var(--space-sm);
 `
 
 const Tech = styled.p`
@@ -107,4 +143,8 @@ const TechContainer = styled.div`
     @media (max-width: 500px) {
         grid-column: 1 / 3;
     }
+`
+
+const FFLink = styled(ExternalLink)`
+    color: var(--link-pink);
 `
