@@ -46,3 +46,19 @@ Keep the top one annotated with `pick` (or just `p` for short), but change all t
         style={{ width: '100%' }}
     />
 </div>
+
+Now you can `git rebase -i` again. This time you should see just one commit on your branch, which you can
+annotate with `edit` (or `e` for short).
+
+<div style={{ marginBottom: 'var(--space-md)' }}>
+    <img
+        src="/images/edited-commit.png"
+        alt="Interactive rebase window with edited commit"
+        style={{ width: '100%' }}
+    />
+</div>
+
+Use `git reset HEAD^` to move the commit back to the staging area. Now you can use incrementally add
+and commit changes cleanly.
+
+When you're done, don't forget to `git rebase --continue` to finish the rebase.
