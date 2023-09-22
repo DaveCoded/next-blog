@@ -166,7 +166,7 @@ const Title = styled.h1<{ hasSubtitle: boolean }>`
 
 const Subtitle = styled.h2`
     color: var(--light-black);
-    font-family: 'Averta', sans-serif;
+    font-family: sans-serif;
     font-weight: 400;
     margin-top: 0;
     margin-bottom: var(--space-lg);
