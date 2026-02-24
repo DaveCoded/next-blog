@@ -1,0 +1,101 @@
+---
+title: 'Learning note: DDIA Chapter 1'
+description: 'Notes I took on what I learned from reading chapter one of Designing Data-Intensive Applications by Martin Kleppmann'
+date: '02/24/26'
+status: 'publish'
+tags: ['software architecture']
+keywords: 'software, architecture'
+completion: 'spark'
+---
+
+<Dropcap>The</Dropcap> first chapter of Designing Data-Intensive Applications is concerned with defining reliability, scalability and maintainability, three important characteristics to keep in mind while designing software systems. Many applications exhibit multiple kinds of access pattern, or other complexities, that often require the stitching together of multiple data systems, such as:
+- databases
+- caches
+- search indexes
+- stream processing
+- batch processing
+
+## Reliability
+
+A reliable system works *correctly* in the face of *adversity*. In other words, it is fault-tolerant. When faults occur, they don't lead to failures: when the system ceases to provide service to the user.
+
+There are generally 3 kinds of fault: hardware, software, and human errors.
+
+We try to reduce hardware errors by introducing redundancy: setting up disks in some kind of RAID configuration; expensive, hot-swappable CPUs for high-end servers and mainframes.
+
+Software errors can be reduced with testing, monitoring, systems that check themselves for correctness while running, isolating processes and allowing them to crash and restart.
+
+The majority of errors are human errors. These can be mitigated by designing APIs that make it easy to do the right thing, providing sandboxes for safe experimentation, testing, allowing quick recovery, and setting up clear monitoring (performance metrics and error rates, aka *telemetry*).
+
+## Scalability
+
+*Scalability* is a system's ability to deal with increased **load**.
+
+### Describing load
+
+Which load parameter you care about depends on the architecture of your system - requests per second to a web server? writes to a database?
+
+### Describing performance
+
+Because there are often many variables in play, the response time of an identical request can vary greatly. Therefore we use distributions to measure them.
+
+Sort in order, low to high. P50 is the median, where half the requests take longer and half the requests take less time. Outliers we pay attention to are usually P95, P99, and for some, P99.9.
+
+A queue of 2 or 3 slow requests can hold up the rest - known as *head of line blocking* - meaning everybody's response time is slow. If a backend call needs to then call multiple services, the response time is only as good as the slowest service.
+
+### Approaches for coping with load
+
+Scaling up (vertically) is increasing a machine's power (more CPU, memory, etc.) - can be expensive. Scaling out (horizontally) is distributing load across more machines - can be complex when the nodes are **stateful**. An *elastic* system adds resources automatically as load increases.
+
+The architecture of systems that operate at high scale is usually highly specific: they must balance between their own needs for:
+- volume of reads
+- volume of writes
+- volume of data to store
+- complexity of data
+- response time requirements
+- access patterns
+
+## Maintainability
+
+(Apparently, "it is well know that") the majority of the cost of software is in its ongoing maintenance, not in its initial build. We should design software in a way that minimises the pain of maintenance by focusing on three design principles: *operability*, *simplicity*, and *evolvability*.
+
+### Operability: making life easy for operations
+
+To make operating a system easier, we should:
+- Provide visibility into runtime behaviour with monitoring
+- Avoid depending on individual machines
+- Provide good documentation
+- Provide good default behaviour, but also controls to override it
+- Exhibit predictable behaviour, minimising surprises
+
+### Simplicity: managing complexity
+
+Avoid "accidental complexity" - i.e. complexity that arises from the design of the system or code, rather than inherent in the complexity of the state, etc.
+
+One of the best tools we have for managing complexity is abstraction, but good abstractions are very difficult to find.
+
+### Evolvability: making change easy
+
+The ease with which you can modify a data system is closely tied to its simplicity and the success of its abstractions.
+
+## Questions I had and researched further
+
+Q: How does RAM become faulty and what does that mean?
+
+A: Basically the circuitry becomes ruined over time. Atoms can move or something. "Bit rot" means a 1 can become a 0 or vice versa. This can silently corrupt your data - or crash a machine (think blue screen of death).
+
+Q: What is setting up disks in a RAID configuration?
+
+A: Introduces redundancy by having multiple hard disks to read to and write from. You can split data across disks for speed, or replicate it for redundancy. Some strategies mix the two. It's not worth going into the specifics of the numerous RAID types.
+
+Q: What are hot-swappable CPUs?
+
+A: This is where you can switch the CPU of a machine out *while it's running*. This is actually very expensive as the system has to be able to gracefully migrate processes off a CPU, electrically isolate the socket, and then bring a new CPU online. It's reserved for high-end servers and mainframes where downtime is very expensive (banking systems, telecomms, large databases).
+
+Q: What do people mean when they talk about "access patterns" and what are some examples?
+
+A: An access pattern is *how* your application reads and writes data. Are there lots of reads or lots of writes? Is access random (get by id) or sequential (scanning large ranges of ordered data)? Small frequent queries, or large batch operations? Do you have areas of high access and others lower, or is load relatively distributed? All of these parameters should influence how you choose to architect your system.
+
+Q: If every system at scale will look different because it has different requirements, and you have some experience of scaling an application, then what are the skills you learn that are transferable? i.e. If a job description requires that you've scaled a system before, what experience would you really bring to bear on this totally different system?
+
+A: It's more ways of thinking than specifics. You exercise your diagnostic muscles, you learn to think in trade-offs, you get a sense for when an architectural decision is easy to reverse or likely very costly to get wrong, etc.
